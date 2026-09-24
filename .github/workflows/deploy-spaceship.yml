@@ -44,6 +44,7 @@ jobs:
         env:
           INPUT_DRY_RUN: ${{ inputs.dry_run }}
           INPUT_CLEAN_REMOTE: ${{ inputs.clean_remote }}
+          VAR_LOCAL_DIR: ${{ vars.SPACESHIP_LOCAL_DIR }}
           VAR_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR }}
           VAR_PROTOCOL: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
           VAR_PORT: ${{ vars.SPACESHIP_FTP_PORT }}
@@ -52,12 +53,26 @@ jobs:
 
           remote_dir="${VAR_REMOTE_DIR:-/}"
           protocol="${VAR_PROTOCOL:-ftps}"
-          port="${VAR_PORT:-21}"
           dry_run="${INPUT_DRY_RUN:-false}"
           clean_remote="${INPUT_CLEAN_REMOTE:-false}"
 
+          if [[ -n "${VAR_LOCAL_DIR:-}" ]]; then
+            local_dir="${VAR_LOCAL_DIR%/}/"
+          else
+            local_dir=""
+          fi
+
+          if [[ -n "${VAR_PORT:-}" ]]; then
+            port="$VAR_PORT"
+          elif [[ "$protocol" == "ftps-legacy" ]]; then
+            port="990"
+          else
+            port="21"
+          fi
+
           [[ "$remote_dir" == */ ]] || remote_dir="${remote_dir}/"
 
+          echo "local_dir=$local_dir" >> "$GITHUB_OUTPUT"
           echo "remote_dir=$remote_dir" >> "$GITHUB_OUTPUT"
           echo "protocol=$protocol" >> "$GITHUB_OUTPUT"
           echo "port=$port" >> "$GITHUB_OUTPUT"
@@ -96,6 +111,8 @@ jobs:
       - name: Prepare deployment payload
         id: payload
         shell: bash
+        env:
+          LOCAL_DIR: ${{ steps.config.outputs.local_dir }}
         run: |
           set -euo pipefail
 
@@ -103,27 +120,65 @@ jobs:
           mkdir -p .deploy
 
           publish_dir=""
-          for candidate in dist build out public; do
-            if [[ -d "$candidate" ]]; then
-              publish_dir="$candidate"
-              break
+          if [[ -n "$LOCAL_DIR" ]]; then
+            publish_dir="${LOCAL_DIR%/}"
+            if [[ ! -d "$publish_dir" ]]; then
+              echo "Configured SPACESHIP_LOCAL_DIR does not exist: $publish_dir" >&2
+              exit 1
             fi
-          done
-
-          if [[ -n "$publish_dir" ]]; then
             rsync -av --delete "$publish_dir"/ .deploy/
           else
-            rsync -av --delete ./ .deploy/ \
-              --exclude '.deploy/' \
-              --exclude '.git/' \
-              --exclude '.github/' \
-              --exclude 'node_modules/' \
-              --exclude '.gitignore' \
-              --exclude 'README.md' \
-              --exclude 'LICENSE' \
-              --exclude 'package.json' \
-              --exclude 'package-lock.json' \
-              --exclude 'npm-shrinkwrap.json'
+            for candidate in dist build out public; do
+              if [[ -d "$candidate" ]]; then
+                publish_dir="$candidate"
+                break
+              fi
+            done
+
+            if [[ -n "$publish_dir" ]]; then
+              rsync -av --delete "$publish_dir"/ .deploy/
+            elif [[ -f index.html ]]; then
+              shopt -s nullglob dotglob
+              for match in \
+                index.html \
+                *.html \
+                *.css \
+                *.js \
+                *.mjs \
+                *.cjs \
+                *.map \
+                *.json \
+                *.txt \
+                *.xml \
+                *.ico \
+                *.png \
+                *.jpg \
+                *.jpeg \
+                *.svg \
+                *.webp \
+                *.gif \
+                *.woff \
+                *.woff2 \
+                *.ttf \
+                *.eot \
+                CNAME \
+                .nojekyll \
+                assets \
+                css \
+                js \
+                img \
+                images \
+                fonts \
+                static; do
+                if [[ -e "$match" ]]; then
+                  rsync -av "$match" .deploy/
+                fi
+              done
+              publish_dir="repository-root-static"
+            else
+              echo "No deployable site files were found. Set SPACESHIP_LOCAL_DIR or add a build output directory." >&2
+              exit 1
+            fi
           fi
 
           if [[ -z "$(find .deploy -type f -print -quit)" ]]; then
