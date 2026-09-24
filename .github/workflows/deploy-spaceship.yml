@@ -79,12 +79,21 @@ jobs:
           echo "dry_run=$dry_run" >> "$GITHUB_OUTPUT"
           echo "clean_remote=$clean_remote" >> "$GITHUB_OUTPUT"
 
-      - name: Setup Node.js
-        if: ${{ hashFiles('package.json') != '' }}
+      - name: Setup Node.js with npm cache
+        if: ${{ hashFiles('package.json') != '' && hashFiles('package-lock.json', 'npm-shrinkwrap.json') != '' }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            npm-shrinkwrap.json
+
+      - name: Setup Node.js
+        if: ${{ hashFiles('package.json') != '' && hashFiles('package-lock.json', 'npm-shrinkwrap.json') == '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
       - name: Install dependencies
         if: ${{ hashFiles('package.json') != '' }}
@@ -139,37 +148,39 @@ jobs:
               rsync -av --delete "$publish_dir"/ .deploy/
             elif [[ -f index.html ]]; then
               shopt -s nullglob dotglob
-              for match in \
-                index.html \
-                *.html \
-                *.css \
-                *.js \
-                *.mjs \
-                *.cjs \
-                *.map \
-                *.json \
-                *.txt \
-                *.xml \
-                *.ico \
-                *.png \
-                *.jpg \
-                *.jpeg \
-                *.svg \
-                *.webp \
-                *.gif \
-                *.woff \
-                *.woff2 \
-                *.ttf \
-                *.eot \
-                CNAME \
-                .nojekyll \
-                assets \
-                css \
-                js \
-                img \
-                images \
-                fonts \
-                static; do
+              static_matches=(
+                *.html
+                *.css
+                *.js
+                *.mjs
+                *.cjs
+                *.map
+                *.json
+                *.txt
+                *.xml
+                *.ico
+                *.png
+                *.jpg
+                *.jpeg
+                *.svg
+                *.webp
+                *.gif
+                *.woff
+                *.woff2
+                *.ttf
+                *.eot
+                CNAME
+                .nojekyll
+                assets
+                css
+                js
+                img
+                images
+                fonts
+                static
+              )
+
+              for match in "${static_matches[@]}"; do
                 if [[ -e "$match" ]]; then
                   rsync -av "$match" .deploy/
                 fi
