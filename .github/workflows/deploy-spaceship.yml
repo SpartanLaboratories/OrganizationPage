@@ -1,0 +1,126 @@
+name: Deploy to Spaceship
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview deployment without uploading files
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      clean_remote:
+        description: Delete existing files in the remote target directory before upload
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-spaceship-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: ${{ hashFiles('package.json') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        if: ${{ hashFiles('package.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f package-lock.json || -f npm-shrinkwrap.json ]]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Build site
+        if: ${{ hashFiles('package.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if node -e "const pkg = require('./package.json'); process.exit(pkg.scripts && pkg.scripts.build ? 0 : 1)"; then
+            npm run build
+          else
+            echo "No build script found; skipping build."
+          fi
+
+      - name: Prepare deployment payload
+        id: payload
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -rf .deploy
+          mkdir -p .deploy
+
+          publish_dir=""
+          for candidate in dist build out public; do
+            if [[ -d "$candidate" ]]; then
+              publish_dir="$candidate"
+              break
+            fi
+          done
+
+          if [[ -n "$publish_dir" ]]; then
+            rsync -av --delete "$publish_dir"/ .deploy/
+          else
+            rsync -av --delete ./ .deploy/ \
+              --exclude '.deploy/' \
+              --exclude '.git/' \
+              --exclude '.github/' \
+              --exclude 'node_modules/' \
+              --exclude '.gitignore' \
+              --exclude 'README.md' \
+              --exclude 'LICENSE' \
+              --exclude 'package.json' \
+              --exclude 'package-lock.json' \
+              --exclude 'npm-shrinkwrap.json'
+          fi
+
+          if [[ -z "$(find .deploy -type f -print -quit)" ]]; then
+            echo "No deployable site files were found." >&2
+            exit 1
+          fi
+
+          if [[ -n "$publish_dir" ]]; then
+            echo "publish_dir=$publish_dir" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish_dir=repository-root" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Spaceship
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SPACESHIP_FTP_SERVER }}
+          username: ${{ secrets.SPACESHIP_FTP_USERNAME }}
+          password: ${{ secrets.SPACESHIP_FTP_PASSWORD }}
+          protocol: ${{ vars.SPACESHIP_FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.SPACESHIP_FTP_PORT || '21' }}
+          local-dir: .deploy/
+          server-dir: ${{ vars.SPACESHIP_REMOTE_DIR || '/' }}
+          dry-run: ${{ inputs.dry_run || 'false' }}
+          dangerous-clean-slate: ${{ inputs.clean_remote || 'false' }}
+          log-level: standard
