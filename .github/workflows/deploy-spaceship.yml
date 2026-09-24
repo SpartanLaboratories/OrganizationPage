@@ -190,11 +190,16 @@ jobs:
               fi
             done
 
-            if (( ${#detected_publish_dirs[@]} > 1 )); then
-              echo "Multiple publish directories were found. Set SPACESHIP_LOCAL_DIR to choose one." >&2
-              exit 1
-            elif (( ${#detected_publish_dirs[@]} == 1 )); then
-              publish_dir="${detected_publish_dirs[0]}"
+            if (( ${#detected_publish_dirs[@]} > 0 )); then
+              latest_mtime=-1
+              for candidate_dir in "${detected_publish_dirs[@]}"; do
+                candidate_mtime="$(stat -c %Y "$candidate_dir")"
+                if (( candidate_mtime > latest_mtime )); then
+                  latest_mtime="$candidate_mtime"
+                  publish_dir="$candidate_dir"
+                fi
+              done
+
               rsync -av --delete "$publish_dir"/ .deploy/
             elif [[ -f "$app_dir/index.html" ]]; then
               shopt -s nullglob dotglob
@@ -232,11 +237,16 @@ jobs:
                 static
               )
 
+              existing_matches=()
               for match in "${static_matches[@]}"; do
                 if [[ -e "$match" ]]; then
-                  rsync -av "$match" "$GITHUB_WORKSPACE/.deploy/"
+                  existing_matches+=("$match")
                 fi
               done
+
+              if (( ${#existing_matches[@]} > 0 )); then
+                rsync -av "${existing_matches[@]}" "$GITHUB_WORKSPACE/.deploy/"
+              fi
 
               popd >/dev/null
               publish_dir="repository-root-static"

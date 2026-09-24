@@ -12,9 +12,8 @@ During deployment the workflow:
 2. Runs `npm run build` when a build script is defined
 3. Uses `SPACESHIP_APP_DIR` when the site source and build files live in a subdirectory
 4. Uses `SPACESHIP_LOCAL_DIR` when you want to deploy a specific folder
-5. Otherwise deploys the first available publish directory from `dist`, `build`, or `out`
+5. Otherwise deploys the most recently updated publish directory from `dist`, `build`, or `out`
 6. Falls back to common static site files in the configured app directory only when `index.html` exists
-7. Requires `SPACESHIP_LOCAL_DIR` when more than one build output directory is present
 
 ## Required GitHub secrets
 
