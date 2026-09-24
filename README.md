@@ -14,6 +14,7 @@ During deployment the workflow:
 4. Uses `SPACESHIP_LOCAL_DIR` when you want to deploy a specific folder
 5. Otherwise deploys the first available publish directory from `dist`, `build`, or `out`
 6. Falls back to common static site files in the configured app directory only when `index.html` exists
+7. Requires `SPACESHIP_LOCAL_DIR` when more than one build output directory is present
 
 ## Required GitHub secrets
 
@@ -27,8 +28,8 @@ Add these repository secrets before using the pipeline:
 
 You can customize the deployment target with these repository variables:
 
-- `SPACESHIP_APP_DIR` - directory that contains the app source and optional `package.json`, defaults to `.`
-- `SPACESHIP_LOCAL_DIR` - local folder to deploy, such as `dist`, `build`, `.`, or `frontend/dist`; it should contain the final site files to publish
+- `SPACESHIP_APP_DIR` - directory inside the repository that contains the app source and optional `package.json`, defaults to `.`
+- `SPACESHIP_LOCAL_DIR` - folder inside `SPACESHIP_APP_DIR` to deploy, such as `dist`, `build`, `.`, or `static-export`; it should contain the final site files to publish
 - `SPACESHIP_REMOTE_DIR` - remote directory to upload into, defaults to `/`
 - `SPACESHIP_FTP_PROTOCOL` - FTP protocol, defaults to `ftps`
 - `SPACESHIP_FTP_PORT` - FTP port, defaults to `21` for `ftp` and `ftps`, or `990` for `ftps-legacy`
