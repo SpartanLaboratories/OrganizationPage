@@ -165,7 +165,7 @@ jobs:
             fi
             rsync -av --delete "$publish_dir"/ .deploy/
           else
-            for candidate in dist build out public; do
+            for candidate in dist build out; do
               if [[ -d "$app_dir/$candidate" ]]; then
                 publish_dir="$app_dir/$candidate"
                 break
