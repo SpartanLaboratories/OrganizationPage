@@ -93,6 +93,19 @@ jobs:
             has_package_lock="true"
           fi
 
+          case "$protocol" in
+            ftp|ftps|ftps-legacy) ;;
+            *)
+              echo "SPACESHIP_FTP_PROTOCOL must be one of: ftp, ftps, ftps-legacy." >&2
+              exit 1
+              ;;
+          esac
+
+          if [[ "$protocol" == "ftp" ]]; then
+            echo "SPACESHIP_FTP_PROTOCOL=ftp can fail on Spaceship with control-socket timeouts; using ftps instead." >&2
+            protocol="ftps"
+          fi
+
           if [[ -n "${VAR_PORT:-}" ]]; then
             port="$VAR_PORT"
           elif [[ "$protocol" == "ftps-legacy" ]]; then
@@ -106,14 +119,6 @@ jobs:
           else
             timeout="90000"
           fi
-
-          case "$protocol" in
-            ftp|ftps|ftps-legacy) ;;
-            *)
-              echo "SPACESHIP_FTP_PROTOCOL must be one of: ftp, ftps, ftps-legacy." >&2
-              exit 1
-              ;;
-          esac
 
           if [[ ! "$port" =~ ^[0-9]+$ ]] || (( port < 1 || port > 65535 )); then
             echo "SPACESHIP_FTP_PORT must be a valid TCP port (1-65535)." >&2
