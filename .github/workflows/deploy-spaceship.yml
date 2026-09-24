@@ -32,11 +32,11 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Resolve deployment settings
         id: config
@@ -49,6 +49,7 @@ jobs:
           VAR_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR }}
           VAR_PROTOCOL: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
           VAR_PORT: ${{ vars.SPACESHIP_FTP_PORT }}
+          VAR_TIMEOUT: ${{ vars.SPACESHIP_FTP_TIMEOUT }}
         run: |
           set -euo pipefail
 
@@ -100,6 +101,12 @@ jobs:
             port="21"
           fi
 
+          if [[ -n "${VAR_TIMEOUT:-}" ]]; then
+            timeout="$VAR_TIMEOUT"
+          else
+            timeout="90000"
+          fi
+
           [[ "$remote_dir" == */ ]] || remote_dir="${remote_dir}/"
 
           echo "app_dir=$app_dir" >> "$GITHUB_OUTPUT"
@@ -109,6 +116,7 @@ jobs:
           echo "remote_dir=$remote_dir" >> "$GITHUB_OUTPUT"
           echo "protocol=$protocol" >> "$GITHUB_OUTPUT"
           echo "port=$port" >> "$GITHUB_OUTPUT"
+          echo "timeout=$timeout" >> "$GITHUB_OUTPUT"
           echo "dry_run=$dry_run" >> "$GITHUB_OUTPUT"
           echo "clean_remote=$clean_remote" >> "$GITHUB_OUTPUT"
 
@@ -269,13 +277,14 @@ jobs:
           fi
 
       - name: Deploy to Spaceship
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.SPACESHIP_FTP_SERVER }}
           username: ${{ secrets.SPACESHIP_FTP_USERNAME }}
           password: ${{ secrets.SPACESHIP_FTP_PASSWORD }}
           protocol: ${{ steps.config.outputs.protocol }}
           port: ${{ steps.config.outputs.port }}
+          timeout: ${{ steps.config.outputs.timeout }}
           local-dir: .deploy/
           server-dir: ${{ steps.config.outputs.remote_dir }}
           dry-run: ${{ steps.config.outputs.dry_run }}

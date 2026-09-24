@@ -32,3 +32,4 @@ You can customize the deployment target with these repository variables:
 - `SPACESHIP_REMOTE_DIR` - remote directory to upload into, defaults to `/`
 - `SPACESHIP_FTP_PROTOCOL` - FTP protocol, defaults to `ftps`
 - `SPACESHIP_FTP_PORT` - FTP port, defaults to `21` for `ftp` and `ftps`, or `990` for `ftps-legacy`
+- `SPACESHIP_FTP_TIMEOUT` - FTP operation timeout in milliseconds, defaults to `90000`
