@@ -1,0 +1,283 @@
+name: Deploy to Spaceship
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Preview deployment without uploading files
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      clean_remote:
+        description: Delete existing files in the remote target directory before upload
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-spaceship-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Resolve deployment settings
+        id: config
+        shell: bash
+        env:
+          VAR_APP_DIR: ${{ vars.SPACESHIP_APP_DIR }}
+          INPUT_DRY_RUN: ${{ inputs.dry_run }}
+          INPUT_CLEAN_REMOTE: ${{ inputs.clean_remote }}
+          VAR_LOCAL_DIR: ${{ vars.SPACESHIP_LOCAL_DIR }}
+          VAR_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR }}
+          VAR_PROTOCOL: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
+          VAR_PORT: ${{ vars.SPACESHIP_FTP_PORT }}
+        run: |
+          set -euo pipefail
+
+          workspace_dir="$(pwd)"
+          app_dir="${VAR_APP_DIR:-.}"
+          if [[ "$app_dir" != "/" ]]; then
+            app_dir="${app_dir%/}"
+          fi
+          remote_dir="${VAR_REMOTE_DIR:-/}"
+          protocol="${VAR_PROTOCOL:-ftps}"
+          dry_run="${INPUT_DRY_RUN:-false}"
+          clean_remote="${INPUT_CLEAN_REMOTE:-false}"
+
+          if [[ ! -d "$app_dir" ]]; then
+            echo "Configured SPACESHIP_APP_DIR does not exist: $app_dir" >&2
+            exit 1
+          fi
+
+          app_dir_path="$(python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$app_dir")"
+          case "$app_dir_path" in
+            "$workspace_dir"|"$workspace_dir"/*) ;;
+            *)
+              echo "SPACESHIP_APP_DIR must stay inside the repository workspace." >&2
+              exit 1
+              ;;
+          esac
+
+          if [[ -n "${VAR_LOCAL_DIR:-}" ]]; then
+            local_dir="${VAR_LOCAL_DIR%/}/"
+          else
+            local_dir=""
+          fi
+
+          has_package_json="false"
+          has_package_lock="false"
+          if [[ -f "$app_dir/package.json" ]]; then
+            has_package_json="true"
+          fi
+
+          if [[ -f "$app_dir/package-lock.json" ]]; then
+            has_package_lock="true"
+          fi
+
+          if [[ -n "${VAR_PORT:-}" ]]; then
+            port="$VAR_PORT"
+          elif [[ "$protocol" == "ftps-legacy" ]]; then
+            port="990"
+          else
+            port="21"
+          fi
+
+          [[ "$remote_dir" == */ ]] || remote_dir="${remote_dir}/"
+
+          echo "app_dir=$app_dir" >> "$GITHUB_OUTPUT"
+          echo "has_package_json=$has_package_json" >> "$GITHUB_OUTPUT"
+          echo "has_package_lock=$has_package_lock" >> "$GITHUB_OUTPUT"
+          echo "local_dir=$local_dir" >> "$GITHUB_OUTPUT"
+          echo "remote_dir=$remote_dir" >> "$GITHUB_OUTPUT"
+          echo "protocol=$protocol" >> "$GITHUB_OUTPUT"
+          echo "port=$port" >> "$GITHUB_OUTPUT"
+          echo "dry_run=$dry_run" >> "$GITHUB_OUTPUT"
+          echo "clean_remote=$clean_remote" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Node.js with npm cache
+        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_package_lock == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ steps.config.outputs.app_dir }}/package-lock.json
+
+      - name: Setup Node.js
+        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_package_lock != 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        if: ${{ steps.config.outputs.has_package_json == 'true' }}
+        working-directory: ${{ steps.config.outputs.app_dir }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f package-lock.json ]]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Build site
+        if: ${{ steps.config.outputs.has_package_json == 'true' }}
+        working-directory: ${{ steps.config.outputs.app_dir }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if node -e "const pkg = require('./package.json'); process.exit(pkg.scripts && pkg.scripts.build ? 0 : 1)"; then
+            npm run build
+          else
+            echo "No build script found; skipping build."
+          fi
+
+      - name: Prepare deployment payload
+        id: payload
+        shell: bash
+        env:
+          APP_DIR: ${{ steps.config.outputs.app_dir }}
+          LOCAL_DIR: ${{ steps.config.outputs.local_dir }}
+        run: |
+          set -euo pipefail
+
+          rm -rf .deploy
+          mkdir -p .deploy
+
+          app_dir="${APP_DIR:-.}"
+          publish_dir=""
+          if [[ -n "$LOCAL_DIR" ]]; then
+            publish_dir="${LOCAL_DIR%/}"
+            publish_dir_path="$(python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$app_dir/$publish_dir")"
+            app_dir_path="$(python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$app_dir")"
+            case "$publish_dir_path" in
+              "$app_dir_path"|"$app_dir_path"/*) ;;
+              *)
+                echo "SPACESHIP_LOCAL_DIR must stay inside SPACESHIP_APP_DIR." >&2
+                exit 1
+                ;;
+            esac
+
+            publish_dir="$publish_dir_path"
+            if [[ ! -d "$publish_dir" ]]; then
+              echo "Configured SPACESHIP_LOCAL_DIR does not exist: $publish_dir" >&2
+              exit 1
+            fi
+            rsync -av --delete "$publish_dir"/ .deploy/
+          else
+            detected_publish_dirs=()
+            for candidate in dist build out; do
+              if [[ -d "$app_dir/$candidate" ]]; then
+                detected_publish_dirs+=("$app_dir/$candidate")
+              fi
+            done
+
+            if (( ${#detected_publish_dirs[@]} > 0 )); then
+              latest_mtime=-1
+              for candidate_dir in "${detected_publish_dirs[@]}"; do
+                candidate_mtime="$(stat -c %Y "$candidate_dir")"
+                if (( candidate_mtime > latest_mtime )); then
+                  latest_mtime="$candidate_mtime"
+                  publish_dir="$candidate_dir"
+                fi
+              done
+
+              rsync -av --delete "$publish_dir"/ .deploy/
+            elif [[ -f "$app_dir/index.html" ]]; then
+              shopt -s nullglob dotglob
+              (
+                cd "$app_dir"
+
+                static_matches=(
+                  *.html
+                  *.css
+                  *.js
+                  *.mjs
+                  *.cjs
+                  *.map
+                  *.json
+                  *.txt
+                  *.xml
+                  *.ico
+                  *.png
+                  *.jpg
+                  *.jpeg
+                  *.svg
+                  *.webp
+                  *.gif
+                  *.woff
+                  *.woff2
+                  *.ttf
+                  *.eot
+                  CNAME
+                  .nojekyll
+                  assets
+                  css
+                  js
+                  img
+                  images
+                  fonts
+                  static
+                )
+
+                existing_matches=()
+                for match in "${static_matches[@]}"; do
+                  if [[ -e "$match" ]]; then
+                    existing_matches+=("$match")
+                  fi
+                done
+
+                if (( ${#existing_matches[@]} > 0 )); then
+                  rsync -av "${existing_matches[@]}" "$GITHUB_WORKSPACE/.deploy/"
+                fi
+              )
+
+              publish_dir="repository-root-static"
+            else
+              echo "No deployable site files were found. Set SPACESHIP_LOCAL_DIR or add a build output directory." >&2
+              exit 1
+            fi
+          fi
+
+          if [[ -z "$(find .deploy -mindepth 1 -print -quit)" ]]; then
+            echo "No deployable site files were found." >&2
+            exit 1
+          fi
+
+          if [[ -n "$publish_dir" ]]; then
+            echo "publish_dir=$publish_dir" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish_dir=repository-root" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Spaceship
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SPACESHIP_FTP_SERVER }}
+          username: ${{ secrets.SPACESHIP_FTP_USERNAME }}
+          password: ${{ secrets.SPACESHIP_FTP_PASSWORD }}
+          protocol: ${{ steps.config.outputs.protocol }}
+          port: ${{ steps.config.outputs.port }}
+          local-dir: .deploy/
+          server-dir: ${{ steps.config.outputs.remote_dir }}
+          dry-run: ${{ steps.config.outputs.dry_run }}
+          dangerous-clean-slate: ${{ steps.config.outputs.clean_remote }}
+          log-level: standard
