@@ -52,6 +52,7 @@ jobs:
         run: |
           set -euo pipefail
 
+          workspace_dir="$(pwd)"
           app_dir="${VAR_APP_DIR:-.}"
           if [[ "$app_dir" != "/" ]]; then
             app_dir="${app_dir%/}"
@@ -65,6 +66,15 @@ jobs:
             echo "Configured SPACESHIP_APP_DIR does not exist: $app_dir" >&2
             exit 1
           fi
+
+          app_dir_path="$(python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$app_dir")"
+          case "$app_dir_path" in
+            "$workspace_dir"|"$workspace_dir"/*) ;;
+            *)
+              echo "SPACESHIP_APP_DIR must stay inside the repository workspace." >&2
+              exit 1
+              ;;
+          esac
 
           if [[ -n "${VAR_LOCAL_DIR:-}" ]]; then
             local_dir="${VAR_LOCAL_DIR%/}/"
@@ -156,23 +166,35 @@ jobs:
           publish_dir=""
           if [[ -n "$LOCAL_DIR" ]]; then
             publish_dir="${LOCAL_DIR%/}"
-            if [[ ! -d "$publish_dir" && "$app_dir" != "." && -d "$app_dir/$publish_dir" ]]; then
-              publish_dir="$app_dir/$publish_dir"
-            fi
+            publish_dir_path="$(python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$app_dir/$publish_dir")"
+            app_dir_path="$(python -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$app_dir")"
+            case "$publish_dir_path" in
+              "$app_dir_path"|"$app_dir_path"/*) ;;
+              *)
+                echo "SPACESHIP_LOCAL_DIR must stay inside SPACESHIP_APP_DIR." >&2
+                exit 1
+                ;;
+            esac
+
+            publish_dir="$publish_dir_path"
             if [[ ! -d "$publish_dir" ]]; then
               echo "Configured SPACESHIP_LOCAL_DIR does not exist: $publish_dir" >&2
               exit 1
             fi
             rsync -av --delete "$publish_dir"/ .deploy/
           else
+            detected_publish_dirs=()
             for candidate in dist build out; do
               if [[ -d "$app_dir/$candidate" ]]; then
-                publish_dir="$app_dir/$candidate"
-                break
+                detected_publish_dirs+=("$app_dir/$candidate")
               fi
             done
 
-            if [[ -n "$publish_dir" ]]; then
+            if (( ${#detected_publish_dirs[@]} > 1 )); then
+              echo "Multiple publish directories were found. Set SPACESHIP_LOCAL_DIR to choose one." >&2
+              exit 1
+            elif (( ${#detected_publish_dirs[@]} == 1 )); then
+              publish_dir="${detected_publish_dirs[0]}"
               rsync -av --delete "$publish_dir"/ .deploy/
             elif [[ -f "$app_dir/index.html" ]]; then
               shopt -s nullglob dotglob
