@@ -42,6 +42,7 @@ jobs:
         id: config
         shell: bash
         env:
+          VAR_APP_DIR: ${{ vars.SPACESHIP_APP_DIR }}
           INPUT_DRY_RUN: ${{ inputs.dry_run }}
           INPUT_CLEAN_REMOTE: ${{ inputs.clean_remote }}
           VAR_LOCAL_DIR: ${{ vars.SPACESHIP_LOCAL_DIR }}
@@ -51,15 +52,32 @@ jobs:
         run: |
           set -euo pipefail
 
+          app_dir="${VAR_APP_DIR:-.}"
+          app_dir="${app_dir%/}"
           remote_dir="${VAR_REMOTE_DIR:-/}"
           protocol="${VAR_PROTOCOL:-ftps}"
           dry_run="${INPUT_DRY_RUN:-false}"
           clean_remote="${INPUT_CLEAN_REMOTE:-false}"
 
+          if [[ ! -d "$app_dir" ]]; then
+            echo "Configured SPACESHIP_APP_DIR does not exist: $app_dir" >&2
+            exit 1
+          fi
+
           if [[ -n "${VAR_LOCAL_DIR:-}" ]]; then
             local_dir="${VAR_LOCAL_DIR%/}/"
           else
             local_dir=""
+          fi
+
+          has_package_json="false"
+          has_lockfile="false"
+          if [[ -f "$app_dir/package.json" ]]; then
+            has_package_json="true"
+          fi
+
+          if [[ -f "$app_dir/package-lock.json" || -f "$app_dir/npm-shrinkwrap.json" ]]; then
+            has_lockfile="true"
           fi
 
           if [[ -n "${VAR_PORT:-}" ]]; then
@@ -72,6 +90,9 @@ jobs:
 
           [[ "$remote_dir" == */ ]] || remote_dir="${remote_dir}/"
 
+          echo "app_dir=$app_dir" >> "$GITHUB_OUTPUT"
+          echo "has_package_json=$has_package_json" >> "$GITHUB_OUTPUT"
+          echo "has_lockfile=$has_lockfile" >> "$GITHUB_OUTPUT"
           echo "local_dir=$local_dir" >> "$GITHUB_OUTPUT"
           echo "remote_dir=$remote_dir" >> "$GITHUB_OUTPUT"
           echo "protocol=$protocol" >> "$GITHUB_OUTPUT"
@@ -80,23 +101,24 @@ jobs:
           echo "clean_remote=$clean_remote" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js with npm cache
-        if: ${{ hashFiles('package.json') != '' && hashFiles('package-lock.json', 'npm-shrinkwrap.json') != '' }}
+        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_lockfile == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
           cache-dependency-path: |
-            package-lock.json
-            npm-shrinkwrap.json
+            ${{ steps.config.outputs.app_dir }}/package-lock.json
+            ${{ steps.config.outputs.app_dir }}/npm-shrinkwrap.json
 
       - name: Setup Node.js
-        if: ${{ hashFiles('package.json') != '' && hashFiles('package-lock.json', 'npm-shrinkwrap.json') == '' }}
+        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_lockfile != 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
-        if: ${{ hashFiles('package.json') != '' }}
+        if: ${{ steps.config.outputs.has_package_json == 'true' }}
+        working-directory: ${{ steps.config.outputs.app_dir }}
         shell: bash
         run: |
           set -euo pipefail
@@ -107,7 +129,8 @@ jobs:
           fi
 
       - name: Build site
-        if: ${{ hashFiles('package.json') != '' }}
+        if: ${{ steps.config.outputs.has_package_json == 'true' }}
+        working-directory: ${{ steps.config.outputs.app_dir }}
         shell: bash
         run: |
           set -euo pipefail
@@ -121,6 +144,7 @@ jobs:
         id: payload
         shell: bash
         env:
+          APP_DIR: ${{ steps.config.outputs.app_dir }}
           LOCAL_DIR: ${{ steps.config.outputs.local_dir }}
         run: |
           set -euo pipefail
@@ -128,9 +152,13 @@ jobs:
           rm -rf .deploy
           mkdir -p .deploy
 
+          app_dir="${APP_DIR:-.}"
           publish_dir=""
           if [[ -n "$LOCAL_DIR" ]]; then
             publish_dir="${LOCAL_DIR%/}"
+            if [[ ! -d "$publish_dir" && "$app_dir" != "." && -d "$app_dir/$publish_dir" ]]; then
+              publish_dir="$app_dir/$publish_dir"
+            fi
             if [[ ! -d "$publish_dir" ]]; then
               echo "Configured SPACESHIP_LOCAL_DIR does not exist: $publish_dir" >&2
               exit 1
@@ -138,16 +166,18 @@ jobs:
             rsync -av --delete "$publish_dir"/ .deploy/
           else
             for candidate in dist build out public; do
-              if [[ -d "$candidate" ]]; then
-                publish_dir="$candidate"
+              if [[ -d "$app_dir/$candidate" ]]; then
+                publish_dir="$app_dir/$candidate"
                 break
               fi
             done
 
             if [[ -n "$publish_dir" ]]; then
               rsync -av --delete "$publish_dir"/ .deploy/
-            elif [[ -f index.html ]]; then
+            elif [[ -f "$app_dir/index.html" ]]; then
               shopt -s nullglob dotglob
+              pushd "$app_dir" >/dev/null
+
               static_matches=(
                 *.html
                 *.css
@@ -182,9 +212,11 @@ jobs:
 
               for match in "${static_matches[@]}"; do
                 if [[ -e "$match" ]]; then
-                  rsync -av "$match" .deploy/
+                  rsync -av "$match" "$GITHUB_WORKSPACE/.deploy/"
                 fi
               done
+
+              popd >/dev/null
               publish_dir="repository-root-static"
             else
               echo "No deployable site files were found. Set SPACESHIP_LOCAL_DIR or add a build output directory." >&2
