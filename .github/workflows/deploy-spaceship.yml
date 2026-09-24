@@ -53,7 +53,9 @@ jobs:
           set -euo pipefail
 
           app_dir="${VAR_APP_DIR:-.}"
-          app_dir="${app_dir%/}"
+          if [[ "$app_dir" != "/" ]]; then
+            app_dir="${app_dir%/}"
+          fi
           remote_dir="${VAR_REMOTE_DIR:-/}"
           protocol="${VAR_PROTOCOL:-ftps}"
           dry_run="${INPUT_DRY_RUN:-false}"
@@ -71,13 +73,13 @@ jobs:
           fi
 
           has_package_json="false"
-          has_lockfile="false"
+          has_package_lock="false"
           if [[ -f "$app_dir/package.json" ]]; then
             has_package_json="true"
           fi
 
-          if [[ -f "$app_dir/package-lock.json" || -f "$app_dir/npm-shrinkwrap.json" ]]; then
-            has_lockfile="true"
+          if [[ -f "$app_dir/package-lock.json" ]]; then
+            has_package_lock="true"
           fi
 
           if [[ -n "${VAR_PORT:-}" ]]; then
@@ -92,7 +94,7 @@ jobs:
 
           echo "app_dir=$app_dir" >> "$GITHUB_OUTPUT"
           echo "has_package_json=$has_package_json" >> "$GITHUB_OUTPUT"
-          echo "has_lockfile=$has_lockfile" >> "$GITHUB_OUTPUT"
+          echo "has_package_lock=$has_package_lock" >> "$GITHUB_OUTPUT"
           echo "local_dir=$local_dir" >> "$GITHUB_OUTPUT"
           echo "remote_dir=$remote_dir" >> "$GITHUB_OUTPUT"
           echo "protocol=$protocol" >> "$GITHUB_OUTPUT"
@@ -101,17 +103,15 @@ jobs:
           echo "clean_remote=$clean_remote" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js with npm cache
-        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_lockfile == 'true' }}
+        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_package_lock == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: |
-            ${{ steps.config.outputs.app_dir }}/package-lock.json
-            ${{ steps.config.outputs.app_dir }}/npm-shrinkwrap.json
+          cache-dependency-path: ${{ steps.config.outputs.app_dir }}/package-lock.json
 
       - name: Setup Node.js
-        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_lockfile != 'true' }}
+        if: ${{ steps.config.outputs.has_package_json == 'true' && steps.config.outputs.has_package_lock != 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -122,7 +122,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ -f package-lock.json || -f npm-shrinkwrap.json ]]; then
+          if [[ -f package-lock.json ]]; then
             npm ci
           else
             npm install
