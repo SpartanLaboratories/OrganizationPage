@@ -30,6 +30,6 @@ You can customize the deployment target with these repository variables:
 - `SPACESHIP_APP_DIR` - directory inside the repository that contains the app source and optional `package.json`, defaults to `.`
 - `SPACESHIP_LOCAL_DIR` - folder inside `SPACESHIP_APP_DIR` to deploy, such as `dist`, `build`, `.`, or `static-export`; it should contain the final site files to publish
 - `SPACESHIP_REMOTE_DIR` - remote directory to upload into, defaults to `/`
-- `SPACESHIP_FTP_PROTOCOL` - FTP protocol, defaults to `ftps`
+- `SPACESHIP_FTP_PROTOCOL` - FTP protocol, defaults to `ftps`; accepted values are `ftp`, `ftps`, and `ftps-legacy`, but `ftp` is automatically upgraded to `ftps` because Spaceship commonly times out on plain FTP
 - `SPACESHIP_FTP_PORT` - FTP port, defaults to `21` for `ftp` and `ftps`, or `990` for `ftps-legacy`; avoid `443` (can cause control-connection FIN disconnects) and `22` (SFTP is unsupported by this workflow)
 - `SPACESHIP_FTP_TIMEOUT` - FTP operation timeout in milliseconds, defaults to `90000`
