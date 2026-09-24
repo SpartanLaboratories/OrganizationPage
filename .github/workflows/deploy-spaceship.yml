@@ -38,6 +38,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Resolve deployment settings
+        id: config
+        shell: bash
+        env:
+          INPUT_DRY_RUN: ${{ inputs.dry_run }}
+          INPUT_CLEAN_REMOTE: ${{ inputs.clean_remote }}
+          VAR_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR }}
+          VAR_PROTOCOL: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
+          VAR_PORT: ${{ vars.SPACESHIP_FTP_PORT }}
+        run: |
+          set -euo pipefail
+
+          remote_dir="${VAR_REMOTE_DIR:-/}"
+          protocol="${VAR_PROTOCOL:-ftps}"
+          port="${VAR_PORT:-21}"
+          dry_run="${INPUT_DRY_RUN:-false}"
+          clean_remote="${INPUT_CLEAN_REMOTE:-false}"
+
+          [[ "$remote_dir" == */ ]] || remote_dir="${remote_dir}/"
+
+          echo "remote_dir=$remote_dir" >> "$GITHUB_OUTPUT"
+          echo "protocol=$protocol" >> "$GITHUB_OUTPUT"
+          echo "port=$port" >> "$GITHUB_OUTPUT"
+          echo "dry_run=$dry_run" >> "$GITHUB_OUTPUT"
+          echo "clean_remote=$clean_remote" >> "$GITHUB_OUTPUT"
+
       - name: Setup Node.js
         if: ${{ hashFiles('package.json') != '' }}
         uses: actions/setup-node@v4
@@ -117,10 +143,10 @@ jobs:
           server: ${{ secrets.SPACESHIP_FTP_SERVER }}
           username: ${{ secrets.SPACESHIP_FTP_USERNAME }}
           password: ${{ secrets.SPACESHIP_FTP_PASSWORD }}
-          protocol: ${{ vars.SPACESHIP_FTP_PROTOCOL || 'ftps' }}
-          port: ${{ vars.SPACESHIP_FTP_PORT || '21' }}
+          protocol: ${{ steps.config.outputs.protocol }}
+          port: ${{ steps.config.outputs.port }}
           local-dir: .deploy/
-          server-dir: ${{ vars.SPACESHIP_REMOTE_DIR || '/' }}
-          dry-run: ${{ inputs.dry_run || 'false' }}
-          dangerous-clean-slate: ${{ inputs.clean_remote || 'false' }}
+          server-dir: ${{ steps.config.outputs.remote_dir }}
+          dry-run: ${{ steps.config.outputs.dry_run }}
+          dangerous-clean-slate: ${{ steps.config.outputs.clean_remote }}
           log-level: standard

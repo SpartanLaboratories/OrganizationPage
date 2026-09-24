@@ -4,7 +4,7 @@ This repository includes an automated GitHub Actions pipeline for deploying the 
 
 ## Deployment workflow
 
-The workflow lives at `/home/runner/work/OrganizationPage/OrganizationPage/.github/workflows/deploy-spaceship.yml` and runs automatically on pushes to `main`. It can also be started manually from the **Actions** tab with optional dry-run and clean-deploy inputs.
+The workflow lives in `.github/workflows/deploy-spaceship.yml` and runs automatically on pushes to `main`. It can also be started manually from the **Actions** tab with optional dry-run and clean-deploy inputs.
 
 During deployment the workflow:
 
