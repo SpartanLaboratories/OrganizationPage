@@ -224,7 +224,7 @@ jobs:
             fi
           fi
 
-          if [[ -z "$(find .deploy -type f -print -quit)" ]]; then
+          if [[ -z "$(find .deploy -mindepth 1 -print -quit)" ]]; then
             echo "No deployable site files were found." >&2
             exit 1
           fi
