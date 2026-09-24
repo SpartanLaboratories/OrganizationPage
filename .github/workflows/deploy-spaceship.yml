@@ -203,52 +203,53 @@ jobs:
               rsync -av --delete "$publish_dir"/ .deploy/
             elif [[ -f "$app_dir/index.html" ]]; then
               shopt -s nullglob dotglob
-              pushd "$app_dir" >/dev/null
+              (
+                cd "$app_dir"
 
-              static_matches=(
-                *.html
-                *.css
-                *.js
-                *.mjs
-                *.cjs
-                *.map
-                *.json
-                *.txt
-                *.xml
-                *.ico
-                *.png
-                *.jpg
-                *.jpeg
-                *.svg
-                *.webp
-                *.gif
-                *.woff
-                *.woff2
-                *.ttf
-                *.eot
-                CNAME
-                .nojekyll
-                assets
-                css
-                js
-                img
-                images
-                fonts
-                static
+                static_matches=(
+                  *.html
+                  *.css
+                  *.js
+                  *.mjs
+                  *.cjs
+                  *.map
+                  *.json
+                  *.txt
+                  *.xml
+                  *.ico
+                  *.png
+                  *.jpg
+                  *.jpeg
+                  *.svg
+                  *.webp
+                  *.gif
+                  *.woff
+                  *.woff2
+                  *.ttf
+                  *.eot
+                  CNAME
+                  .nojekyll
+                  assets
+                  css
+                  js
+                  img
+                  images
+                  fonts
+                  static
+                )
+
+                existing_matches=()
+                for match in "${static_matches[@]}"; do
+                  if [[ -e "$match" ]]; then
+                    existing_matches+=("$match")
+                  fi
+                done
+
+                if (( ${#existing_matches[@]} > 0 )); then
+                  rsync -av "${existing_matches[@]}" "$GITHUB_WORKSPACE/.deploy/"
+                fi
               )
 
-              existing_matches=()
-              for match in "${static_matches[@]}"; do
-                if [[ -e "$match" ]]; then
-                  existing_matches+=("$match")
-                fi
-              done
-
-              if (( ${#existing_matches[@]} > 0 )); then
-                rsync -av "${existing_matches[@]}" "$GITHUB_WORKSPACE/.deploy/"
-              fi
-
-              popd >/dev/null
               publish_dir="repository-root-static"
             else
               echo "No deployable site files were found. Set SPACESHIP_LOCAL_DIR or add a build output directory." >&2
