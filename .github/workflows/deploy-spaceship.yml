@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Resolve deployment settings
         id: config
@@ -101,9 +101,37 @@ jobs:
             port="21"
           fi
 
-          timeout="${VAR_TIMEOUT:-90000}"
-          if ! [[ "$timeout" =~ ^[0-9]+$ ]] || (( timeout <= 0 )); then
-            echo "SPACESHIP_FTP_TIMEOUT must be a positive integer in milliseconds." >&2
+          if [[ -n "${VAR_TIMEOUT:-}" ]]; then
+            timeout="$VAR_TIMEOUT"
+          else
+            timeout="90000"
+          fi
+
+          case "$protocol" in
+            ftp|ftps|ftps-legacy) ;;
+            *)
+              echo "SPACESHIP_FTP_PROTOCOL must be one of: ftp, ftps, ftps-legacy." >&2
+              exit 1
+              ;;
+          esac
+
+          if [[ ! "$port" =~ ^[0-9]+$ ]] || (( port < 1 || port > 65535 )); then
+            echo "SPACESHIP_FTP_PORT must be a valid TCP port (1-65535)." >&2
+            exit 1
+          fi
+
+          if [[ ! "$timeout" =~ ^[0-9]+$ ]] || (( timeout < 1000 )); then
+            echo "SPACESHIP_FTP_TIMEOUT must be an integer in milliseconds (>= 1000)." >&2
+            exit 1
+          fi
+
+          if (( port == 22 )); then
+            echo "Port 22 indicates SFTP, which is not supported by this FTP/FTPS workflow." >&2
+            exit 1
+          fi
+
+          if (( port == 443 )) && [[ "$protocol" != "ftps-legacy" ]]; then
+            echo "Port 443 commonly triggers control-connection FIN errors for FTP/FTPS. Use port 21 for ftp/ftps or 990 for ftps-legacy." >&2
             exit 1
           fi
 
