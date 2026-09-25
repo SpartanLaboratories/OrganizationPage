@@ -1,6 +1,73 @@
 # OrganizationPage
 
-This repository includes an automated GitHub Actions pipeline for deploying the site to Spaceship hosting.
+The main website for the Spartan Laboratories organization: a Kotlin multi-module
+project with a [Ktor](https://ktor.io) backend and a
+[Compose HTML](https://github.com/JetBrains/compose-multiplatform#compose-html) (Kotlin/JS)
+frontend, deployed to Spaceship hosting.
+
+## Modules
+
+| Module    | Kind                                | Responsibility |
+|-----------|-------------------------------------|----------------|
+| `shared`  | Kotlin Multiplatform (JVM + JS)     | Data models, API routes, JSON config and the site copy (`OrganizationContent`). The single contract between backend and frontend. |
+| `server`  | Kotlin/JVM, Ktor (Netty)            | JSON API under `/api` and serving of the compiled frontend. Packaged as one runnable jar. |
+| `web`     | Kotlin/JS, Compose HTML             | The browser UI. Builds to a static site (`index.html` + `web.js`). |
+
+```
+shared  <──  server
+   ^
+   └──────  web  ──(static bundle embedded into)──>  server
+```
+
+The frontend renders the content compiled into its bundle straight away, so it works as
+plain static files. When it is served by the Ktor server it also fetches
+`/api/organization` and shows the live copy.
+
+To change the site's text, edit
+`shared/src/commonMain/kotlin/com/spartanlaboratories/shared/content/OrganizationContent.kt`.
+
+## Requirements
+
+- JDK 21 (the Gradle wrapper downloads Gradle; the Kotlin plugin downloads Node.js for the web build)
+
+## Common tasks
+
+```bash
+./gradlew build                          # compile everything and run all tests
+./gradlew :server:run                    # API + site on http://localhost:8080
+./gradlew :web:jsBrowserDevelopmentRun   # frontend dev server with live reload on http://localhost:3000
+                                         # (proxies /api to :8080, so run the server too)
+./gradlew :web:jsBrowserDistribution     # static site -> web/build/dist/js/productionExecutable
+./gradlew :server:buildFatJar            # server/build/libs/organization-page-server.jar (includes the site)
+```
+
+### Server configuration
+
+`server/src/main/resources/application.yaml`, overridable with environment variables:
+
+| Variable       | Default   | Purpose |
+|----------------|-----------|---------|
+| `PORT`         | `8080`    | HTTP port |
+| `HOST`         | `0.0.0.0` | Bind address |
+| `CORS_ORIGINS` | *(empty)* | Comma-separated origins allowed to call the API from a browser, e.g. `https://spartanlaboratories.org` when the static site and API live on different hosts |
+
+## Hosting on Spaceship
+
+Two deployment shapes are supported:
+
+1. **Static site (current pipeline).** Spaceship web hosting accepts files over FTP but
+   does not run JVM processes. The deploy workflow builds the `web` module and uploads
+   `web/build/dist/js/productionExecutable`. The page renders from the bundled content;
+   the `/api` call simply falls back when no backend is present.
+2. **Full stack.** To run the Ktor backend, deploy the server jar (or the `Dockerfile`
+   image) to a host that runs a JVM or containers, such as a Spaceship VPS. That one
+   process serves both the API and the site:
+
+   ```bash
+   docker build -t organization-page .
+   docker run -p 8080:8080 organization-page
+   # or: java -jar server/build/libs/organization-page-server.jar
+   ```
 
 ## Deployment: staging, then production
 
