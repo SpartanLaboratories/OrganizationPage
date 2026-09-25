@@ -79,7 +79,7 @@ object AppStylesheet : StyleSheet() {
     }
 
     val brandMark by style {
-        display(DisplayStyle.InlineFlex)
+        property("display", "inline-flex")
         alignItems(AlignItems.Center)
         justifyContent(JustifyContent.Center)
         width(32.px)
