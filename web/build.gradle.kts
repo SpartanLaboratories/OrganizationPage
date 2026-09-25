@@ -30,6 +30,8 @@ kotlin {
         jsMain.dependencies {
             implementation(projects.shared)
             implementation(libs.compose.html.core)
+            // html-core doesn't expose the runtime (@Composable, remember, ...) to compilation.
+            implementation(libs.compose.runtime)
             implementation(libs.kotlinx.coroutines.core)
         }
     }
