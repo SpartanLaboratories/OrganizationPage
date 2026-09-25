@@ -2,6 +2,12 @@
 
 This repository includes an automated GitHub Actions pipeline for deploying the site to Spaceship hosting.
 
+## Continuous integration
+
+`.github/workflows/ci.yml` runs `./gradlew build` and builds the server jar on pull
+requests and on pushes to branches other than `main`. The jar is attached to the run as
+an artifact.
+
 ## Deployment workflow
 
 The workflow lives in `.github/workflows/deploy-spaceship.yml` and runs automatically on pushes to `main`. It can also be started manually from the **Actions** tab with optional dry-run and clean-deploy inputs.
