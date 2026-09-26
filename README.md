@@ -36,11 +36,12 @@ To confirm what is live, open `/build-info.json` on either site.
 
 ### One-time setup
 
-1. **Staging site on Spaceship.** In the hosting panel, add a subdomain such as
-   `staging.<your-domain>` and note the folder it serves from, as the FTP account sees
-   it. Keep it separate from the production folder. If it has to sit *inside* the
-   production folder, never use `clean_remote` on production, because that would delete
-   staging.
+1. **Staging site on Spaceship.** The FTP login starts in the hosting account's home
+   folder, where production is served from `spartanlaboratories.org/`. In the Hosting
+   Manager (**+ Add domain**) or cPanel (**Domains → Create A New Domain**, with
+   "Share document root" unticked), add `staging.spartanlaboratories.org` with document
+   root `staging.spartanlaboratories.org`. Then check that cPanel's AutoSSL has issued
+   it a certificate. The workflow already defaults to these folders and URLs.
 2. **Environments** (Settings → Environments):
    - `production`: add yourself (or the release team) under **Required reviewers**, and
      limit **Deployment branches** to `main`.
@@ -50,14 +51,14 @@ To confirm what is live, open `/build-info.json` on either site.
    `SPACESHIP_FTP_SERVER`, `SPACESHIP_FTP_USERNAME`, `SPACESHIP_FTP_PASSWORD`. Both sites
    use these. To give staging its own FTP account, add the same secret names to the
    `staging` environment; environment secrets override repository ones.
-4. **Variables**, same page:
+4. **Variables** (optional), same page. Folders are paths as the FTP login sees them.
 
-| Variable                       | Required | Purpose |
-|--------------------------------|----------|---------|
-| `SPACESHIP_STAGING_REMOTE_DIR` | yes      | Staging folder on the FTP server, e.g. `/staging.example.com`. Must differ from the production folder. |
-| `SPACESHIP_STAGING_URL`        | no       | Staging site address, shown as the environment link and in the run summary |
-| `SPACESHIP_REMOTE_DIR`         | no       | Production folder, defaults to `/` |
-| `SPACESHIP_PRODUCTION_URL`     | no       | Production site address, shown as the environment link |
+| Variable                       | Default                                   | Purpose |
+|--------------------------------|-------------------------------------------|---------|
+| `SPACESHIP_REMOTE_DIR`         | `/spartanlaboratories.org`                 | Production folder. `/` is rejected. |
+| `SPACESHIP_PRODUCTION_URL`     | `https://spartanlaboratories.org`         | Production address, shown as the environment link |
+| `SPACESHIP_STAGING_REMOTE_DIR` | `/staging.spartanlaboratories.org`        | Staging folder. Must differ from the production folder. |
+| `SPACESHIP_STAGING_URL`        | `https://staging.spartanlaboratories.org` | Staging address, shown as the environment link and in the run summary |
 | `SPACESHIP_FTP_PROTOCOL`       | no       | `ftps` (default) or `ftps-legacy`. `ftp` is upgraded to `ftps` because Spaceship commonly times out on plain FTP |
 | `SPACESHIP_FTP_PORT`           | no       | Defaults to `21`, or `990` for `ftps-legacy`. `443` (control-connection FIN disconnects) and `22` (SFTP, unsupported) are rejected |
 | `SPACESHIP_FTP_TIMEOUT`        | no       | FTP operation timeout in milliseconds, default `90000` |
