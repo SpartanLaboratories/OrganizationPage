@@ -5,7 +5,10 @@ Website for the Spartan Laboratories organization. Kotlin multi-module Gradle bu
 See README.md for layout and commands. `./gradlew build` compiles and tests everything.
 Site text lives in `shared/src/commonMain/kotlin/com/spartanlaboratories/shared/content/OrganizationContent.kt`.
 
-## Deployment rules (all Spartan Laboratories projects)
+## Deployment policy (this project)
+
+These rules apply to OrganizationPage only. They are a prototype that may later be
+adopted by other projects, but they are not organization-wide policy.
 
 1. Every change goes to a pre-production (staging) environment first and is viewed
    there in a browser before it reaches production.
@@ -18,13 +21,12 @@ Site text lives in `shared/src/commonMain/kotlin/com/spartanlaboratories/shared/
 5. The production path fails closed: if the approval gate is missing or can't be
    verified, it refuses to deploy.
 6. Staging is kept out of search results and is visibly marked as staging.
-7. Any branch may be staged for review; only the default branch (`main`) can reach
-   production.
-8. Workflows are named after the project they belong to (e.g. "OrganizationPage Deploy").
+7. Any branch may be staged for review; only `main` can reach production.
+8. Workflows are named after the project ("OrganizationPage Deploy", "OrganizationPage CI").
 9. Deploying to a live server is outward-facing: get the owner's go-ahead before
    triggering a deploy, and have them check the staged result before shipping.
 
-## How this repository implements them
+## How the policy is implemented
 
 - **Workflow:** `.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy").
   Jobs: `build` (tests + `site` artifact, kept 90 days) → `staging` (automatic) →
