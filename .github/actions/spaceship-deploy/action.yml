@@ -1,0 +1,140 @@
+name: Deploy to Spaceship
+description: >
+  Validates the Spaceship FTP settings and uploads a directory with FTP-Deploy-Action.
+  Staging and production both deploy through this action so they behave the same way.
+
+inputs:
+  local-dir:
+    description: Directory whose contents are uploaded
+    required: true
+  remote-dir:
+    description: Remote directory to upload into
+    required: true
+  server:
+    description: FTP server host
+    required: true
+  username:
+    description: FTP username
+    required: true
+  password:
+    description: FTP password
+    required: true
+  protocol:
+    description: ftp, ftps or ftps-legacy (ftp is upgraded to ftps)
+    required: false
+    default: ""
+  port:
+    description: FTP port (defaults to 21, or 990 for ftps-legacy)
+    required: false
+    default: ""
+  timeout:
+    description: FTP operation timeout in milliseconds
+    required: false
+    default: ""
+  dry-run:
+    description: Preview the upload without changing the server
+    required: false
+    default: "false"
+  clean-remote:
+    description: Delete everything in remote-dir before uploading
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve FTP settings
+      id: settings
+      shell: bash
+      env:
+        IN_LOCAL_DIR: ${{ inputs.local-dir }}
+        IN_REMOTE_DIR: ${{ inputs.remote-dir }}
+        IN_SERVER: ${{ inputs.server }}
+        IN_USERNAME: ${{ inputs.username }}
+        IN_PASSWORD: ${{ inputs.password }}
+        IN_PROTOCOL: ${{ inputs.protocol }}
+        IN_PORT: ${{ inputs.port }}
+        IN_TIMEOUT: ${{ inputs.timeout }}
+      run: |
+        set -euo pipefail
+
+        if [[ -z "${IN_SERVER:-}" || -z "${IN_USERNAME:-}" || -z "${IN_PASSWORD:-}" ]]; then
+          echo "::error::SPACESHIP_FTP_SERVER, SPACESHIP_FTP_USERNAME and SPACESHIP_FTP_PASSWORD secrets must all be set." >&2
+          exit 1
+        fi
+
+        if [[ ! -f "$IN_LOCAL_DIR/index.html" ]]; then
+          echo "::error::Nothing to deploy: $IN_LOCAL_DIR/index.html does not exist." >&2
+          exit 1
+        fi
+
+        protocol="${IN_PROTOCOL:-ftps}"
+        case "$protocol" in
+          ftp|ftps|ftps-legacy) ;;
+          *)
+            echo "::error::SPACESHIP_FTP_PROTOCOL must be one of: ftp, ftps, ftps-legacy." >&2
+            exit 1
+            ;;
+        esac
+
+        if [[ "$protocol" == "ftp" ]]; then
+          echo "::warning::SPACESHIP_FTP_PROTOCOL=ftp can fail on Spaceship with control-socket timeouts; using ftps instead."
+          protocol="ftps"
+        fi
+
+        if [[ -n "${IN_PORT:-}" ]]; then
+          port="$IN_PORT"
+        elif [[ "$protocol" == "ftps-legacy" ]]; then
+          port="990"
+        else
+          port="21"
+        fi
+
+        timeout="${IN_TIMEOUT:-90000}"
+
+        if [[ ! "$port" =~ ^[0-9]+$ ]] || (( port < 1 || port > 65535 )); then
+          echo "::error::SPACESHIP_FTP_PORT must be a valid TCP port (1-65535)." >&2
+          exit 1
+        fi
+
+        if [[ ! "$timeout" =~ ^[0-9]+$ ]] || (( timeout < 1000 )); then
+          echo "::error::SPACESHIP_FTP_TIMEOUT must be an integer in milliseconds (>= 1000)." >&2
+          exit 1
+        fi
+
+        if (( port == 22 )); then
+          echo "::error::Port 22 indicates SFTP, which is not supported by this FTP/FTPS workflow." >&2
+          exit 1
+        fi
+
+        if (( port == 443 )) && [[ "$protocol" != "ftps-legacy" ]]; then
+          echo "::error::Port 443 commonly triggers control-connection FIN errors for FTP/FTPS. Use port 21 for ftp/ftps or 990 for ftps-legacy." >&2
+          exit 1
+        fi
+
+        local_dir="${IN_LOCAL_DIR%/}/"
+        remote_dir="$IN_REMOTE_DIR"
+        [[ "$remote_dir" == */ ]] || remote_dir="${remote_dir}/"
+
+        {
+          echo "local_dir=$local_dir"
+          echo "remote_dir=$remote_dir"
+          echo "protocol=$protocol"
+          echo "port=$port"
+          echo "timeout=$timeout"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Upload over FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      with:
+        server: ${{ inputs.server }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
+        protocol: ${{ steps.settings.outputs.protocol }}
+        port: ${{ steps.settings.outputs.port }}
+        timeout: ${{ steps.settings.outputs.timeout }}
+        local-dir: ${{ steps.settings.outputs.local_dir }}
+        server-dir: ${{ steps.settings.outputs.remote_dir }}
+        dry-run: ${{ inputs.dry-run }}
+        dangerous-clean-slate: ${{ inputs.clean-remote }}
+        log-level: standard
