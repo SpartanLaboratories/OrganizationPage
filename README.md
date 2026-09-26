@@ -16,7 +16,7 @@ push to main ──> build + tests ──> staging (automatic) ──> productio
 1. **build** runs `./gradlew check :web:jsBrowserDistribution` and stores the site as the
    `site` artifact, together with a `build-info.json` naming the commit.
 2. **staging** uploads that artifact to the staging folder. The staging copy gets a
-   `[Staging]` title prefix, a `noindex` tag and a `robots.txt` that blocks crawlers.
+   `[Staging]` title prefix and a `noindex` tag so search engines leave it out.
 3. **production** pauses until a reviewer approves the `production` environment. Open
    the run, check the staging site, then use **Review deployments → Approve**. It then
    uploads the *same* artifact, so production is byte-for-byte what you reviewed
@@ -37,11 +37,13 @@ To confirm what is live, open `/build-info.json` on either site.
 ### One-time setup
 
 1. **Staging site on Spaceship.** The FTP login starts in the hosting account's home
-   folder, where production is served from `spartanlaboratories.org/`. In the Hosting
-   Manager (**+ Add domain**) or cPanel (**Domains → Create A New Domain**, with
-   "Share document root" unticked), add `staging.spartanlaboratories.org` with document
-   root `staging.spartanlaboratories.org`. Then check that cPanel's AutoSSL has issued
-   it a certificate. The workflow already defaults to these folders and URLs.
+   folder, where production is served from `spartanlaboratories.org/`. Staging is the
+   `staging/` subfolder of the production site, at
+   `https://spartanlaboratories.org/staging/`, and `staging.spartanlaboratories.org`
+   redirects there. The workflow already defaults to these folders and URLs. Because
+   staging sits inside the production folder, production deploys never clean their
+   target folder. Their normal sync only removes files they uploaded themselves, so
+   `staging/` is left alone.
 2. **Environments** (Settings → Environments):
    - `production`: add yourself (or the release team) under **Required reviewers**, and
      limit **Deployment branches** to `main`.
@@ -57,8 +59,8 @@ To confirm what is live, open `/build-info.json` on either site.
 |--------------------------------|-------------------------------------------|---------|
 | `SPACESHIP_REMOTE_DIR`         | `/spartanlaboratories.org`                 | Production folder. `/` is rejected. |
 | `SPACESHIP_PRODUCTION_URL`     | `https://spartanlaboratories.org`         | Production address, shown as the environment link |
-| `SPACESHIP_STAGING_REMOTE_DIR` | `/staging.spartanlaboratories.org`        | Staging folder. Must differ from the production folder. |
-| `SPACESHIP_STAGING_URL`        | `https://staging.spartanlaboratories.org` | Staging address, shown as the environment link and in the run summary |
+| `SPACESHIP_STAGING_REMOTE_DIR` | `/spartanlaboratories.org/staging`        | Staging folder. Must differ from the production folder. |
+| `SPACESHIP_STAGING_URL`        | `https://spartanlaboratories.org/staging/` | Staging address, shown as the environment link and in the run summary |
 | `SPACESHIP_FTP_PROTOCOL`       | no       | `ftps` (default) or `ftps-legacy`. `ftp` is upgraded to `ftps` because Spaceship commonly times out on plain FTP |
 | `SPACESHIP_FTP_PORT`           | no       | Defaults to `21`, or `990` for `ftps-legacy`. `443` (control-connection FIN disconnects) and `22` (SFTP, unsupported) are rejected |
 | `SPACESHIP_FTP_TIMEOUT`        | no       | FTP operation timeout in milliseconds, default `90000` |
