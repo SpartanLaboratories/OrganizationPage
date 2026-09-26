@@ -25,3 +25,27 @@ replay_pid*
 
 # Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
 .kotlin/
+# Keep the Gradle wrapper jar despite the *.jar rule above
+!gradle/wrapper/gradle-wrapper.jar
+
+# Gradle / Kotlin
+.gradle/
+build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.iws
+*.ipr
+.fleet/
+.nbproject/
+nbproject/
+.settings/
+.project
+.classpath
+*.swp
+*.swo
+*~
+.DS_Store
