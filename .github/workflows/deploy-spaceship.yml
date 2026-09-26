@@ -17,8 +17,8 @@ on:
   # Run manually from the Actions tab to stage any branch. Only main can reach production.
   workflow_dispatch:
     inputs:
-      clean_remote:
-        description: Delete existing files in each target directory before uploading to it
+      clean_staging:
+        description: Delete existing files in the staging directory before uploading
         required: true
         default: "false"
         type: choice
@@ -34,8 +34,10 @@ permissions:
 env:
   PRODUCTION_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR || '/spartanlaboratories.org' }}
   PRODUCTION_URL: ${{ vars.SPACESHIP_PRODUCTION_URL || 'https://spartanlaboratories.org' }}
-  STAGING_REMOTE_DIR: ${{ vars.SPACESHIP_STAGING_REMOTE_DIR || '/staging.spartanlaboratories.org' }}
-  STAGING_URL: ${{ vars.SPACESHIP_STAGING_URL || 'https://staging.spartanlaboratories.org' }}
+  # Staging is a subfolder of the production site (staging.spartanlaboratories.org
+  # redirects to it), so production deploys must never clean their target folder.
+  STAGING_REMOTE_DIR: ${{ vars.SPACESHIP_STAGING_REMOTE_DIR || '/spartanlaboratories.org/staging' }}
+  STAGING_URL: ${{ vars.SPACESHIP_STAGING_URL || 'https://spartanlaboratories.org/staging/' }}
 
 jobs:
   build:
@@ -124,9 +126,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # Keep staging out of search engines and easy to tell apart in a browser tab.
+          # Keep staging out of search results and easy to tell apart in a browser tab.
           # This only changes the staging upload; production gets the artifact as built.
-          printf 'User-agent: *\nDisallow: /\n' > .deploy/robots.txt
           grep -q '<head>' .deploy/index.html
           grep -q '<title>' .deploy/index.html
           sed -i \
@@ -145,7 +146,7 @@ jobs:
           protocol: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
           port: ${{ vars.SPACESHIP_FTP_PORT }}
           timeout: ${{ vars.SPACESHIP_FTP_TIMEOUT }}
-          clean-remote: ${{ inputs.clean_remote || 'false' }}
+          clean-remote: ${{ inputs.clean_staging || 'false' }}
 
       - name: Summary
         shell: bash
@@ -232,7 +233,8 @@ jobs:
           protocol: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
           port: ${{ vars.SPACESHIP_FTP_PORT }}
           timeout: ${{ vars.SPACESHIP_FTP_TIMEOUT }}
-          clean-remote: ${{ inputs.clean_remote || 'false' }}
+          # Never clean: the production folder also holds the staging site.
+          clean-remote: "false"
 
       - name: Summary
         shell: bash
