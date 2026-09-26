@@ -26,33 +26,6 @@ adopted by other projects, but they are not organization-wide policy.
 9. Deploying to a live server is outward-facing: get the owner's go-ahead before
    triggering a deploy, and have them check the staged result before shipping.
 
-## How the policy is implemented
-
-- **Workflow:** `.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy").
-  Jobs: `build` (tests + `site` artifact, kept 90 days) → `staging` (automatic) →
-  `production` (`main` only). Keep this filename: GitHub offers the manual "Run workflow"
-  button only for workflow files already on `main`.
-- **Triggers:** push to `main` (staging, then production after approval); manual run on
-  any branch (staging only).
-- **Approval:** the `production` GitHub environment must have required reviewers
-  (repo is public, so this works on any plan). The `production` job checks for this via
-  the API before uploading and fails if it's absent. Approve with
-  "Review deployments" on the run.
-- **Shared deploy action:** `.github/actions/spaceship-deploy` (FTP-Deploy-Action over
-  FTPS; ftp is upgraded to ftps; ports 22 and 443 are rejected).
-- **Hosting (Spaceship, cPanel, FTP login starts in the home folder):**
-  - Production: `/spartanlaboratories.org` → https://spartanlaboratories.org
-  - Staging: `/spartanlaboratories.org/staging` → https://spartanlaboratories.org/staging/
-    (`staging.spartanlaboratories.org` redirects there)
-  - The repo variable `SPACESHIP_REMOTE_DIR` is set to `/../../spartanlaboratories.org/`,
-    which resolves to the same folder.
-- **Because staging sits inside the production folder:** production deploys never use
-  clean-slate (it would delete staging); the manual "clean" option applies to staging only.
-  The staging folder must differ from production and can't be the FTP root, and
-  production can't be the FTP root.
-- **Staging marking:** `[Staging]` title prefix and a `noindex` meta tag, added to the
-  staging upload only. `robots.txt` isn't used because crawlers only read it at the site root.
-- **Rollback:** re-run the `production` job of an earlier successful `main` run and
-  approve it.
-- **Verify what's live:** `/build-info.json` on either site names the commit and run.
-- **Secrets:** `SPACESHIP_FTP_SERVER`, `SPACESHIP_FTP_USERNAME`, `SPACESHIP_FTP_PASSWORD`.
+How the workflow, approval gate, hosting folders, staging marking, secrets and rollback
+implement these rules: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Read it before changing
+anything under `.github/`.
