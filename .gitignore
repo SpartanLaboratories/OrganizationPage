@@ -37,4 +37,15 @@ local.properties
 .idea/
 *.iml
 .vscode/
+*.iws
+*.ipr
+.fleet/
+.nbproject/
+nbproject/
+.settings/
+.project
+.classpath
+*.swp
+*.swo
+*~
 .DS_Store
