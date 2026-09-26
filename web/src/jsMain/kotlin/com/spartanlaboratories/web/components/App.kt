@@ -23,6 +23,9 @@ fun App() {
         About(organization)
         FocusAreas(organization.focusAreas)
         Projects(organization.projects)
+        if (organization.subsidiaries.isNotEmpty()) {
+            Subsidiaries(organization.subsidiaries)
+        }
         ContactSection(organization.contact)
     }
     SiteFooter(organization.name)

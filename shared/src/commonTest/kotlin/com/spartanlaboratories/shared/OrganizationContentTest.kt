@@ -25,8 +25,18 @@ class OrganizationContentTest {
     }
 
     @Test
+    fun contactPeopleAreComplete() {
+        val people = organization.contact.people
+        assertTrue(people.all { it.name.isNotBlank() && it.role.isNotBlank() })
+        val emails = people.mapNotNull { it.email } + listOfNotNull(organization.contact.email)
+        assertTrue(emails.all { Regex("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$").matches(it) }, "Malformed email in $emails")
+    }
+
+    @Test
     fun allLinksAreHttps() {
-        val urls = organization.projects.mapNotNull { it.url } + organization.contact.links.map { it.url }
+        val urls = organization.projects.mapNotNull { it.url } +
+            organization.subsidiaries.map { it.url } +
+            organization.contact.links.map { it.url }
         assertTrue(urls.all { it.startsWith("https://") }, "Non-HTTPS link in $urls")
     }
 }

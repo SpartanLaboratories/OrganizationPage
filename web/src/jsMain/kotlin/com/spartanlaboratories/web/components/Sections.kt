@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import com.spartanlaboratories.shared.model.Contact
 import com.spartanlaboratories.shared.model.FocusArea
 import com.spartanlaboratories.shared.model.Organization
+import com.spartanlaboratories.shared.model.Person
 import com.spartanlaboratories.shared.model.Project
+import com.spartanlaboratories.shared.model.Subsidiary
 import com.spartanlaboratories.web.styles.AppStylesheet
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Article
@@ -90,12 +92,32 @@ private fun ProjectCard(project: Project) {
 }
 
 @Composable
+fun Subsidiaries(subsidiaries: List<Subsidiary>) {
+    PageSectionBlock(PageSection.Subsidiaries, "Subsidiaries") {
+        Div({ classes(AppStylesheet.grid) }) {
+            subsidiaries.forEach { subsidiary ->
+                Article({ classes(AppStylesheet.card) }) {
+                    H3({ classes(AppStylesheet.cardTitle) }) { Text(subsidiary.name) }
+                    P({ classes(AppStylesheet.cardBody) }) { Text(subsidiary.description) }
+                    ExternalLink(subsidiary.url, AppStylesheet.cardLink) { Text("Visit on GitHub →") }
+                }
+            }
+        }
+    }
+}
+
+@Composable
 fun ContactSection(contact: Contact) {
     PageSectionBlock(
         PageSection.Contact,
         "Contact",
         intro = "Questions, ideas or contributions are welcome.",
     ) {
+        if (contact.people.isNotEmpty()) {
+            Div({ classes(AppStylesheet.grid) }) {
+                contact.people.forEach { PersonCard(it) }
+            }
+        }
         Div({ classes(AppStylesheet.heroActions) }) {
             contact.email?.let { email ->
                 A("mailto:$email", { classes(AppStylesheet.button, AppStylesheet.buttonPrimary) }) { Text(email) }
@@ -103,6 +125,19 @@ fun ContactSection(contact: Contact) {
             contact.links.forEach { link ->
                 ExternalLink(link.url, AppStylesheet.button, AppStylesheet.buttonSecondary) { Text(link.label) }
             }
+        }
+    }
+}
+
+@Composable
+private fun PersonCard(person: Person) {
+    Article({ classes(AppStylesheet.card) }) {
+        Div({ classes(AppStylesheet.cardHeader) }) {
+            H3({ classes(AppStylesheet.cardTitle) }) { Text(person.name) }
+            Span({ classes(AppStylesheet.status) }) { Text(person.role) }
+        }
+        person.email?.let { email ->
+            A("mailto:$email", { classes(AppStylesheet.cardLink) }) { Text(email) }
         }
     }
 }
