@@ -21,6 +21,7 @@ enum class PageSection(val id: String, val label: String) {
     About("about", "About"),
     Focus("focus", "Focus"),
     Projects("projects", "Projects"),
+    Subsidiaries("subsidiaries", "Subsidiaries"),
     Contact("contact", "Contact"),
 }
 

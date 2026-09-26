@@ -4,8 +4,10 @@ import com.spartanlaboratories.shared.model.Contact
 import com.spartanlaboratories.shared.model.FocusArea
 import com.spartanlaboratories.shared.model.Link
 import com.spartanlaboratories.shared.model.Organization
+import com.spartanlaboratories.shared.model.Person
 import com.spartanlaboratories.shared.model.Project
 import com.spartanlaboratories.shared.model.ProjectStatus
+import com.spartanlaboratories.shared.model.Subsidiary
 
 /**
  * The single source of truth for the site's copy.
@@ -16,6 +18,7 @@ import com.spartanlaboratories.shared.model.ProjectStatus
  */
 object OrganizationContent {
     const val GITHUB_URL = "https://github.com/SpartanLaboratories"
+    const val SPARTAN_GAMING_GITHUB_URL = "https://github.com/SpartanLabsGaming"
 
     val organization = Organization(
         name = "Spartan Laboratories",
@@ -51,8 +54,32 @@ object OrganizationContent {
                 url = "$GITHUB_URL/OrganizationPage",
                 status = ProjectStatus.Active,
             ),
+            Project(
+                name = "WebTools",
+                description = "Kotlin/JVM libraries for internet I/O: a multi-client UDP " +
+                    "connection layer with NAT traversal, URL scraping, and headless-browser " +
+                    "screenshots, published as three independent artifacts.",
+                tags = listOf("Kotlin", "UDP", "Scraping", "Selenium"),
+                url = "$GITHUB_URL/WebTools",
+                status = ProjectStatus.Active,
+            ),
+        ),
+        subsidiaries = listOf(
+            Subsidiary(
+                name = "Spartan Gaming",
+                description = "Our games studio, building games and the servers, tools and " +
+                    "graphics behind them.",
+                url = SPARTAN_GAMING_GITHUB_URL,
+            ),
         ),
         contact = Contact(
+            people = listOf(
+                Person(
+                    name = "Spartak Singh",
+                    role = "Owner",
+                    email = "spartak@spartanlaboratories.org",
+                ),
+            ),
             links = listOf(
                 Link(label = "GitHub", url = GITHUB_URL),
             ),

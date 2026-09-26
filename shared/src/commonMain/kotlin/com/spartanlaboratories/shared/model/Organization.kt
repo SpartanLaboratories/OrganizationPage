@@ -16,6 +16,7 @@ data class Organization(
     val mission: String,
     val focusAreas: List<FocusArea>,
     val projects: List<Project>,
+    val subsidiaries: List<Subsidiary> = emptyList(),
     val contact: Contact,
 )
 
@@ -41,10 +42,27 @@ enum class ProjectStatus(val label: String) {
     Archived("Archived"),
 }
 
+/** A company owned by the organization, with its own presence. */
+@Serializable
+data class Subsidiary(
+    val name: String,
+    val description: String,
+    val url: String,
+)
+
 @Serializable
 data class Contact(
     val email: String? = null,
+    val people: List<Person> = emptyList(),
     val links: List<Link> = emptyList(),
+)
+
+/** Someone visitors can reach directly, shown in the contact section. */
+@Serializable
+data class Person(
+    val name: String,
+    val role: String,
+    val email: String? = null,
 )
 
 @Serializable
