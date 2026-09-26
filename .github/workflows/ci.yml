@@ -1,0 +1,42 @@
+name: OrganizationPage CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build and test
+        run: ./gradlew build :server:buildFatJar
+
+      - name: Upload server jar
+        uses: actions/upload-artifact@v5
+        with:
+          name: organization-page-server
+          path: server/build/libs/organization-page-server.jar
+          if-no-files-found: error
+          retention-days: 7
