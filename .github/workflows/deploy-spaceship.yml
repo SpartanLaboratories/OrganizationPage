@@ -29,6 +29,14 @@ on:
 permissions:
   contents: read
 
+# Folders are paths as the FTP login sees them (it starts in the hosting account's home
+# folder). Repository variables of the same name override these defaults.
+env:
+  PRODUCTION_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR || '/spartanlaboratories.org' }}
+  PRODUCTION_URL: ${{ vars.SPACESHIP_PRODUCTION_URL || 'https://spartanlaboratories.org' }}
+  STAGING_REMOTE_DIR: ${{ vars.SPACESHIP_STAGING_REMOTE_DIR || '/staging.spartanlaboratories.org' }}
+  STAGING_URL: ${{ vars.SPACESHIP_STAGING_URL || 'https://staging.spartanlaboratories.org' }}
+
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -73,7 +81,7 @@ jobs:
     runs-on: ubuntu-24.04
     environment:
       name: staging
-      url: ${{ vars.SPACESHIP_STAGING_URL }}
+      url: ${{ env.STAGING_URL }}
     concurrency:
       group: deploy-staging
       cancel-in-progress: false
@@ -82,9 +90,6 @@ jobs:
       - name: Check staging target
         id: target
         shell: bash
-        env:
-          STAGING_DIR: ${{ vars.SPACESHIP_STAGING_REMOTE_DIR }}
-          PRODUCTION_DIR: ${{ vars.SPACESHIP_REMOTE_DIR }}
         run: |
           set -euo pipefail
 
@@ -94,13 +99,8 @@ jobs:
             printf '%s' "$dir"
           }
 
-          if [[ -z "${STAGING_DIR:-}" ]]; then
-            echo "::error::Set the SPACESHIP_STAGING_REMOTE_DIR repository variable to the staging site's folder on the FTP server (see README)." >&2
-            exit 1
-          fi
-
-          staging="$(normalize "$STAGING_DIR")"
-          production="$(normalize "${PRODUCTION_DIR:-/}")"
+          staging="$(normalize "$STAGING_REMOTE_DIR")"
+          production="$(normalize "$PRODUCTION_REMOTE_DIR")"
 
           if [[ "$staging" == "/" || "$staging" == "$production" ]]; then
             echo "::error::SPACESHIP_STAGING_REMOTE_DIR ($staging) must be a separate folder from production ($production)." >&2
@@ -149,18 +149,11 @@ jobs:
 
       - name: Summary
         shell: bash
-        env:
-          STAGING_URL: ${{ vars.SPACESHIP_STAGING_URL }}
-          REMOTE_DIR: ${{ steps.target.outputs.remote_dir }}
         run: |
           {
             echo "## Staged ${GITHUB_SHA::7} from \`${GITHUB_REF_NAME}\`"
             echo
-            if [[ -n "${STAGING_URL:-}" ]]; then
-              echo "View it at **${STAGING_URL}**"
-            else
-              echo "Uploaded to \`${REMOTE_DIR}\`. Set the SPACESHIP_STAGING_URL variable to get a link here."
-            fi
+            echo "View it at **${STAGING_URL}**"
             echo
             if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
               echo "Production is waiting for approval: use **Review deployments** at the top of this run."
@@ -176,7 +169,7 @@ jobs:
     # A reviewer must approve this environment before the job starts.
     environment:
       name: production
-      url: ${{ vars.SPACESHIP_PRODUCTION_URL }}
+      url: ${{ env.PRODUCTION_URL }}
     concurrency:
       group: deploy-production
       cancel-in-progress: false
@@ -185,6 +178,20 @@ jobs:
       actions: read
 
     steps:
+      - name: Check production target
+        id: target
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="/${PRODUCTION_REMOTE_DIR#/}"
+          [[ "$dir" == */ ]] || dir="$dir/"
+          # The FTP login starts in the home folder, so "/" would spill the site into it.
+          if [[ "$dir" == "/" ]]; then
+            echo "::error::The production folder can't be the FTP root; set SPACESHIP_REMOTE_DIR to the site's folder." >&2
+            exit 1
+          fi
+          echo "remote_dir=$dir" >> "$GITHUB_OUTPUT"
+
       - name: Require an approval gate
         shell: bash
         env:
@@ -218,7 +225,7 @@ jobs:
         uses: ./.github/actions/spaceship-deploy
         with:
           local-dir: .deploy/
-          remote-dir: ${{ vars.SPACESHIP_REMOTE_DIR || '/' }}
+          remote-dir: ${{ steps.target.outputs.remote_dir }}
           server: ${{ secrets.SPACESHIP_FTP_SERVER }}
           username: ${{ secrets.SPACESHIP_FTP_USERNAME }}
           password: ${{ secrets.SPACESHIP_FTP_PASSWORD }}
@@ -229,13 +236,9 @@ jobs:
 
       - name: Summary
         shell: bash
-        env:
-          PRODUCTION_URL: ${{ vars.SPACESHIP_PRODUCTION_URL }}
         run: |
           {
             echo "## Deployed ${GITHUB_SHA::7} to production"
-            if [[ -n "${PRODUCTION_URL:-}" ]]; then
-              echo
-              echo "Live at **${PRODUCTION_URL}**"
-            fi
+            echo
+            echo "Live at **${PRODUCTION_URL}**"
           } >> "$GITHUB_STEP_SUMMARY"
