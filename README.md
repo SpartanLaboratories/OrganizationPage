@@ -5,7 +5,8 @@ This repository includes an automated GitHub Actions pipeline for deploying the 
 ## Deployment: staging, then production
 
 Every change goes to a pre-production **staging** site first. Production only changes
-after someone has looked at staging and approved it.
+after someone has looked at staging and approved it. The deployment policy and the
+full reference for how it is implemented are in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ```
 push to main ──> build + tests ──> staging (automatic) ──> production (waits for approval)
