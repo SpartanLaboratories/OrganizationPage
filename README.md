@@ -11,7 +11,7 @@ after someone has looked at staging and approved it.
 push to main ──> build + tests ──> staging (automatic) ──> production (waits for approval)
 ```
 
-`.github/workflows/deploy-spaceship.yml` ("Deploy") runs on every push to `main`:
+`.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy") runs on every push to `main`:
 
 1. **build** runs `./gradlew check :web:jsBrowserDistribution` and stores the site as the
    `site` artifact, together with a `build-info.json` naming the commit.
@@ -26,10 +26,10 @@ The production job also checks that the `production` environment actually requir
 reviewer, and refuses to deploy if not. A missing setting can therefore never turn into
 an unreviewed release.
 
-**Staging a branch before merging:** Actions → **Deploy** → **Run workflow**, pick the
+**Staging a branch before merging:** Actions → **OrganizationPage Deploy** → **Run workflow**, pick the
 branch. It deploys to staging only; production jobs only run for `main`.
 
-**Rolling back:** open an earlier successful Deploy run on `main`, re-run its
+**Rolling back:** open an earlier successful OrganizationPage Deploy run on `main`, re-run its
 **production** job, and approve it. Site artifacts are kept for 90 days.
 
 To confirm what is live, open `/build-info.json` on either site.
@@ -45,8 +45,10 @@ To confirm what is live, open `/build-info.json` on either site.
    target folder. Their normal sync only removes files they uploaded themselves, so
    `staging/` is left alone.
 2. **Environments** (Settings → Environments):
-   - `production`: add yourself (or the release team) under **Required reviewers**, and
-     limit **Deployment branches** to `main`.
+   - `production`: click **New environment** and name it exactly `production`
+     (GitHub only creates it on its own once a `main` run reaches the production job).
+     Add yourself (or the release team) under **Required reviewers**, and limit
+     **Deployment branches** to `main`.
    - `staging`: no protection needed. Leave branches unrestricted so any branch can be
      staged.
 3. **Secrets** (Settings → Secrets and variables → Actions):

@@ -8,7 +8,8 @@
 #
 # The file keeps its original name so the manual "Run workflow" button, which GitHub
 # only offers for workflows present on the default branch, stays available.
-name: Deploy
+name: OrganizationPage Deploy
+run-name: OrganizationPage deploy of ${{ github.ref_name }}
 
 on:
   push:
