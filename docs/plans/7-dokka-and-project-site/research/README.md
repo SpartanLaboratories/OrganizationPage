@@ -57,3 +57,64 @@ need the implementation or documented test results, because the documentation's 
 the earlier finding recorded.
 
 Findings: [`deploy-trigger-paths.md`](deploy-trigger-paths.md)
+
+## Verification results
+
+Each of the 15 load-bearing claims in `deploy-trigger-paths.md` was re-opened at its own source, at
+the version the claim cites. All 15 hold, none fails and none is unclear. The observations of public
+repositories were re-established from the commits, their parents, the events feed and the runs
+themselves. Claims about this repository were checked against the repository instead.
+
+Points of precision that bear on how the claims are used:
+
+- **`workflow_dispatch` and path filters.** No sentence of GitHub's says the manual trigger is exempt.
+  The conclusion rests on where the filters are defined: under the push and pull-request events and
+  nowhere else, and the `workflow_dispatch` section never mentions them.
+- **Dot names are inferred in three corners.** No source shows a dot-named file under
+  `docs/` hit by `!docs/**`, a dot-named file inside `docs/brand/` or `docs/dokka/`, or `.dockerignore`
+  alone. `docs/` tracks no dot-named file today, and `.dockerignore` has the same shape as `.gitignore`.
+- **GitHub says nothing about dots.** That `'**'` matches dot-named paths rests on observed run history
+  in two repositories, a root dot-folder path, a root dot-file and a removed root dot-file, each from
+  a single-commit push.
+- **The `lxml` run for `.gitignore`** ended `cancelled` by that workflow's own concurrency setting. The
+  push started it, which is what the claim needs.
+- **The exceptions for events created with the repository token** are longer than the quoted sentence:
+  `pull_request` events from such a token produce runs that wait for approval. The exception the
+  rejected option relies on, `workflow_dispatch` and `repository_dispatch`, is as quoted.
+
+## Summary of findings
+
+### Starting the site deployment for `docs/brand/` and `docs/dokka/`
+
+An ordered `paths` list on the deployment's `push` trigger does this: `'**'`, `'!docs/**'`,
+`'docs/brand/**'`, `'docs/dokka/**'`, beside the existing `branches: [main]`
+([`deploy-trigger-paths.md`](deploy-trigger-paths.md), F1). GitHub documents the rule: patterns are
+checked in order, a later negative pattern excludes a path and a later positive pattern includes it
+again. So the two folders the site build reads start a deployment, the rest of `docs/` does not, and
+everything outside `docs/` still does. `publish-docs.yml` is untouched, so a push that changes
+`docs/brand/` or `docs/dokka/` starts both workflows: the committed files go live in the documents
+folder at once, and the site, the reference included, waits for staging and approval.
+
+Whether `'**'` matches names starting with a dot was the point the earlier finding left open, and it
+matters because the deployment must keep starting for a push that changes only `.github/`,
+`.gitignore` or `.dockerignore`. GitHub's text is silent. Run history in two public repositories
+settles it for those shapes, one of them with this exact `['**', '!docs/**']` pairing (F3). That is
+observed behaviour rather than a specification, so the filter's first real pushes are worth watching
+(below).
+
+The sources do not disagree. The options that do not fit:
+
+- `paths-ignore` with negative entries is the shortest form and is undocumented, so it is not used in
+  a filter that decides whether production deployments start (F2).
+- A `paths-ignore` deny-list naming the folders that do not feed the site would fail toward an extra
+  run that stops at the production reviewer, and it would need a new entry for every board location,
+  which appear often under `docs/` (F5).
+- Starting the deployment some other way, by a second caller workflow, `workflow_run`, or a dispatch
+  from the documents publish, either runs two deployments for one push or gives the one job outside
+  approval a token that can start the production path (F6).
+
+The ordered list fails the other way: if the site build starts reading another folder under `docs/`,
+a change to that folder alone starts no deployment until it is listed. The workflow comment and
+`docs/DEPLOYMENT.md` say so. A manual run does not evaluate the filter, so the first real push that
+touches only `docs/brand/` or `docs/dokka/`, and the first that touches only another `docs/` path, are
+the confirmation.
