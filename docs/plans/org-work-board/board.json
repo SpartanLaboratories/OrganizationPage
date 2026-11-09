@@ -2,7 +2,7 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-09T03:08:33Z",
+  "generated": "2026-11-09T07:29:54Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1567,7 +1567,7 @@
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-09T02:38:10Z",
+        "generated": "2026-11-09T07:17:50Z",
         "asOf": "2026-11-09"
       },
       "links": {
@@ -1595,7 +1595,7 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-09T02:38:10Z",
+        "generated": "2026-11-09T07:17:50Z",
         "asOf": "2026-11-09",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1613,7 +1613,7 @@
           {
             "slug": "repository-swap",
             "name": "Repository swap",
-            "slot": 0,
+            "slot": 8,
             "top": "Repository swap",
             "status": "planned",
             "board": null
@@ -1690,7 +1690,7 @@
                 {
                   "issue": 22,
                   "slug": "transfer-rehearsal",
-                  "step": "implementation"
+                  "step": "remediation"
                 }
               ],
               "next": {
@@ -1865,13 +1865,25 @@
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/",
             "branch": "chore/issue-22-transfer-rehearsal",
             "system": "repository-swap",
-            "step": "implementation",
-            "detail": "Branch `chore/issue-22-transfer-rehearsal` cut; implementation starts at S0: Local readiness.",
-            "since": "2026-11-09T02:29:56Z",
-            "updated": "2026-11-09T02:29:56Z",
-            "qa": [],
+            "step": "remediation",
+            "detail": "Every acceptance criterion is met and no recorded result is untrue; the self-test leaves the result gate and the failure paths of the post checks unchecked.",
+            "since": "2026-11-09T07:17:29Z",
+            "updated": "2026-11-09T07:17:29Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T07:17:29Z",
+                "findings": {},
+                "severity": {
+                  "minor": 13,
+                  "other": 3
+                }
+              }
+            ],
             "qaMax": 3,
-            "status": "planning",
+            "status": "building",
             "fixOf": null,
             "landed": null,
             "reconciliation": {
@@ -2469,11 +2481,11 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "028231e0cda54082201008a54746e34f51c09bc8",
+      "head": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-09T02:47:32Z",
+        "generated": "2026-11-09T07:29:12Z",
         "asOf": "2026-11-09"
       },
       "links": {
@@ -2481,23 +2493,20 @@
         "repoBoard": "docs/dashboards/index.html"
       },
       "boards": {
+        "7": {
+          "path": "docs/plans/7-dokka-and-project-site/dashboard.html",
+          "ref": "main"
+        },
         "8": {
           "path": "docs/plans/8-docs-only-deploy-skip/dashboard.html",
           "ref": "main"
         }
       },
-      "unlinked": [
-        {
-          "issue": 7,
-          "path": "docs/plans/7-dokka-and-project-site/dashboard.html",
-          "branch": null,
-          "why": "not on main, and on no branch recorded for it"
-        }
-      ],
+      "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/OrganizationPage",
-        "generated": "2026-11-09T02:47:32Z",
+        "generated": "2026-11-09T07:29:12Z",
         "asOf": "2026-11-09",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -2505,16 +2514,26 @@
         "base": "../",
         "systems": [
           {
-            "slug": "documentation-build",
-            "name": "documentation-build",
-            "slot": 0,
-            "top": "documentation-build"
+            "slug": "shared",
+            "name": "shared",
+            "slot": 1,
+            "top": "shared",
+            "status": "built",
+            "board": null
           },
           {
             "slug": "deployment",
             "name": "deployment",
             "slot": 4,
             "top": "deployment",
+            "status": "built",
+            "board": null
+          },
+          {
+            "slug": "web",
+            "name": "web",
+            "slot": 3,
+            "top": "web",
             "status": "built",
             "board": null
           }
@@ -2531,27 +2550,69 @@
           {
             "issue": 7,
             "title": "Adopt the organization's Dokka and project site standard",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-08",
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": "../7-dokka-and-project-site/dashboard.html",
+            "board": "view/7-dokka-and-project-site/dashboard.html",
             "folder": "../7-dokka-and-project-site/",
             "branch": null,
-            "system": "documentation-build",
-            "step": "halted",
-            "detail": "Waiting on you: The maintainer's answers to six design questions",
-            "since": "2026-11-09T02:47:14Z",
-            "updated": "2026-11-09T02:47:14Z",
-            "qa": [],
+            "system": "shared",
+            "step": "landed",
+            "detail": "Landed in PR #15.",
+            "since": "2026-11-09T07:08:26Z",
+            "updated": "2026-11-09T07:08:26Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T04:45:29Z",
+                "findings": {
+                  "test": 7,
+                  "code": 1
+                },
+                "severity": {
+                  "minor": 7,
+                  "other": 1
+                },
+                "route": "re-plan-then-remediation"
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T05:20:48Z",
+                "findings": {
+                  "test": 3,
+                  "code": 4
+                },
+                "severity": {
+                  "minor": 7,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "inPlace": "fixed"
+              }
+            ],
             "qaMax": 3,
-            "status": "halted",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
-            "reconciliation": null,
+            "landed": {
+              "pr": 15,
+              "merge": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+              "version": null,
+              "date": "2026-11-09"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
             "active": false,
-            "systemName": "documentation-build",
+            "systemName": "shared",
             "group": "other",
             "order": 0
           },
@@ -2644,6 +2705,27 @@
         "roadmap": [],
         "unscheduled": [
           {
+            "issue": 14,
+            "title": "Link the published boards from the site footer",
+            "labels": [],
+            "created": "2026-11-09",
+            "system": null
+          },
+          {
+            "issue": 13,
+            "title": "Link other projects' API documentation from the project cards",
+            "labels": [],
+            "created": "2026-11-09",
+            "system": null
+          },
+          {
+            "issue": 12,
+            "title": "Local JS builds leave an untracked kotlin-js-store/yarn.lock",
+            "labels": [],
+            "created": "2026-11-09",
+            "system": "web"
+          },
+          {
             "issue": 9,
             "title": "Staging target check compares folder strings, not resolved paths",
             "labels": [
@@ -2651,15 +2733,6 @@
             ],
             "created": "2026-11-09",
             "system": "deployment"
-          },
-          {
-            "issue": 7,
-            "title": "Adopt the organization's Dokka and project site standard",
-            "labels": [
-              "type: feature"
-            ],
-            "created": "2026-11-08",
-            "system": "documentation-build"
           }
         ]
       }
