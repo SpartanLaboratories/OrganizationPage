@@ -8,6 +8,12 @@ import java.io.File
  * the two checks that use this rely on the file's own layout.
  */
 object DeployWorkflow {
+    /**
+     * Every line of the workflow file, LF-normalised. Read once, on first use of this object, relative
+     * to the working directory, so it needs a test running from a module folder directly under the
+     * repository root. Fails with the file-read exception (wrapped in ExceptionInInitializerError) if
+     * the file is absent.
+     */
     val lines: List<String> = File("../.github/workflows/deploy-spaceship.yml")
         .readText()
         .replace("\r\n", "\n")
@@ -16,7 +22,11 @@ object DeployWorkflow {
     /**
      * The body of the named step's `run: |` block, without its indentation.
      *
-     * @throws IllegalStateException when the step or its `run: |` block is not in the file.
+     * @param stepName the exact `name:` of the step in the workflow file.
+     * @return the block's lines joined with LF, with the block's indentation removed. The search is not
+     *   bounded by the step: for a step with no block of its own, this is the next step's block.
+     * @throws IllegalStateException when no step has this name, or when no `run: |` line follows it
+     *   anywhere in the file.
      */
     fun runBlockOf(stepName: String): String {
         val stepLine = lines.indexOfFirst { it.trim() == "- name: $stepName" }

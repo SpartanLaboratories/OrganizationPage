@@ -27,7 +27,7 @@ dokka {
 // each module renders its own pages with its own configuration, and the root block styles only the
 // aggregate index. The build has no convention plugin, so the hook lives here.
 //  - failOnWarning: without it a broken KDoc link is only a warning and the build passes.
-//  - reportUndocumented is left at its default (off): the existing declarations carry no KDoc yet.
+//  - reportUndocumented is left at its default (off): many existing public declarations carry no KDoc yet.
 allprojects {
     pluginManager.withPlugin("org.jetbrains.dokka") {
         extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension> {

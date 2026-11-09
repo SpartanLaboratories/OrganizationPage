@@ -229,8 +229,8 @@ code.block.monospace {
 .library-name--link:before {
     background: var(--dokka-logo-image-url) center / var(--dokka-logo-width) var(--dokka-logo-height) no-repeat,
                 var(--sl-logo-glow) center / 100% 100% no-repeat;
-    /* No border-radius: it would clip the logo's corners. The glow already fades out
-       before the box edge, so the square box never shows. */
+    /* No border-radius: it would clip the logo's corners. The glow is fully transparent
+       by the box edge, so the square box never shows. */
     border-radius: 0;
 }
 

@@ -85,8 +85,8 @@ object AppStylesheet : StyleSheet() {
         // The logo is nearly square; contain keeps its proportions inside the square box.
         property("object-fit", "contain")
         // The logo's lettering is navy and disappears on the navy header; this soft cream glow, the
-        // one the same logo has on the WebTools site, sits behind it and fades out before the box
-        // edge. No border radius: it would clip the logo's corners.
+        // one the same logo has on the WebTools site, sits behind it and fades to transparent at
+        // the box edge. No border radius: it would clip the logo's corners.
         property(
             "background",
             "radial-gradient(circle closest-side, rgba(238, 226, 204, 0.78), rgba(192, 160, 128, 0.32) 62%, transparent 100%)",
