@@ -5,32 +5,32 @@
     {"slug": "organizationpage", "name": "OrganizationPage", "kind": "repo", "parent": null, "status": "built",
      "function": "The Spartan Laboratories website: a Kotlin multi-module build whose shared models and copy feed a Compose HTML frontend and a Ktor server, and the deployment system that moves it to the live host.",
      "paths": ["."], "version": null,
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": 8, "sha": "dbfa430"},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"},
      "board": "index.html", "dsl": "workspace.dsl"},
 
     {"slug": "shared", "name": "shared", "kind": "system", "parent": null, "status": "built",
      "function": "Data models, API routes, JSON configuration and the site copy, the single contract between the backend and the frontend.",
      "paths": ["shared/"], "version": "0.1.0",
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": null, "sha": "5bacc4f"}},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}},
 
     {"slug": "server", "name": "server", "kind": "system", "parent": null, "status": "built",
-     "function": "Ktor backend on Netty: the JSON API under /api and the compiled frontend, packaged as one runnable jar.",
+     "function": "Ktor backend on Netty: the JSON API under /api and the compiled frontend with its API reference, packaged as one runnable jar.",
      "paths": ["server/"], "version": "0.1.0",
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": null, "sha": "de82de2"}},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}},
 
     {"slug": "web", "name": "web", "kind": "system", "parent": null, "status": "built",
-     "function": "Compose HTML frontend in Kotlin/JS: builds to a static site that renders its bundled copy and, when the Ktor server hosts it, the live copy from the API.",
+     "function": "Compose HTML frontend in Kotlin/JS: builds to a static site that renders its bundled copy and, when the Ktor server hosts it, the live copy from the API, and carries the generated API reference at docs/api/.",
      "paths": ["web/"], "version": "0.1.0",
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": null, "sha": "5bacc4f"}},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}},
 
     {"slug": "deployment", "name": "deployment", "kind": "system", "parent": null, "status": "built",
-     "function": "Moves repository content to the live host on two paths: the site through staging and a person's approval to production, and docs/ straight to the documents folder.",
-     "paths": [".github/", "Dockerfile"], "version": null,
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": 8, "sha": "dbfa430"}}
+     "function": "Moves repository content to the live host on two paths: the site through staging and a person's approval to production, and docs/ straight to the documents folder; the test-only workflow-checks module holds its workflows' regression tests.",
+     "paths": [".github/", "Dockerfile", "workflow-checks/"], "version": null,
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}}
   ]
 }

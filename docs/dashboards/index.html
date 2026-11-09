@@ -10,7 +10,7 @@
 /* Supersystem / repository state board template (dashboards skill, system set: system/RULES.md): the Systems tab first, then the six core tabs adapted to the
    level (how the systems compose, run, decide, interact and live), the guarantee cards with one row per system, then Context.
    Draft A2: the C4 model tab is rendered at runtime from the Structurizr DSL embedded below (a verbatim copy of workspace.dsl).
-   Colour plan: --sys-1..6 are the systems' slots (registry order, see sysColour), --ph-1..3 the ordinal phase ramp
+   Colour plan: --sys-1..12 are the systems' slots (registry order, see sysColour), --ph-1..3 the ordinal phase ramp
    (Lifecycles), --good / --warning / --serious / --critical are status (outcomes only, always beside a label). Dashed = planned, and nothing else: lifelines, returns and frames are solid. */
 :root{
   --bg:#f3f5f8; --surface:#fcfcfd; --surface-2:#eef1f6; --ink:#0e1420; --ink-2:#4a5468; --muted:#7d879a;
@@ -447,12 +447,12 @@ footer code{color:var(--ink-2)}
 </style>
 <style>
 /* System colours: one categorical slot per top-level system, in registry order (sysColour below); a child system takes its
-   top-level ancestor's slot, and the seventh top-level system on folds into the neutral --muted. Everything drawn for a system
+   top-level ancestor's slot, and the thirteenth top-level system on folds into the neutral --muted. Everything drawn for a system
    sets --c from its slot, so a system keeps one colour on every tab. Palette slots 7 and 8 stay unused here: violet is the
    phase ramp, red sits next to critical. */
-:root{--sys-1:#2a78d6;--sys-2:#653184;--sys-3:#0d7680;--sys-4:#1d2660;--sys-5:#9656aa;--sys-6:#1a9ec7}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sys-1:#3987e5;--sys-2:#8a44d8;--sys-3:#1f8089;--sys-4:#b4bef5;--sys-5:#a86fb8;--sys-6:#31b5f4}}
-:root[data-theme="dark"]{--sys-1:#3987e5;--sys-2:#8a44d8;--sys-3:#1f8089;--sys-4:#b4bef5;--sys-5:#a86fb8;--sys-6:#31b5f4}
+:root{--sys-1:#2a78d6;--sys-2:#653184;--sys-3:#0d7680;--sys-4:#1d2660;--sys-5:#9656aa;--sys-6:#1a9ec7;--sys-7:#203d4b;--sys-8:#7700c7;--sys-9:#008a81;--sys-10:#7780f8;--sys-11:#271ea9;--sys-12:#09534e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sys-1:#3987e5;--sys-2:#8a44d8;--sys-3:#1f8089;--sys-4:#b4bef5;--sys-5:#a86fb8;--sys-6:#31b5f4;--sys-7:#9ae2f4;--sys-8:#c790d0;--sys-9:#11978e;--sys-10:#245eff;--sys-11:#8365bd;--sys-12:#00c7ba}}
+:root[data-theme="dark"]{--sys-1:#3987e5;--sys-2:#8a44d8;--sys-3:#1f8089;--sys-4:#b4bef5;--sys-5:#a86fb8;--sys-6:#31b5f4;--sys-7:#9ae2f4;--sys-8:#c790d0;--sys-9:#11978e;--sys-10:#245eff;--sys-11:#8365bd;--sys-12:#00c7ba}
 .syscards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .syscard{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0;border-top:3px solid var(--c,var(--muted))}
 .syscard:hover{border-color:var(--ink-2)}
@@ -513,7 +513,7 @@ footer code{color:var(--ink-2)}
 <header>
   <div class="crumbs">OrganizationPage</div>
   <h1>OrganizationPage</h1>
-  <p class="function">The Spartan Laboratories website: a Kotlin multi-module build whose <code>shared</code> models and copy feed a Compose HTML frontend and a Ktor server, and the deployment system that moves the site through staging and approval to the live host and publishes <code>docs/</code> straight to it.</p>
+  <p class="function">The Spartan Laboratories website: a Kotlin multi-module build whose <code>shared</code> models and copy feed a Compose HTML frontend and a Ktor server, and the deployment system that moves the site through staging and approval to the live host and publishes <code>docs/</code> straight to it. The site carries the modules' generated API reference at <code>docs/api/</code>.</p>
   <div class="chips">
     <span class="chip"><span class="ck">systems</span> <b id="sys-count">…</b></span>
     <span class="chip" id="chip-asis" hidden></span>
@@ -577,8 +577,9 @@ footer code{color:var(--ink-2)}
       </div>
       <div class="tside"><h3><span class="sw" data-sys="deployment"></span>deployment</h3>
         <div class="thread" data-sys="deployment" data-t="CI build" tabindex="0" role="button"><span class="n">CI build <span class="k">process</span></span><span class="pill cond">if pull request or branch</span><span class="r">build, tests and the server jar</span></div>
-        <div class="thread" data-sys="deployment" data-t="Deploy build" tabindex="0" role="button"><span class="n">Deploy build <span class="k">process</span></span><span class="pill cond">if outside docs/</span><span class="r">tests and the site artifact</span></div>
-        <div class="thread" data-sys="deployment" data-t="Deploy staging" tabindex="0" role="button"><span class="n">Deploy staging <span class="k">process</span></span><span class="pill cond">after build</span><span class="r">marks and uploads the staging copy</span></div>
+        <div class="thread" data-sys="deployment" data-t="CI API docs" tabindex="0" role="button"><span class="n">CI API docs <span class="k">process</span></span><span class="pill cond">if pull request or branch</span><span class="r">generates the API reference; a warning fails it</span></div>
+        <div class="thread" data-sys="deployment" data-t="Deploy build" tabindex="0" role="button"><span class="n">Deploy build <span class="k">process</span></span><span class="pill cond">if it touches the site</span><span class="r">tests, the API reference and the site artifact</span></div>
+        <div class="thread" data-sys="deployment" data-t="Deploy staging" tabindex="0" role="button"><span class="n">Deploy staging <span class="k">process</span></span><span class="pill cond">after build</span><span class="r">marks every page and uploads the staging copy</span></div>
         <div class="thread" data-sys="deployment" data-t="Deploy production" tabindex="0" role="button"><span class="n">Deploy production <span class="k">process</span></span><span class="pill cond">if main, approved</span><span class="r">uploads the same artifact</span></div>
         <div class="thread" data-sys="deployment" data-t="Docs publish" tabindex="0" role="button"><span class="n">Docs publish <span class="k">process</span></span><span class="pill cond">if under docs/</span><span class="r">guards, uploads and confirms docs/</span></div>
       </div>
@@ -617,7 +618,7 @@ footer code{color:var(--ink-2)}
     <div class="lgrid">
       <div class="card"><h3>The site, source to production <small>deploy-spaceship.yml</small></h3>
         <ol class="steps"><li class="ph1">source</li><li class="ph1">./gradlew check</li><li class="ph1">jsBrowserDistribution</li><li class="ph2">staging</li><li class="ph2">browser check</li><li class="ph2">approval</li><li class="ph3">production</li></ol>
-        <div class="callout ph3"><b>Production receives the artifact staging received</b>: nothing is rebuilt, and only <code>main</code> reaches it.</div></div>
+        <div class="callout ph3"><b>Production receives the artifact staging received</b>: nothing is rebuilt, and only <code>main</code> reaches it. The API reference is generated into that artifact, under <code>docs/api/</code>.</div></div>
       <div class="card"><h3>The documents, push to live <small>publish-docs.yml</small></h3>
         <ol class="steps"><li class="ph1">push under docs/</li><li class="ph2">target check</li><li class="ph2">refusal check</li><li class="ph2">publish-info.json</li><li class="ph3">upload</li><li class="ph3">confirm served</li></ol>
         <div class="callout ph3"><b>The one path with no staging and no approval</b>, for <code>docs/</code> only. A refused name stops the whole publish; the check after the upload only reports.</div></div>
@@ -650,7 +651,7 @@ footer code{color:var(--ink-2)}
         <tr><th><span class="sw" data-sys="shared"></span>shared</th><td>no failure channel of its own; a decoding error from <code>ApiJson</code> reaches the caller; unknown keys are ignored</td></tr>
         <tr><th><span class="sw" data-sys="server"></span>server</th><td>any uncaught <code>Throwable</code> is logged and answered 500 with <code>ApiError</code>; an unknown <code>/api</code> path is a 404; no retries</td></tr>
         <tr><th><span class="sw" data-sys="web"></span>web</th><td><code>refresh()</code> catches every failure and returns <code>null</code>, so the bundled copy stays; no retries</td></tr>
-        <tr><th><span class="sw" data-sys="deployment"></span>deployment</th><td>fails closed: a bad target, a missing approval gate or a refused file name stops the job; the live-site check retries its request 3 times</td></tr>
+        <tr><th><span class="sw" data-sys="deployment"></span>deployment</th><td>fails closed: a bad target, a missing approval gate, a refused file name or a site artifact without its API reference stops the job; a documentation warning fails the build that makes the site; the live-site check retries its request 3 times</td></tr>
       </tbody></table></div>
     <div class="guarantee-card"><h3>Extension points</h3>
       <table class="gtbl"><tbody>
@@ -659,14 +660,15 @@ footer code{color:var(--ink-2)}
         <tr><th><span class="sw" data-sys="web"></span>web</th><td>the site's text, through <code>OrganizationContent</code> in shared</td></tr>
         <tr><th><span class="sw" data-sys="deployment"></span>deployment</th><td>the <code>SPACESHIP_*</code> repository variables and secrets; the <code>spaceship-deploy</code> action's inputs</td></tr>
       </tbody></table></div>
-    <div class="guarantee-card"><h3>Test levels <small>2 classes</small></h3>
+    <div class="guarantee-card"><h3>Test levels <small>5 classes</small></h3>
       <div class="scroll"><table class="gtbl"><thead><tr><th>System</th><th class="n">L1 gating</th><th class="n">L2 component</th><th class="n">L3 integration</th><th class="n">L4a deterministic</th><th class="n">L4b e2e</th><th class="n">L4c non-functional</th><th class="n">L5 UAT</th><th class="n">no level package</th></tr></thead><tbody>
         <tr><th><span class="sw" data-sys="shared"></span>shared</th><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1</td></tr>
-        <tr><th><span class="sw" data-sys="server"></span>server</th><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1</td></tr>
+        <tr><th><span class="sw" data-sys="server"></span>server</th><td class="n">0</td><td class="n">0</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1</td></tr>
         <tr><th><span class="sw" data-sys="web"></span>web</th><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
-        <tr><th><span class="sw" data-sys="deployment"></span>deployment</th><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><th><span class="sw" data-sys="deployment"></span>deployment</th><td class="n">1</td><td class="n">0</td><td class="n">1</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
       </tbody></table></div>
-      <p><span class="gap">The repository has no <code>testing.&lt;level&gt;</code> packages: its two test classes sit in each module's own package.</span></p></div>
+      <p>deployment's two classes are the test-only <code>workflow-checks</code> module's, which ships nothing. The test report is <code>build/reports/tests/index.html</code>, a build output.</p>
+      <p><span class="gap"><code>ApplicationTest</code> and <code>OrganizationContentTest</code> still sit in their module's own package, outside the <code>testing.&lt;level&gt;</code> packages.</span></p></div>
     <div class="guarantee-card"><h3>Compatibility &amp; versioning</h3>
       <table class="gtbl"><tbody>
         <tr><th><span class="sw" data-sys="shared"></span>shared</th><td><code>0.1.0</code> · no published artifact · <span class="gap">no ABI check or deprecation policy</span></td></tr>
@@ -699,7 +701,7 @@ footer code{color:var(--ink-2)}
       <table class="gtbl"><tbody>
         <tr><th><span class="sw" data-sys="shared"></span>shared</th><td>compiled into server and web; not deployed on its own</td></tr>
         <tr><th><span class="sw" data-sys="server"></span>server</th><td>built by CI and the <code>Dockerfile</code>; no workflow here deploys it</td></tr>
-        <tr><th><span class="sw" data-sys="web"></span>web</th><td>staged first; production only after a person approves, and only from <code>main</code></td></tr>
+        <tr><th><span class="sw" data-sys="web"></span>web</th><td>staged first; production only after a person approves, and only from <code>main</code>; the API reference ships inside the same artifact, at <code>docs/api/</code>; <span class="gap">not deployed yet: no staging or production run has carried this build</span></td></tr>
         <tr><th><span class="sw" data-sys="deployment"></span>deployment</th><td><code>docs/</code> alone goes straight live; symbolic links and names the server would execute are refused, and nothing is published then</td></tr>
       </tbody></table></div>
   </div>
@@ -712,16 +714,16 @@ footer code{color:var(--ink-2)}
       <p>The tracker has no tracking issue and the repository keeps no roadmap document.</p></div>
     <div class="card"><h3>Unscheduled issues <small>3 open · 2026-11-09</small></h3>
       <ul class="issues">
+        <li><a href="https://github.com/SpartanLaboratories/OrganizationPage/issues/12" target="_blank" rel="noopener">#12</a><span><a data-board="12">Local JS builds leave an untracked kotlin-js-store/yarn.lock</a></span><span class="tags"><span class="badge" data-sys="web">web</span></span></li>
         <li><a href="https://github.com/SpartanLaboratories/OrganizationPage/issues/9" target="_blank" rel="noopener">#9</a><span><a data-board="9">Staging target check compares folder strings, not resolved paths</a></span><span class="tags"><span class="badge" data-sys="deployment">deployment</span><span class="badge bug">bug</span></span></li>
-        <li><a href="https://github.com/SpartanLaboratories/OrganizationPage/issues/8" target="_blank" rel="noopener">#8</a><span><a data-board="8">Do not start a deployment for documentation-only pushes</a></span><span class="tags"><span class="badge" data-sys="deployment">deployment</span></span></li>
-        <li><a href="https://github.com/SpartanLaboratories/OrganizationPage/issues/7" target="_blank" rel="noopener">#7</a><span><a data-board="7">Adopt the organization's Dokka and project site standard</a></span></li>
+        <li><a href="https://github.com/SpartanLaboratories/OrganizationPage/issues/7" target="_blank" rel="noopener">#7</a><span><a data-board="7">Adopt the organization's Dokka and project site standard</a></span><span class="tags"><span class="badge" data-sys="shared">shared</span><span class="badge" data-sys="server">server</span><span class="badge" data-sys="web">web</span><span class="badge" data-sys="deployment">deployment</span></span></li>
       </ul></div>
     <div class="card"><h3>Plans and documents</h3>
       <ul class="docs">
         <li><a href="https://github.com/SpartanLaboratories/OrganizationPage/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
         <li><a href="../DEPLOYMENT.md">Deployment reference</a>: the policy and how the workflows implement it</li>
         <li><code>systems.json</code>: the registry this board is built from</li>
-        <li>Issue board: <a data-issue="8">#8</a></li>
+        <li>Issue boards: <a data-issue="7">#7</a>, <a data-issue="8">#8</a></li>
         <li><a data-workboard>Repository work board</a>: every planning and development run in the repository</li>
       </ul></div>
   </div>
@@ -739,33 +741,33 @@ footer code{color:var(--ink-2)}
     {"slug": "organizationpage", "name": "OrganizationPage", "kind": "repo", "parent": null, "status": "built",
      "function": "The Spartan Laboratories website: a Kotlin multi-module build whose shared models and copy feed a Compose HTML frontend and a Ktor server, and the deployment system that moves it to the live host.",
      "paths": ["."], "version": null,
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": 8, "sha": "dbfa430"},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"},
      "board": "index.html", "dsl": "workspace.dsl"},
 
     {"slug": "shared", "name": "shared", "kind": "system", "parent": null, "status": "built",
      "function": "Data models, API routes, JSON configuration and the site copy, the single contract between the backend and the frontend.",
      "paths": ["shared/"], "version": "0.1.0",
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": null, "sha": "5bacc4f"}},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}},
 
     {"slug": "server", "name": "server", "kind": "system", "parent": null, "status": "built",
-     "function": "Ktor backend on Netty: the JSON API under /api and the compiled frontend, packaged as one runnable jar.",
+     "function": "Ktor backend on Netty: the JSON API under /api and the compiled frontend with its API reference, packaged as one runnable jar.",
      "paths": ["server/"], "version": "0.1.0",
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": null, "sha": "de82de2"}},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}},
 
     {"slug": "web", "name": "web", "kind": "system", "parent": null, "status": "built",
-     "function": "Compose HTML frontend in Kotlin/JS: builds to a static site that renders its bundled copy and, when the Ktor server hosts it, the live copy from the API.",
+     "function": "Compose HTML frontend in Kotlin/JS: builds to a static site that renders its bundled copy and, when the Ktor server hosts it, the live copy from the API, and carries the generated API reference at docs/api/.",
      "paths": ["web/"], "version": "0.1.0",
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": null, "sha": "5bacc4f"}},
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}},
 
     {"slug": "deployment", "name": "deployment", "kind": "system", "parent": null, "status": "built",
-     "function": "Moves repository content to the live host on two paths: the site through staging and a person's approval to production, and docs/ straight to the documents folder.",
-     "paths": [".github/", "Dockerfile"], "version": null,
-     "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-     "lastAmended": {"issue": 8, "sha": "dbfa430"}}
+     "function": "Moves repository content to the live host on two paths: the site through staging and a person's approval to production, and docs/ straight to the documents folder; the test-only workflow-checks module holds its workflows' regression tests.",
+     "paths": [".github/", "Dockerfile", "workflow-checks/"], "version": null,
+     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+     "lastAmended": {"issue": 7, "sha": "38477af"}}
   ]
 }
 </script>
@@ -776,16 +778,16 @@ footer code{color:var(--ink-2)}
 {
   "slug": "organizationpage",
   "version": null,
-  "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-  "lastAmended": {"issue": 8, "title": "Do not start a deployment for documentation-only pushes", "sha": "dbfa430"},
-  "written": {"sha": "dbfa430"}
+  "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+  "lastAmended": {"issue": 7, "title": "Adopt the organization's Dokka and project site standard", "sha": "38477af"},
+  "written": {"sha": "38477af"}
 }
 </script>
 
 <!-- A verbatim copy of workspace.dsl (scripts/embed.js … dsl). -->
 <script type="text/plain" id="dsl">
 // OrganizationPage — C4 model as code (Structurizr DSL): the repository's systems and how they interact. Source of truth for docs/dashboards/index.html.
-// As-is at OrganizationPage build/issue-8-no-deploy-docs-only dbfa430 (2026-11-09), the three Gradle modules at 0.1.0. Code is authoritative on any conflict.
+// As-is at OrganizationPage feat/issue-7-dokka-and-project-site 38477af (2026-11-09), the three Gradle modules at 0.1.0. Code is authoritative on any conflict.
 workspace "OrganizationPage" "The Spartan Laboratories website and the deployment system that puts it live." {
 
     !identifiers hierarchical
@@ -796,20 +798,20 @@ workspace "OrganizationPage" "The Spartan Laboratories website and the deploymen
         github     = softwareSystem "GitHub" "Runs the workflows and holds the production environment's required reviewers." "External"
         spaceship  = softwareSystem "Spaceship hosting" "Shared web hosting reached over FTPS: the production, staging and documents folders." "External"
 
-        repo = softwareSystem "OrganizationPage" "The Spartan Laboratories website: three Gradle modules and the workflows that deploy them." {
+        repo = softwareSystem "OrganizationPage" "The Spartan Laboratories website: three Gradle modules, the workflows that deploy them and those workflows' tests." {
             shared = container "shared" "Data models, API routes, JSON configuration and the site copy." "Kotlin Multiplatform (JVM + JS) · 0.1.0"
-            server = container "server" "The JSON API under /api and the compiled frontend, as one runnable jar." "Ktor on Netty, Kotlin/JVM · 0.1.0"
-            web    = container "web" "The browser UI, built to a static site of index.html and web.js." "Compose HTML, Kotlin/JS · 0.1.0"
-            deploy = container "deployment" "The site path through staging and approval to production, and the docs/ path straight to the documents folder." "GitHub Actions workflows and a composite action"
+            server = container "server" "The JSON API under /api, the compiled frontend and the API reference, as one runnable jar." "Ktor on Netty, Kotlin/JVM · 0.1.0"
+            web    = container "web" "The browser UI, built to a static site of index.html, web.js, the logo and the API reference under docs/api/." "Compose HTML, Kotlin/JS · 0.1.0"
+            deploy = container "deployment" "The site path through staging and approval to production, and the docs/ path straight to the documents folder. Its regression tests are the test-only workflow-checks module." "GitHub Actions workflows, a composite action and a test-only Gradle module"
         }
 
         visitor -> repo.web "Reads the site in a browser"
         maintainer -> repo.deploy "Pushes, checks staging, approves production"
-        repo.web -> repo.shared "Renders its models and bundled copy"
+        repo.web -> repo.shared "Renders its models and bundled copy; packages its API reference"
         repo.server -> repo.shared "Serves its models and copy"
         repo.server -> repo.web "Embeds its production bundle under /static"
-        repo.web -> repo.server "Fetches /api/organization when served by it"
-        repo.deploy -> repo.web "Builds and uploads its production bundle"
+        repo.web -> repo.server "Fetches /api/organization when served by it; packages its API reference"
+        repo.deploy -> repo.web "Builds and uploads its production bundle, API reference included"
         repo.deploy -> repo.server "Runs its tests; CI builds its jar"
         repo.deploy -> repo.shared "Runs its tests"
         repo.deploy -> github "Runs on Actions; reads the production environment's protection rules"
@@ -817,18 +819,18 @@ workspace "OrganizationPage" "The Spartan Laboratories website and the deploymen
     }
 
     views {
-        systemContext repo "Context" "OrganizationPage and who touches it, as built at build/issue-8-no-deploy-docs-only dbfa430." {
+        systemContext repo "Context" "OrganizationPage and who touches it, as built at feat/issue-7-dokka-and-project-site 38477af." {
             include *
             autoLayout lr
         }
-        container repo "Containers" "The systems in the repository, as built at build/issue-8-no-deploy-docs-only dbfa430." {
+        container repo "Containers" "The systems in the repository, as built at feat/issue-7-dokka-and-project-site 38477af." {
             include *
             autoLayout lr
         }
-        dynamic repo "SitePush" "A push to main that changes the site, from build to production, as built at build/issue-8-no-deploy-docs-only dbfa430." {
-            maintainer -> repo.deploy "push to main, outside docs/"
-            repo.deploy -> repo.web "jsBrowserDistribution, then the site artifact"
-            repo.deploy -> spaceship "upload to the staging folder"
+        dynamic repo "SitePush" "A push to main that changes the site, from build to production, as built at feat/issue-7-dokka-and-project-site 38477af." {
+            maintainer -> repo.deploy "push to main, outside docs/ or under docs/brand/ or docs/dokka/"
+            repo.deploy -> repo.web "jsBrowserDistribution with the API reference, then the site artifact"
+            repo.deploy -> spaceship "mark every page, then upload to the staging folder"
             maintainer -> repo.deploy "approve the production environment"
             repo.deploy -> github "read the environment's protection rules"
             repo.deploy -> spaceship "upload the same artifact to production"
@@ -879,7 +881,7 @@ const REPO="https://github.com/"+REG.repo;
    and the title opens the board, written <a data-board="N">title</a> by hand, plain text while the issue has none. A lone #n opens
    the board when one exists and the GitHub issue otherwise: ilink(n), or <a data-issue="N">#N</a> by hand. linkIssues() resolves
    the hand-written ones at load. */
-const BOARDS={"8":"../plans/8-docs-only-deploy-skip/dashboard.html"}; // fill: issue number → its issue board relative to this board, on this one line, e.g. {"38":"../../plans/38-slug/dashboard.html"}
+const BOARDS={"7":"../plans/7-dokka-and-project-site/dashboard.html","8":"../plans/8-docs-only-deploy-skip/dashboard.html"}; // fill: issue number → its issue board relative to this board, on this one line, e.g. {"38":"../../plans/38-slug/dashboard.html"}
 /* the newest board of each issue on this machine (plan/RULES.md §1, "The newest board on this machine"): docs/plans/.live/boards.js, beside the
    live marker, which board.js --live writes in every checkout; opened from disk, an issue's link opens it (a run in flight in a worktree,
    a landed issue's live view copy) before BOARDS, the boards as committed; a published copy has no marker */
@@ -930,10 +932,10 @@ $("#sys-count").textContent=`${SYSTEMS.filter(s=>s.status==="built").length} bui
 /* ---------- System colours ----------
    One categorical slot per top-level system (one whose parent is not itself on this board), by its place in registry order; a child takes its
    top-level ancestor's slot. An archived system holds no slot and is drawn neutral, solid and faded; what its place frees goes to the next
-   system with none (a seventh top-level system on), so archiving one moves no other system's colour (system/scripts/palette.js colourSlots(),
+   system with none (a thirteenth top-level system on), so archiving one moves no other system's colour (system/scripts/palette.js colourSlots(),
    the same rule). Six slots: a system with none left, and any slug the registry does not know, fold into the neutral "other". Every element drawn for a system sets --c from here — paintSystems() does it for hand-written [data-sys]
    elements — so a system keeps one colour on every tab. */
-const SLOTS=6, bySlug=slug=>SYSTEMS.find(s=>s.slug===slug);
+const SLOTS=12, bySlug=slug=>SYSTEMS.find(s=>s.slug===slug);
 function sysTop(slug){ const s=bySlug(slug); if(!s||s.status==="archived") return null; let h=s,c=s; while(bySlug(c.parent)){ c=bySlug(c.parent); if(c.status!=="archived") h=c; } return h; }
 const TOPS=SYSTEMS.filter(s=>!bySlug(s.parent));
 const SLOT_OF=(()=>{ const m=new Map(), hs=[...new Set(SYSTEMS.map(s=>sysTop(s.slug)).filter(Boolean))]; hs.forEach(h=>{ const i=TOPS.indexOf(h); if(i>=0&&i<SLOTS) m.set(h.slug,i+1); });
@@ -1033,9 +1035,9 @@ const MODEL = {
     lanes:[],
     notes:[{x:30,y:374,lines:["Each box is a system in its colour. Arrows point at what a system depends on, labelled with how."]}],
     nodes:[
-      {id:"deployment",sys:"deployment",x:370,y:30,w:260,h:60,t:"deployment",s:"workflows and the FTPS action",d:{role:"Three workflows and one composite action: CI on branches and pull requests, the site path through staging and approval to production, and the docs/ path straight to the documents folder."}},
-      {id:"web",sys:"web",x:40,y:150,w:260,h:60,t:"web",s:"Compose HTML, Kotlin/JS · 0.1.0",d:{role:"The browser UI. Renders the copy compiled into its bundle straight away, then replaces it with the server's copy when /api/organization answers."}},
-      {id:"server",sys:"server",x:700,y:150,w:260,h:60,t:"server",s:"Ktor on Netty, Kotlin/JVM · 0.1.0",d:{role:"The JSON API under /api and the compiled frontend from one jar, organization-page-server.jar. The deploy workflows upload the web bundle only; the jar or the Dockerfile image needs a host that runs a JVM or containers."}},
+      {id:"deployment",sys:"deployment",x:370,y:30,w:260,h:60,t:"deployment",s:"workflows, FTPS action, its tests",d:{role:"Three workflows and one composite action: CI on branches and pull requests, the site path through staging and approval to production, and the docs/ path straight to the documents folder. The test-only workflow-checks Gradle module, which ships nothing, runs deploy-spaceship.yml's staging step over a fixture of the site and asserts its push filter."}},
+      {id:"web",sys:"web",x:40,y:150,w:260,h:60,t:"web",s:"Compose HTML, Kotlin/JS · 0.1.0",d:{role:"The browser UI. Renders the copy compiled into its bundle straight away, then replaces it with the server's copy when /api/organization answers. Its production distribution also carries the logo and, at docs/api/, the API reference generated from all three modules."}},
+      {id:"server",sys:"server",x:700,y:150,w:260,h:60,t:"server",s:"Ktor on Netty, Kotlin/JVM · 0.1.0",d:{role:"The JSON API under /api and the compiled frontend from one jar, organization-page-server.jar, which also serves the API reference at /docs/api/ through the same static resources. The deploy workflows upload the web bundle only; the jar or the Dockerfile image needs a host that runs a JVM or containers."}},
       {id:"shared",sys:"shared",x:370,y:290,w:260,h:60,t:"shared",s:"Kotlin Multiplatform · 0.1.0",d:{role:"Data models, API routes, ApiJson and the site copy in OrganizationContent: the one place the backend and the frontend agree on."}}
     ],
     deps:[
@@ -1054,24 +1056,26 @@ const MODEL = {
     "browser main thread":{sys:"web",kind:"thread",created:"by the browser when the page loads",runs:"renderComposable on the root element, and the Compose tree in App.kt.",note:"web.js starts no worker of its own."},
     "refresh coroutine":{sys:"web",kind:"thread",created:"by LaunchedEffect(Unit), once, on the first composition",runs:"One fetch of /api/organization through OrganizationRepository.refresh(), on the browser's thread.",note:"A coroutine, not a thread: it runs once per page load and never retries."},
     "CI build":{sys:"deployment",kind:"process",created:"on a pull request or a push to any branch but main, on ubuntu-24.04",runs:"./gradlew build :server:buildFatJar, and uploads the server jar as a 7-day artifact.",note:"Concurrency group ci-<ref>: a newer run cancels the one in progress. It never deploys."},
-    "Deploy build":{sys:"deployment",kind:"process",created:"on a push to main that changes a file outside docs/, or Run workflow, on ubuntu-24.04",runs:"./gradlew check :web:jsBrowserDistribution, writes build-info.json and stores the site artifact for 90 days.",note:"Nothing under docs/ feeds this build, so a push that changes only docs/ does not start it."},
-    "Deploy staging":{sys:"deployment",kind:"process",created:"after Deploy build, automatically",runs:"Checks the staging target, marks the upload [Staging] with noindex, and uploads through spaceship-deploy.",note:"Concurrency group deploy-staging, not cancelled in progress."},
+    "CI API docs":{sys:"deployment",kind:"process",created:"on a pull request or a push to any branch but main, on ubuntu-24.04, in the same CI run as the build",runs:"./gradlew dokkaGeneratePublicationHtml, the job named API docs (Dokka).",note:"Every Dokka publication sets failOnWarning, so a broken KDoc link fails it."},
+    "Deploy build":{sys:"deployment",kind:"process",created:"on a push to main that changes a file outside docs/, or under docs/brand/ or docs/dokka/, or Run workflow, on ubuntu-24.04",runs:"./gradlew check :web:jsBrowserDistribution, which generates the API reference into the site, writes build-info.json and stores the site artifact for 90 days.",note:"Of docs/, only docs/brand/ and docs/dokka/ feed this build, so a push that changes only other files under docs/ does not start it. A documentation warning fails the build."},
+    "Deploy staging":{sys:"deployment",kind:"process",created:"after Deploy build, automatically",runs:"Checks the staging target, fails if the artifact has no API reference, marks every page of the upload [Staging] with noindex, and uploads through spaceship-deploy.",note:"Concurrency group deploy-staging, not cancelled in progress."},
     "Deploy production":{sys:"deployment",kind:"process",created:"after Deploy staging, on main only, once a person approves the production environment",runs:"Checks the target, requires the environment's required reviewers, then uploads the same artifact.",note:"Concurrency group deploy-production, not cancelled in progress. It never cleans the remote folder."},
     "Docs publish":{sys:"deployment",kind:"process",created:"on a push to main that changes a file under docs/, or Run workflow on main, on ubuntu-24.04",runs:"Checks the target, refuses executable names and symbolic links, uploads docs/ and confirms the live site serves this run's publish-info.json.",note:"Concurrency group publish-docs, not cancelled in progress. No GitHub environment: the production reviewer does not apply."}
   },
   // Decision paths: what a push starts, what a manual run does, and which copy of the content a page shows.
   flows:[
-    {id:"push",label:"a push",kicker:"DECISION PATH",runsOn:"",foot:"on push: deploy-spaceship.yml ignores docs/**, publish-docs.yml watches docs/**, ci.yml ignores main",
-     controls:[{key:"ref",label:"Branch",def:"main",options:[["main","main"],["other","another branch"]]},{key:"what",label:"Changes",def:"site",options:[["docs","only docs/"],["site","only outside docs/"],["both","both"]]}],
+    {id:"push",label:"a push",kicker:"DECISION PATH",runsOn:"",foot:"on push: deploy-spaceship.yml skips docs/ except docs/brand/ and docs/dokka/, publish-docs.yml watches docs/**, ci.yml ignores main",
+     controls:[{key:"ref",label:"Branch",def:"main",options:[["main","main"],["other","another branch"]]},{key:"what",label:"Changes",def:"site",options:[["docs","only other files under docs/"],["brand","only docs/brand/ or docs/dokka/"],["site","only outside docs/"],["both","outside docs/ and under it"]]}],
      names:{main:"push to main",other:"push to another branch"},
      nodes:{IN:{c:0,r:0,k:"p",t:["a push"]},BR:{c:1,r:0,k:"d",t:["to main?"]},WHAT:{c:2,r:0,k:"d",t:["what does","it change?"]},
-            DOCS:{c:3,r:0,k:"t",sys:"deployment",t:["docs/ published","at once"]},SITE:{c:3,r:1,k:"t",sys:"web",t:["site: staging,","then approval"]},BOTH:{c:3,r:2,k:"t",sys:"deployment",t:["both run,","independently"]},
+            DOCS:{c:3,r:0,k:"t",sys:"deployment",t:["docs/ published","at once"]},SITE:{c:3,r:1,k:"t",sys:"web",t:["site: staging,","then approval"]},BRAND:{c:3,r:2,k:"t",sys:"deployment",t:["docs/ published,","site staged too"]},BOTH:{c:3,r:3,k:"t",sys:"deployment",t:["both run,","independently"]},
             CI:{c:1,r:1,k:"t",sys:"deployment",t:["CI: build","and test"]}},
-     edges:[["IN","BR"],["BR","WHAT","yes"],["BR","CI","no"],["WHAT","DOCS","only docs/"],["WHAT","SITE","outside"],["WHAT","BOTH","both"]],
+     edges:[["IN","BR"],["BR","WHAT","yes"],["BR","CI","no"],["WHAT","DOCS","other docs/"],["WHAT","SITE","outside"],["WHAT","BRAND","brand, dokka"],["WHAT","BOTH","both"]],
      rules(s){ const p=["IN","BR"], R=(outcome,irrelevant)=>({path:p,outcome,irrelevant:irrelevant||[]});
        if(s.ref==="other"){ p.push("CI"); return R("OrganizationPage CI runs ./gradlew build and :server:buildFatJar; nothing deploys. A pull request runs it too.",["what"]); }
        p.push("WHAT");
        if(s.what==="docs"){ p.push("DOCS"); return R("OrganizationPage Docs Publish uploads docs/ to the documents folder with no staging and no approval; OrganizationPage Deploy does not start."); }
+       if(s.what==="brand"){ p.push("BRAND"); return R("Both workflows run: the documents publish puts docs/ live at once, and OrganizationPage Deploy builds the site with the changed logo or stylesheet, then waits for staging and a person's approval."); }
        if(s.what==="both"){ p.push("BOTH"); return R("Both workflows run: docs/ goes live at once, and the rest waits for staging and a person's approval."); }
        p.push("SITE"); return R("OrganizationPage Deploy builds, deploys to staging automatically and waits for a person to approve production; OrganizationPage Docs Publish does not start."); }},
     {id:"manual",label:"Run workflow",kicker:"DECISION PATH",runsOn:"",foot:"workflow_dispatch: only main can reach production or publish docs/",
@@ -1098,12 +1102,12 @@ const MODEL = {
     lifelines:[{n:"maintainer",side:"consumer"},{n:"deployment",sys:"deployment"},{n:"web",sys:"web"},{n:"server",sys:"server"},{n:"GitHub",side:"external"},{n:"Spaceship",side:"external"}],
     phases:[["BUILD",0,3],["STAGING",4,5],["APPROVAL",6,9],["PRODUCTION",10,10]],
     steps:[
-      {f:0,t:1,l:"push to main",n:"A push to main that changes a file outside docs/ starts OrganizationPage Deploy."},
-      {f:1,t:3,l:"./gradlew check",n:"The build job runs every module's tests: shared's and server's. web has none."},
-      {f:1,t:2,l:"jsBrowserDistribution",n:"The production static site, built once."},
+      {f:0,t:1,l:"push to main",n:"A push to main that changes a file outside docs/, or under docs/brand/ or docs/dokka/, starts OrganizationPage Deploy."},
+      {f:1,t:3,l:"./gradlew check",n:"The build job runs every module's tests: shared's, server's and the deploy workflow's own in workflow-checks. web has none."},
+      {f:1,t:2,l:"jsBrowserDistribution",n:"The production static site with the generated API reference at docs/api/, built once."},
       {f:2,t:1,l:"site artifact",ret:true,n:"The site with build-info.json naming the commit and run, kept for 90 days."},
       {f:1,t:1,self:true,l:"check staging target",n:"Refuses a staging folder that is the FTP root or the production folder."},
-      {f:1,t:5,l:"upload to staging",n:"The staging copy alone gets a [Staging] title prefix and a noindex tag, then spaceship-deploy uploads it over FTPS."},
+      {f:1,t:5,l:"upload to staging",n:"The artifact must hold the API reference. The staging copy alone gets a [Staging] title prefix and a noindex tag on every page, then spaceship-deploy uploads it over FTPS."},
       {f:1,t:0,l:"waits for approval",n:"The production job does not start until a required reviewer approves the production environment."},
       {f:0,t:1,l:"approve",n:"Approved under Review deployments after checking staging; rejecting leaves production untouched."},
       {f:1,t:4,l:"read protection rules",n:"The production job asks the API for the environment's protection rules."},
