@@ -15,6 +15,11 @@ on:
   push:
     branches:
       - main
+    # Files under docs/ are published by publish-docs.yml. Nothing under docs/ feeds the
+    # site build, so a push that changes only docs/ starts no staging or production run.
+    # If the site build ever reads docs/, remove or narrow this filter.
+    paths-ignore:
+      - 'docs/**'
   # Run manually from the Actions tab to stage any branch. Only main can reach production.
   workflow_dispatch:
     inputs:
@@ -32,11 +37,13 @@ permissions:
 
 # Folders are paths as the FTP login sees them (it starts in the hosting account's home
 # folder). Repository variables of the same name override these defaults.
+# publish-docs.yml repeats the production and staging defaults; keep them in step.
 env:
   PRODUCTION_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR || '/spartanlaboratories.org' }}
   PRODUCTION_URL: ${{ vars.SPACESHIP_PRODUCTION_URL || 'https://spartanlaboratories.org' }}
   # Staging is a subfolder of the production site (staging.spartanlaboratories.org
-  # redirects to it), so production deploys must never clean their target folder.
+  # redirects to it), so production deploys must never clean their target folder; the
+  # published documents sit inside it too.
   STAGING_REMOTE_DIR: ${{ vars.SPACESHIP_STAGING_REMOTE_DIR || '/spartanlaboratories.org/staging' }}
   STAGING_URL: ${{ vars.SPACESHIP_STAGING_URL || 'https://spartanlaboratories.org/staging/' }}
 
@@ -234,7 +241,8 @@ jobs:
           protocol: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
           port: ${{ vars.SPACESHIP_FTP_PORT }}
           timeout: ${{ vars.SPACESHIP_FTP_TIMEOUT }}
-          # Never clean: the production folder also holds the staging site.
+          # Never clean: the production folder also holds the staging site and the
+          # published documents.
           clean-remote: "false"
 
       - name: Summary

@@ -9,11 +9,11 @@ is the full reference.
 These rules apply to OrganizationPage only. They are a prototype that may later be
 adopted by other projects, but they are not organization-wide policy.
 
-1. **Staging first.** Every change goes to staging first and is checked in a browser
-   before it reaches production.
-2. **A person approves production.** Production only changes after a person explicitly
-   approves it. No automatic, direct or auto-approved production deploys, and no
-   skipping or weakening the approval step.
+1. **Staging first.** Every change outside `docs/` goes to staging first and is checked
+   in a browser before it reaches production.
+2. **A person approves production.** Outside `docs/`, production only changes after a
+   person explicitly approves it: no automatic, direct or auto-approved production
+   deploys, and no skipping or weakening the approval step.
 3. **Ship what was staged.** Production gets the exact build that was staged, never a
    fresh build.
 4. **One deploy mechanism.** Staging and production deploy the same way, so staging
@@ -28,6 +28,15 @@ adopted by other projects, but they are not organization-wide policy.
    ("OrganizationPage Deploy", "OrganizationPage CI").
 9. **Owner go-ahead.** Deploying to the live server needs the owner's go-ahead, and the
    owner checks staging before anything ships.
+10. **`docs/` goes live directly.** A push to `main` that changes a file under `docs/`
+    publishes `docs/` straight to the live site, with no staging and no approval, so the
+    boards stay current. Rules 1, 2, 3, 5 and 9 do not apply to that publication. The
+    exemption covers `docs/` and nothing else: every other change, including the rest of
+    a push that also changes `docs/`, keeps the full path.
+
+A pull request that changes only boards may be approved and merged by the automated
+version control process without the owner's review. This applies to OrganizationPage
+only.
 
 ## How the policy is implemented
 
@@ -45,15 +54,48 @@ build (tests + site artifact) ──> staging (automatic) ──> production (ma
 - **production** runs only for `main`, and waits for approval before uploading the same
   artifact.
 
-**Triggers:** a push to `main` runs staging, then production after approval. A manual
-run (Actions → OrganizationPage Deploy → Run workflow) on any branch deploys to staging
-only.
+**Triggers:** a push to `main` that changes a file outside `docs/` runs staging, then
+production after approval; a push that changes only files under `docs/` does not start
+this workflow. A manual run (Actions → OrganizationPage Deploy → Run workflow) on a
+branch other than `main` deploys to staging only; a manual run on `main` also reaches the
+production job and waits for approval there.
 
 Keep the filename. GitHub only shows the "Run workflow" button for workflow files that
 are already on `main`, so renaming the file would lose it.
 
 `.github/workflows/ci.yml` ("OrganizationPage CI") builds and tests pull requests and
 pushes to branches other than `main`. It never deploys.
+
+### Documents workflow
+
+`.github/workflows/publish-docs.yml`, named **"OrganizationPage Docs Publish"**, uploads
+`docs/` to the documents folder on every push to `main` that changes a file under
+`docs/`. It implements rule 10. It has no staging step and declares no GitHub
+environment, so the `production` environment's required reviewer does not apply to it.
+
+Two guards run before the upload and one after it. A target check on resolved paths
+requires the documents folder to be strictly inside the production folder and clear of
+the staging folder. A refusal check stops the job on any symbolic link, and on any file
+the server would execute or interpret (the names are listed in the workflow): the job
+names each one and publishes nothing. A check after the upload compares the live site's
+`publish-info.json` with the one this run wrote, so a copy left by an earlier run cannot
+pass it. The check after the upload only reports: when it fails, the files have already
+been uploaded, possibly to another folder, so look for them on the host before
+re-running.
+
+`docs/index.html` must stay: the shared deploy action refuses a folder without one, so
+every publish fails if it is removed or renamed.
+
+A push that changes both `docs/` and other files runs both workflows independently:
+`docs/` goes live at once, the rest waits for staging and approval.
+
+A workflow that a push does not match leaves no entry in the Actions list: no run, no
+skipped entry. A docs-only push therefore shows no "OrganizationPage Deploy" run, and a
+push with nothing under `docs/` shows no "OrganizationPage Docs Publish" run. That is
+expected.
+
+To republish by hand: Actions → OrganizationPage Docs Publish → Run workflow on `main`. A
+run on any other branch does nothing.
 
 ### Approval
 
@@ -67,7 +109,7 @@ pushes to branches other than `main`. It never deploys.
 ### Deploy mechanism
 
 One shared composite action, `.github/actions/spaceship-deploy`, uploads over FTPS
-(FTP-Deploy-Action) for both staging and production.
+(FTP-Deploy-Action) for staging, production and the published documents.
 
 - `ftp` is upgraded to `ftps`, because Spaceship commonly times out on plain FTP.
 - The port defaults to `21`, or `990` for `ftps-legacy`. Port `443` (control-connection
@@ -82,17 +124,29 @@ folder, so folders below are paths as the FTP login sees them.
 |------------|------------------------------------|-----|
 | Production | `/spartanlaboratories.org`         | https://spartanlaboratories.org |
 | Staging    | `/spartanlaboratories.org/staging` | https://spartanlaboratories.org/staging/ (`staging.spartanlaboratories.org` redirects there) |
+| Documents  | `/spartanlaboratories.org/OrganizationPage/docs` | https://spartanlaboratories.org/OrganizationPage/docs/ |
 
 The repository variable `SPACESHIP_REMOTE_DIR` is set to `/../../spartanlaboratories.org/`,
 which resolves to the same production folder.
 
-Because staging sits inside the production folder:
+Because staging and the published documents sit inside the production folder:
 
 - production deploys never wipe their folder (a clean-slate upload would delete
-  staging); their normal sync only removes files they uploaded themselves;
-- the manual "clean" option applies to staging only;
+  staging and the published documents); their normal sync only removes files they
+  uploaded themselves;
+- the manual "clean" option applies to staging only. The documents publish refuses a
+  documents folder that is, sits inside, or contains the staging folder, but it checks
+  this only when it runs: the staging job does not, so never point
+  `SPACESHIP_STAGING_REMOTE_DIR` at a folder that holds the documents;
 - the staging folder must differ from the production folder, and neither can be the
-  FTP root.
+  FTP root;
+- the documents folder must be strictly inside the production folder and must not be,
+  sit inside, or contain the staging folder;
+- each of the three folders keeps its own sync record (`.ftp-deploy-sync-state.json` in
+  the folder), so no sync removes what another uploaded;
+- the site's build output must never contain a top-level `OrganizationPage` or `staging`
+  entry: a later build without it would make production's sync remove that whole folder,
+  with the documents or staging in it.
 
 ### Staging marking
 
@@ -104,17 +158,27 @@ the site root.
 ### Secrets and variables
 
 Secrets (Settings → Secrets and variables → Actions): `SPACESHIP_FTP_SERVER`,
-`SPACESHIP_FTP_USERNAME`, `SPACESHIP_FTP_PASSWORD`. Both sites use them; environment
-secrets of the same name on `staging` override them for staging.
+`SPACESHIP_FTP_USERNAME`, `SPACESHIP_FTP_PASSWORD`. The site deployment's staging and
+production jobs and the documents publish use them; environment secrets of the same name
+on `staging` override them for staging.
 
 Optional variables: `SPACESHIP_REMOTE_DIR`, `SPACESHIP_PRODUCTION_URL`,
-`SPACESHIP_STAGING_REMOTE_DIR`, `SPACESHIP_STAGING_URL`, `SPACESHIP_FTP_PROTOCOL`,
-`SPACESHIP_FTP_PORT`, `SPACESHIP_FTP_TIMEOUT`. Defaults and meanings are listed in the
-README's one-time setup section.
+`SPACESHIP_STAGING_REMOTE_DIR`, `SPACESHIP_STAGING_URL`, `SPACESHIP_DOCS_REMOTE_DIR`,
+`SPACESHIP_DOCS_URL`, `SPACESHIP_FTP_PROTOCOL`, `SPACESHIP_FTP_PORT`,
+`SPACESHIP_FTP_TIMEOUT`. Defaults and meanings are listed in the table in the README's
+one-time setup section.
 
 ## Operating it
 
 - **Rolling back:** re-run the `production` job of an earlier successful `main` run and
   approve it. This works while that run's `site` artifact exists (90 days).
+- **Rolling back the documents:** revert the change on `main`; that push publishes the
+  reverted `docs/`. The site rollback above does not touch the documents.
 - **Checking what's live:** `/build-info.json` on either site shows the commit and run
   it was built from.
+- **Removing a published document:** delete it from `docs/` on `main`; the next publish
+  removes it from the site.
+- **The documents and `/build-info.json`:** that file describes the site build only, so
+  it says nothing about the documents.
+- **Checking which documents are live:** `/OrganizationPage/docs/publish-info.json` shows
+  the commit, run and attempt last published.

@@ -1,0 +1,142 @@
+# Publish docs/ to the live site on every push to main that changes it. This is the
+# project's one exemption from staging and approval (docs/DEPLOYMENT.md, rule 10); the
+# site itself goes through deploy-spaceship.yml.
+name: OrganizationPage Docs Publish
+run-name: OrganizationPage docs publish of ${{ github.ref_name }}
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+  # Re-publish by hand when no push would do it. Only main can publish.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Folders are paths as the FTP login sees them. The first two read the same repository
+# variables as deploy-spaceship.yml; keep the two files' defaults in step.
+env:
+  PRODUCTION_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR || '/spartanlaboratories.org' }}
+  STAGING_REMOTE_DIR: ${{ vars.SPACESHIP_STAGING_REMOTE_DIR || '/spartanlaboratories.org/staging' }}
+  DOCS_REMOTE_DIR: ${{ vars.SPACESHIP_DOCS_REMOTE_DIR || '/spartanlaboratories.org/OrganizationPage/docs' }}
+  DOCS_URL: ${{ vars.SPACESHIP_DOCS_URL || 'https://spartanlaboratories.org/OrganizationPage/docs/' }}
+
+jobs:
+  publish:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    # Deliberately no environment: the production environment's required reviewer must not
+    # apply to this job.
+    # One publish at a time: overlapping runs would both read the same sync record and the
+    # last write would win. Only the newest waiting run survives, which loses nothing
+    # because each run uploads the whole folder. GitHub does not guarantee queue order, so
+    # an older commit can occasionally publish last; the next push to docs/ corrects it.
+    concurrency:
+      group: publish-docs
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Check publish target
+        id: target
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Compare resolved paths: the production folder is configured as
+          # /../../spartanlaboratories.org/, which is the same folder as /spartanlaboratories.org/.
+          canonical() { realpath -m -- "/${1#/}"; }
+
+          docs_dir="$(canonical "$DOCS_REMOTE_DIR")"
+          production="$(canonical "$PRODUCTION_REMOTE_DIR")"
+          staging="$(canonical "$STAGING_REMOTE_DIR")"
+
+          if [[ "$production" == "/" || "$docs_dir" != "$production"/* ]]; then
+            echo "::error::SPACESHIP_DOCS_REMOTE_DIR ($docs_dir) must be strictly inside the production folder ($production)." >&2
+            exit 1
+          fi
+
+          if [[ "$docs_dir" == "$staging" || "$docs_dir" == "$staging"/* || "$staging" == "$docs_dir"/* ]]; then
+            echo "::error::SPACESHIP_DOCS_REMOTE_DIR ($docs_dir) must not be, sit inside, or contain the staging folder ($staging)." >&2
+            exit 1
+          fi
+
+          echo "remote_dir=$docs_dir/" >> "$GITHUB_OUTPUT"
+
+      - name: Refuse files the server would execute
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This path has no approval step, so nothing that runs on the host may reach it.
+          # Symbolic links are refused too: this check does not follow them, but the upload
+          # does, so a link could publish content from outside docs/.
+          # '*.pl' and '*.pl.*' are separate so that names such as x.plan.md are not refused.
+          # Trailing wildcards catch multi-extension names such as page.php.txt: Apache-style
+          # handlers can run them, and whether this host's server does is unconfirmed.
+          bad="$(find docs \( \
+              -iname '.htaccess' -o -iname '.htpasswd' -o -iname '.user.ini' -o -iname 'php.ini' \
+              -o -iname '*.php*' -o -iname '*.pht*' -o -iname '*.phar*' \
+              -o -iname '*.cgi*' -o -iname '*.fcgi*' -o -iname '*.pl' -o -iname '*.pl.*' -o -iname '*.plx*' \
+              -o -iname '*.ppl*' -o -iname '*.perl*' \
+              -o -iname '*.shtm*' -o -type l \) -print)"
+          if [[ -n "$bad" ]]; then
+            echo "::error::docs/ holds symbolic links or files the server would execute or interpret, so nothing was published:" >&2
+            printf '%s\n' "$bad" >&2
+            exit 1
+          fi
+
+      - name: Record publish info
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Differs on every attempt, so the check after the upload can tell this run's copy
+          # from one an earlier run left behind. Written on the runner only, never committed.
+          printf '{"commit":"%s","run":"%s","attempt":"%s"}\n' \
+            "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" > docs/publish-info.json
+
+      - name: Publish docs
+        uses: ./.github/actions/spaceship-deploy
+        with:
+          local-dir: docs/
+          remote-dir: ${{ steps.target.outputs.remote_dir }}
+          server: ${{ secrets.SPACESHIP_FTP_SERVER }}
+          username: ${{ secrets.SPACESHIP_FTP_USERNAME }}
+          password: ${{ secrets.SPACESHIP_FTP_PASSWORD }}
+          protocol: ${{ vars.SPACESHIP_FTP_PROTOCOL }}
+          port: ${{ vars.SPACESHIP_FTP_PORT }}
+          timeout: ${{ vars.SPACESHIP_FTP_TIMEOUT }}
+          # Never clean: the normal sync removes only files this upload put there itself.
+          clean-remote: "false"
+
+      - name: Confirm this run was published
+        shell: bash
+        run: |
+          set -euo pipefail
+          # The upload action treats a failure to enter the target folder as a first publish,
+          # so the upload can succeed with the files in another folder. An earlier run's copy
+          # would still answer 200, so compare what is served with the marker this run wrote.
+          # The query string keeps a cache from answering.
+          url="${DOCS_URL%/}/publish-info.json?run=${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT}"
+          if ! served="$(curl --fail --silent --show-error --location --max-time 60 --retry 3 --retry-delay 5 "$url")"; then
+            echo "::error::The live site did not return this run's publish-info.json from ${url}, so the files are not confirmed as published." >&2
+            exit 1
+          fi
+          expected="$(cat docs/publish-info.json)"
+          if [[ "$served" != "$expected" ]]; then
+            echo "::error::The live site is not serving this run's files: expected ${expected}, got ${served}." >&2
+            exit 1
+          fi
+
+      - name: Summary
+        shell: bash
+        run: |
+          {
+            echo "## Published docs from ${GITHUB_SHA::7}"
+            echo
+            echo "Live at **${DOCS_URL}**"
+          } >> "$GITHUB_STEP_SUMMARY"

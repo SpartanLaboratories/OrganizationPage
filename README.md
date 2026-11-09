@@ -71,15 +71,17 @@ Two deployment shapes are supported:
 
 ## Deployment: staging, then production
 
-Every change goes to a pre-production **staging** site first. Production only changes
-after someone has looked at staging and approved it. The deployment policy and the
-full reference for how it is implemented are in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+Every change outside `docs/` goes to a pre-production **staging** site first. Production
+only changes after someone has looked at staging and approved it. Files under `docs/` are
+the one exemption: a push to `main` that changes them publishes them straight to the live
+site, with no staging and no approval. The deployment policy and the full reference for
+how it is implemented are in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ```
 push to main ──> build + tests ──> staging (automatic) ──> production (waits for approval)
 ```
 
-`.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy") runs on every push to `main`:
+`.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy") runs on every push to `main` that changes a file outside `docs/`:
 
 1. **build** runs `./gradlew check :web:jsBrowserDistribution` and stores the site as the
    `site` artifact, together with a `build-info.json` naming the commit.
@@ -93,6 +95,11 @@ push to main ──> build + tests ──> staging (automatic) ──> productio
 The production job also checks that the `production` environment actually requires a
 reviewer, and refuses to deploy if not. A missing setting can therefore never turn into
 an unreviewed release.
+
+`.github/workflows/publish-docs.yml` ("OrganizationPage Docs Publish") uploads `docs/` to
+https://spartanlaboratories.org/OrganizationPage/docs/ on every push to `main` that
+changes a file under `docs/`, with no staging and no approval; a push that changes both
+runs both. `/OrganizationPage/docs/publish-info.json` names the commit last published.
 
 **Staging a branch before merging:** Actions → **OrganizationPage Deploy** → **Run workflow**, pick the
 branch. It deploys to staging only; production jobs only run for `main`.
@@ -121,8 +128,9 @@ To confirm what is live, open `/build-info.json` on either site.
      staged.
 3. **Secrets** (Settings → Secrets and variables → Actions):
    `SPACESHIP_FTP_SERVER`, `SPACESHIP_FTP_USERNAME`, `SPACESHIP_FTP_PASSWORD`. Both sites
-   use these. To give staging its own FTP account, add the same secret names to the
-   `staging` environment; environment secrets override repository ones.
+   and the documents publish use these. To give staging its own FTP account, add the
+   same secret names to the `staging` environment; environment secrets override
+   repository ones.
 4. **Variables** (optional), same page. Folders are paths as the FTP login sees them.
 
 | Variable                       | Default                                   | Purpose |
@@ -131,6 +139,8 @@ To confirm what is live, open `/build-info.json` on either site.
 | `SPACESHIP_PRODUCTION_URL`     | `https://spartanlaboratories.org`         | Production address, shown as the environment link |
 | `SPACESHIP_STAGING_REMOTE_DIR` | `/spartanlaboratories.org/staging`        | Staging folder. Must differ from the production folder. |
 | `SPACESHIP_STAGING_URL`        | `https://spartanlaboratories.org/staging/` | Staging address, shown as the environment link and in the run summary |
+| `SPACESHIP_DOCS_REMOTE_DIR`    | `/spartanlaboratories.org/OrganizationPage/docs` | Documents folder. Must be strictly inside the production folder and clear of the staging folder. |
+| `SPACESHIP_DOCS_URL`           | `https://spartanlaboratories.org/OrganizationPage/docs/` | Documents address, shown in the run summary and used to confirm the upload |
 | `SPACESHIP_FTP_PROTOCOL`       | no       | `ftps` (default) or `ftps-legacy`. `ftp` is upgraded to `ftps` because Spaceship commonly times out on plain FTP |
 | `SPACESHIP_FTP_PORT`           | no       | Defaults to `21`, or `990` for `ftps-legacy`. `443` (control-connection FIN disconnects) and `22` (SFTP, unsupported) are rejected |
 | `SPACESHIP_FTP_TIMEOUT`        | no       | FTP operation timeout in milliseconds, default `90000` |
@@ -144,3 +154,8 @@ production uses.
 `.github/workflows/ci.yml` runs `./gradlew build` and builds the server jar on pull
 requests and on pushes to branches other than `main`. The jar is attached to the run as
 an artifact.
+
+## Documentation
+
+- State boards: [`docs/dashboards/`](docs/dashboards/index.html) shows the repository's systems as built at a named commit.
+- Work boards: [`docs/plans/`](docs/plans/index.html) holds the plans, one folder per issue, and the boards that show how each issue's planning and development is going.
