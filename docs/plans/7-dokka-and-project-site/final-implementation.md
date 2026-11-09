@@ -48,8 +48,8 @@ shown yet.
 | Criterion | State |
 |---|---|
 | [Gating checks](plan.md#gating-local-before-committing) | Hold in the as-built state, as measured below. Item 8 was run by hand. The mutants of items 2, 3, 5 and 7 are not on record. |
-| Staged branch ([observation 1](plan.md#end-to-end-and-uat-manual)) | Not yet made: a deployment needs the owner's go-ahead. [Tracked in `consequences.md`](consequences.md#known-gaps). |
-| Production ([observation 2](plan.md#end-to-end-and-uat-manual)) | Not yet made, for the same reason. |
+| Staged branch ([observation 1](plan.md#end-to-end-and-uat-manual)) | Made at commit `16faca3`: staged at `/staging/`, viewed by the owner and found good. |
+| Production ([observation 2](plan.md#end-to-end-and-uat-manual)) | Made after landing. [Tracked in `consequences.md`](consequences.md#known-gaps). |
 
 ## Measurements
 
@@ -57,7 +57,7 @@ shown yet.
 |---|---|
 | `:server:test` | 16 pass: `ApplicationTest` 4, `ApiReferenceServingTest` 12 |
 | `:workflow-checks:test` | 10 pass, none skipped: `DeployPushFilterTest` 3, `StagingMarkingTest` 7. `gatingTest` and `integrationTest` each run their own class |
-| The same tests on Ubuntu | Not run: [Known gaps](consequences.md#known-gaps) |
+| The same tests on Ubuntu | Pass at commit `16faca3`, in the `build` job of `OrganizationPage CI` |
 | `dokkaGeneratePublicationHtml --rerun-tasks` | Passes with no warning |
 | A broken KDoc link planted in `shared`, `server` and `web` in turn | Fails the task each time (`Couldn't resolve link`, `Failed with warningCount=`) |
 | Undocumented public declarations, with reporting on | 93: 41 in `shared`, 44 in `web`, 8 in `server` |
@@ -71,7 +71,7 @@ shown yet.
 | Declarative guards | `deploy-spaceship.yml` has two hunks against the baseline, the filter and the marking step. The files listed as not changed above are unchanged. The root build file sets `failOnWarning` once and `reportUndocumented` nowhere |
 | `actionlint` on `ci.yml` and `deploy-spaceship.yml` | Run by hand by the owner and reported clean; no output was kept |
 
-Everything above the last row was measured on Windows at the as-built state.
+Everything above the last row, except the Ubuntu row, was measured on Windows at the as-built state.
 
 ## Deviations from the plan
 

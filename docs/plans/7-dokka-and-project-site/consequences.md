@@ -113,8 +113,8 @@ These come from the plan's [follow-ups](plan.md#13-sequencing--follow-ups).
   [SpartanLaboratories/OrganizationPage#7](https://github.com/SpartanLaboratories/OrganizationPage/issues/7)
   when it happens. The first two are part of [acceptance](final-implementation.md#acceptance); the two
   filter observations close on their own triggers, because a manual run does not evaluate the filter:
-  - *the staged branch* ([observation 1](plan.md#end-to-end-and-uat-manual)): the reference at
-    `/staging/docs/api/`, its links, assets and marking, and the site's logo, favicon, palette and link;
+  - *the staged branch* ([observation 1](plan.md#end-to-end-and-uat-manual)): closed. The owner viewed the
+    reference at `/staging/docs/api/` and the site at commit `16faca3` and found it good;
   - *production after landing and approval* ([observation 2](plan.md#end-to-end-and-uat-manual));
   - *the first push that changes only `docs/brand/` or `docs/dokka/`:* it starts a site deployment and a
     documents publish;
@@ -123,27 +123,24 @@ These come from the plan's [follow-ups](plan.md#13-sequencing--follow-ups).
 
 ## Outcome of the plan's assumptions
 
-None of the [plan's assumptions](plan.md#3-assumptions) has failed. Each can only be tested on the live
-system, so each stays unconfirmed until the event named here.
+None of the [plan's assumptions](plan.md#3-assumptions) has failed. The staged run at commit `16faca3`
+settled all but the last.
 
-| Assumption | Confirmed or refuted by |
+| Assumption | Outcome |
 |---|---|
-| The logo, with its glow, reads well on the dark header and at favicon size | the owner's look at staging (observation 1) |
-| The amber values outside the site's own palette look right in the reference | the owner's look at staging (observation 1) |
-| The host redirects `/docs/api` to `/docs/api/` | the first deployment to staging |
-| The first upload of about 200 files over FTPS completes within the FTP timeout | the first staging run |
-| Folders that start with `-` survive the FTP commands | the first staging run ([Known gaps](#known-gaps)) |
-| The three dot-name corners the deploy-trigger research left inferred hold | the first push that touches such a path; none is tracked today |
+| The logo, with its glow, reads well on the dark header and at favicon size | Confirmed by the owner's look at staging |
+| The amber values outside the site's own palette look right in the reference | Confirmed by the owner's look at staging |
+| The host redirects `/docs/api` to `/docs/api/` | Confirmed on staging: the path answers 301 to the address with the slash |
+| The first upload of about 200 files over FTPS completes within the FTP timeout | Confirmed by the staged run |
+| Folders that start with `-` survive the FTP commands | Confirmed on staging: a page under `-api-error/` answers 200 |
+| The three dot-name corners the deploy-trigger research left inferred hold | Open until the first push that touches such a path; none is tracked today |
 
 ## Known gaps
 
-- **Nothing has reached a live host.** The reference, the new header and favicon, and the push filter have
-  been built and tested but not deployed or seen on staging or production, because a deployment needs
-  the owner's go-ahead. The observations under [Follow-ups](#follow-ups) close this.
-- **Folders that start with `-` over FTP are untested.** Dokka names class folders this way (for example
-  `-organization/`). Whether the FTP commands the sync sends handle them is unmeasured, and only the
-  first staging upload can show it. If they fail, the plan's [assumption](plan.md#3-assumptions) says what
-  it would take.
-- **The tests have run on Windows only.** On the branch's last push, the `API docs (Dokka)` job passed on
-  Ubuntu, but the `build` job stopped at `kotlinNpmInstall`, on a `504 Gateway Timeout` from the npm
-  registry, before any test ran. `build` still has to complete on Ubuntu.
+- **Production has not been observed.** The reference, the new header and favicon are seen on staging only.
+  The production observation under [Follow-ups](#follow-ups) closes this.
+- **The push filter is unobserved on real pushes.** A manual run does not evaluate it. The filter
+  observations under [Follow-ups](#follow-ups) close this.
+- **JS dependency installs depend on the npm registry.** A `504 Gateway Timeout` at `kotlinNpmInstall` failed
+  one CI build and one deploy build of this branch; each passed once run again. No lock file is committed
+  ([#12](https://github.com/SpartanLaboratories/OrganizationPage/issues/12)), so each build fetches afresh.

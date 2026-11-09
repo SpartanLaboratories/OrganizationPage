@@ -55,9 +55,9 @@
   ],
   "wip": {
     "step": "document",
-    "since": "2026-11-09T05:29:20Z",
-    "updated": "2026-11-09T06:01:07Z",
-    "detail": "Document: 7 of 7 tasks done; every task done.",
+    "since": "2026-11-09T07:02:51Z",
+    "updated": "2026-11-09T07:02:51Z",
+    "detail": "The owner viewed staging at 16faca3 and found it good.",
     "steps": [
       "sizing",
       "interview",
@@ -111,9 +111,8 @@
       }
     ],
     "event": {
-      "name": "document",
-      "at": "2026-11-09T06:01:07Z",
-      "note": "7 of 7 tasks done"
+      "name": "resumed",
+      "at": "2026-11-09T07:02:51Z"
     },
     "history": {
       "sizing": [
@@ -587,6 +586,76 @@
               "answered": "2026-11-09T05:29:20Z"
             }
           ]
+        },
+        {
+          "since": "2026-11-09T05:29:20Z",
+          "ended": "2026-11-09T06:04:46Z",
+          "endedBy": "halted",
+          "to": "document",
+          "event": {
+            "name": "document",
+            "at": "2026-11-09T06:01:07Z",
+            "note": "7 of 7 tasks done"
+          },
+          "detail": "Document: 7 of 7 tasks done; every task done.",
+          "document": {
+            "tasks": [
+              {
+                "id": "documentation-review",
+                "name": "Documentation review",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-documentation",
+                "name": "Reconcile documentation",
+                "state": "done"
+              },
+              {
+                "id": "dokka-check",
+                "name": "Dokka check",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-plan",
+                "name": "Reconcile plan",
+                "state": "done"
+              },
+              {
+                "id": "readme-changelog",
+                "name": "README and CHANGELOG",
+                "state": "done"
+              },
+              {
+                "id": "state-boards",
+                "name": "State boards",
+                "state": "done"
+              },
+              {
+                "id": "document-landing",
+                "name": "Document commit",
+                "state": "done"
+              }
+            ]
+          },
+          "held": true,
+          "asked": [
+            {
+              "text": "Stage the branch feat/issue-7-dokka-and-project-site for viewing?",
+              "options": [
+                "Stage it",
+                "Hold"
+              ],
+              "answer": null,
+              "asked": "2026-11-09T06:04:46Z",
+              "answered": "2026-11-09T07:02:51Z"
+            },
+            {
+              "text": "Does the staged site look right, and should the branch land?",
+              "answer": null,
+              "asked": "2026-11-09T06:19:18Z",
+              "answered": "2026-11-09T07:02:51Z"
+            }
+          ]
         }
       ]
     },
@@ -732,6 +801,24 @@
         "answer": null,
         "asked": "2026-11-09T05:26:11Z",
         "answered": "2026-11-09T05:29:20Z"
+      },
+      {
+        "step": "document",
+        "text": "Stage the branch feat/issue-7-dokka-and-project-site for viewing?",
+        "options": [
+          "Stage it",
+          "Hold"
+        ],
+        "answer": null,
+        "asked": "2026-11-09T06:04:46Z",
+        "answered": "2026-11-09T07:02:51Z"
+      },
+      {
+        "step": "document",
+        "text": "Does the staged site look right, and should the branch land?",
+        "answer": null,
+        "asked": "2026-11-09T06:19:18Z",
+        "answered": "2026-11-09T07:02:51Z"
       }
     ],
     "waits": [
@@ -757,6 +844,12 @@
         "step": "document",
         "since": "2026-11-09T05:26:11Z",
         "ended": "2026-11-09T05:29:20Z",
+        "by": "halted"
+      },
+      {
+        "step": "document",
+        "since": "2026-11-09T06:04:46Z",
+        "ended": "2026-11-09T07:02:51Z",
         "by": "halted"
       }
     ],
@@ -971,6 +1064,16 @@
       "date": "2026-11-09",
       "column": "built",
       "label": "Document: every task done"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Halted at the Document step: waiting on you (The maintainer's go-ahead to stage the branch and view it in a browser)"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Halted at the Document step: waiting on you (The maintainer viewing the staged site in a browser)"
     }
   ],
   "rows": [
