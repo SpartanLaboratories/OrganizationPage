@@ -106,6 +106,13 @@ Points of precision that bear on how the claims are used:
   configuration comments, and are removed per account when CGI is off. The names stay refused
   because whether this account has CGI is not visible from outside.
 
+### Did not hold in the build
+
+- **`*.perl*` and `perlmutter.md`.** The pitfalls in
+  [`host-executable-files.md`](host-executable-files.md) say that `*.perl*` refuses `perlmutter.md`.
+  It does not: the pattern needs a literal `.perl` in the name, and the built refusal step passes
+  `perlmutter.md`. The recommendation and the refusal list are unaffected.
+
 ## Summary of findings
 
 ### Starting the right workflow for each push

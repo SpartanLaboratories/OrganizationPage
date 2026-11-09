@@ -30,6 +30,10 @@ jobs:
     runs-on: ubuntu-24.04
     # Deliberately no environment: the production environment's required reviewer must not
     # apply to this job.
+    # One publish at a time: overlapping runs would both read the same sync record and the
+    # last write would win. Only the newest waiting run survives, which loses nothing
+    # because each run uploads the whole folder. GitHub does not guarantee queue order, so
+    # an older commit can occasionally publish last; the next push to docs/ corrects it.
     concurrency:
       group: publish-docs
       cancel-in-progress: false
@@ -71,6 +75,9 @@ jobs:
           # This path has no approval step, so nothing that runs on the host may reach it.
           # Symbolic links are refused too: this check does not follow them, but the upload
           # does, so a link could publish content from outside docs/.
+          # '*.pl' and '*.pl.*' are separate so that names such as x.plan.md are not refused.
+          # Trailing wildcards catch multi-extension names such as page.php.txt: Apache-style
+          # handlers can run them, and whether this host's server does is unconfirmed.
           bad="$(find docs \( \
               -iname '.htaccess' -o -iname '.htpasswd' -o -iname '.user.ini' -o -iname 'php.ini' \
               -o -iname '*.php*' -o -iname '*.pht*' -o -iname '*.phar*' \

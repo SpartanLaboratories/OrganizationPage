@@ -73,12 +73,18 @@ pushes to branches other than `main`. It never deploys.
 `docs/`. It implements rule 10. It has no staging step and declares no GitHub
 environment, so the `production` environment's required reviewer does not apply to it.
 
-Three guards stand in for the approval step. A target check on resolved paths requires
-the documents folder to be strictly inside the production folder and clear of the staging
-folder. A refusal check stops the job on any symbolic link, and on any file the server
-would execute or interpret (the names are listed in the workflow): the job names each one
-and publishes nothing. A check after the upload compares the live site's `publish-info.json` with the one this run
-wrote, so a copy left by an earlier run cannot pass it.
+Two guards run before the upload and one after it. A target check on resolved paths
+requires the documents folder to be strictly inside the production folder and clear of
+the staging folder. A refusal check stops the job on any symbolic link, and on any file
+the server would execute or interpret (the names are listed in the workflow): the job
+names each one and publishes nothing. A check after the upload compares the live site's
+`publish-info.json` with the one this run wrote, so a copy left by an earlier run cannot
+pass it. The check after the upload only reports: when it fails, the files have already
+been uploaded, possibly to another folder, so look for them on the host before
+re-running.
+
+`docs/index.html` must stay: the shared deploy action refuses a folder without one, so
+every publish fails if it is removed or renamed.
 
 A push that changes both `docs/` and other files runs both workflows independently:
 `docs/` goes live at once, the rest waits for staging and approval.
@@ -128,8 +134,10 @@ Because staging and the published documents sit inside the production folder:
 - production deploys never wipe their folder (a clean-slate upload would delete
   staging and the published documents); their normal sync only removes files they
   uploaded themselves;
-- the manual "clean" option applies to staging only, and the documents folder can never
-  be inside the staging folder, so it cannot wipe the documents;
+- the manual "clean" option applies to staging only. The documents publish refuses a
+  documents folder that is, sits inside, or contains the staging folder, but it checks
+  this only when it runs: the staging job does not, so never point
+  `SPACESHIP_STAGING_REMOTE_DIR` at a folder that holds the documents;
 - the staging folder must differ from the production folder, and neither can be the
   FTP root;
 - the documents folder must be strictly inside the production folder and must not be,
@@ -164,6 +172,8 @@ one-time setup section.
 
 - **Rolling back:** re-run the `production` job of an earlier successful `main` run and
   approve it. This works while that run's `site` artifact exists (90 days).
+- **Rolling back the documents:** revert the change on `main`; that push publishes the
+  reverted `docs/`. The site rollback above does not touch the documents.
 - **Checking what's live:** `/build-info.json` on either site shows the commit and run
   it was built from.
 - **Removing a published document:** delete it from `docs/` on `main`; the next publish
