@@ -48,23 +48,33 @@ only.
 build (tests + site artifact) ──> staging (automatic) ──> production (main only, waits for approval)
 ```
 
-- **build** runs `./gradlew check :web:jsBrowserDistribution`, writes
-  `build-info.json`, and stores the result as the `site` artifact, kept for 90 days.
+- **build** runs `./gradlew check :web:jsBrowserDistribution` (which also generates the
+  API reference with Dokka and fails on any documentation warning), writes
+  `build-info.json`, and stores the result as the `site` artifact, kept for 90 days. The
+  artifact carries the reference at `docs/api/`.
 - **staging** uploads that artifact to the staging folder automatically.
 - **production** runs only for `main`, and waits for approval before uploading the same
   artifact.
 
-**Triggers:** a push to `main` that changes a file outside `docs/` runs staging, then
-production after approval; a push that changes only files under `docs/` does not start
-this workflow. A manual run (Actions → OrganizationPage Deploy → Run workflow) on a
-branch other than `main` deploys to staging only; a manual run on `main` also reaches the
-production job and waits for approval there.
+**Triggers:** a push to `main` that changes a file outside `docs/`, or a file under
+`docs/brand/` or `docs/dokka/`, runs staging, then production after approval; a push that
+changes only other files under `docs/` does not start this workflow. `docs/brand/` and
+`docs/dokka/` are the only parts of `docs/` the site build reads, so they are the only
+ones that deploy the site; the rest of `docs/` is published by the documents workflow
+alone. If the site build starts reading another folder under `docs/`, add it to the
+`paths` list in `deploy-spaceship.yml`: a change to that folder alone starts no
+deployment until it is listed. The list is ordered and the last pattern that matches a
+path decides, so `'!docs/**'` stays after `'**'` and the two re-includes stay after it.
+A manual run (Actions → OrganizationPage Deploy → Run workflow) on a branch other than
+`main` deploys to staging only; a manual run on `main` also reaches the production job
+and waits for approval there.
 
 Keep the filename. GitHub only shows the "Run workflow" button for workflow files that
 are already on `main`, so renaming the file would lose it.
 
 `.github/workflows/ci.yml` ("OrganizationPage CI") builds and tests pull requests and
-pushes to branches other than `main`. It never deploys.
+pushes to branches other than `main`. It never deploys. Its `docs` job, "API docs
+(Dokka)", runs `./gradlew dokkaGeneratePublicationHtml`.
 
 ### Documents workflow
 
@@ -87,12 +97,15 @@ re-running.
 every publish fails if it is removed or renamed.
 
 A push that changes both `docs/` and other files runs both workflows independently:
-`docs/` goes live at once, the rest waits for staging and approval.
+`docs/` goes live at once, the rest waits for staging and approval. A push that changes
+`docs/brand/` or `docs/dokka/` starts both workflows: the files go live in the documents
+folder at once, and the site, including the API reference, waits for staging and
+approval.
 
 A workflow that a push does not match leaves no entry in the Actions list: no run, no
-skipped entry. A docs-only push therefore shows no "OrganizationPage Deploy" run, and a
-push with nothing under `docs/` shows no "OrganizationPage Docs Publish" run. That is
-expected.
+skipped entry. A push that changes only `docs/` files other than `docs/brand/` and
+`docs/dokka/` therefore shows no "OrganizationPage Deploy" run, and a push with nothing
+under `docs/` shows no "OrganizationPage Docs Publish" run. That is expected.
 
 To republish by hand: Actions → OrganizationPage Docs Publish → Run workflow on `main`. A
 run on any other branch does nothing.
@@ -146,14 +159,26 @@ Because staging and the published documents sit inside the production folder:
   the folder), so no sync removes what another uploaded;
 - the site's build output must never contain a top-level `OrganizationPage` or `staging`
   entry: a later build without it would make production's sync remove that whole folder,
-  with the documents or staging in it.
+  with the documents or staging in it;
+- the site's build output holds `docs/api/` (the API reference), which production's and
+  staging's own sync records list, so nothing else may be placed under `/docs/` at the
+  site root; that `/docs/` is not the documents folder, which is
+  `/OrganizationPage/docs`.
 
 ### Staging marking
 
 The staging upload gets a `[Staging]` prefix on the page title and a
-`noindex, nofollow` robots meta tag. Only the staging copy is changed; production gets
-the artifact exactly as built. `robots.txt` isn't used, because crawlers only read it at
-the site root.
+`noindex, nofollow` robots meta tag on every page of the site: the home page and each
+page of the API reference. Dokka's `navigation.html` files are fragments its pages load
+by script, not pages, so they are left as built. The step fails if the artifact has no
+`docs/api/index.html`, or if that page has no `<head>` or `<title>`. Only the staging
+copy is changed; production gets the artifact exactly as built. `robots.txt` isn't used,
+because crawlers only read it at the site root.
+
+The `workflow-checks` module runs this step, as committed, over a fixture of the packaged
+site (`StagingMarkingTest`), and asserts the push filter's patterns and their order
+(`DeployPushFilterTest`). `./gradlew build` and `check` run them, so the deploy build
+stops on either.
 
 ### Secrets and variables
 
@@ -182,3 +207,7 @@ one-time setup section.
   it says nothing about the documents.
 - **Checking which documents are live:** `/OrganizationPage/docs/publish-info.json` shows
   the commit, run and attempt last published.
+- **Seeing the API reference:** https://spartanlaboratories.org/docs/api/ (staging:
+  https://spartanlaboratories.org/staging/docs/api/). It is generated by the build and
+  ships inside the `site` artifact, so it changes only when the site does and rolls back
+  with it. The same files are in the server jar under `static/docs/api/`.

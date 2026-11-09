@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
+    alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.compiler)
 }
@@ -49,4 +50,20 @@ configurations.consumable("webDistribution") {
         type = ArtifactTypeDefinition.DIRECTORY_TYPE
         builtBy(tasks.named("jsBrowserDistribution"))
     }
+}
+
+// The API reference built at the root, placed in the distribution under docs/api so the site
+// artifact, the server jar and the Docker image all serve it at /docs/api/.
+val apiReferenceDep = configurations.dependencyScope("apiReference")
+val apiReferenceFiles = configurations.resolvable("apiReferenceFiles") {
+    extendsFrom(apiReferenceDep.get())
+    attributes { attribute(Usage.USAGE_ATTRIBUTE, objects.named("api-reference")) }
+}
+dependencies { apiReferenceDep(project(":")) }
+tasks.named<Sync>("jsBrowserDistribution") {
+    from(apiReferenceFiles) { into("docs/api") }
+}
+// The organization logo: the header mark and the favicon, at the distribution root.
+tasks.named<ProcessResources>("jsProcessResources") {
+    from(rootDir.resolve("docs/brand/spartan-laboratories-logo.png"))
 }

@@ -15,11 +15,17 @@ on:
   push:
     branches:
       - main
-    # Files under docs/ are published by publish-docs.yml. Nothing under docs/ feeds the
-    # site build, so a push that changes only docs/ starts no staging or production run.
-    # If the site build ever reads docs/, remove or narrow this filter.
-    paths-ignore:
-      - 'docs/**'
+    # Every push starts a run except one that changes only files under docs/, which
+    # publish-docs.yml puts live on its own. The two folders under docs/ that the site
+    # build reads, brand/ and dokka/, are put back so a change there deploys. Patterns
+    # are checked in order and the last one that matches a path decides: keep '!docs/**'
+    # after '**' and the two re-includes after '!docs/**'. If the site build starts
+    # reading another folder under docs/, add it below.
+    paths:
+      - '**'
+      - '!docs/**'
+      - 'docs/brand/**'
+      - 'docs/dokka/**'
   # Run manually from the Actions tab to stage any branch. Only main can reach production.
   workflow_dispatch:
     inputs:
@@ -136,12 +142,30 @@ jobs:
           set -euo pipefail
           # Keep staging out of search results and easy to tell apart in a browser tab.
           # This only changes the staging upload; production gets the artifact as built.
+          # Every page of the site is marked: the home page and each page of the API reference.
           grep -q '<head>' .deploy/index.html
           grep -q '<title>' .deploy/index.html
+
+          # The reference must be in the artifact, and its index must be a markable page.
+          reference=.deploy/docs/api/index.html
+          if [[ ! -f "$reference" ]]; then
+            echo "::error::The site artifact has no API reference ($reference); the Dokka output was not packaged, so nothing was staged." >&2
+            exit 1
+          fi
+          if ! grep -q '<head>' "$reference" || ! grep -q '<title>' "$reference"; then
+            echo "::error::$reference has no <head> or <title>, so it cannot be marked as staging and nothing was staged." >&2
+            exit 1
+          fi
+
+          # Dokka's navigation.html files are fragments that its pages load by script: they have
+          # no <head> and are not pages of their own, so only files that have a <head> are marked.
+          pages=()
+          while IFS= read -r -d '' f; do pages+=("$f"); done \
+            < <(grep -rlFZ --include='*.html' '<head>' .deploy)
           sed -i \
             -e 's|<head>|<head>\n    <meta name="robots" content="noindex, nofollow" />|' \
             -e 's|<title>|<title>[Staging] |' \
-            .deploy/index.html
+            "${pages[@]}"
 
       - name: Deploy to staging
         uses: ./.github/actions/spaceship-deploy
