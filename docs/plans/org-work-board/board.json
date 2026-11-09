@@ -1,0 +1,2752 @@
+{
+  "schema": "org-work-board/1",
+  "organization": "SpartanLaboratories",
+  "url": "https://github.com/SpartanLaboratories",
+  "generated": "2026-11-09T03:08:33Z",
+  "repositories": [
+    {
+      "owner": "SpartanLaboratories",
+      "name": "WebTools",
+      "url": "https://github.com/SpartanLaboratories/WebTools",
+      "defaultBranch": "master",
+      "head": "77dedde91d9aec4e549e20475cced7a51d1ef6a9",
+      "source": {
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-09T03:07:04Z",
+        "asOf": "2026-11-09"
+      },
+      "links": {
+        "workBoard": "docs/plans/index.html",
+        "repoBoard": "docs/dashboards/index.html",
+        "readme": "docs/plans/README.md"
+      },
+      "boards": {
+        "38": {
+          "path": "docs/plans/38-handshake-empty-name/dashboard.html",
+          "ref": "master"
+        },
+        "47": {
+          "path": "docs/plans/55-http-client-stack/47-java-23-bytecode/dashboard.html",
+          "ref": "master"
+        },
+        "55": {
+          "path": "docs/plans/55-http-client-stack/dashboard.html",
+          "ref": "master"
+        },
+        "61": {
+          "path": "docs/plans/55-http-client-stack/61-build-logic/dashboard.html",
+          "ref": "master"
+        },
+        "62": {
+          "path": "docs/plans/55-http-client-stack/62-http-core/dashboard.html",
+          "ref": "master"
+        },
+        "63": {
+          "path": "docs/plans/55-http-client-stack/63-test-support/dashboard.html",
+          "ref": "master"
+        },
+        "64": {
+          "path": "docs/plans/55-http-client-stack/64-url-policy/dashboard.html",
+          "ref": "master"
+        },
+        "65": {
+          "path": "docs/plans/55-http-client-stack/65-okhttp-transport/dashboard.html",
+          "ref": "master"
+        },
+        "66": {
+          "path": "docs/plans/55-http-client-stack/66-response-cache/dashboard.html",
+          "ref": "master"
+        },
+        "67": {
+          "path": "docs/plans/55-http-client-stack/67-call-budget/dashboard.html",
+          "ref": "master"
+        },
+        "68": {
+          "path": "docs/plans/55-http-client-stack/68-call-facades/dashboard.html",
+          "ref": "master"
+        },
+        "69": {
+          "path": "docs/plans/55-http-client-stack/69-feeds/dashboard.html",
+          "ref": "master"
+        },
+        "99": {
+          "path": "docs/plans/99-dokka-api-docs/dashboard.html",
+          "ref": "master"
+        }
+      },
+      "unlinked": [],
+      "board": {
+        "schema": "work-board/1",
+        "repo": "SpartanLaboratories/WebTools",
+        "generated": "2026-11-09T03:07:04Z",
+        "asOf": "2026-11-09",
+        "links": {
+          "repoBoard": "../../dashboards/index.html",
+          "readme": "../README.md"
+        },
+        "base": "../",
+        "systems": [
+          {
+            "slug": "webtools-udp",
+            "name": "webtools-udp",
+            "slot": 1,
+            "top": "webtools-udp",
+            "status": "built",
+            "board": "docs/dashboards/webtools-udp/index.html"
+          },
+          {
+            "slug": "gradle-build",
+            "name": "Gradle build",
+            "slot": 4,
+            "top": "Gradle build",
+            "status": "built",
+            "board": "docs/dashboards/gradle-build/index.html"
+          },
+          {
+            "slug": "webtools-http-core",
+            "name": "webtools-http common core",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-core/index.html"
+          },
+          {
+            "slug": "webtools-http-test-fixtures",
+            "name": "published test fixtures",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-test-fixtures/index.html"
+          },
+          {
+            "slug": "webtools-http-url-policy",
+            "name": "outbound-URL policy",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-url-policy/index.html"
+          },
+          {
+            "slug": "webtools-http-transport",
+            "name": "OkHttp transport",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-transport/index.html"
+          },
+          {
+            "slug": "webtools-http-cache",
+            "name": "response cache",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-cache/index.html"
+          },
+          {
+            "slug": "webtools-http-budget",
+            "name": "call budget",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-budget/index.html"
+          },
+          {
+            "slug": "webtools-http-facades",
+            "name": "call facades",
+            "slot": 5,
+            "top": "webtools-http",
+            "status": "built",
+            "board": "docs/dashboards/webtools-http-facades/index.html"
+          },
+          {
+            "slug": "webtools-feeds",
+            "name": "webtools-feeds",
+            "slot": 6,
+            "top": "webtools-feeds",
+            "status": "built",
+            "board": "docs/dashboards/webtools-feeds/index.html"
+          },
+          {
+            "slug": "webtools",
+            "name": "WebTools",
+            "slot": 0,
+            "top": "WebTools",
+            "status": "built",
+            "board": "docs/dashboards/index.html"
+          }
+        ],
+        "groups": [
+          {
+            "key": "other",
+            "issue": null,
+            "title": "Other runs, oldest first",
+            "board": null
+          }
+        ],
+        "rows": [
+          {
+            "issue": 38,
+            "title": "Handshake parsing accepts an empty peer name on extra whitespace",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-09-24",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": "../38-handshake-empty-name/dashboard.html",
+            "folder": "../38-handshake-empty-name/",
+            "branch": null,
+            "system": "webtools-udp",
+            "step": "landed",
+            "detail": "Merged through PR #59 as 806ce8e; the board was written after the fact as the worked example.",
+            "since": "2026-10-20",
+            "updated": "2026-10-20",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "findings": {
+                  "documentation": 10,
+                  "test": 8
+                },
+                "note": "Stage C added to the plan"
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "findings": {
+                  "documentation": 4,
+                  "test": 1
+                },
+                "note": "5 LOW items; Stage D added; no third review run, by the maintainer's decision"
+              }
+            ],
+            "qaMax": null,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 59,
+              "merge": "806ce8e",
+              "version": "webtools-udp 2.0.0a",
+              "date": "2026-10-20"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "webtools-udp",
+            "group": "other",
+            "order": 0
+          },
+          {
+            "issue": 47,
+            "title": "webtools-udp 2.0.0 ships Java 23 bytecode but README claims JDK 11+",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-09-28",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 61,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-22T21:58:58Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 62,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T11:51:41Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/47-java-23-bytecode/dashboard.html",
+            "folder": "../55-http-client-stack/47-java-23-bytecode/",
+            "branch": null,
+            "system": "gradle-build",
+            "step": "landed",
+            "detail": "Merged through PR #76 as 3949b52; #47 closed. Every module now compiles to the Java 11 floor and `verifyJavaFloor` guards it in `check`. `webtools-scraping` and `webtools-browser` are at 1.0.0a and `webtools-udp` stays at 2.0.0a, none published; the README's install block names the versions on Maven Central. The as-built record and the impact were reconciled after the landing (PR #78). Unit 3 of #55, #62, is no longer blocked by this issue.",
+            "since": "2026-10-23T02:21:55Z",
+            "updated": "2026-10-23T20:07:49Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-10-23",
+                "findings": {
+                  "documentation": 7,
+                  "test": 2,
+                  "code": 0
+                },
+                "route": "on-the-spot",
+                "note": "7 doc items and 2 test gaps, fixed on the spot; no second pass",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 76,
+              "merge": "3949b52",
+              "version": "webtools-scraping 1.0.0a · webtools-browser 1.0.0a · webtools-udp 2.0.0a (none published)",
+              "date": "2026-10-23"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "Gradle build",
+            "group": "other",
+            "order": 1
+          },
+          {
+            "issue": 55,
+            "title": "HTTP client stack for BotTools: suspend transport, outbound-URL guard, response cache, call budget and test fakes",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-20",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 16,
+                "repo": "SpartanLaboratories/KotlinBottools",
+                "state": "OPEN",
+                "hold": "enables"
+              },
+              {
+                "issue": 9,
+                "repo": "SpartanLaboratories/KotlinBottools",
+                "state": "OPEN",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/dashboard.html",
+            "folder": "../55-http-client-stack/",
+            "branch": null,
+            "system": null,
+            "step": "landed",
+            "detail": "Landed: 11 of 11 units, the last #70 in PR #97.",
+            "since": "2026-11-07T04:23:32Z",
+            "updated": "2026-11-07T04:48:56Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 97,
+              "merge": "c40ff34",
+              "version": null,
+              "date": "2026-11-07"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": 11,
+              "total": 11
+            },
+            "active": false,
+            "chain": {
+              "total": 11,
+              "landed": 11,
+              "dropped": 0,
+              "deferred": 0,
+              "left": 0,
+              "planned": false,
+              "done": true,
+              "current": [],
+              "next": null,
+              "units": [
+                {
+                  "n": 1,
+                  "issue": 61,
+                  "name": "Shared build logic",
+                  "state": "done"
+                },
+                {
+                  "n": 2,
+                  "issue": 47,
+                  "name": "Java 11 floor (#47)",
+                  "state": "done"
+                },
+                {
+                  "n": 3,
+                  "issue": 62,
+                  "name": "webtools-http common core",
+                  "state": "done"
+                },
+                {
+                  "n": 4,
+                  "issue": 63,
+                  "name": "Published test fixtures",
+                  "state": "done"
+                },
+                {
+                  "n": 5,
+                  "issue": 64,
+                  "name": "Outbound-URL policy",
+                  "state": "done"
+                },
+                {
+                  "n": 6,
+                  "issue": 65,
+                  "name": "OkHttp transport",
+                  "state": "done"
+                },
+                {
+                  "n": 7,
+                  "issue": 66,
+                  "name": "Response cache",
+                  "state": "done"
+                },
+                {
+                  "n": 8,
+                  "issue": 67,
+                  "name": "Call budget",
+                  "state": "done"
+                },
+                {
+                  "n": 9,
+                  "issue": 68,
+                  "name": "Call facades",
+                  "state": "done"
+                },
+                {
+                  "n": 10,
+                  "issue": 69,
+                  "name": "webtools-feeds",
+                  "state": "done"
+                },
+                {
+                  "n": 11,
+                  "issue": 70,
+                  "name": "HTTP-stack documentation",
+                  "state": "done"
+                }
+              ]
+            },
+            "systemName": "Gradle build, webtools-http, webtools-feeds, WebTools",
+            "group": "other",
+            "order": 2
+          },
+          {
+            "issue": 61,
+            "title": "Build: move shared configuration into an included `build-logic` build with convention plugins and package-selected level tasks",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 62,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T11:51:41Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 47,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-23T02:21:57Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/61-build-logic/dashboard.html",
+            "folder": "../55-http-client-stack/61-build-logic/",
+            "branch": null,
+            "system": "gradle-build",
+            "step": "landed",
+            "detail": "Merged through PR #74 as 1e27071; no version moved. The board was written after the landing, from the issue folder's documents: the run predates the dashboards service.",
+            "since": "2026-10-22T21:58:56Z",
+            "updated": "2026-10-22T22:22:20Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-10-22",
+                "findings": {
+                  "documentation": 14,
+                  "test": 9,
+                  "code": 0
+                },
+                "note": "all remediated through amendment 1"
+              },
+              {
+                "pass": 2,
+                "verdict": "approved",
+                "date": "2026-10-22",
+                "findings": {
+                  "documentation": 5,
+                  "test": 1,
+                  "code": 0
+                },
+                "note": "passed the code review and the narrowed Level-5 pass; six minor fixes applied on the spot, no third pass"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 74,
+              "merge": "1e27071",
+              "version": "none: published output identical to 834ce4a",
+              "date": "2026-10-22"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "Gradle build",
+            "group": "other",
+            "order": 3
+          },
+          {
+            "issue": 62,
+            "title": "webtools-http: module skeleton, opt-in marker, failure model, request/response types, transport and wall-clock ports, logging seam and the check-only `js` compile",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 47,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-23T02:21:57Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 61,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-22T21:58:58Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 67,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-05T23:52:27Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 66,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-03T19:33:28Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 64,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-26T23:17:47Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 63,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T21:40:16Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/62-http-core/dashboard.html",
+            "folder": "../55-http-client-stack/62-http-core/",
+            "branch": null,
+            "system": "webtools-http-core",
+            "step": "landed",
+            "detail": "Merged through PR #82 as 7de8207: `webtools-http` and its check-only `js` module, the `webtools.kotlin-common-check` plugin and the README; three deviations, all additions; no version moved, and `webtools-http` 1.0.0 stays unreleased.",
+            "since": "2026-10-25T11:51:40Z",
+            "updated": "2026-10-25T12:08:09Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-10-25",
+                "findings": {
+                  "documentation": 18,
+                  "test": 9,
+                  "code": 2
+                },
+                "severity": {
+                  "minor": 27,
+                  "other": 2
+                },
+                "route": "on-the-spot",
+                "note": "Code review passed: no logic bug, every plan item done, the diff inside the unit. Tests 231 passed, 0 failed, 0 skipped; apiCheck passed. The findings are KDoc and line-comment wording, test-fixture tags, literal homoglyphs, corpus rows, test names and one missing branch test; fixed on the spot.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 82,
+              "merge": "7de8207",
+              "version": "none moved; webtools-http 1.0.0 new, unreleased",
+              "date": "2026-10-25"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "webtools-http common core",
+            "group": "other",
+            "order": 4
+          },
+          {
+            "issue": 63,
+            "title": "webtools-http: published test-fixtures variant with the fake transport, virtual clock, `.http` fixtures, recorder and the publication check",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 62,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T11:51:41Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 69,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-07T03:23:44Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 67,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-05T23:52:27Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 66,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-03T19:33:28Z",
+                "hold": "enables"
+              },
+              {
+                "issue": 65,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-03T01:09:31Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/63-test-support/dashboard.html",
+            "folder": "../55-http-client-stack/63-test-support/",
+            "branch": null,
+            "system": "webtools-http-test-fixtures",
+            "step": "landed",
+            "detail": "Merged through PR #84 as 4fcc6e0: the test-fixtures variant of `webtools-http` with its fixtures and tests, the fixtures-publication check in `build-logic`, the `.gitattributes` line and the README; one staging deviation; no version moved, and `webtools-http` 1.0.0 stays unreleased.",
+            "since": "2026-10-25T22:03:35Z",
+            "updated": "2026-10-25T22:03:35Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-10-25",
+                "at": "2026-10-25T19:38:32Z",
+                "findings": {
+                  "documentation": 19,
+                  "test": 15,
+                  "code": 2
+                },
+                "severity": {
+                  "minor": 27,
+                  "other": 9
+                },
+                "route": "re-plan-then-remediation",
+                "note": "Code review passed and the suite is 376 of 376 green. The 27 minor findings are doc and comment wording, test renames and asserts and two mechanical code fixes; the nine others are test gaps, edges or guarantees the plan states but no test pins."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-10-25",
+                "at": "2026-10-25T20:44:31Z",
+                "findings": {
+                  "documentation": 15,
+                  "test": 8,
+                  "code": 3
+                },
+                "severity": {
+                  "minor": 25,
+                  "other": 1
+                },
+                "route": "on-the-spot",
+                "note": "The suite is 384 of 384 green. The one other finding is a Level 3 test JUnit never ran, its expression body returning a value, so the recorded counts were one short; the 25 minor findings are KDoc and comment wording, test asserts and a hang bound, and the plan documents' risk and Level 5 fields.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 84,
+              "merge": "4fcc6e0",
+              "version": "none moved; webtools-http 1.0.0 new, unreleased",
+              "date": "2026-10-25"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "published test fixtures",
+            "group": "other",
+            "order": 5
+          },
+          {
+            "issue": 64,
+            "title": "webtools-http: outbound-URL policies `Trusted`/`Untrusted`, `TransportSettings` and the common address classifier",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 62,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T11:51:41Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 65,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-03T01:09:31Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/64-url-policy/dashboard.html",
+            "folder": "../55-http-client-stack/64-url-policy/",
+            "branch": null,
+            "system": "webtools-http-url-policy",
+            "step": "landed",
+            "detail": "Merged through PR #86 as 53965c8: the outbound-URL policies, `TransportSettings`, `CidrBlock`, `MixedAnswers` and the `WebToolsDsl` marker in `webtools-http`, over the internal classifier and JVM guards, with the README row; no deviation from the plan; no version moved, and `webtools-http` 1.0.0 stays unreleased.",
+            "since": "2026-10-26T23:28:51Z",
+            "updated": "2026-10-26T23:28:51Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-10-26",
+                "at": "2026-10-26T01:09:46Z",
+                "findings": {
+                  "documentation": 19,
+                  "test": 4,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 23,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "note": "Every plan item and acceptance criterion traced to the code, the public surface exactly the planned Stable Core set, hygiene clean. The findings, all minor: the internal JVM guards (`GuardedDns`, `GuardedSocket`, `GuardedSocketFactory`, `PolicyEnforcement`, the markers) lacked contract tags and the facts a wirer needs (builder wiring, thread, the `DEBUG` line, guard order, the stackless markers); the common helpers (`OutboundUrlPolicy.kt`, `UrlGuard`, `StrictIp`, the test support) carried line comments where KDoc is due; six bit-arithmetic or reserved-name lines (`CidrBlock`, `AddressRanges`, `HostRules`, `UrlGuard`) lacked a comment; one duplicated assertion (`TrustedGuardComponentTest`), one timing bound equal to its timeout (`PolicyEnforcementOkHttpIntegrationTest`) and two dangling cross-references in the as-built record."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-10-26",
+                "at": "2026-10-26T22:02:11Z",
+                "findings": {
+                  "documentation": 15,
+                  "test": 4,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 18,
+                  "other": 1
+                },
+                "route": "on-the-spot",
+                "note": "Pass 1's fixes confirmed with no regression, and stage S8 checked line for line against the plan: the `WebToolsDsl` marker, the six builders that carry it, both of its tests and the dump's three new lines, with no JavaScript warning once plan Amendment 5 left the retention at its default. Correctness clean and every acceptance criterion met. The findings: KDoc tags on the sibling test fixtures, a boundary paragraph on `GuardedSocket`, four line comments, stale S8 wording in the records, the host-form count reconciled to the 36 forms the parent research's table publishes, and pre-existing wording in the documents the commits carry that states each unit's sizing. 504 tests in 90 classes passed, the change's 36 classes (232 tests) among them.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 86,
+              "merge": "53965c8",
+              "version": "none moved; webtools-http 1.0.0 new, unreleased",
+              "date": "2026-10-26"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "outbound-URL policy",
+            "group": "other",
+            "order": 6
+          },
+          {
+            "issue": 65,
+            "title": "webtools-http: `OkHttpTransport` with manual redirects, the one-exchange guard, the resolver and socket guards, and the loopback test factories",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 64,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-26T23:17:47Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 63,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T21:40:16Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 68,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-06T04:22:20Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/65-okhttp-transport/dashboard.html",
+            "folder": "../55-http-client-stack/65-okhttp-transport/",
+            "branch": null,
+            "system": "webtools-http-transport",
+            "step": "landed",
+            "detail": "Merged through PR #88 as e8f0a88: `OkHttpTransport` and its factory in `webtools-http`, the one-exchange guard, manual redirects and a capped body, with the loopback test factories; ten deviations recorded; no version moved, and `webtools-http` 1.0.0 stays unreleased.",
+            "since": "2026-11-03T01:09:30Z",
+            "updated": "2026-11-03T01:09:30Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-02",
+                "at": "2026-11-02T00:08:52Z",
+                "findings": {
+                  "test": 4,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 2,
+                  "other": 2
+                },
+                "route": "remediation",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/65-okhttp-transport/2f43cfc3/tests/index.html",
+                "note": "Code review passed: every plan item built, all eight acceptance criteria met, the issue's scope and the sibling interfaces hold. Four test findings, all in the As built rows the fixes touch: HopResponse.settleResponse has no isolated Level 2 component test; no test at any level reaches the hop loop's pre-hop deadline branch (under 1 ms left gives Timeout with no Call); Throwable.firstInChain has no direct Level 4a deterministic test (minor); three pure table functions are tested at Level 2 rather than 4a (minor, placement only). Suite: 711 passed, 0 failed, 0 skipped."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-02",
+                "at": "2026-11-02T02:06:09Z",
+                "findings": {
+                  "test": 2,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 2,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/65-okhttp-transport/cefdb082/tests/index.html",
+                "note": "Code review passed: the deadline seam is inert at its defaults, the public factory and the ABI dump are unchanged, and every moved assertion is preserved; one plan-bookkeeping note (the §9 tables and Acceptance 2 still name the pre-move test homes) goes to the plan's reconciliation. All four pass-1 findings verified answered. Two minor test findings, both in the As built rows the fixes touch, fixed on the spot: the fixture `webtoolsUrl`'s three refusal branches have no test (a `WebtoolsUrlComponentTest` is added); `receiveHeaders`' four pure table cases sit at Level 2 rather than 4a (moved, for consistency with pass 1). Suite, all five levels forced: 731 passed, 1 failed, 0 skipped. The one failure is not this change's: #62's untouched `UrlParseLinearTimeNonFunctionalTest` times out under parallel task execution and passes 31/31 in isolation, per its own documented policy; it is being filed as its own issue.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 88,
+              "merge": "e8f0a88",
+              "version": "none moved; webtools-http 1.0.0 new, unreleased",
+              "date": "2026-11-03"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "OkHttp transport",
+            "group": "other",
+            "order": 7
+          },
+          {
+            "issue": 66,
+            "title": "webtools-http: `ResponseCache` port and `CaffeineResponseCache` default",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 63,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T21:40:16Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 62,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T11:51:41Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 68,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-06T04:22:20Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/66-response-cache/dashboard.html",
+            "folder": "../55-http-client-stack/66-response-cache/",
+            "branch": null,
+            "system": "webtools-http-cache",
+            "step": "landed",
+            "detail": "Merged through PR #89 as 8122af7: the `ResponseCache` port, its values and `ResponseCache.Disabled` in common code and `CaffeineResponseCache` on the JVM; five deviations recorded; no version moved, and `webtools-http` 1.0.0 stays unreleased.",
+            "since": "2026-11-03T19:33:26Z",
+            "updated": "2026-11-03T19:33:26Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-03",
+                "at": "2026-11-03T04:48:46Z",
+                "findings": {
+                  "test": 7,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 5,
+                  "other": 2
+                },
+                "route": "remediation",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/66-response-cache/2f43cfc3/tests/index.html",
+                "note": "Code review passed: the implementation is the plan's design as written, the ABI diff is additions only, and all six acceptance criteria are met. Seven test findings, in the As built rows the fixes touch: two uncovered defensive branches in CaffeineResponseCache, each wanting one Level 2 method (`close`: a foreign cancellation of the shared future read as closed; `failure-value`: an Error thrown by the load dispatcher mapped to fatal); six runBlocking methods in LoaderRunnerComponentTest to move under runTest and one test name to reword (`component-tests`); two Level 4a table rows for CacheExpiry and CacheEntry.isFailure (`deterministic-tests`); and the P5 procedure and an acceptance mapping missing from the as-built record (`release`, whose verdict names P5). Suite: 883 passed, 0 failed, 0 skipped."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-03",
+                "at": "2026-11-03T18:24:12Z",
+                "findings": {
+                  "test": 0,
+                  "code": 1
+                },
+                "severity": {
+                  "minor": 1,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/66-response-cache/cefdb082/tests/index.html",
+                "note": "Test audit: compliant at every level, and all seven remediations from pass 1 hold. Code review: one minor finding, in the As built row the fix touches (`caffeine-default`, whose verdict logs `DEBUG` once per load end): the load body logs its \"load ended\" line before knowing whether its completion won, so a result a mid-flight `close()` or `invalidate(key)` discards still reads `stored`, and after `close()` a second line follows, against the once-per-load-end rule (plan.md R12, §6.9). The fix logs the line only when the completion wins. Suite: 887 passed, 0 failed, 0 skipped.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 89,
+              "merge": "8122af7",
+              "version": "none moved; webtools-http 1.0.0 new, unreleased",
+              "date": "2026-11-03"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "response cache",
+            "group": "other",
+            "order": 8
+          },
+          {
+            "issue": 67,
+            "title": "webtools-http: `CallBudget` port, `WindowedCallBudget`, rate signals, the persistence and observer seams and their fakes",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 63,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T21:40:16Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 62,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T11:51:41Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 68,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-06T04:22:20Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/67-call-budget/dashboard.html",
+            "folder": "../55-http-client-stack/67-call-budget/",
+            "branch": null,
+            "system": "webtools-http-budget",
+            "step": "landed",
+            "detail": "Landed in PR #90.",
+            "since": "2026-11-05T23:52:26Z",
+            "updated": "2026-11-05T23:52:26Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-04",
+                "at": "2026-11-04T04:27:56Z",
+                "findings": {
+                  "test": 2,
+                  "code": 1
+                },
+                "severity": {
+                  "minor": 2,
+                  "other": 1
+                },
+                "route": "remediation",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/67-call-budget/2f43cfc3/tests/index.html",
+                "note": "One code finding (other), in the As built row the fix touches, `hard-stop`, whose verdict holds the write-ahead and the snapshots (plan.md R13, §6.7): in `BudgetLedger`'s `exactSnapshot` and `markPersisted`, after a write-ahead grant is released and `flush()` runs, the exact snapshot omits the emptied hard cell while its persisted mark keeps the write-ahead value, so up to `persistAhead - 1` later grants make no save and a crash under-counts the hard window, against the plan's never-under-count rule; the code is the plan's own, so the fix is also a deviation. Two minor test findings, in `component-tests`, each a Level 2 case to add: the write-ahead retry loop is exercised only for its first iteration (no slow successful save crossing a boundary, no three-attempt cap case), and the 1 ms re-plan deadline tolerance has no edge case. Suite: 1,204 passed, 0 failed, 0 skipped. For the documents: the Level 2 close test with free capacity appears to detect P3's mutation deterministically, to be confirmed with one run; P5 has no record yet."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-04",
+                "at": "2026-11-04T05:16:24Z",
+                "findings": {
+                  "test": 4,
+                  "code": 1
+                },
+                "severity": {
+                  "minor": 5,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/67-call-budget/cefdb082/tests/index.html",
+                "note": "Five minor findings and no other; the fixes are being made in place. Two in the As built row `fixtures`: the code finding, that `FakeBudgetStore`'s `failLoads` and `failSaves` with `times = 0` deliver one failure instead of none, because the count only decides when to disarm and the armed failure is still delivered; a guard settles it, with a case of its own, and as the code is the plan's listing (plan.md §7.17) the fix is also a deviation. And a test finding: `FixturesConsumerGatingTest` names neither `RecordingBudgetObserver` nor `FakeBudgetStore`. The other three are test findings in `component-tests`, each a case to add, resting on another row's verdict: for `close`, a waiter whose own write-ahead save spans `close()`; for `hard-stop`, a store `Error` propagating (plan.md §6.7) and a retried restore whose merge of counts re-plans queued waiters. Looked at with no finding: the D7 fix, a single added condition traced through every snapshot reader, and the restore band, which is plan.md §6.7's contract. Suite: 1,208 passed, 0 failed, 0 skipped.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 90,
+              "merge": "5f221ce",
+              "version": null,
+              "date": "2026-11-05"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "call budget",
+            "group": "other",
+            "order": 9
+          },
+          {
+            "issue": 68,
+            "title": "webtools-http: `UpstreamClient` and `UrlFetcher` composing cache, budget and transport",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 67,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-05T23:52:27Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 66,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-03T19:33:28Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 65,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-03T01:09:31Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 69,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-07T03:23:44Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/68-call-facades/dashboard.html",
+            "folder": "../55-http-client-stack/68-call-facades/",
+            "branch": null,
+            "system": "webtools-http-facades",
+            "step": "landed",
+            "detail": "Landed in PR #95.",
+            "since": "2026-11-06T04:22:18Z",
+            "updated": "2026-11-06T04:22:18Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-06",
+                "at": "2026-11-06T02:52:19Z",
+                "findings": {
+                  "test": 16,
+                  "code": 2
+                },
+                "severity": {
+                  "minor": 18,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "note": "No test failed and no logic defect was found: the permit rules, the retry delay, the cache interplay, the lifecycle, the owning factories, secrecy and the ABI read clean, and the five recorded deviations are accurate. Eighteen minor findings, being fixed in place with no second pass. Sixteen test findings, second-order, in the test rows and in `logging`, `url-fetcher`, `owning-factories` and `loopback-fetchers`: log branches and check orderings the plan did not list; the public owning fetcher factory never carrying a real request; cleanup on a failing path missing in three test classes; message texts pinned only against their own constants; and no close-race or secrecy suite for the fetcher at Level 4c non-functional. Two code findings, in `readme` and `release`: two sentences of the README and the CHANGELOG that are more accurate than the planned text, to be recorded as deviations. Suite: 1,431 passed, 0 failed, 0 skipped in webtools-http's 261 classes, every test level run; apiCheck passed. webtools-udp, webtools-scraping and webtools-browser are untouched and were not run.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 95,
+              "merge": "0374c8d",
+              "version": null,
+              "date": "2026-11-06"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "call facades",
+            "group": "other",
+            "order": 10
+          },
+          {
+            "issue": 69,
+            "title": "webtools-feeds: RSS/Atom parser port with the Rome default, hardening suite, and a conditional-GET fetcher over `UrlFetcher`",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 68,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-06T04:22:20Z",
+                "build": "clear",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 63,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-10-25T21:40:16Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 70,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-07T04:23:33Z",
+                "hold": "enables"
+              }
+            ],
+            "board": "../55-http-client-stack/69-feeds/dashboard.html",
+            "folder": "../55-http-client-stack/69-feeds/",
+            "branch": null,
+            "system": "webtools-feeds",
+            "step": "landed",
+            "detail": "Landed in PR #96.",
+            "since": "2026-11-07T03:23:42Z",
+            "updated": "2026-11-07T03:23:42Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-07",
+                "at": "2026-11-07T00:48:29Z",
+                "findings": {
+                  "documentation": 0,
+                  "test": 1,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 1,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "55-http-client-stack/69-feeds/ca070e8d/tests/index.html",
+                "note": "Code review passed on every check: the diff stays inside the two new modules, the ABI dump names no Rome, JDOM, SAX or slf4j type, every plan item is built and both deviations are built as logged. One minor test finding, in the As built row the fix touches, `component-tests`: two Level 2 component tests in `FeedFetcherParseComponentTest` prove their negatives with fixed wall-clock delays instead of a synchronisation point on the gate parser; the delays are replaced by a latch on the gate parser, in place, with no additional review. Suite: 328 tests, 327 passed, 0 failed, 1 skipped (`RomeFeedParserJdk11NonFunctionalTest`, by its assumption: no JDK 11 on the build host); `apiCheck` and the Java floor check passed.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 96,
+              "merge": "20d4546",
+              "version": null,
+              "date": "2026-11-07"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "webtools-feeds",
+            "group": "other",
+            "order": 11
+          },
+          {
+            "issue": 70,
+            "title": "Docs: evergreen `docs/webtools-http-architecture.md` and the README's HTTP-stack and feeds sections",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-10-22",
+            "parent": 55,
+            "waitsOn": [
+              {
+                "issue": 69,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-07T03:23:44Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "webtools",
+            "step": null,
+            "detail": "Landed through PR #97 as c40ff34 (#70): `docs/webtools-http-architecture.md` is new, the evergreen description of the stack as built, `webtools-feeds` included: its modules and component map, how the systems compose on a call, where each outbound-URL check runs, the failure model, threads and time, lifecycles and closing, logging, the stability tiers, the test support, the platform reach and the known limitations. The README's final pass adds the `webtools-http` and `webtools-feeds` component tables with their stability notes, the `suspend` note, the outbound-URL policies, the logging rule and the test-layout paragraph, and points the HTTP client stack and Feeds sections at the document. KDoc wording only in `OutboundUrlPolicy` and `RefusalReason`; no executable line changed, no version moved and nothing was released.",
+            "qa": [],
+            "qaMax": null,
+            "status": "landed",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "WebTools",
+            "group": "other",
+            "order": 12
+          },
+          {
+            "issue": 99,
+            "title": "Generate API docs with Dokka: javadoc jars, GitHub Pages site and 1.0.0 release preparation",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-11-08",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": "view/99-dokka-api-docs/dashboard.html",
+            "folder": "../99-dokka-api-docs/",
+            "branch": null,
+            "system": "gradle-build",
+            "step": "landed",
+            "detail": "Landed in PR #100.",
+            "since": "2026-11-09T02:49:57Z",
+            "updated": "2026-11-09T02:49:57Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T00:19:24Z",
+                "findings": {
+                  "test": 8,
+                  "code": 1
+                },
+                "severity": {
+                  "minor": 4,
+                  "other": 5
+                },
+                "route": "re-plan-then-remediation"
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T01:25:50Z",
+                "findings": {
+                  "test": 9,
+                  "code": 5
+                },
+                "severity": {
+                  "minor": 13,
+                  "other": 1
+                },
+                "route": "re-plan-then-remediation"
+              },
+              {
+                "pass": 3,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T01:57:15Z",
+                "findings": {
+                  "test": 4,
+                  "code": 3
+                },
+                "severity": {
+                  "minor": 7,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 100,
+              "merge": "77dedde91d9aec4e549e20475cced7a51d1ef6a9",
+              "version": null,
+              "date": "2026-11-09"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "Gradle build",
+            "group": "other",
+            "order": 13
+          }
+        ],
+        "roadmap": [],
+        "unscheduled": [
+          {
+            "issue": 101,
+            "title": "pages.yml grants pages: write and id-token: write to the build job that runs Gradle",
+            "labels": [],
+            "created": "2026-11-09",
+            "system": null
+          },
+          {
+            "issue": 93,
+            "title": "webtools-http: `Url.redacted()` shows the path, so a secret carried in a URL's path is logged",
+            "labels": [
+              "enhancement"
+            ],
+            "created": "2026-11-06",
+            "system": "webtools-http-core"
+          },
+          {
+            "issue": 91,
+            "title": "webtools-http: save a hard window when a server reading or a clock step raises its count",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-05",
+            "system": "webtools-http-budget"
+          },
+          {
+            "issue": 87,
+            "title": "webtools-http: UrlParseLinearTimeNonFunctionalTest exceeds its 100x bound when the level test tasks run in parallel",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-02",
+            "system": "webtools-http-core"
+          },
+          {
+            "issue": 81,
+            "title": "webtools-localhook: local authenticated callback server",
+            "labels": [
+              "type: feature"
+            ],
+            "created": "2026-10-25",
+            "system": null,
+            "unassigned": true
+          },
+          {
+            "issue": 80,
+            "title": "docs: generalise the machine-local JAVA_HOME path in #47's final-implementation.md",
+            "labels": [],
+            "created": "2026-10-23",
+            "system": null,
+            "unassigned": true
+          },
+          {
+            "issue": 58,
+            "title": "Repository practices: CI, CONTRIBUTING.md, CHANGELOG.md, release tags, and the foojay resolver for Gradle 9",
+            "labels": [
+              "documentation",
+              "enhancement"
+            ],
+            "created": "2026-10-20",
+            "system": "gradle-build"
+          },
+          {
+            "issue": 57,
+            "title": "Server answers handshakes from unverified source addresses with no rate limit (reflection)",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-10-20",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 56,
+            "title": "Handshake from a registered origin gets REGISTERED 2 even when it names a different client",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-10-20",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 54,
+            "title": "A throwing onClientConnect kills the server's listener thread",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-10-20",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 53,
+            "title": "Server accepts handshake names and credentials containing tabs, CR/LF or other non-space whitespace",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-10-20",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 52,
+            "title": "Client sends malformed or misparsed handshakes for an empty or whitespace-containing name or credential",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-10-20",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 50,
+            "title": "webtools-udp: multiplatform protocol core and a datagram-transport seam for a future web client",
+            "labels": [
+              "type: feature"
+            ],
+            "created": "2026-10-20",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 49,
+            "title": "Handshake registration orphaned when the REGISTERED send fails",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-09-28",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 48,
+            "title": "MultiConnectionUDPServer.stop() blocks ~1 s joining the listener before closing the socket",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-09-28",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 41,
+            "title": "webtools-udp: rate-bound the per-datagram-drop WARN logs on server and client",
+            "labels": [],
+            "created": "2026-09-26",
+            "system": "webtools-udp"
+          },
+          {
+            "issue": 39,
+            "title": "Client only checks datagram origin on the reliable-channel receive branch",
+            "labels": [],
+            "created": "2026-09-24",
+            "system": "webtools-udp"
+          }
+        ]
+      }
+    },
+    {
+      "owner": "SpartanLaboratories",
+      "name": "KotlinBottools",
+      "url": "https://github.com/SpartanLaboratories/KotlinBottools",
+      "defaultBranch": "main",
+      "head": "3b62b678be429c4a59ac0d08c5449a0bd6c50ea8",
+      "source": {
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-09T02:38:10Z",
+        "asOf": "2026-11-09"
+      },
+      "links": {
+        "workBoard": "docs/plans/index.html",
+        "repoBoard": "docs/dashboards/index.html"
+      },
+      "boards": {
+        "2": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+          "ref": "main"
+        },
+        "21": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/dashboard.html",
+          "ref": "main"
+        }
+      },
+      "unlinked": [
+        {
+          "issue": 22,
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
+          "branch": "chore/issue-22-transfer-rehearsal",
+          "why": "on chore/issue-22-transfer-rehearsal, whose copy of the board is not on GitHub yet"
+        }
+      ],
+      "board": {
+        "schema": "work-board/1",
+        "repo": "SpartanLaboratories/KotlinBottools",
+        "generated": "2026-11-09T02:38:10Z",
+        "asOf": "2026-11-09",
+        "links": {
+          "repoBoard": "../../dashboards/index.html"
+        },
+        "base": "../",
+        "systems": [
+          {
+            "slug": "kotlinbottools",
+            "name": "KotlinBottools",
+            "slot": 0,
+            "top": "KotlinBottools",
+            "status": "built",
+            "board": "docs/dashboards/index.html"
+          },
+          {
+            "slug": "repository-swap",
+            "name": "Repository swap",
+            "slot": 0,
+            "top": "Repository swap",
+            "status": "planned",
+            "board": null
+          }
+        ],
+        "groups": [
+          {
+            "key": "1",
+            "issue": 1,
+            "title": "BotTools consolidation & MagicBot (tracking)",
+            "board": null
+          },
+          {
+            "key": "2",
+            "issue": 2,
+            "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
+          }
+        ],
+        "rows": [
+          {
+            "issue": 2,
+            "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
+            "state": "OPEN",
+            "created": "2026-10-20",
+            "parent": 1,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 2,
+                "repo": "SpartanLaboratories/MagicBot",
+                "state": "OPEN",
+                "hold": "blocks"
+              },
+              {
+                "issue": 16,
+                "state": "OPEN",
+                "hold": "blocks"
+              },
+              {
+                "issue": 3,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
+            "branch": null,
+            "system": null,
+            "step": "implementation",
+            "detail": "1 of 8 units landed; #22 in progress; #23 up next.",
+            "since": "2026-11-08T21:15:43Z",
+            "updated": "2026-11-08T23:59:00Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "building",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": {
+              "state": "partial",
+              "landed": 1,
+              "total": 8
+            },
+            "active": false,
+            "chain": {
+              "total": 8,
+              "landed": 1,
+              "dropped": 0,
+              "deferred": 0,
+              "left": 0,
+              "planned": false,
+              "done": false,
+              "current": [
+                {
+                  "issue": 22,
+                  "slug": "transfer-rehearsal",
+                  "step": "implementation"
+                }
+              ],
+              "next": {
+                "issue": 23,
+                "slug": "kotlinbottools-rewrite-and-swap",
+                "blockedBy": [
+                  {
+                    "issue": 22
+                  }
+                ]
+              },
+              "units": [
+                {
+                  "n": 1,
+                  "issue": 21,
+                  "name": "Preparation",
+                  "state": "done"
+                },
+                {
+                  "n": 2,
+                  "issue": 22,
+                  "name": "Transfer rehearsal",
+                  "state": "current"
+                },
+                {
+                  "n": 3,
+                  "issue": 23,
+                  "name": "KotlinBottools rewrite and swap",
+                  "state": "todo"
+                },
+                {
+                  "n": 4,
+                  "issue": 24,
+                  "name": "Repository hygiene",
+                  "state": "todo"
+                },
+                {
+                  "n": 5,
+                  "issue": 25,
+                  "name": "Make KotlinBottools public",
+                  "state": "todo"
+                },
+                {
+                  "n": 6,
+                  "issue": 26,
+                  "name": "Rewrite GKB2 and GKB",
+                  "state": "todo"
+                },
+                {
+                  "n": 7,
+                  "issue": 27,
+                  "name": "Rewrite BotTools, … and …",
+                  "state": "todo"
+                },
+                {
+                  "n": 8,
+                  "issue": 28,
+                  "name": "Residual report and cleanup",
+                  "state": "todo"
+                }
+              ]
+            },
+            "systemName": "",
+            "group": "1",
+            "order": 1
+          },
+          {
+            "issue": 21,
+            "title": "Phase 0 · 1 — Preparation: pinned tools, workspace, backup mirrors, legacy data copy and manifests",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 22,
+                "state": "OPEN",
+                "hold": "enables"
+              }
+            ],
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/",
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": "landed",
+            "detail": "Landed in PR #30.",
+            "since": "2026-11-08T23:23:04Z",
+            "updated": "2026-11-08T23:23:04Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-08",
+                "at": "2026-11-08T22:40:00Z",
+                "findings": {
+                  "test": 6,
+                  "code": 5
+                },
+                "severity": {
+                  "minor": 9,
+                  "other": 2
+                },
+                "route": "re-plan-then-remediation"
+              },
+              {
+                "pass": 2,
+                "verdict": "running",
+                "date": "2026-11-08",
+                "at": "2026-11-08T22:40:31Z",
+                "findings": {}
+              },
+              {
+                "pass": 3,
+                "verdict": "changes-requested",
+                "date": "2026-11-08",
+                "at": "2026-11-08T22:57:17Z",
+                "findings": {
+                  "test": 0,
+                  "code": 3
+                },
+                "severity": {
+                  "minor": 3,
+                  "other": 0
+                },
+                "route": "on-the-spot"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 30,
+              "merge": "3b62b678be429c4a59ac0d08c5449a0bd6c50ea8",
+              "version": null,
+              "date": "2026-11-08"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 1
+          },
+          {
+            "issue": 22,
+            "title": "Phase 0 · 2 — Transfer rehearsal on two throwaway repositories",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 21,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-08T23:23:05Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 23,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/",
+            "branch": "chore/issue-22-transfer-rehearsal",
+            "system": "repository-swap",
+            "step": "implementation",
+            "detail": "Branch `chore/issue-22-transfer-rehearsal` cut; implementation starts at S0: Local readiness.",
+            "since": "2026-11-09T02:29:56Z",
+            "updated": "2026-11-09T02:29:56Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": true,
+            "systemName": "Repository swap",
+            "group": "2",
+            "order": 2
+          },
+          {
+            "issue": 23,
+            "title": "Phase 0 · 3 — KotlinBottools: rewrite with path scrub, fresh repository, number-preserving swap and clone realignment",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 22,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 26,
+                "state": "OPEN",
+                "hold": "blocks"
+              },
+              {
+                "issue": 24,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": null,
+            "detail": "To be filed as a sub-issue of #2 once this plan lands; starts after unit 2, and Phase 1 may start once it has landed.",
+            "qa": [],
+            "qaMax": null,
+            "status": "next",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "next": true,
+            "blockedBy": [
+              {
+                "issue": 22
+              }
+            ],
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 3
+          },
+          {
+            "issue": 24,
+            "title": "Phase 0 · 4 — KotlinBottools repository hygiene: .gitignore, gitleaks configuration and CI, README and CHANGELOG",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 23,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 25,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": null,
+            "detail": "To be filed as a sub-issue of #2 once this plan lands; starts after unit 3.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 4
+          },
+          {
+            "issue": 25,
+            "title": "Phase 0 · 5 — Make KotlinBottools public with secret scanning and push protection",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 24,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 28,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": null,
+            "detail": "To be filed as a sub-issue of #2 once this plan lands; starts after unit 4, and MagicBot's Phase 13 may start once it has landed.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 5
+          },
+          {
+            "issue": 26,
+            "title": "Phase 0 · 6 — Rewrite GKB2 and GKB",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 23,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 27,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": null,
+            "detail": "To be filed as a sub-issue of #2 once this plan lands; starts after unit 3.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 6
+          },
+          {
+            "issue": 27,
+            "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 26,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 28,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": null,
+            "detail": "To be filed as a sub-issue of #2 once this plan lands; starts after unit 6.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 7
+          },
+          {
+            "issue": 28,
+            "title": "Phase 0 · 8 — Residual-exposure report and workspace cleanup",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": 2,
+            "waitsOn": [
+              {
+                "issue": 27,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              },
+              {
+                "issue": 25,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "kotlinbottools",
+            "step": null,
+            "detail": "To be filed as a sub-issue of #2 once this plan lands; starts after units 5 and 7, and its landing closes #2.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 8
+          }
+        ],
+        "roadmap": [
+          {
+            "issue": 1,
+            "title": "BotTools consolidation & MagicBot (tracking)",
+            "state": "OPEN",
+            "board": null,
+            "items": [
+              {
+                "issue": 2,
+                "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
+                "state": "OPEN"
+              },
+              {
+                "issue": 3,
+                "title": "Phase 1 — Build skeleton: multi-module build, conventions, CI and repository scaffolding",
+                "state": "OPEN"
+              },
+              {
+                "issue": 4,
+                "title": "Phase 2 — Core foundation: ids, failures, settings, storage ports and configuration",
+                "state": "OPEN"
+              },
+              {
+                "issue": 5,
+                "title": "Phase 3 — Command model: definitions, validation, typed invocation, dispatch and help",
+                "state": "OPEN"
+              },
+              {
+                "issue": 6,
+                "title": "Phase 4 — SQLite storage: migrations, erasure and backups",
+                "state": "OPEN"
+              },
+              {
+                "issue": 7,
+                "title": "Phase 5 — Bot runtime: plugins, events, gateway, jobs, registration and built-in commands",
+                "state": "OPEN"
+              },
+              {
+                "issue": 8,
+                "title": "Phase 6a — HTTP call surface: the bottools-http API, endpoint vocabulary, failures and test fake",
+                "state": "OPEN"
+              },
+              {
+                "issue": 9,
+                "title": "Phase 6b — WebTools adapter: the internal adapter, composite build, strict pin, alignment checks and CI lanes",
+                "state": "OPEN"
+              },
+              {
+                "issue": 10,
+                "title": "Phase 7 — Stats provider framework: provider SPI, account links, match tracker and game news",
+                "state": "OPEN"
+              },
+              {
+                "issue": 11,
+                "title": "Phase 8 — Reaction-roles plugin, with the default role and welcome message on join",
+                "state": "OPEN"
+              },
+              {
+                "issue": 12,
+                "title": "Phase 9 — Math plugin",
+                "state": "OPEN"
+              },
+              {
+                "issue": 13,
+                "title": "Phase 10 — Admin plugin: typed get and set over guild settings",
+                "state": "OPEN"
+              },
+              {
+                "issue": 14,
+                "title": "Phase 11 — Weather plugin: conditions and forecast from Open-Meteo",
+                "state": "OPEN"
+              },
+              {
+                "issue": 15,
+                "title": "Phase 12 — Feeds plugin: RSS and Atom subscriptions with content safeguards",
+                "state": "OPEN"
+              },
+              {
+                "issue": 16,
+                "title": "Phase 17 — Release 1.0.0 to Maven Central and archive the predecessor repositories",
+                "state": "OPEN"
+              },
+              {
+                "issue": 17,
+                "title": "Phase 18 — Published test fixtures for plugin and provider authors (Experimental)",
+                "state": "OPEN"
+              },
+              {
+                "issue": 18,
+                "title": "Phase 19 — Poker plugin: playable Texas hold 'em (Experimental)",
+                "state": "OPEN"
+              },
+              {
+                "issue": 19,
+                "title": "Phase 23 — Desktop manager on SpartanUI and SpartanGraphics (unscheduled)",
+                "state": "OPEN"
+              }
+            ]
+          },
+          {
+            "issue": 2,
+            "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
+            "state": "OPEN",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "items": [
+              {
+                "issue": 21,
+                "title": "Phase 0 · 1 — Preparation: pinned tools, workspace, backup mirrors, legacy data copy and manifests",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED"
+              },
+              {
+                "issue": 22,
+                "title": "Phase 0 · 2 — Transfer rehearsal on two throwaway repositories",
+                "state": "OPEN"
+              },
+              {
+                "issue": 23,
+                "title": "Phase 0 · 3 — KotlinBottools: rewrite with path scrub, fresh repository, number-preserving swap and clone realignment",
+                "state": "OPEN"
+              },
+              {
+                "issue": 24,
+                "title": "Phase 0 · 4 — KotlinBottools repository hygiene: .gitignore, gitleaks configuration and CI, README and CHANGELOG",
+                "state": "OPEN"
+              },
+              {
+                "issue": 25,
+                "title": "Phase 0 · 5 — Make KotlinBottools public with secret scanning and push protection",
+                "state": "OPEN"
+              },
+              {
+                "issue": 26,
+                "title": "Phase 0 · 6 — Rewrite GKB2 and GKB",
+                "state": "OPEN"
+              },
+              {
+                "issue": 27,
+                "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
+                "state": "OPEN"
+              },
+              {
+                "issue": 28,
+                "title": "Phase 0 · 8 — Residual-exposure report and workspace cleanup",
+                "state": "OPEN"
+              }
+            ]
+          }
+        ],
+        "unscheduled": [
+          {
+            "issue": 29,
+            "title": "Adopt the organization's Dokka and project site standard",
+            "labels": [
+              "type: feature"
+            ],
+            "created": "2026-11-08",
+            "system": "kotlinbottools"
+          }
+        ]
+      }
+    },
+    {
+      "owner": "SpartanLaboratories",
+      "name": "SpartanGraphics",
+      "url": "https://github.com/SpartanLaboratories/SpartanGraphics",
+      "defaultBranch": "main",
+      "head": "6c71ecbe7461769f3f975a1f5bcb6e36a152c899",
+      "source": {
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-08T23:05:04Z",
+        "asOf": "2026-11-08"
+      },
+      "links": {},
+      "boards": {},
+      "unlinked": [
+        {
+          "issue": 3,
+          "path": "docs/plans/1-phase-1-spartangraphics/3-g1-build-skeleton/dashboard.html",
+          "branch": "feature/3-g1-build-skeleton",
+          "why": "on feature/3-g1-build-skeleton, not on GitHub yet"
+        }
+      ],
+      "board": {
+        "schema": "work-board/1",
+        "repo": "SpartanLaboratories/SpartanGraphics",
+        "generated": "2026-11-08T23:05:04Z",
+        "asOf": "2026-11-08",
+        "links": {},
+        "base": "../",
+        "systems": [
+          {
+            "slug": "build-definition",
+            "name": "S1 Build definition",
+            "slot": 1,
+            "top": "Build definition"
+          }
+        ],
+        "groups": [
+          {
+            "key": "1",
+            "issue": 1,
+            "title": "Phase 1: SpartanGraphics (tracking)",
+            "board": null
+          }
+        ],
+        "rows": [
+          {
+            "issue": 3,
+            "title": "G1: Build skeleton",
+            "state": "OPEN",
+            "created": "2026-10-20",
+            "parent": 1,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 9,
+                "state": "OPEN",
+                "hold": "blocks"
+              },
+              {
+                "issue": 4,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": "../1-phase-1-spartangraphics/3-g1-build-skeleton/dashboard.html",
+            "folder": "../1-phase-1-spartangraphics/3-g1-build-skeleton/",
+            "branch": "feature/3-g1-build-skeleton",
+            "system": "build-definition",
+            "step": "halted",
+            "detail": "Waiting on you: Accept the 13 verification deltas, and decide C1 (the release flow against the release service), C2 (the GitHub settings and protection steps under the single-writer model) and C3 (the run-only-affected-tests rule against the four CI jobs).",
+            "since": "2026-10-25T07:03:00Z",
+            "updated": "2026-10-25T07:03:00Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "halted",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "S1 Build definition",
+            "group": "1",
+            "order": 1
+          }
+        ],
+        "roadmap": [
+          {
+            "issue": 1,
+            "title": "Phase 1: SpartanGraphics (tracking)",
+            "state": "OPEN",
+            "board": null,
+            "items": [
+              {
+                "issue": 3,
+                "title": "G1: Build skeleton",
+                "state": "OPEN"
+              },
+              {
+                "issue": 4,
+                "title": "G2: Basic types and the camera",
+                "state": "OPEN"
+              },
+              {
+                "issue": 5,
+                "title": "G3: Shapes, layers and the draw model",
+                "state": "OPEN"
+              },
+              {
+                "issue": 6,
+                "title": "G4: Input and the platform contracts",
+                "state": "OPEN"
+              },
+              {
+                "issue": 7,
+                "title": "G5: The desktop backend (graphics-desktop)",
+                "state": "OPEN"
+              },
+              {
+                "issue": 8,
+                "title": "G6: Audio (audio-core and audio-desktop)",
+                "state": "OPEN"
+              },
+              {
+                "issue": 9,
+                "title": "G7: Release 0.1.0",
+                "state": "OPEN"
+              }
+            ]
+          },
+          {
+            "issue": 2,
+            "title": "Phase 2: Real fonts, text input and the audio engine (tracking)",
+            "state": "OPEN",
+            "board": null,
+            "items": []
+          }
+        ],
+        "unscheduled": [
+          {
+            "issue": 12,
+            "title": "Adopt the organization's Dokka and project site standard",
+            "labels": [],
+            "created": "2026-11-08",
+            "system": null
+          }
+        ]
+      }
+    },
+    {
+      "owner": "SpartanLaboratories",
+      "name": "SpartanUI",
+      "url": "https://github.com/SpartanLaboratories/SpartanUI",
+      "defaultBranch": "main",
+      "head": "f1d122db0ec0d73cd39839a76fc0f38ac73a2f4c",
+      "source": null,
+      "links": {},
+      "boards": {},
+      "unlinked": [],
+      "board": null
+    },
+    {
+      "owner": "SpartanLaboratories",
+      "name": "GeneralTools",
+      "url": "https://github.com/SpartanLaboratories/GeneralTools",
+      "defaultBranch": "master",
+      "head": "c196d1a80d60fca16a95a6bc69526564b14918b6",
+      "source": null,
+      "links": {},
+      "boards": {},
+      "unlinked": [],
+      "board": null
+    },
+    {
+      "owner": "SpartanLaboratories",
+      "name": "MagicBot",
+      "url": "https://github.com/SpartanLaboratories/MagicBot",
+      "defaultBranch": "main",
+      "head": "9cdcc5932bc4e603f63f8300bf77cacdfa9c9ba5",
+      "source": null,
+      "links": {},
+      "boards": {},
+      "unlinked": [],
+      "board": null
+    },
+    {
+      "owner": "SpartanLaboratories",
+      "name": "OrganizationPage",
+      "url": "https://github.com/SpartanLaboratories/OrganizationPage",
+      "defaultBranch": "main",
+      "head": "028231e0cda54082201008a54746e34f51c09bc8",
+      "source": {
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-09T02:47:32Z",
+        "asOf": "2026-11-09"
+      },
+      "links": {
+        "workBoard": "docs/plans/index.html",
+        "repoBoard": "docs/dashboards/index.html"
+      },
+      "boards": {
+        "8": {
+          "path": "docs/plans/8-docs-only-deploy-skip/dashboard.html",
+          "ref": "main"
+        }
+      },
+      "unlinked": [
+        {
+          "issue": 7,
+          "path": "docs/plans/7-dokka-and-project-site/dashboard.html",
+          "branch": null,
+          "why": "not on main, and on no branch recorded for it"
+        }
+      ],
+      "board": {
+        "schema": "work-board/1",
+        "repo": "SpartanLaboratories/OrganizationPage",
+        "generated": "2026-11-09T02:47:32Z",
+        "asOf": "2026-11-09",
+        "links": {
+          "repoBoard": "../../dashboards/index.html"
+        },
+        "base": "../",
+        "systems": [
+          {
+            "slug": "documentation-build",
+            "name": "documentation-build",
+            "slot": 0,
+            "top": "documentation-build"
+          },
+          {
+            "slug": "deployment",
+            "name": "deployment",
+            "slot": 4,
+            "top": "deployment",
+            "status": "built",
+            "board": null
+          }
+        ],
+        "groups": [
+          {
+            "key": "other",
+            "issue": null,
+            "title": "Other runs, oldest first",
+            "board": null
+          }
+        ],
+        "rows": [
+          {
+            "issue": 7,
+            "title": "Adopt the organization's Dokka and project site standard",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": "../7-dokka-and-project-site/dashboard.html",
+            "folder": "../7-dokka-and-project-site/",
+            "branch": null,
+            "system": "documentation-build",
+            "step": "halted",
+            "detail": "Waiting on you: The maintainer's answers to six design questions",
+            "since": "2026-11-09T02:47:14Z",
+            "updated": "2026-11-09T02:47:14Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "halted",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "documentation-build",
+            "group": "other",
+            "order": 0
+          },
+          {
+            "issue": 8,
+            "title": "Do not start a deployment for documentation-only pushes",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
+            "created": "2026-11-08",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": "../8-docs-only-deploy-skip/dashboard.html",
+            "folder": "../8-docs-only-deploy-skip/",
+            "branch": null,
+            "system": "deployment",
+            "step": "landed",
+            "detail": "Landed in PR #10.",
+            "since": "2026-11-09T02:19:12Z",
+            "updated": "2026-11-09T02:19:12Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T01:02:04Z",
+                "findings": {
+                  "test": 12,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 0,
+                  "other": 12
+                },
+                "route": "re-plan-then-remediation",
+                "startUnrecorded": true
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T01:25:16Z",
+                "findings": {
+                  "test": 6,
+                  "code": 2
+                },
+                "severity": {
+                  "minor": 7,
+                  "other": 1
+                },
+                "route": "re-plan-then-remediation"
+              },
+              {
+                "pass": 3,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T01:47:04Z",
+                "findings": {
+                  "test": 1,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 1,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 10,
+              "merge": "028231e0cda54082201008a54746e34f51c09bc8",
+              "version": null,
+              "date": "2026-11-09"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "deployment",
+            "group": "other",
+            "order": 1
+          }
+        ],
+        "roadmap": [],
+        "unscheduled": [
+          {
+            "issue": 9,
+            "title": "Staging target check compares folder strings, not resolved paths",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-09",
+            "system": "deployment"
+          },
+          {
+            "issue": 7,
+            "title": "Adopt the organization's Dokka and project site standard",
+            "labels": [
+              "type: feature"
+            ],
+            "created": "2026-11-08",
+            "system": "documentation-build"
+          }
+        ]
+      }
+    }
+  ],
+  "organizations": [
+    {
+      "owner": "SpartanLabsGaming",
+      "url": "https://github.com/SpartanLabsGaming",
+      "parent": "SpartanLaboratories",
+      "repositories": [
+        {
+          "owner": "SpartanLabsGaming",
+          "name": "MyGameTools",
+          "url": "https://github.com/SpartanLabsGaming/MyGameTools",
+          "defaultBranch": "master",
+          "head": "dc5214f8366f9535e602423b04f0fab22aebce89",
+          "source": null,
+          "links": {},
+          "boards": {},
+          "unlinked": [],
+          "board": null
+        },
+        {
+          "owner": "SpartanLabsGaming",
+          "name": "MyGameServer",
+          "url": "https://github.com/SpartanLabsGaming/MyGameServer",
+          "defaultBranch": "master",
+          "head": "9eef06b825f706e4a47c15acca66cfc82bc400a8",
+          "source": null,
+          "links": {},
+          "boards": {},
+          "unlinked": [],
+          "board": null
+        },
+        {
+          "owner": "SpartanLabsGaming",
+          "name": "MyGameClient",
+          "url": "https://github.com/SpartanLabsGaming/MyGameClient",
+          "defaultBranch": "master",
+          "head": "d8914911e0d081b2c224dceefeba0941f24eafbb",
+          "source": null,
+          "links": {},
+          "boards": {},
+          "unlinked": [],
+          "board": null
+        },
+        {
+          "owner": "SpartanLabsGaming",
+          "name": "RivenFell",
+          "url": "https://github.com/SpartanLabsGaming/RivenFell",
+          "defaultBranch": "main",
+          "head": "b414068deed31207293f4472f90ff35ad60a7657",
+          "source": null,
+          "links": {},
+          "boards": {},
+          "unlinked": [],
+          "board": null
+        }
+      ]
+    }
+  ],
+  "notShown": [
+    {
+      "repository": "SpartanLaboratories/.github",
+      "url": "https://github.com/SpartanLaboratories/.github",
+      "why": "the organization's .github repository"
+    },
+    {
+      "repository": "SpartanLabsGaming/.github",
+      "url": "https://github.com/SpartanLabsGaming/.github",
+      "why": "the organization's .github repository"
+    },
+    {
+      "repository": "SpartanLaboratories/GKB2",
+      "url": "https://github.com/SpartanLaboratories/GKB2",
+      "why": "reference only"
+    },
+    {
+      "repository": "SpartanLaboratories/GKB",
+      "url": "https://github.com/SpartanLaboratories/GKB",
+      "why": "reference only"
+    },
+    {
+      "repository": "SpartanLaboratories/BotTools",
+      "url": "https://github.com/SpartanLaboratories/BotTools",
+      "why": "reference only"
+    }
+  ]
+}
