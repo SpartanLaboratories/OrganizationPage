@@ -170,10 +170,11 @@ Because staging and the published documents sit inside the production folder:
 The staging upload gets a `[Staging]` prefix on the page title and a
 `noindex, nofollow` robots meta tag on every page of the site: the home page and each
 page of the API reference. Dokka's `navigation.html` files are fragments its pages load
-by script, not pages, so they are left as built. The step fails if the artifact has no
-`docs/api/index.html`, or if that page has no `<head>` or `<title>`. Only the staging
-copy is changed; production gets the artifact exactly as built. `robots.txt` isn't used,
-because crawlers only read it at the site root.
+by script, not pages, so they are left as built. The step fails if the home page has no
+`<head>` or `<title>`, if the artifact has no `docs/api/index.html`, or if that page has
+no `<head>` or `<title>`. Only the staging copy is changed; production gets the artifact
+exactly as built. `robots.txt` isn't used, because crawlers only read it at the site
+root.
 
 The `workflow-checks` module runs this step, as committed, over a fixture of the packaged
 site (`StagingMarkingTest`), and asserts the push filter's patterns and their order
