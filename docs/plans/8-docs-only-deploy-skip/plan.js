@@ -10,7 +10,7 @@ window.dashboardLive&&window.dashboardLive("plan",
   "title": "Docs only deploy skip",
   "issueTitle": "Do not start a deployment for documentation-only pushes",
   "function": "`deploy-spaceship.yml` runs on every push to `main`, so a push that changes only documentation starts a staging deployment and then waits on production approval, while nothing publishes the boards and documents kept under `docs/`. This change adds a `publish-docs.yml` workflow that publishes everything under `docs/` straight to `https://spartanlaboratories.org/OrganizationPage/docs/` on a push to `main`, with no staging and no approval, behind guards of its own, and makes the site deployment ignore a push that changes only `docs/`. `docs/` is the one exemption, stated in the deployment rules; every other change keeps the full staging-and-approval path, and a push that changes both runs both paths independently.",
-  "status": "building",
+  "status": "built",
   "sized": "2026-11-08T23:00:00Z",
   "parent": null,
   "fixOf": null,
@@ -20,7 +20,30 @@ window.dashboardLive&&window.dashboardLive("plan",
     "sha": "21c23eb",
     "date": "2026-09-26"
   },
-  "asBuilt": null,
+  "asBuilt": {
+    "sha": "028231e0cda54082201008a54746e34f51c09bc8",
+    "merge": "028231e0cda54082201008a54746e34f51c09bc8",
+    "pr": 10,
+    "date": "2026-11-09",
+    "at": "2026-11-09T02:19:12Z",
+    "commits": [
+      {
+        "sha": "7f3e05c",
+        "at": "2026-11-09T00:12:03Z",
+        "step": "research"
+      },
+      {
+        "sha": "37295ca",
+        "at": "2026-11-09T00:26:25Z",
+        "step": "research"
+      },
+      {
+        "sha": "51c8b81",
+        "at": "2026-11-09T00:34:13Z",
+        "step": "research"
+      }
+    ]
+  },
   "systems": [
     {
       "slug": "deployment",
@@ -32,10 +55,10 @@ window.dashboardLive&&window.dashboardLive("plan",
     }
   ],
   "wip": {
-    "step": "document",
-    "since": "2026-11-09T01:47:05Z",
-    "updated": "2026-11-09T02:13:33Z",
-    "detail": "Document: 6 of 6 tasks done; every task done.",
+    "step": "landed",
+    "since": "2026-11-09T02:19:12Z",
+    "updated": "2026-11-09T02:19:12Z",
+    "detail": "Landed in PR #10.",
     "steps": [
       "sizing",
       "interview",
@@ -50,9 +73,7 @@ window.dashboardLive&&window.dashboardLive("plan",
       "merge",
       "landed"
     ],
-    "current": [
-      "built"
-    ],
+    "current": [],
     "questions": [],
     "research": null,
     "interview": [
@@ -171,9 +192,8 @@ window.dashboardLive&&window.dashboardLive("plan",
     },
     "open": [],
     "event": {
-      "name": "document",
-      "at": "2026-11-09T02:13:33Z",
-      "note": "6 of 6 tasks done"
+      "name": "landed",
+      "at": "2026-11-09T02:19:12Z"
     },
     "history": {
       "sizing": [
@@ -669,6 +689,81 @@ window.dashboardLive&&window.dashboardLive("plan",
             }
           ]
         }
+      ],
+      "document": [
+        {
+          "since": "2026-11-09T01:47:05Z",
+          "ended": "2026-11-09T02:15:49Z",
+          "endedBy": "landing",
+          "to": "landing",
+          "event": {
+            "name": "document",
+            "at": "2026-11-09T02:13:33Z",
+            "note": "6 of 6 tasks done"
+          },
+          "detail": "Document: 6 of 6 tasks done; every task done.",
+          "document": {
+            "tasks": [
+              {
+                "id": "documentation-review",
+                "name": "Documentation review",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-documentation",
+                "name": "Reconcile documentation",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-plan",
+                "name": "Reconcile plan",
+                "state": "done"
+              },
+              {
+                "id": "readme-changelog",
+                "name": "README and CHANGELOG",
+                "state": "done"
+              },
+              {
+                "id": "state-boards",
+                "name": "State boards",
+                "state": "done"
+              },
+              {
+                "id": "document-landing",
+                "name": "Document commit",
+                "state": "done"
+              }
+            ]
+          }
+        }
+      ],
+      "landing": [
+        {
+          "since": "2026-11-09T02:15:49Z",
+          "ended": "2026-11-09T02:16:37Z",
+          "endedBy": "merge",
+          "to": "merge",
+          "event": {
+            "name": "landing",
+            "at": "2026-11-09T02:15:49Z",
+            "note": "land accepted"
+          },
+          "detail": "Landing: the land accepted; the branch carries the code, the version bump, the reconciled documents and the state boards."
+        }
+      ],
+      "merge": [
+        {
+          "since": "2026-11-09T02:16:37Z",
+          "ended": "2026-11-09T02:19:12Z",
+          "endedBy": "landed",
+          "to": "landed",
+          "event": {
+            "name": "landed",
+            "at": "2026-11-09T02:19:12Z"
+          },
+          "detail": "Landed in PR #10."
+        }
       ]
     },
     "next": null,
@@ -797,6 +892,13 @@ window.dashboardLive&&window.dashboardLive("plan",
       "label": "Plan accepted",
       "date": "2026-11-09",
       "ref": "plan.md"
+    },
+    {
+      "column": "built",
+      "label": "Merged",
+      "date": "2026-11-09",
+      "ref": "PR #10",
+      "note": "the docs publish workflow, the site deploy filter and the rule changes in `dbfa430`, the documentation in `a472bfc`; merged as `028231e`"
     }
   ],
   "trail": [
@@ -954,6 +1056,23 @@ window.dashboardLive&&window.dashboardLive("plan",
       "date": "2026-11-09",
       "column": "built",
       "label": "Document: every task done"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Landing: the land accepted"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Merge: merging it in PR #10",
+      "ref": "PR #10"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Landed in PR #10, merge 028231e",
+      "ref": "PR #10"
     }
   ],
   "rows": [
@@ -977,7 +1096,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "research/README.md#starting-the-right-workflow-for-each-push"
       },
       "asBuilt": {
-        "state": "as-planned",
+        "state": "amended",
         "files": [
           ".github/workflows/deploy-spaceship.yml"
         ],
@@ -995,8 +1114,24 @@ window.dashboardLive&&window.dashboardLive("plan",
             "state": "as-planned"
           },
           {
-            "text": "The file's diff is the five added lines: the `workflow_dispatch` trigger, the three jobs, the approval gate and every default are as they were.",
-            "state": "as-planned"
+            "text": "The `workflow_dispatch` trigger, the three jobs, the approval gate and every default are as they were; beyond the five planned lines the file's diff is three comment changes: a line above `env:` saying `publish-docs.yml` repeats the production and staging defaults, and two comments on why production never cleans its folder, which now name the published documents too.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
+          }
+        ],
+        "changes": [
+          {
+            "what": "Three comment changes beyond the five planned lines in `deploy-spaceship.yml`",
+            "why": "They describe what shares the production folder, which this change altered, and the repeated defaults should be visible from both workflow files.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/ftp-deploy-nested-sync.md"
           }
         ]
       },
@@ -1140,7 +1275,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "research/README.md#starting-the-right-workflow-for-each-push"
       },
       "asBuilt": {
-        "state": "as-planned",
+        "state": "amended",
         "files": [
           ".github/workflows/publish-docs.yml"
         ],
@@ -1162,8 +1297,24 @@ window.dashboardLive&&window.dashboardLive("plan",
             "state": "as-planned"
           },
           {
-            "text": "The job runs in the `publish-docs` group with `cancel-in-progress: false`.",
-            "state": "as-planned"
+            "text": "The job runs in the `publish-docs` group with `cancel-in-progress: false`, and four comment lines above it say why publishes run one at a time and what the queue can do.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
+          }
+        ],
+        "changes": [
+          {
+            "what": "Four comment lines at `concurrency` that the plan's full text of the file does not have",
+            "why": "Whoever next edits the queue needs those reasons beside it.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/github-path-filters.md"
           }
         ]
       },
@@ -1641,7 +1792,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "plan.md#6-design"
       },
       "asBuilt": {
-        "state": "as-planned",
+        "state": "amended",
         "files": [
           ".github/workflows/publish-docs.yml"
         ],
@@ -1655,12 +1806,28 @@ window.dashboardLive&&window.dashboardLive("plan",
             "state": "as-planned"
           },
           {
-            "text": "Every name pattern is `-iname`, and the wildcards catch inner segments such as `report.php.md`.",
-            "state": "as-planned"
+            "text": "Every name pattern is `-iname`, and the wildcards catch inner segments such as `report.php.md`; three comment lines in the step say why `*.pl` and `*.pl.*` are separate and why patterns end in a wildcard.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
           },
           {
             "text": "`find` matches folders as well as files, and the step runs before the upload, so a refused run sends nothing to the host.",
             "state": "as-planned"
+          }
+        ],
+        "changes": [
+          {
+            "what": "Three comment lines in the refuse step that the plan's full text of the file does not have",
+            "why": "The list has no committed regression check, so whoever next edits it needs those reasons beside it.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/host-executable-files.md"
           }
         ]
       }
@@ -1756,7 +1923,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "plan.md#73-docsindexhtml-new"
       },
       "asBuilt": {
-        "state": "as-planned",
+        "state": "amended",
         "files": [
           "docs/index.html"
         ],
@@ -1770,8 +1937,24 @@ window.dashboardLive&&window.dashboardLive("plan",
             "state": "as-planned"
           },
           {
-            "text": "It holds those links and one line saying what they are, and nothing else.",
-            "state": "as-planned"
+            "text": "It holds those links, one line saying what they are, and a comment after the doctype saying the deploy action requires the file.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
+          }
+        ],
+        "changes": [
+          {
+            "what": "A comment after the doctype that the plan's text of the page does not have",
+            "why": "Nothing else on the page shows that removing it would fail every publish.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/ftp-deploy-nested-sync.md"
           }
         ]
       }
@@ -1813,7 +1996,7 @@ window.dashboardLive&&window.dashboardLive("plan",
               "ref": "plan.md#gating-local-before-committing-nothing-is-committed-as-a-test",
               "heading": "Gating (local, before committing; nothing is committed as a test)",
               "paragraph": "Each step body below is extracted from the committed `publish-docs.yml` and run in bash, so the file itself is what is exercised; scratch scripts and copies stay outside the repository. A mutant is a scratch copy of the workflow with one change, and the check named for it must fail against it. A mutant that passes means the check is too weak and the change is not ready, and a mutant that fails to apply counts as one that passed.",
-              "hash": "11a590a54cde"
+              "hash": "7fe6ecaa4239"
             }
           },
           {
@@ -1823,7 +2006,7 @@ window.dashboardLive&&window.dashboardLive("plan",
               "ref": "plan.md#gating-local-before-committing-nothing-is-committed-as-a-test",
               "heading": "Gating (local, before committing; nothing is committed as a test)",
               "paragraph": "Each step body below is extracted from the committed `publish-docs.yml` and run in bash, so the file itself is what is exercised; scratch scripts and copies stay outside the repository. A mutant is a scratch copy of the workflow with one change, and the check named for it must fail against it. A mutant that passes means the check is too weak and the change is not ready, and a mutant that fails to apply counts as one that passed.",
-              "hash": "11a590a54cde"
+              "hash": "7fe6ecaa4239"
             }
           },
           {
@@ -1833,7 +2016,7 @@ window.dashboardLive&&window.dashboardLive("plan",
               "ref": "plan.md#gating-local-before-committing-nothing-is-committed-as-a-test",
               "heading": "Gating (local, before committing; nothing is committed as a test)",
               "paragraph": "Each step body below is extracted from the committed `publish-docs.yml` and run in bash, so the file itself is what is exercised; scratch scripts and copies stay outside the repository. A mutant is a scratch copy of the workflow with one change, and the check named for it must fail against it. A mutant that passes means the check is too weak and the change is not ready, and a mutant that fails to apply counts as one that passed.",
-              "hash": "11a590a54cde"
+              "hash": "7fe6ecaa4239"
             }
           },
           {
@@ -1843,7 +2026,7 @@ window.dashboardLive&&window.dashboardLive("plan",
               "ref": "plan.md#9-test-plan",
               "heading": "9. Test plan",
               "paragraph": "No Gradle suite runs. No module's code changes, so no module test belongs to this change; the Component and Deterministic levels have nothing to exercise. A compile is not needed either: no `web`, `server` or `shared` file changes, which `git diff --stat` shows.",
-              "hash": "6608d1aa7e04"
+              "hash": "03be5c4faf99"
             }
           },
           {
@@ -2130,7 +2313,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "plan.md#75-docsdeploymentmd-changed"
       },
       "asBuilt": {
-        "state": "as-planned",
+        "state": "amended",
         "files": [
           "docs/DEPLOYMENT.md"
         ],
@@ -2140,16 +2323,67 @@ window.dashboardLive&&window.dashboardLive("plan",
             "state": "as-planned"
           },
           {
-            "text": "`### Documents workflow` covers the publish, its three guards, mixed pushes and the silent absence of a run.",
-            "state": "as-planned"
+            "text": "`### Documents workflow` covers the publish, its three guards, mixed pushes and the silent absence of a run; it also says the check after the upload only reports, and that `docs/index.html` must stay.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
           },
           {
-            "text": "The hosting table has a Documents row, and the list of folders inside production covers it.",
-            "state": "as-planned"
+            "text": "The hosting table has a Documents row, and the list of folders inside production covers it; its bullet on the manual clean option says the documents publish checks the staging folder only when it runs, and warns against pointing `SPACESHIP_STAGING_REMOTE_DIR` at a folder that holds the documents.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
           },
           {
-            "text": "The secrets and variables, the operating notes and the deploy mechanism name the documents publish, and the operating notes say `publish-info.json` shows what is live.",
-            "state": "as-planned"
+            "text": "The secrets and variables, the operating notes and the deploy mechanism name the documents publish, and the operating notes say `publish-info.json` shows what is live and that the documents roll back by reverting on `main`.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
+          }
+        ],
+        "changes": [
+          {
+            "what": "The guards paragraph opens \"Two guards run before the upload and one after it\" and closes by saying the check after the upload only reports",
+            "why": "That check runs after the files have gone, so a red run means looking on the host before re-running.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/ftp-deploy-nested-sync.md"
+          },
+          {
+            "what": "An added paragraph says `docs/index.html` must stay",
+            "why": "The shared deploy action refuses a folder without one, so every publish fails if it is removed or renamed.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/ftp-deploy-nested-sync.md"
+          },
+          {
+            "what": "The clean-option bullet says the documents publish checks the staging folder only when it runs, in place of the plan's statement that the documents folder can never be inside it",
+            "why": "The plan's wording overstates the guard: the target check runs only when the documents publish runs, and the staging job makes no such check.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/README.md#verification-results"
+          },
+          {
+            "what": "An added operating bullet explains that the documents roll back by reverting on `main`",
+            "why": "The site rollback does not touch the documents.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/ftp-deploy-nested-sync.md"
           }
         ]
       }
@@ -2234,7 +2468,25 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "plan.md#77-documentation-pass-readmemd-and-changelogmd-commit-2-not-part-of-the-implementation-commit"
       },
       "asBuilt": {
-        "state": "pending"
+        "state": "as-planned",
+        "files": [
+          "README.md",
+          "CHANGELOG.md"
+        ],
+        "statements": [
+          {
+            "text": "The README's deployment section states the exemption, `publish-docs.yml` and the variables `SPACESHIP_DOCS_REMOTE_DIR` and `SPACESHIP_DOCS_URL`; its diagram is unchanged.",
+            "state": "as-planned"
+          },
+          {
+            "text": "`CHANGELOG.md` was created in the Keep a Changelog layout, with the change under `Unreleased`.",
+            "state": "as-planned"
+          },
+          {
+            "text": "Both landed in `a472bfc`, the commit after the implementation's `dbfa430`.",
+            "state": "as-planned"
+          }
+        ]
       }
     },
     {
@@ -2292,7 +2544,33 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "plan.md#76-files-not-changed"
       },
       "asBuilt": {
-        "state": "pending"
+        "state": "amended",
+        "statements": [
+          {
+            "text": "The production job's steps and its approval gate are as they were, apart from its comment on why it never cleans its folder, which now names the published documents; the shared action and `ci.yml` are unchanged.",
+            "state": "amended",
+            "ref": "final-implementation.md#deviations-from-the-plan",
+            "excerpt": {
+              "ref": "final-implementation.md#deviations-from-the-plan",
+              "heading": "Deviations from the plan",
+              "paragraph": "Deviations 1 to 3 are comments only. No workflow logic differs from the plan.",
+              "hash": "0c32c3d0fdd2"
+            }
+          },
+          {
+            "text": "Every file under `web/`, `server/` and `shared/` is unchanged, and no link to the boards was added to the website.",
+            "state": "as-planned"
+          }
+        ],
+        "changes": [
+          {
+            "what": "The production job's comment on why it never cleans its folder now names the published documents",
+            "why": "It describes what shares the production folder, which this change altered.",
+            "when": "the second commit, where the plan's §11 has the first",
+            "ref": "a472bfc",
+            "link": "research/ftp-deploy-nested-sync.md"
+          }
+        ]
       }
     },
     {
@@ -2348,13 +2626,19 @@ window.dashboardLive&&window.dashboardLive("plan",
         "link": "plan.md#4-non-goals"
       },
       "asBuilt": {
-        "state": "pending"
+        "state": "as-planned",
+        "statements": [
+          {
+            "text": "`Check staging target` still compares the two normalized strings: none of this change's edits to `deploy-spaceship.yml` touches that step, and #9 carries it.",
+            "state": "as-planned"
+          }
+        ]
       }
     }
   ],
   "impact": {
-    "basis": "plan",
-    "summary": "No library artifact or version changes. The live site gains one public folder, `/OrganizationPage/docs/`, mirroring the repository's `docs/`, and everything merged under `docs/` is served from the organization's domain as soon as it lands. The site deployment stops starting for a push that changes only `docs/`, and a file the host would execute now fails the publish on `main`.",
+    "basis": "as-built",
+    "summary": "No library artifact or version changes. The live site gains one public folder, `/OrganizationPage/docs/`, mirroring the repository's `docs/`, and everything merged under `docs/` is served from the organization's domain as soon as it lands. The site deployment stops starting for a push that changes only `docs/`, and a file the host would execute, or any symbolic link, now fails the publish on `main`.",
     "none": null,
     "release": {
       "bump": "none",
@@ -2383,7 +2667,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "kind": "operator",
         "system": "deployment",
         "effect": "behaviour",
-        "summary": "Everything under `docs/`, now and later, is public as soon as it lands and may be indexed by search engines. The repository is already public, so nothing new is disclosed, but nothing sensitive can be committed there. A pull request changing only generated boards can go live with no person looking at it.",
+        "summary": "Everything under `docs/`, now and later, is public as soon as it lands and may be indexed by search engines. The repository is already public, so nothing new is disclosed, but nothing sensitive can be committed there. In this repository a pull request changing only boards can go live with no person looking at it.",
         "link": "consequences.md#blast-radius"
       },
       {
@@ -2408,7 +2692,7 @@ window.dashboardLive&&window.dashboardLive("plan",
         "who": "The boards and documents generated under `docs/`",
         "system": "deployment",
         "need": "required",
-        "summary": "They have to keep clear of the names the publish refuses (`.php`, `.htaccess`, `.cgi`, `.fcgi` and the rest of the list in `publish-docs.yml`), which now fail the publish on `main`.",
+        "summary": "They have to keep clear of the names the publish refuses (`.php`, `.htaccess`, `.cgi`, `.fcgi` and the rest of the list in `publish-docs.yml`) and cannot use symbolic links: either now fails the publish on `main`.",
         "link": "consequences.md#blast-radius"
       },
       {
@@ -2438,7 +2722,28 @@ window.dashboardLive&&window.dashboardLive("plan",
       }
     ],
     "conversion": [],
-    "changes": [],
+    "changes": [
+      {
+        "what": "Symbolic links under `docs/` now fail the publish as well as the refused names",
+        "why": "The upload follows a link the refusal check does not, so a link could publish content from outside `docs/` under a name the check never saw.",
+        "when": "the plan re-pass after Quality Review 2",
+        "ref": "dbfa430",
+        "entry": "adaptation.0",
+        "system": "deployment",
+        "source": "consequences.md",
+        "link": "consequences.md#blast-radius"
+      },
+      {
+        "what": "The merge rule covers a pull request changing only boards, in this repository, rather than only generated boards",
+        "why": "`docs/DEPLOYMENT.md` states the rule for boards, without defining which paths count as boards.",
+        "when": "the plan re-pass after Quality Review 2",
+        "ref": "dbfa430",
+        "entry": "downstream.2",
+        "system": "deployment",
+        "source": "consequences.md",
+        "link": "consequences.md#blast-radius"
+      }
+    ],
     "source": "consequences.md",
     "link": "consequences.md#blast-radius"
   },
@@ -2456,7 +2761,7 @@ window.dashboardLive&&window.dashboardLive("plan",
     },
     {
       "name": "A dedicated FTP account confined to `/OrganizationPage/docs/`",
-      "note": "The publish reuses the account that can write the whole site. A confined account needs the account created on the host, its own secrets and the target check changed to suit a login whose root is that folder."
+      "note": "The publish reuses the account that can write the whole site. A confined account needs the account created on the host, its own secrets and the target check changed to suit a login whose root is that folder. Whether to set it up is open with the owner, and no issue tracks it."
     },
     {
       "name": "The organization work board's links at the served URLs",
@@ -2469,6 +2774,14 @@ window.dashboardLive&&window.dashboardLive("plan",
     {
       "name": "A regression check for the guards",
       "note": "The target check, the refusal list and the declarative guards are tested once, by checks that are not committed. Committing them needs a CI job, which this change leaves out because `ci.yml` does not change."
+    },
+    {
+      "name": "The boards-only merge rule's exact coverage",
+      "note": "`docs/DEPLOYMENT.md` states the rule without saying which paths count as boards or whether other pull requests gain a gate. Both are open with the owner."
+    },
+    {
+      "name": "Observations on the live system",
+      "note": "None has been made yet at this landing; each is recorded in a comment on #8 when it happens. Only this landing's own runs and first publish are part of acceptance; the rest wait on later pushes or the owner's go-ahead."
     }
   ],
   "documents": [
@@ -2488,9 +2801,14 @@ window.dashboardLive&&window.dashboardLive("plan",
       "note": "the implementer's spec: requirements, design, each file's changes and the test plan"
     },
     {
+      "label": "Final implementation",
+      "path": "final-implementation.md",
+      "note": "the as-built record: what was built, the acceptance, the measurements and every deviation from the plan"
+    },
+    {
       "label": "Consequences",
       "path": "consequences.md",
-      "note": "what becomes public, what may no longer be added under `docs/`, the neighbouring issues and the follow-ups"
+      "note": "what becomes public, what may no longer be added under `docs/`, the neighbouring issues, the follow-ups and the known gaps"
     },
     {
       "label": "Deployment reference",

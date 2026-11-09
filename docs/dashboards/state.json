@@ -1,7 +1,7 @@
 {
   "slug": "organizationpage",
   "version": null,
-  "asIs": {"ref": "build/issue-8-no-deploy-docs-only", "sha": "dbfa430", "date": "2026-11-09T01:48:37Z"},
-  "lastAmended": {"issue": 8, "title": "Do not start a deployment for documentation-only pushes", "sha": "dbfa430"},
-  "written": {"sha": "dbfa430"}
+  "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
+  "lastAmended": {"issue": 7, "title": "Adopt the organization's Dokka and project site standard", "sha": "38477af"},
+  "written": {"sha": "38477af"}
 }

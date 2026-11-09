@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.dokka)
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ktor)
@@ -56,4 +57,13 @@ tasks.processResources {
     from(webDistributionFiles) {
         into("static")
     }
+}
+
+// The integration tests (the testing.integration package) on their own; `test` runs every test.
+tasks.register<Test>("integrationTest") {
+    description = "Runs the integration tests."
+    group = "verification"
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
+    filter { includeTestsMatching("com.spartanlaboratories.testing.integration.*") }
 }

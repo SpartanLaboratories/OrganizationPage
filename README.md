@@ -11,7 +11,8 @@ frontend, deployed to Spaceship hosting.
 |-----------|-------------------------------------|----------------|
 | `shared`  | Kotlin Multiplatform (JVM + JS)     | Data models, API routes, JSON config and the site copy (`OrganizationContent`). The single contract between backend and frontend. |
 | `server`  | Kotlin/JVM, Ktor (Netty)            | JSON API under `/api` and serving of the compiled frontend. Packaged as one runnable jar. |
-| `web`     | Kotlin/JS, Compose HTML             | The browser UI. Builds to a static site (`index.html` + `web.js`). |
+| `web`     | Kotlin/JS, Compose HTML             | The browser UI. Builds to a static site (`index.html`, `web.js`, the logo) that also carries the generated API reference under `docs/api/`. |
+| `workflow-checks` | Kotlin/JVM, tests only      | Regression tests of the deployment workflows: the staging marking step and the push filter. Holds no site code. |
 
 ```
 shared  <──  server
@@ -37,9 +38,14 @@ To change the site's text, edit
 ./gradlew :server:run                    # API + site on http://localhost:8080
 ./gradlew :web:jsBrowserDevelopmentRun   # frontend dev server with live reload on http://localhost:3000
                                          # (proxies /api to :8080, so run the server too)
-./gradlew :web:jsBrowserDistribution     # static site -> web/build/dist/js/productionExecutable
+./gradlew :web:jsBrowserDistribution     # static site, API reference included at docs/api/ -> web/build/dist/js/productionExecutable
 ./gradlew :server:buildFatJar            # server/build/libs/organization-page-server.jar (includes the site)
+./gradlew dokkaGeneratePublicationHtml   # API reference of all three modules -> build/dokka/html
+./gradlew :workflow-checks:test          # regression tests of the deployment workflows
 ```
+
+The frontend dev server does not serve the reference (`docs/api/` is a 404 there); open
+`build/dokka/html/index.html` or run `:server:run`.
 
 ### Server configuration
 
@@ -57,11 +63,12 @@ Two deployment shapes are supported:
 
 1. **Static site (current pipeline).** Spaceship web hosting accepts files over FTP but
    does not run JVM processes. The deploy workflow builds the `web` module and uploads
-   `web/build/dist/js/productionExecutable`. The page renders from the bundled content;
-   the `/api` call simply falls back when no backend is present.
+   `web/build/dist/js/productionExecutable`, which includes the API reference at
+   `/docs/api/`. The page renders from the bundled content; the `/api` call simply falls
+   back when no backend is present.
 2. **Full stack.** To run the Ktor backend, deploy the server jar (or the `Dockerfile`
    image) to a host that runs a JVM or containers, such as a Spaceship VPS. That one
-   process serves both the API and the site:
+   process serves the API, the site and the reference at `/docs/api/`:
 
    ```bash
    docker build -t organization-page .
@@ -81,12 +88,14 @@ how it is implemented are in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 push to main ──> build + tests ──> staging (automatic) ──> production (waits for approval)
 ```
 
-`.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy") runs on every push to `main` that changes a file outside `docs/`:
+`.github/workflows/deploy-spaceship.yml` ("OrganizationPage Deploy") runs on every push to `main` that changes a file outside `docs/`, or a file under `docs/brand/` or `docs/dokka/` (the two folders the site build reads):
 
-1. **build** runs `./gradlew check :web:jsBrowserDistribution` and stores the site as the
-   `site` artifact, together with a `build-info.json` naming the commit.
+1. **build** runs `./gradlew check :web:jsBrowserDistribution` (which also generates the
+   API reference with Dokka) and stores the site as the `site` artifact, together with a
+   `build-info.json` naming the commit.
 2. **staging** uploads that artifact to the staging folder. The staging copy gets a
-   `[Staging]` title prefix and a `noindex` tag so search engines leave it out.
+   `[Staging]` title prefix and a `noindex` tag so search engines leave it out. Every
+   page of the staged site, the API reference included, gets those markers.
 3. **production** pauses until a reviewer approves the `production` environment. Open
    the run, check the staging site, then use **Review deployments → Approve**. It then
    uploads the *same* artifact, so production is byte-for-byte what you reviewed
@@ -153,9 +162,12 @@ production uses.
 
 `.github/workflows/ci.yml` runs `./gradlew build` and builds the server jar on pull
 requests and on pushes to branches other than `main`. The jar is attached to the run as
-an artifact.
+an artifact. A second job, `docs` ("API docs (Dokka)"), runs
+`./gradlew dokkaGeneratePublicationHtml` and fails on any documentation warning, a broken
+KDoc link included.
 
 ## Documentation
 
 - State boards: [`docs/dashboards/`](docs/dashboards/index.html) shows the repository's systems as built at a named commit.
 - Work boards: [`docs/plans/`](docs/plans/index.html) holds the plans, one folder per issue, and the boards that show how each issue's planning and development is going.
+- API reference: https://spartanlaboratories.org/docs/api/ is generated by Dokka from the KDoc of `shared`, `server` and `web` and ships inside the site (staging: https://spartanlaboratories.org/staging/docs/api/). The logo is in [`docs/brand/`](docs/brand) and the Dokka theme in [`docs/dokka/styles/`](docs/dokka/styles).

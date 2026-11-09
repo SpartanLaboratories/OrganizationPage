@@ -23,3 +23,5 @@ include(":shared")
 include(":server")
 // web: Compose HTML (Kotlin/JS) frontend
 include(":web")
+// workflow-checks: tests of the GitHub Actions workflows; holds no site code
+include(":workflow-checks")

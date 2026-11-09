@@ -9,10 +9,10 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Footer
 import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.Header
+import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.Nav
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Section
-import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 import kotlin.js.Date
 
@@ -30,13 +30,16 @@ fun SiteHeader(name: String) {
     Header({ classes(AppStylesheet.header) }) {
         Div({ classes(AppStylesheet.container, AppStylesheet.headerInner) }) {
             A("#top", { classes(AppStylesheet.brand) }) {
-                Span({ classes(AppStylesheet.brandMark) }) { Text("S") }
+                // Empty alt: the organization's name is the adjacent text, so the image is decoration.
+                Img(src = "spartan-laboratories-logo.png", alt = "", attrs = { classes(AppStylesheet.brandMark) })
                 Text(name)
             }
             Nav({ classes(AppStylesheet.nav) }) {
                 PageSection.entries.forEach { section ->
                     A("#${section.id}", { classes(AppStylesheet.navLink) }) { Text(section.label) }
                 }
+                // Relative on purpose: the same link works at /, at /staging/ and when the Ktor server serves the site.
+                A("docs/api/", { classes(AppStylesheet.navLink) }) { Text("API docs") }
             }
         }
     }
