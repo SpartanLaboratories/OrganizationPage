@@ -15,6 +15,11 @@ on:
   push:
     branches:
       - main
+    # Files under docs/ are published by publish-docs.yml. Nothing under docs/ feeds the
+    # site build, so a push that changes only docs/ starts no staging or production run.
+    # If the site build ever reads docs/, remove or narrow this filter.
+    paths-ignore:
+      - 'docs/**'
   # Run manually from the Actions tab to stage any branch. Only main can reach production.
   workflow_dispatch:
     inputs:

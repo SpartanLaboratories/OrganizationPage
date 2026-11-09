@@ -10,10 +10,11 @@ Site text lives in `shared/src/commonMain/kotlin/com/spartanlaboratories/shared/
 These rules apply to OrganizationPage only. They are a prototype that may later be
 adopted by other projects, but they are not organization-wide policy.
 
-1. Every change goes to a pre-production (staging) environment first and is viewed
-   there in a browser before it reaches production.
-2. Production changes only after a person explicitly approves it. Never add automatic,
-   direct, or auto-approved production deploys, and never skip or weaken an approval check.
+1. Every change outside `docs/` goes to a pre-production (staging) environment first and
+   is viewed there in a browser before it reaches production.
+2. Outside `docs/`, production changes only after a person explicitly approves it. Never
+   add automatic, direct, or auto-approved production deploys there, and never skip or
+   weaken an approval check.
 3. Production receives the exact build artifact that was staged. Never rebuild for
    production.
 4. Staging and production deploy through the same mechanism, so staging exercises the
@@ -25,6 +26,11 @@ adopted by other projects, but they are not organization-wide policy.
 8. Workflows are named after the project ("OrganizationPage Deploy", "OrganizationPage CI").
 9. Deploying to a live server is outward-facing: get the owner's go-ahead before
    triggering a deploy, and have them check the staged result before shipping.
+10. Files under `docs/` are published straight to the live site by a push to `main` that
+    changes them, with no staging and no approval, so the boards stay current. Rules 1, 2,
+    3, 5 and 9 do not apply to that publication. The exemption covers `docs/` and nothing
+    else: every other change, including the rest of a push that also changes `docs/`,
+    keeps the full path.
 
 How the workflow, approval gate, hosting folders, staging marking, secrets and rollback
 implement these rules: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Read it before changing
