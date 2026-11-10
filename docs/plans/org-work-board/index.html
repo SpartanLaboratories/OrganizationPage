@@ -362,7 +362,7 @@ footer code{color:var(--ink-2)}
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-09T07:29:54Z",
+  "generated": "2026-11-10T00:21:24Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1923,12 +1923,12 @@ footer code{color:var(--ink-2)}
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "3b62b678be429c4a59ac0d08c5449a0bd6c50ea8",
+      "head": "9af27b286ede1c153ff4e0d6f034fbc872996c15",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-09T07:17:50Z",
-        "asOf": "2026-11-09"
+        "generated": "2026-11-10T00:20:02Z",
+        "asOf": "2026-11-10"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -1942,21 +1942,18 @@ footer code{color:var(--ink-2)}
         "21": {
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/dashboard.html",
           "ref": "main"
+        },
+        "22": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
+          "ref": "main"
         }
       },
-      "unlinked": [
-        {
-          "issue": 22,
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
-          "branch": "chore/issue-22-transfer-rehearsal",
-          "why": "on chore/issue-22-transfer-rehearsal, whose copy of the board is not on GitHub yet"
-        }
-      ],
+      "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-09T07:17:50Z",
-        "asOf": "2026-11-09",
+        "generated": "2026-11-10T00:20:02Z",
+        "asOf": "2026-11-10",
         "links": {
           "repoBoard": "../../dashboards/index.html"
         },
@@ -1973,10 +1970,11 @@ footer code{color:var(--ink-2)}
           {
             "slug": "repository-swap",
             "name": "Repository swap",
-            "slot": 8,
-            "top": "Repository swap",
+            "slot": 0,
+            "top": "Internal Tooling",
             "status": "planned",
-            "board": null
+            "board": null,
+            "plain": true
           }
         ],
         "groups": [
@@ -1990,7 +1988,7 @@ footer code{color:var(--ink-2)}
             "key": "2",
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
           }
         ],
         "rows": [
@@ -2019,14 +2017,14 @@ footer code{color:var(--ink-2)}
                 "hold": "blocks"
               }
             ],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
             "branch": null,
             "system": null,
             "step": "implementation",
-            "detail": "1 of 8 units landed; #22 in progress; #23 up next.",
+            "detail": "2 of 8 units landed; #23 up next.",
             "since": "2026-11-08T21:15:43Z",
-            "updated": "2026-11-08T23:59:00Z",
+            "updated": "2026-11-10T00:15:12Z",
             "qa": [],
             "qaMax": 3,
             "status": "building",
@@ -2034,33 +2032,23 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": {
               "state": "partial",
-              "landed": 1,
+              "landed": 2,
               "total": 8
             },
             "active": false,
             "chain": {
               "total": 8,
-              "landed": 1,
+              "landed": 2,
               "dropped": 0,
               "deferred": 0,
               "left": 0,
               "planned": false,
               "done": false,
-              "current": [
-                {
-                  "issue": 22,
-                  "slug": "transfer-rehearsal",
-                  "step": "remediation"
-                }
-              ],
+              "current": [],
               "next": {
                 "issue": 23,
                 "slug": "kotlinbottools-rewrite-and-swap",
-                "blockedBy": [
-                  {
-                    "issue": 22
-                  }
-                ]
+                "blockedBy": []
               },
               "units": [
                 {
@@ -2073,7 +2061,7 @@ footer code{color:var(--ink-2)}
                   "n": 2,
                   "issue": 22,
                   "name": "Transfer rehearsal",
-                  "state": "current"
+                  "state": "done"
                 },
                 {
                   "n": 3,
@@ -2128,7 +2116,9 @@ footer code{color:var(--ink-2)}
             "blocks": [
               {
                 "issue": 22,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-10T00:15:13Z",
                 "hold": "enables"
               }
             ],
@@ -2201,7 +2191,8 @@ footer code{color:var(--ink-2)}
           {
             "issue": 22,
             "title": "Phase 0 · 2 — Transfer rehearsal on two throwaway repositories",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-08",
             "parent": 2,
             "waitsOn": [
@@ -2218,17 +2209,17 @@ footer code{color:var(--ink-2)}
               {
                 "issue": 23,
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               }
             ],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/",
-            "branch": "chore/issue-22-transfer-rehearsal",
+            "branch": null,
             "system": "repository-swap",
-            "step": "remediation",
-            "detail": "Every acceptance criterion is met and no recorded result is untrue; the self-test leaves the result gate and the failure paths of the post checks unchecked.",
-            "since": "2026-11-09T07:17:29Z",
-            "updated": "2026-11-09T07:17:29Z",
+            "step": "landed",
+            "detail": "Landed in PR #31.",
+            "since": "2026-11-10T00:15:12Z",
+            "updated": "2026-11-10T00:15:12Z",
             "qa": [
               {
                 "pass": 1,
@@ -2239,19 +2230,39 @@ footer code{color:var(--ink-2)}
                 "severity": {
                   "minor": 13,
                   "other": 3
-                }
+                },
+                "note": "Every acceptance criterion is met and no recorded result is untrue; the self-test leaves the result gate and the failure paths of the post checks unchecked. Test check: 14 findings, 3 of them not minor; code check: 2 minor; the 87 self-test checks passed."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-09",
+                "at": "2026-11-09T07:47:51Z",
+                "findings": {},
+                "severity": {
+                  "minor": 6,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "note": "The tool is unchanged and its 87 self-test checks pass; the known-gaps record for the next unit needed six small wording additions, made in place. Test check: no findings; code check: 6 minor, all wording.",
+                "inPlace": "fixed"
               }
             ],
             "qaMax": 3,
-            "status": "building",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
+            "landed": {
+              "pr": 31,
+              "merge": "9af27b286ede1c153ff4e0d6f034fbc872996c15",
+              "version": null,
+              "date": "2026-11-10"
+            },
             "reconciliation": {
-              "state": "planned",
+              "state": "as-built",
               "landed": null,
               "total": null
             },
-            "active": true,
+            "active": false,
             "systemName": "Repository swap",
             "group": "2",
             "order": 2
@@ -2265,8 +2276,10 @@ footer code{color:var(--ink-2)}
             "waitsOn": [
               {
                 "issue": 22,
-                "state": "OPEN",
-                "build": "blocking",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-10T00:15:13Z",
+                "build": "clear",
                 "locality": "local-repository"
               }
             ],
@@ -2295,11 +2308,7 @@ footer code{color:var(--ink-2)}
             "reconciliation": null,
             "active": false,
             "next": true,
-            "blockedBy": [
-              {
-                "issue": 22
-              }
-            ],
+            "blockedBy": [],
             "systemName": "KotlinBottools",
             "group": "2",
             "order": 3
@@ -2593,7 +2602,7 @@ footer code{color:var(--ink-2)}
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
             "state": "OPEN",
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "items": [
               {
                 "issue": 21,
@@ -2604,7 +2613,8 @@ footer code{color:var(--ink-2)}
               {
                 "issue": 22,
                 "title": "Phase 0 · 2 — Transfer rehearsal on two throwaway repositories",
-                "state": "OPEN"
+                "state": "CLOSED",
+                "stateReason": "COMPLETED"
               },
               {
                 "issue": 23,
@@ -2841,7 +2851,7 @@ footer code{color:var(--ink-2)}
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+      "head": "61a090e42effdf4a0faf920c21a26a177e3fadfe",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
