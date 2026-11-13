@@ -2,7 +2,7 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-13T09:48:05Z",
+  "generated": "2026-11-13T20:49:16Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1563,11 +1563,11 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "416f36bda66c2050e320504d999a46e71ea18557",
+      "head": "9f226462bbed2750d8cba4b4545d675135a54491",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-13T09:44:26Z",
+        "generated": "2026-11-13T20:49:01Z",
         "asOf": "2026-11-13"
       },
       "links": {
@@ -1602,13 +1602,17 @@
         "26": {
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/dashboard.html",
           "ref": "main"
+        },
+        "27": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+          "ref": "main"
         }
       },
       "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-13T09:44:26Z",
+        "generated": "2026-11-13T20:49:01Z",
         "asOf": "2026-11-13",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1649,6 +1653,33 @@
             "status": "planned",
             "board": null,
             "plain": true
+          },
+          {
+            "slug": "toolchain",
+            "name": "Toolchain",
+            "slot": 0,
+            "top": "Internal Tooling",
+            "status": "planned",
+            "board": null,
+            "plain": true
+          },
+          {
+            "slug": "residual-exposure",
+            "name": "Residual-exposure measurement",
+            "slot": 0,
+            "top": "Internal Tooling",
+            "status": "planned",
+            "board": null,
+            "plain": true
+          },
+          {
+            "slug": "clone-realignment",
+            "name": "Clone realignment",
+            "slot": 0,
+            "top": "Internal Tooling",
+            "status": "planned",
+            "board": null,
+            "plain": true
           }
         ],
         "groups": [
@@ -1663,6 +1694,12 @@
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
             "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
+          },
+          {
+            "key": "27",
+            "issue": 27,
+            "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html"
           }
         ],
         "rows": [
@@ -1696,9 +1733,9 @@
             "branch": null,
             "system": null,
             "step": "implementation",
-            "detail": "6 of 8 units landed; #27 up next.",
+            "detail": "6 of 8 units landed; #27 in progress; #28 up next.",
             "since": "2026-11-08T21:15:43Z",
-            "updated": "2026-11-13T09:38:29Z",
+            "updated": "2026-11-13T18:00:43Z",
             "qa": [],
             "qaMax": 3,
             "status": "building",
@@ -1718,11 +1755,21 @@
               "left": 0,
               "planned": false,
               "done": false,
-              "current": [],
+              "current": [
+                {
+                  "issue": 27,
+                  "slug": "bottools-trumpbot-support-rewrite",
+                  "step": "sub-issues"
+                }
+              ],
               "next": {
-                "issue": 27,
-                "slug": "bottools-trumpbot-support-rewrite",
-                "blockedBy": []
+                "issue": 28,
+                "slug": "residual-report-and-cleanup",
+                "blockedBy": [
+                  {
+                    "issue": 27
+                  }
+                ]
               },
               "units": [
                 {
@@ -1765,7 +1812,7 @@
                   "n": 7,
                   "issue": 27,
                   "name": "Rewrite BotTools, … and …",
-                  "state": "todo"
+                  "state": "current"
                 },
                 {
                   "n": 8,
@@ -2247,7 +2294,7 @@
                 "hold": "enables"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/",
             "branch": null,
             "system": "rewrite-pipeline",
@@ -2325,7 +2372,7 @@
                 "state": "CLOSED",
                 "stateReason": "COMPLETED",
                 "closedAt": "2026-11-13T09:38:30Z",
-                "build": "clear",
+                "build": "pre-built",
                 "locality": "local-repository"
               }
             ],
@@ -2336,21 +2383,67 @@
                 "hold": "blocks"
               }
             ],
-            "board": null,
-            "folder": null,
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/",
             "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #27; its run has not started. It starts after unit 6.",
+            "system": null,
+            "step": "sub-issues",
+            "detail": "4 of 4 units filed as sub-issues; each unit's board appears when its run starts.",
+            "since": "2026-11-13T20:40:13Z",
+            "updated": "2026-11-13T20:42:32Z",
             "qa": [],
-            "qaMax": null,
-            "status": "next",
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
             "landed": null,
-            "reconciliation": null,
+            "reconciliation": {
+              "state": "planned",
+              "landed": 0,
+              "total": 4
+            },
             "active": false,
-            "next": true,
-            "blockedBy": [],
-            "systemName": "KotlinBottools",
+            "chain": {
+              "total": 4,
+              "landed": 0,
+              "dropped": 0,
+              "deferred": 0,
+              "left": 0,
+              "planned": true,
+              "done": false,
+              "current": [],
+              "next": {
+                "issue": 39,
+                "slug": "workspace-tools",
+                "blockedBy": []
+              },
+              "units": [
+                {
+                  "n": 1,
+                  "issue": 39,
+                  "name": "Extend the workspace tools",
+                  "state": "todo"
+                },
+                {
+                  "n": 2,
+                  "issue": 40,
+                  "name": "Rewrite BotTools, … and …",
+                  "state": "todo"
+                },
+                {
+                  "n": 3,
+                  "issue": 41,
+                  "name": "Measure what GitHub still serves",
+                  "state": "todo"
+                },
+                {
+                  "n": 4,
+                  "issue": 42,
+                  "name": "Replace the … clone",
+                  "state": "todo"
+                }
+              ]
+            },
+            "systemName": "Internal Tooling",
             "group": "2",
             "order": 7
           },
@@ -2364,7 +2457,7 @@
               {
                 "issue": 27,
                 "state": "OPEN",
-                "build": "blocking",
+                "build": "clear",
                 "locality": "local-repository"
               },
               {
@@ -2385,13 +2478,155 @@
             "detail": "Filed as #28; its run has not started. It starts after units 5 and 7, and its landing closes #2.",
             "qa": [],
             "qaMax": null,
+            "status": "next",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "next": true,
+            "blockedBy": [
+              {
+                "issue": 27
+              }
+            ],
+            "systemName": "KotlinBottools",
+            "group": "2",
+            "order": 8
+          },
+          {
+            "issue": 39,
+            "title": "Phase 0 · 7.1 — Extend the workspace tools for BotTools, … and …",
+            "state": "OPEN",
+            "created": "2026-11-13",
+            "parent": 27,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 40,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "toolchain",
+            "step": null,
+            "detail": "Filed as #39; its run has not started. It starts first.",
+            "qa": [],
+            "qaMax": null,
+            "status": "next",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "next": true,
+            "blockedBy": [],
+            "systemName": "Toolchain",
+            "group": "27",
+            "order": 1
+          },
+          {
+            "issue": 40,
+            "title": "Phase 0 · 7.2 — Rewrite BotTools, … and …",
+            "state": "OPEN",
+            "created": "2026-11-13",
+            "parent": 27,
+            "waitsOn": [
+              {
+                "issue": 39,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 42,
+                "state": "OPEN",
+                "hold": "blocks"
+              },
+              {
+                "issue": 41,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "rewrite-pipeline",
+            "step": null,
+            "detail": "Filed as #40; its run has not started. It starts once #39, the workspace tools, has landed.",
+            "qa": [],
+            "qaMax": null,
             "status": "not-started",
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "KotlinBottools",
-            "group": "2",
-            "order": 8
+            "systemName": "Rewrite pipeline",
+            "group": "27",
+            "order": 2
+          },
+          {
+            "issue": 41,
+            "title": "Phase 0 · 7.3 — Measure what GitHub still serves of BotTools, … and …",
+            "state": "OPEN",
+            "created": "2026-11-13",
+            "parent": 27,
+            "waitsOn": [
+              {
+                "issue": 40,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "residual-exposure",
+            "step": null,
+            "detail": "Filed as #41; its run has not started. It starts once #40, the rewrites, has landed.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "Residual-exposure measurement",
+            "group": "27",
+            "order": 3
+          },
+          {
+            "issue": 42,
+            "title": "Phase 0 · 7.4 — Replace the … clone",
+            "state": "OPEN",
+            "created": "2026-11-13",
+            "parent": 27,
+            "waitsOn": [
+              {
+                "issue": 40,
+                "state": "OPEN",
+                "build": "blocking",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": "clone-realignment",
+            "step": null,
+            "detail": "Filed as #42; its run has not started. It starts once #40, the rewrites, has landed.",
+            "qa": [],
+            "qaMax": null,
+            "status": "not-started",
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "systemName": "Clone realignment",
+            "group": "27",
+            "order": 4
           }
         ],
         "roadmap": [
@@ -2543,6 +2778,34 @@
               {
                 "issue": 28,
                 "title": "Phase 0 · 8 — Residual-exposure report and workspace cleanup",
+                "state": "OPEN"
+              }
+            ]
+          },
+          {
+            "issue": 27,
+            "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
+            "state": "OPEN",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "items": [
+              {
+                "issue": 39,
+                "title": "Phase 0 · 7.1 — Extend the workspace tools for BotTools, … and …",
+                "state": "OPEN"
+              },
+              {
+                "issue": 40,
+                "title": "Phase 0 · 7.2 — Rewrite BotTools, … and …",
+                "state": "OPEN"
+              },
+              {
+                "issue": 41,
+                "title": "Phase 0 · 7.3 — Measure what GitHub still serves of BotTools, … and …",
+                "state": "OPEN"
+              },
+              {
+                "issue": 42,
+                "title": "Phase 0 · 7.4 — Replace the … clone",
                 "state": "OPEN"
               }
             ]
@@ -2757,7 +3020,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "2cb1504c63a6a8c5408abbaa2c96e11293cdcaf0",
+      "head": "2935e33f672f838f58e3267ae0d3d4c15a418ab3",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
