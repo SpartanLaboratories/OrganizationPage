@@ -326,7 +326,12 @@ summary.stg-s:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 .sp-back:hover{background:var(--surface-2)}
 .sp.past{border-left-color:var(--ink)}
 .sp-visit+.sp-visit{border-top:1px solid var(--line);margin-top:10px;padding-top:8px}
-.sp-visit>h4{font:700 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.sp-visit h4{font:700 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+details.sp-visit>summary h4{margin:0;flex:none}
+details.sp-visit>summary .nm{font-size:12.5px;color:var(--ink-2)}
+.sp-vb{padding:2px 0 4px}
+.stg-row.static{cursor:default}
+.stg-row .stg-nm{font:600 13px/1.35 var(--sans);color:var(--ink);min-width:0;overflow-wrap:anywhere}
 .wipmain.landed{border-left-color:var(--good)}
 @media (prefers-reduced-motion:reduce){.sp-list li.cur .dot{animation:none!important;box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--accent),0 0 8px 3px color-mix(in srgb,var(--accent) 45%,transparent)}}
 
@@ -1038,7 +1043,7 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
   "title": "Dokka and project site",
   "issueTitle": "Adopt the organization's Dokka and project site standard",
   "function": "The repository's Kotlin modules have no generated API reference, and it keeps no logo or Dokka stylesheet where the organization's standard keeps them. This issue brings the repository in line with that API documentation and project site standard: the Spartan Laboratories logo and a Dokka stylesheet, kept under `docs/brand/` and `docs/dokka/`; an API reference generated with Dokka 2 and mounted at `/docs/api/`, because the server already uses `/api` for its JSON API; a CI job that runs the Dokka task; and, where the repository is a library, the Dokka output shipped as its javadoc jar.",
-  "status": "building",
+  "status": "built",
   "sized": "2026-11-09T02:35:42Z",
   "parent": null,
   "fixOf": null,
@@ -1048,7 +1053,30 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
     "sha": "028231e",
     "date": "2026-11-08"
   },
-  "asBuilt": null,
+  "asBuilt": {
+    "sha": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+    "merge": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+    "pr": 15,
+    "date": "2026-11-09",
+    "at": "2026-11-09T07:08:26Z",
+    "commits": [
+      {
+        "sha": "adfc32f",
+        "at": "2026-11-09T03:21:50Z",
+        "step": "research"
+      },
+      {
+        "sha": "3d7a56b",
+        "at": "2026-11-09T03:48:33Z",
+        "step": "research"
+      },
+      {
+        "sha": "70c8eab",
+        "at": "2026-11-09T03:53:17Z",
+        "step": "research"
+      }
+    ]
+  },
   "systems": [
     {
       "slug": "shared",
@@ -1084,10 +1112,10 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
     }
   ],
   "wip": {
-    "step": "document",
-    "since": "2026-11-09T07:02:51Z",
-    "updated": "2026-11-09T07:02:51Z",
-    "detail": "The owner viewed staging at 16faca3 and found it good.",
+    "step": "landed",
+    "since": "2026-11-09T07:08:26Z",
+    "updated": "2026-11-09T07:08:26Z",
+    "detail": "Landed in PR #15.",
     "steps": [
       "sizing",
       "interview",
@@ -1102,9 +1130,7 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
       "merge",
       "landed"
     ],
-    "current": [
-      "built"
-    ],
+    "current": [],
     "questions": [],
     "research": null,
     "interview": [],
@@ -1141,8 +1167,8 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
       }
     ],
     "event": {
-      "name": "resumed",
-      "at": "2026-11-09T07:02:51Z"
+      "name": "landed",
+      "at": "2026-11-09T07:08:26Z"
     },
     "history": {
       "sizing": [
@@ -1686,6 +1712,83 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
               "answered": "2026-11-09T07:02:51Z"
             }
           ]
+        },
+        {
+          "since": "2026-11-09T07:02:51Z",
+          "ended": "2026-11-09T07:05:13Z",
+          "endedBy": "landing",
+          "to": "landing",
+          "event": {
+            "name": "resumed",
+            "at": "2026-11-09T07:02:51Z"
+          },
+          "detail": "The owner viewed staging at 16faca3 and found it good.",
+          "document": {
+            "tasks": [
+              {
+                "id": "documentation-review",
+                "name": "Documentation review",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-documentation",
+                "name": "Reconcile documentation",
+                "state": "done"
+              },
+              {
+                "id": "dokka-check",
+                "name": "Dokka check",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-plan",
+                "name": "Reconcile plan",
+                "state": "done"
+              },
+              {
+                "id": "readme-changelog",
+                "name": "README and CHANGELOG",
+                "state": "done"
+              },
+              {
+                "id": "state-boards",
+                "name": "State boards",
+                "state": "done"
+              },
+              {
+                "id": "document-landing",
+                "name": "Document commit",
+                "state": "done"
+              }
+            ]
+          }
+        }
+      ],
+      "landing": [
+        {
+          "since": "2026-11-09T07:05:13Z",
+          "ended": "2026-11-09T07:05:54Z",
+          "endedBy": "merge",
+          "to": "merge",
+          "event": {
+            "name": "landing",
+            "at": "2026-11-09T07:05:13Z",
+            "note": "land accepted"
+          },
+          "detail": "Landing: the land accepted; the branch carries the code, the version bump, the reconciled documents and the state boards."
+        }
+      ],
+      "merge": [
+        {
+          "since": "2026-11-09T07:05:54Z",
+          "ended": "2026-11-09T07:08:26Z",
+          "endedBy": "landed",
+          "to": "landed",
+          "event": {
+            "name": "landed",
+            "at": "2026-11-09T07:08:26Z"
+          },
+          "detail": "Landed in PR #15."
         }
       ]
     },
@@ -1944,6 +2047,13 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
       "date": "2026-11-09",
       "ref": "plan.md",
       "note": "one implementation stage, reference-and-branding; no version moves"
+    },
+    {
+      "column": "built",
+      "label": "Merged",
+      "date": "2026-11-09",
+      "ref": "PR #15",
+      "note": "the API reference, the branding and the deployment wiring, merged as `6e50e5a`; no version moved"
     }
   ],
   "trail": [
@@ -2104,6 +2214,23 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
       "date": "2026-11-09",
       "column": "built",
       "label": "Halted at the Document step: waiting on you (The maintainer viewing the staged site in a browser)"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Landing: the land accepted"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Merge: merging it in PR #15",
+      "ref": "PR #15"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Landed in PR #15, merge 6e50e5a",
+      "ref": "PR #15"
     }
   ],
   "rows": [
@@ -3179,7 +3306,20 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
         "link": "https://github.com/SpartanLaboratories/.github/blob/main/documentation/dokka.md#the-javadoc-jar"
       },
       "asBuilt": {
-        "state": "pending"
+        "state": "as-planned",
+        "statements": [
+          {
+            "text": "No javadoc jar and no publishing plugin were added and no version moved: no module publishes, so the standard's javadoc jar does not apply here.",
+            "state": "as-planned",
+            "ref": "consequences.md#adoption",
+            "excerpt": {
+              "ref": "consequences.md#adoption",
+              "heading": "Adoption",
+              "paragraph": "The organization's Dokka and project site standard is met as far as it applies here: Dokka 2 in V2 mode, the three modules aggregated at the root, `failOnWarning` in every configuration, the theme at the root and in each module, the logo and the stylesheet under `docs/brand/` and `docs/dokka/styles/`, the reference at `/docs/api/` because the site already uses `/api`, and a Dokka job in CI. The site is hosted on Spaceship, so `pages.yml` and `website/` do not apply, and the Compose page at `/` is the landing page. No module is published, so the javadoc jar does not apply.",
+              "hash": "e129af39ce9d"
+            }
+          }
+        ]
       },
       "options": [
         {
@@ -3221,8 +3361,8 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
     }
   ],
   "impact": {
-    "basis": "plan",
-    "summary": "The live site and staging gain the API reference at `/docs/api/`, and the server jar and the Docker image serve it too. No module publishes, so no artifact or version moves. The Gradle build now generates the reference, so a documentation warning fails it and can block a deployment, and a push that changes only `docs/brand/` or `docs/dokka/` now starts a site deployment.",
+    "basis": "as-built",
+    "summary": "Staging carries the API reference at `/docs/api/`, and production gains it when the deployment of the merge passes its approval gate; the server jar and the Docker image serve it too. No module publishes, so no artifact or version moves. The Gradle build now generates the reference, so a documentation warning fails it and can block a deployment, and a push that changes only `docs/brand/` or `docs/dokka/` now starts a site deployment.",
     "none": null,
     "release": {
       "bump": "none",
@@ -3234,7 +3374,7 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
         "kind": "artifact",
         "system": "deployment",
         "effect": "additive",
-        "summary": "The live site gains `https://spartanlaboratories.org/docs/api/` and staging `https://spartanlaboratories.org/staging/docs/api/`. The `site` artifact grows from five files to about 205, about 5.4 MB.",
+        "summary": "Staging gains `https://spartanlaboratories.org/staging/docs/api/`. Production gains `https://spartanlaboratories.org/docs/api/` when the deployment of the merge passes its approval gate: at the merge it had passed its build and staging jobs and its production job was waiting. The `site` artifact grows from five files to about 205, about 5.4 MB.",
         "link": "consequences.md#published-artifacts"
       },
       {
@@ -3282,7 +3422,7 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
         "kind": "operator",
         "system": "deployment",
         "effect": "behaviour",
-        "summary": "Production's sync record comes to own `/docs/` at the site root, so nothing else may be placed there by hand; it is a different folder from the documents folder at `/OrganizationPage/docs/`. The first upload to each site sends about 200 files, and later uploads only what changed.",
+        "summary": "Production's sync record comes to own `/docs/` at the site root, so nothing else may be placed there by hand; it is a different folder from the documents folder at `/OrganizationPage/docs/`. The first upload to each site sends about 200 files, and later uploads only what changed. `docs/brand/` and `docs/dokka/` also appear under `/OrganizationPage/docs/` through the documents publish, as any committed file under `docs/` does.",
         "link": "consequences.md#blast-radius"
       },
       {
@@ -3312,7 +3452,24 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
     ],
     "api": [],
     "conversion": [],
-    "changes": [],
+    "changes": [
+      {
+        "what": "At the merge the reference has reached staging and not production.",
+        "why": "Deployment run 42577401391 of the merge passed its build and staging jobs and its production job waits at its approval gate, so this entry and the impact's summary say what staging has and what production is still to gain.",
+        "when": "Landing",
+        "ref": "consequences.md#known-gaps",
+        "entry": "downstream.0",
+        "system": "deployment"
+      },
+      {
+        "what": "The live host's entry also names the brand and stylesheet folders' copies under `/OrganizationPage/docs/`.",
+        "why": "The reconciled consequences say the documents publish carries them there, as any committed file under `docs/`; the planned entry did not name it.",
+        "when": "Landing",
+        "ref": "consequences.md#blast-radius",
+        "entry": "downstream.6",
+        "system": "deployment"
+      }
+    ],
     "source": "consequences.md",
     "link": "consequences.md#published-artifacts"
   },
@@ -3421,7 +3578,7 @@ footer a{text-decoration:none;border-bottom:1px solid var(--line)}
     },
     {
       "name": "Observations on the live system",
-      "note": "Recorded in a comment on the issue when they happen. The staged branch and production observations are part of acceptance; the two filter observations close on their own triggers, because a manual run does not evaluate the filter."
+      "note": "Each is recorded in a comment on the issue when it happens. The staged branch's is closed: the owner viewed the reference and the site on staging at commit `16faca3` and found them good. Production's, the other part of acceptance, is still to make; the two filter observations close on their own triggers, because a manual run does not evaluate the filter."
     },
     {
       "issue": 8,
@@ -4285,8 +4442,8 @@ const PAST={
   _:V=>V.detail?`<p>${rich(V.detail)}</p>`:""};
 const VISIT_WORD={qa:`${REVIEW}s`,remediation:"visits"};
 function visitHtml(S,V,i,n,o,keys){ const grp=(l,v)=>`<span><span class="l">${l}</span>${v}</span>`;
-  let h=`<div class="sp-visit">`;
-  if(n>1) h+=`<h4>${S==="remediation"&&V.remediation?esc(remediationName(V.remediation.route,V.remediation.pass)):S==="qa"&&Array.isArray(V.qa)&&V.qa.length?esc(passNames(V.qa.map(p=>p.pass))):`Visit ${i+1} of ${n}`}</h4>`;
+  /* several visits collapse, the latest open (plan/RULES.md §3, "Finished steps"); one visit stands open, with no head of its own */
+  let h="";
   h+=(PAST[S]||PAST._)(V,{...o,visit:i},keys);
   /* the questions the halt that ended this visit put to you (a snapshot's asked) */
   if(Array.isArray(V.asked)) h+=askedBlock(V.asked.filter(q=>q&&typeof q.text==="string"&&q.text.trim()),keys);
@@ -4299,7 +4456,37 @@ function visitHtml(S,V,i,n,o,keys){ const grp=(l,v)=>`<span><span class="l">${l}
        2026-11-05); a halt stays, as the outcome of the visit it ends */
     grp(V.held&&!V.outage?"ended, waiting on you":"ended",`<span class="nw">${when(V.ended)}</span>${V.endedBy&&!V.outage?` · by <code>${esc(V.endedBy)}</code>`:""}`),
     V.to&&V.to!==S?grp("then",esc(stepLabel(V.to,{route:runCtx(V).route}))):""].filter(Boolean);
-  return h+`<div class="wip-facts sp-facts">${info.join("")}</div></div>`; }
+  h+=`<div class="wip-facts sp-facts">${info.join("")}</div>`;
+  if(n<2) return `<div class="sp-visit">${h}</div>`;
+  const key=visitKey(o.key||"own",S,i), open=DISC_OPEN.has(key)?DISC_OPEN.get(key):i===n-1, gist=visitGist(S,V); keys.add(KEY_DISC);
+  return `<details class="stg-d sp-visit" data-key="${esc(key)}" data-visit="${i}"${open?" open":""}><summary class="stg-s"><h4>${esc(visitName(S,V,i,n))}</h4><span class="nm">${esc(gist)}</span>${visitEnd(V,keys)}<span class="chev" aria-hidden="true">▸</span></summary><div class="sp-vb">${h}</div></details>`; }
+/* a visit's name, short account and how it ended: the head of its collapsing item in the step Panel and its row in the WIP Panel's brief */
+const visitKey=(run,S,i)=>`past:${run}:${S}:visit:${i}`;
+const visitName=(S,V,i,n)=>S==="remediation"&&V.remediation?remediationName(V.remediation.route,V.remediation.pass):S==="qa"&&Array.isArray(V.qa)&&V.qa.length?passNames(V.qa.map(p=>p.pass)):`Visit ${i+1} of ${n}`;
+function visitGist(S,V){ const of=a=>Array.isArray(a)?a.filter(x=>x&&typeof x==="object"):[], done=x=>x.state==="done", cnt=(a,word,verb,f)=>a.length?`${a.filter(f||done).length} of ${plural(a.length,word)} ${verb}`:"";
+  if(S==="implementation") return cnt(of(V.stages),"stage","done");
+  if(S==="remediation") return cnt(of((V.remediation||{}).steps),"sub-step","done");
+  if(S==="document") return cnt(of((V.document||{}).tasks),"task","done");
+  if(S==="research") return cnt(questionsOf(V),"question","returned",q=>q.findings!=null);
+  if(S==="interview") return cnt(of(V.interview),"question","answered",qAnsweredOf);
+  if(S==="qa"){ const p=of(V.qa)[0]; return p?findingsWords(p.findings,p.severity,true)||"":""; }
+  if(S==="plan") return V.endedBy==="plan-accepted"?"plan accepted":V.endedBy?"not accepted in this visit":"";
+  if(S==="branch") return V.branch?`branch ${V.branch}`:"";
+  if(V.units) return `${V.units.done} of ${plural(V.units.total,"unit")}`;
+  return ""; }
+const VISIT_HELD={g:"⏸",label:"waited on you",cls:"neutral"};
+const KEY_VISIT_HELD=`<span>${pill(VISIT_HELD)} the visit ended at a question put to you</span>`;
+function visitEnd(V,keys){ const p=Array.isArray(V.qa)?V.qa.filter(x=>x&&typeof x==="object")[0]:null; if(p&&QA[p.verdict]){ keys.add(`<span>${pill(QA[p.verdict])} ${REVIEW} verdict</span>`); return pill(QA[p.verdict]); } if(V.held&&!V.outage){ keys.add(KEY_VISIT_HELD); return pill(VISIT_HELD); } return ""; }
+/* the finished step at a glance, in the WIP Panel beside its step Panel (plan/RULES.md §3, "Finished steps"): a row per visit, its account, how it ended and its last report; a click on a row opens that visit in the step Panel. */
+function pastBrief(R,S,o){ const vs=visitsOf(R,S), keys=o.keys, title=stepTitle(S,{route:runCtx(R).route}); if(vs.length) { const n=vs.length, ended=vs[n-1].ended;
+    return `<div class="stg-strip sp-brief" role="group" aria-label="${esc(title)}: the finished step at a glance"><div class="wip-sub">${esc(title)} · finished${n>1?` · ${n} ${VISIT_WORD[S]||"visits"}`:""}${okStamp(ended)?` · <span class="nw">${when(ended)}</span>`:""}</div><ol class="stg-rows">${vs.map((V,i)=>{ const named=n>1&&(S==="qa"||S==="remediation"), gist=visitGist(S,V), head=named?visitName(S,V,i,n):(gist||visitName(S,V,i,n));
+      const tail=okStamp(V.ended)?`<span class="nw">ended ${when(V.ended)}</span>`:"", text=[named&&gist?esc(gist):"",V.detail&&S!=="sizing"?rich(V.detail):"",tail].filter(Boolean).join(" · ");
+      return `<li class="stg-row done${n>1?"":" static"}"${n>1?` data-run="${esc(o.key||"own")}" data-step="${esc(S)}" data-visit="${i}"`:""}><b class="id">${i+1}</b>${n>1?`<button type="button" class="stg-open" aria-label="Visit ${i+1}: ${esc(head)}: open it in the step Panel">${esc(head)}</button>`:`<span class="stg-nm">${esc(head)}</span>`}${visitEnd(V,keys)}${text?`<span class="br">${text}</span>`:""}</li>`; }).join("")}</ol></div>`; }
+  const rc=pastRecon(R,S,o), parts=[rc.trail&&rc.trail.length?plural(rc.trail.length,"trail entry").replace("entrys","entries"):"",rc.milestones&&rc.milestones.length?plural(rc.milestones.length,"milestone"):"",visitGist(S,rc)].filter(Boolean);
+  return `<div class="stg-strip sp-brief" role="group" aria-label="${esc(title)}: the finished step at a glance"><div class="wip-sub">${esc(title)} · finished · reconstructed from the history</div><p class="wip-detail">${parts.length?esc(parts.join(" · ")):"The history records nothing for this step."}</p></div>`; }
+/* a click on a row of the brief opens that visit in the step Panel */
+function openVisit(run,S,i){ const key=visitKey(run,S,i); DISC_OPEN.set(key,true); renderWip();
+  const d=[...document.querySelectorAll("#wip details.sp-visit")].find(x=>x.dataset.key===key); if(d){ d.open=true; const s=d.querySelector("summary"); s.focus({preventScroll:true}); s.scrollIntoView({block:"nearest"}); } }
 /* a finished step with no snapshot: what survives, reduced */
 function reconHtml(S,rc,o,keys){ let h=""; const at=x=>x.date?when(x.date):"";
   if(S==="sizing"&&rc.sized) h+=`<p>Sized <span class="nw">${when(rc.sized)}</span>.</p>`;
@@ -4316,8 +4503,9 @@ function reconHtml(S,rc,o,keys){ let h=""; const at=x=>x.date?when(x.date):"";
   if(rc.trail&&rc.trail.length) h+=`<p class="sp-sum">The trail</p>`+spList(rc.trail.map(t=>spItem("done",dotMark,rich(t.label),[at(t),t.ref?refAt(t.ref,"",o.base):""].filter(Boolean).join(" · "))));
   return h||`<p>The history records nothing for this step.</p>`; }
 /* The panel of a finished step S of the run R: its visits (each Correction or Resolution, each Quality Review apart) or its reconstruction, under the viewing line. */
+const pastRecon=(R,S,o)=>o.own?reconStep(PLAN,S):(R.recon&&R.recon[S])||{reconstructed:true,ended:null,trail:[],milestones:[]};
 function pastPanel(R,S,o){ o=o||{}; const keys=o.keys||new Set(), vs=visitsOf(R,S);
-  const rc=vs.length?null:o.own?reconStep(PLAN,S):(R.recon&&R.recon[S])||{reconstructed:true,ended:null,trail:[],milestones:[]};
+  const rc=vs.length?null:pastRecon(R,S,o);
   const ended=vs.length?vs[vs.length-1].ended:rc.ended, who=o.unitIssue?`#${esc(o.unitIssue)}'s `:"", title=stepTitle(S,{route:runCtx(R).route});
   let h=`<div class="${["sp","past",o.cls].filter(Boolean).join(" ")}" data-step="${esc(S)}" data-view="${rc?"reconstructed":"snapshot"}"${o.row?` style="--r:${o.row}"`:""} role="group" aria-label="${esc(o.label||"The finished step shown")}: ${esc(title)}">`;
   h+=`<p class="sp-view"><span>viewing: <b>${who}${esc(title)}</b>${ended?` · finished <span class="nw">${when(ended)}</span>`:""}${rc?" · reconstructed from the history":vs.length>1?` · ${vs.length} ${VISIT_WORD[S]||"visits"}`:""}</span><button type="button" class="sp-back" data-run="${esc(o.key||"own")}">back to now</button></p>`;
@@ -4452,7 +4640,7 @@ function renderWip(){
   const w=$("#wip"), st=STEP||"—"; w.className="wip"; w.dataset.step=st;
   /* the finished step shown (SEL), kept while it is still finished; the focus on a strip button survives the redraw */
   PICKS=0; checkSel();
-  const fa=document.activeElement, refocus=fa&&w.contains(fa)?(fa.classList.contains("stepbtn")?["pick",fa.dataset.run,fa.dataset.step]:fa.classList.contains("sp-back")?["back"]:fa.matches("summary.stg-s")?["disc",fa.parentElement.dataset.key]:fa.classList.contains("stg-open")?["stg",fa.parentElement.dataset.run,fa.parentElement.dataset.stage]:null):null;
+  const fa=document.activeElement, refocus=fa&&w.contains(fa)?(fa.classList.contains("stepbtn")?["pick",fa.dataset.run,fa.dataset.step]:fa.classList.contains("sp-back")?["back"]:fa.matches("summary.stg-s")?["disc",fa.parentElement.dataset.key]:fa.classList.contains("stg-open")?(fa.parentElement.dataset.visit!=null?["stgv",fa.parentElement.dataset.run,fa.parentElement.dataset.visit]:["stg",fa.parentElement.dataset.run,fa.parentElement.dataset.stage]):null):null;
   const special=STEP_SPECIAL[LANDED?"landed":st];
   if(special) w.classList.add(special.cls);
   const steps=WIP.steps&&WIP.steps.length?WIP.steps:STEP_ORDER;
@@ -4498,7 +4686,7 @@ function renderWip(){
     ph+=own+(detailHere?`<p class="wip-detail">${rich(WIP.detail)}</p>`:"");
     ph+=`<div class="wip-sub">The chain · ${C.landed} of ${plural(C.M,"unit")} landed${C.complete?` · ${C.complete} complete, not merged`:""}${C.extra.length?` · ${esc(C.extra.join(" · "))}`:""}</div>`;
     ph+=chainSteps(C.counted,{marks:true});
-    const phase=ph+factsHtml+`</div>`; let rowN=0;
+    const phase=ph+factsHtml+(selFor("own")?pastBrief(WIP,selFor("own"),{key:"own",own:true,keys:pkeys}):"")+`</div>`; let rowN=0;
     { const cs=new Set(C.counted.map(chainUnitState)); legend.push(sysKey(C.counted.map(r=>r.system)),cs.has("done")?`<span><i class="sbk"></i>a unit, in landing order: landed</span>`:"",cs.has("cur")?`<span><i class="sbk cur"></i>bold: a unit in progress, or complete and not merged${C.counted.some(r=>stateOf(r)==="complete")?` (${STATES.complete.g})`:""}</span>`:"",cs.has("todo")?`<span><i class="sbk todo"></i>dashed: a unit to come</span>`:""); }
     /* the tracking issue's own finished step, picked on its phase's steps line (plan/RULES.md §3, "Finished steps"): a row of its own
        beside the phase, first, in the unit's and the panel's shares; at its own sub-issues or boards step it takes the own panel's place */
@@ -4520,6 +4708,7 @@ function renderWip(){
           L.branch&&!unitLanded(r)?`<span><span class="l">branch</span><code>${esc(L.branch)}</code></span>`:""].filter(Boolean);
         if(f.length) b+=`<div class="wip-facts">${f.join("")}</div>`;
         b+=stageStrip(L,held||k==="escalated"?(L.resume||""):L.step,pkeys,held||k==="escalated",{run:String(r.unit.issue),compact:true});
+        if(selFor(String(r.unit.issue))) b+=pastBrief(L,selFor(String(r.unit.issue)),{key:String(r.unit.issue),keys:pkeys});
       }
       h+=b+`</div>`;
       /* the unit's step panel beside it, from its mirror (plan/RULES.md §3), in place of the up-next card */
@@ -4549,7 +4738,7 @@ function renderWip(){
     if(HALTED) h+=`<p class="wip-wait">Waiting on you: ${rich(WIP.waitingOn||WIP.detail||"(not stated)")}</p>`;
     if(st==="escalated") h+=`<p class="wip-wait">Escalated: the run waits while the issue's scope is re-decided.</p>`;
     /* while halted the wait line shows waitingOn, falling back to the detail: the detail is drawn too unless it is that fallback */
-    h+=own+(detailHere?`<p class="wip-detail">${rich(WIP.detail)}</p>`:"")+factsHtml+stageStrip(WIP,shownStep,pkeys,HALTED||st==="escalated",{run:"own"});
+    h+=own+(detailHere?`<p class="wip-detail">${rich(WIP.detail)}</p>`:"")+factsHtml+stageStrip(WIP,shownStep,pkeys,HALTED||st==="escalated",{run:"own"})+(selFor("own")?pastBrief(WIP,selFor("own"),{key:"own",own:true,keys:pkeys}):"");
     if(HALTED) legend.push(`<span><i class="wait"></i>yellow strip: waiting on you</span>`);
     /* the strip on the left half, the step panel on the right (plan/RULES.md §3); a landed or cancelled board has no current step */
     if(NOT_STARTED) h+=`<p class="wip-detail">Its board was laid from ${PLAN.parent&&PLAN.parent.issue?`${ilink(PLAN.parent.issue)}'s`:"its tracking issue's"} documents; its run starts when it is sized.</p>`;
@@ -4577,11 +4766,11 @@ function renderWip(){
   [...new Set(runs.flatMap(r=>qaShown(runOf(r))).map(p=>p.verdict))].filter(v=>QA[v]&&!latest.has(v)).forEach(v=>legend.push(`<span>${pill(QA[v],"",`${passName("N")} · ${QA[v].label}`)} an earlier ${PASS_NAME} of the unit's run</span>`));
   w.innerHTML=h+`<div class="legend">${[...new Set(legend.filter(Boolean))].join("")}</div>`;
   paint(w);
-  if(refocus){ const b=refocus[0]==="back"?w.querySelector(".sp-back"):refocus[0]==="disc"?[...w.querySelectorAll("summary.stg-s")].find(x=>x.parentElement.dataset.key===refocus[1]):refocus[0]==="stg"?[...w.querySelectorAll(".stg-row")].filter(x=>x.dataset.run===refocus[1]&&x.dataset.stage===refocus[2]).map(x=>x.querySelector(".stg-open"))[0]:[...w.querySelectorAll(".stepbtn")].find(x=>x.dataset.run===refocus[1]&&x.dataset.step===refocus[2]); if(b) b.focus(); }
+  if(refocus){ const b=refocus[0]==="back"?w.querySelector(".sp-back"):refocus[0]==="disc"?[...w.querySelectorAll("summary.stg-s")].find(x=>x.parentElement.dataset.key===refocus[1]):refocus[0]==="stg"||refocus[0]==="stgv"?[...w.querySelectorAll(".stg-row")].filter(x=>x.dataset.run===refocus[1]&&(refocus[0]==="stg"?x.dataset.stage===refocus[2]:x.dataset.visit===refocus[2])).map(x=>x.querySelector(".stg-open"))[0]:[...w.querySelectorAll(".stepbtn")].find(x=>x.dataset.run===refocus[1]&&x.dataset.step===refocus[2]); if(b) b.focus(); }
 }
 /* the finished steps' buttons and "back to now" (plan/RULES.md §3, "Finished steps"): one listener on the strip, which outlives its redraws */
 (function(){ const w=$("#wip"); if(!w) return;
-  w.addEventListener("click",e=>{ const b=e.target.closest(".stepbtn"); if(b&&w.contains(b)){ pickStep(b.dataset.run,b.dataset.step); return; } if(e.target.closest(".sp-back")){ backToNow(); return; } const g=e.target.closest(".stg-row[data-stage]"); if(g&&w.contains(g)&&!e.target.closest("a")) openStage(g.dataset.run,g.dataset.stage); });
+  w.addEventListener("click",e=>{ const b=e.target.closest(".stepbtn"); if(b&&w.contains(b)){ pickStep(b.dataset.run,b.dataset.step); return; } if(e.target.closest(".sp-back")){ backToNow(); return; } const g=e.target.closest(".stg-row[data-stage]"); if(g&&w.contains(g)&&!e.target.closest("a")){ openStage(g.dataset.run,g.dataset.stage); return; } const v=e.target.closest(".stg-row[data-visit]"); if(v&&w.contains(v)&&!e.target.closest("a")) openVisit(v.dataset.run,v.dataset.step,v.dataset.visit); });
   w.addEventListener("keydown",e=>{ if(e.key==="Escape"&&SEL){ e.preventDefault(); backToNow(); } }); })();
 
 /* ---------- KPIs ---------- */

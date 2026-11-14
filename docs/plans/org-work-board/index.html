@@ -162,8 +162,8 @@ h1{font-size:28px;margin:4px 0 2px;letter-spacing:-.01em;font-family:var(--mono)
 .verdict-pill.neutral,.verdict-pill.hollow{background:var(--surface)}
 /* Depends on, and Blocks · enables (plan/RULES.md §5; dashboards-skill/30): each issue with a small pill of its state, glyph and word */
 .deps{display:flex;flex-direction:column;gap:3px;align-items:flex-start}
-.dep{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 5px;min-width:0}
-.dep .verdict-pill{font-size:9.5px;padding:1px 5px}
+.dep-item{display:inline-flex;flex-wrap:wrap;align-items:center;gap:2px 5px;min-width:0}
+.dep-item .verdict-pill{font-size:9.5px;padding:1px 5px}
 /* one pill per dependency, two parts: its build state (a status pill) and its locality (a neutral ramp, faintest near, full ink far) */
 .dep-pill{display:inline-flex;align-items:stretch;border-radius:3px;white-space:nowrap}
 .dep-pill>.verdict-pill{border-top-right-radius:0;border-bottom-right-radius:0}
@@ -211,8 +211,8 @@ h1{font-size:28px;margin:4px 0 2px;letter-spacing:-.01em;font-family:var(--mono)
 .tbl .sub{font-size:12.5px;margin-top:3px}
 .tbl small{font-size:12px}
 .tbl .verdict-pill{font-size:12px;padding:3px 8px;gap:6px}
-.tbl .dep .verdict-pill,.tbl .loc{font-size:11.5px;padding:2px 7px}
-.tbl .dep{gap:3px 6px}
+.tbl .dep-item .verdict-pill,.tbl .loc{font-size:11.5px;padding:2px 7px}
+.tbl .dep-item{gap:3px 6px}
 .tbl .deps{gap:6px}
 .tbl .tags{gap:5px 7px;margin-top:6px}
 .tbl .tag-next{font-size:11px;padding:4px 6px}
@@ -220,7 +220,7 @@ h1{font-size:28px;margin:4px 0 2px;letter-spacing:-.01em;font-family:var(--mono)
 .tbl td:nth-child(3){font-size:12.5px}
 .tbl td:nth-child(3) .sub{font-size:11.5px}
 .tbl td:nth-child(3) small{font-size:inherit}
-@media (min-width:1500px){.tbl{font-size:15px}.tbl .t{font-size:15.5px}.tbl .verdict-pill{font-size:12.5px}.tbl .dep .verdict-pill,.tbl .loc{font-size:12px}.tbl .qamark{font-size:12px}.tbl .chainsum{font-size:14px}}
+@media (min-width:1500px){.tbl{font-size:15px}.tbl .t{font-size:15.5px}.tbl .verdict-pill{font-size:12.5px}.tbl .dep-item .verdict-pill,.tbl .loc{font-size:12px}.tbl .qamark{font-size:12px}.tbl .chainsum{font-size:14px}}
 @media (max-width:879.98px){
   .tbl{min-width:0}
   .tbl,.tbl tbody,.tbl tr.grp,.tbl tr.grp th{display:block}
@@ -362,7 +362,7 @@ footer code{color:var(--ink-2)}
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-13T20:49:16Z",
+  "generated": "2026-11-14T03:07:10Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1927,7 +1927,7 @@ footer code{color:var(--ink-2)}
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-13T20:49:01Z",
+        "generated": "2026-11-13T21:49:56Z",
         "asOf": "2026-11-13"
       },
       "links": {
@@ -1968,11 +1968,18 @@ footer code{color:var(--ink-2)}
           "ref": "main"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 39,
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
+          "branch": null,
+          "why": "not on main, and on no branch recorded for it"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-13T20:49:01Z",
+        "generated": "2026-11-13T21:49:56Z",
         "asOf": "2026-11-13",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -2053,13 +2060,13 @@ footer code{color:var(--ink-2)}
             "key": "2",
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
           },
           {
             "key": "27",
             "issue": 27,
             "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html"
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html"
           }
         ],
         "rows": [
@@ -2088,7 +2095,7 @@ footer code{color:var(--ink-2)}
                 "hold": "blocks"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
             "branch": null,
             "system": null,
@@ -2119,7 +2126,7 @@ footer code{color:var(--ink-2)}
                 {
                   "issue": 27,
                   "slug": "bottools-trumpbot-support-rewrite",
-                  "step": "sub-issues"
+                  "step": "implementation"
                 }
               ],
               "next": {
@@ -2743,17 +2750,17 @@ footer code{color:var(--ink-2)}
                 "hold": "blocks"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/",
             "branch": null,
             "system": null,
-            "step": "sub-issues",
-            "detail": "4 of 4 units filed as sub-issues; each unit's board appears when its run starts.",
-            "since": "2026-11-13T20:40:13Z",
-            "updated": "2026-11-13T20:42:32Z",
+            "step": "implementation",
+            "detail": "0 of 4 units landed; #39 in progress; #40 up next.",
+            "since": "2026-11-13T21:05:13Z",
+            "updated": "2026-11-13T21:05:13Z",
             "qa": [],
             "qaMax": 3,
-            "status": "planning",
+            "status": "building",
             "fixOf": null,
             "landed": null,
             "reconciliation": {
@@ -2768,20 +2775,30 @@ footer code{color:var(--ink-2)}
               "dropped": 0,
               "deferred": 0,
               "left": 0,
-              "planned": true,
+              "planned": false,
               "done": false,
-              "current": [],
+              "current": [
+                {
+                  "issue": 39,
+                  "slug": "workspace-tools",
+                  "step": "plan"
+                }
+              ],
               "next": {
-                "issue": 39,
-                "slug": "workspace-tools",
-                "blockedBy": []
+                "issue": 40,
+                "slug": "rewrites",
+                "blockedBy": [
+                  {
+                    "issue": 39
+                  }
+                ]
               },
               "units": [
                 {
                   "n": 1,
                   "issue": 39,
                   "name": "Extend the workspace tools",
-                  "state": "todo"
+                  "state": "current"
                 },
                 {
                   "n": 2,
@@ -2866,20 +2883,21 @@ footer code{color:var(--ink-2)}
                 "hold": "blocks"
               }
             ],
-            "board": null,
-            "folder": null,
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/",
             "branch": null,
             "system": "toolchain",
-            "step": null,
-            "detail": "Filed as #39; its run has not started. It starts first.",
+            "step": "plan",
+            "detail": "No question needs new evidence: the outside-world claims the tools rest on were verified for the parent design, and the earlier tool folder, the three repositories and the data were read again today and match it.",
+            "since": "2026-11-13T21:05:13Z",
+            "updated": "2026-11-13T21:29:09Z",
             "qa": [],
-            "qaMax": null,
-            "status": "next",
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
             "landed": null,
             "reconciliation": null,
-            "active": false,
-            "next": true,
-            "blockedBy": [],
+            "active": true,
             "systemName": "Toolchain",
             "group": "27",
             "order": 1
@@ -2918,10 +2936,16 @@ footer code{color:var(--ink-2)}
             "detail": "Filed as #40; its run has not started. It starts once #39, the workspace tools, has landed.",
             "qa": [],
             "qaMax": null,
-            "status": "not-started",
+            "status": "next",
             "landed": null,
             "reconciliation": null,
             "active": false,
+            "next": true,
+            "blockedBy": [
+              {
+                "issue": 39
+              }
+            ],
             "systemName": "Rewrite pipeline",
             "group": "27",
             "order": 2
@@ -3092,7 +3116,7 @@ footer code{color:var(--ink-2)}
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
             "state": "OPEN",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "items": [
               {
                 "issue": 21,
@@ -3146,7 +3170,7 @@ footer code{color:var(--ink-2)}
             "issue": 27,
             "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
             "state": "OPEN",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
             "items": [
               {
                 "issue": 39,
@@ -3196,7 +3220,7 @@ footer code{color:var(--ink-2)}
       "name": "SpartanGraphics",
       "url": "https://github.com/SpartanLaboratories/SpartanGraphics",
       "defaultBranch": "main",
-      "head": "6c71ecbe7461769f3f975a1f5bcb6e36a152c899",
+      "head": "d90f9e40ebd1fbe53074f11b686f31a2cbeafa7e",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3380,7 +3404,7 @@ footer code{color:var(--ink-2)}
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "2935e33f672f838f58e3267ae0d3d4c15a418ab3",
+      "head": "4a239acaad909cb7b73070186f8ee36a9b1cae8e",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3648,7 +3672,7 @@ footer code{color:var(--ink-2)}
           "name": "MyGameTools",
           "url": "https://github.com/SpartanLabsGaming/MyGameTools",
           "defaultBranch": "master",
-          "head": "dc5214f8366f9535e602423b04f0fab22aebce89",
+          "head": "6131dcdf7e28fade6696fffe9df5d10adc9e5551",
           "source": null,
           "links": {},
           "boards": {},
@@ -3794,6 +3818,8 @@ const STATUS={
   duplicate:{g:"⊜",l:"closed · duplicate",c:"neutral",desc:"no board: closed on the tracker as a duplicate of another issue"},
   "no-board":{g:"–",l:"no board",c:"neutral",d:1}};
 const closedWord=x=>x&&x.state==="CLOSED"?(x.stateReason==="NOT_PLANNED"?"closed · not planned":x.stateReason==="DUPLICATE"?"closed · duplicate":"closed"):"";
+/* The blocked-by mark is a Pill (nomenclature/boards.md, Pill: the blocked Pill), as ui.md defines one: a state word with its glyph, in a
+   status colour, the waiting colour. The template draws it from the row's blockedBy alone, so no enrichment writes it. */
 const BLOCKED={g:"⊘",l:"blocked",c:"warning"};
 const TAG_NEXT=`<span class="tag-next">UP NEXT</span>`;
 const QA={approved:{g:"✓",l:"approved",c:"good"},"changes-requested":{g:"✕",l:"changes requested",c:"critical"},running:{g:"…",l:"in progress",c:"neutral",d:1}};
@@ -3850,7 +3876,7 @@ const RECON={planned:{g:"…",l:"impact planned",c:"neutral",d:1,desc:"the plan'
 const reconOf=r=>r.reconciliation&&RECON[r.reconciliation.state]?r.reconciliation:null;
 const reconTag=r=>{ const x=reconOf(r); if(!x) return ""; const d=RECON[x.state]; return `<div class="tags">${pill(d,x.state==="partial"&&x.total?`${d.l} · ${x.landed} of ${x.total}`:"")}</div>`; };
 const blockerRef=x=>x.issue!=null?ilink(x.issue,x.repo):esc(x.slug||`unit ${x.unit}`);
-const blockedTag=r=>(r.blockedBy||[]).length?`<span class="verdict-pill ${BLOCKED.c}"><i aria-hidden="true">${BLOCKED.g}</i>blocked by ${r.blockedBy.map(blockerRef).join(", ")}</span>`:"";
+const blockedPill=r=>(r.blockedBy||[]).length?`<span class="verdict-pill ${BLOCKED.c}"><i aria-hidden="true">${BLOCKED.g}</i>blocked by ${r.blockedBy.map(blockerRef).join(", ")}</span>`:"";
 const linkOr=(href,text)=>href?ext(href,text):text;
 
 const TREE_KEY="dashboards-tree-org";
@@ -3929,8 +3955,8 @@ function runsTable(){
   let h=`<thead><tr><th>Issue</th><th>State</th><th>Now</th><th>${PASS_NAME}s</th><th>Depends on</th><th>Blocks · enables</th></tr></thead><tbody>`;
   treeFlat(issueForest(ROWS,D.groups||[],D.roadmap||[]),`${repoKey(CUR)}#`).forEach(e=>{ if(e.head){ const g=e.head; h+=`<tr class="grp"><th colspan="6">${esc(g.title)}</th></tr>`; return; } if(!e.x.row){ h+=treeBare(e); return; } const r=e.x.row;
     const st=stOf(r), qa=qaShown(r);
-      const iss=(x,bub,dep)=>{ const cw=closedWord(x), say=cw&&!(dep&&x.build==="clear"&&cw==="closed"); return `<span class="dep">${ilink(x.issue,x.repo)} ${bub}${say?`<small>${esc(cw)}</small>`:""}</span>`; };
-      h+=`<tr class="run${st==="no-board"||st==="not-started"||st==="next"?" nob":""}" style="--c:${sysColour(r.system)};--d:${e.depth}"${treeAttrs(e)}><td>${treeBtn(e)}<span class="t">${pair(r.issue,r.title)}</span>${e.x.kids.length?treeBelow(e.x):""}<div class="sub"><span class="${r.systemArchived?"sysarch":""}">${swatch(r.system)}${esc(r.systemName||"no system recorded")}</span>${r.systemArchived?` <span class="archtag">⊟ archived</span>`:""}${r.parent&&!e.x.up?` · part of ${ilink(r.parent)}`:""}${r.fixOf?` · fix to ${ilink(r.fixOf)}`:""}</div>${treeGuides(e)}</td><td>${r.chain?chainCell(r,st):pill(STATUS[st],"",r.active?" fullpulse":st==="next"?" upnext-ring":heldRow(r)?" held":"")}${st==="next"?`<div class="tags">${TAG_NEXT}${blockedTag(r)}</div>`:""}${reconTag(r)}${r.tracker&&r.tracker.pr?`<div class="sub">${ext(prUrl(r.tracker.pr.number),`PR #${esc(r.tracker.pr.number)}`)} ${r.tracker.pr.state==="MERGED"?"merged":"open"}</div>`:""}${r.step?`<div class="sub">step ${esc(stepLabel(r.step,rowCtx(r)))}</div>`:""}${r.branch?`<div class="sub">branch <code>${esc(r.branch)}</code></div>`:""}</td><td>${rich(r.detail||"")}${r.landed?`<div class="sub">${[r.landed.pr?ext(prUrl(r.landed.pr),`PR #${esc(r.landed.pr)}`):"",r.landed.version?esc(r.landed.version):"",r.landed.date?when(r.landed.date):""].filter(Boolean).join(" · ")}</div>`:""}</td><td>${qa.length?`<div class="qas">${qa.map(p=>{ const d=QA[p.verdict]||QA.running; return `<span class="qa1">${pill(d,`${passName(p.pass)} · ${d.l}`)}${inPlaceMark(p)}</span>`; }).join("")}</div>`:""}${qa.length&&r.qaMax?`<div class="sub">of at most ${esc(r.qaMax)}</div>`:""}</td><td>${(r.waitsOn||[]).length?`<div class="deps">${r.waitsOn.map(x=>iss(x,depPill(x),1)).join("")}</div>`:""}</td><td>${(r.blocks||[]).length?`<div class="deps">${r.blocks.map(x=>iss(x,pill(HOLD[holdOf(x,r)]))).join("")}</div>`:""}</td></tr>${chainRow(r,e)}`; });
+      const iss=(x,bub,dep)=>{ const cw=closedWord(x), say=cw&&!(dep&&x.build==="clear"&&cw==="closed"); return `<span class="dep-item">${ilink(x.issue,x.repo)} ${bub}${say?`<small>${esc(cw)}</small>`:""}</span>`; };
+      h+=`<tr class="run${st==="no-board"||st==="not-started"||st==="next"?" nob":""}" style="--c:${sysColour(r.system)};--d:${e.depth}"${treeAttrs(e)}><td>${treeBtn(e)}<span class="t">${pair(r.issue,r.title)}</span>${e.x.kids.length?treeBelow(e.x):""}<div class="sub"><span class="${r.systemArchived?"sysarch":""}">${swatch(r.system)}${esc(r.systemName||"no system recorded")}</span>${r.systemArchived?` <span class="archtag">⊟ archived</span>`:""}${r.parent&&!e.x.up?` · part of ${ilink(r.parent)}`:""}${r.fixOf?` · fix to ${ilink(r.fixOf)}`:""}</div>${treeGuides(e)}</td><td>${r.chain?chainCell(r,st):pill(STATUS[st],"",r.active?" fullpulse":st==="next"?" upnext-ring":heldRow(r)?" held":"")}${st==="next"?`<div class="tags">${TAG_NEXT}${blockedPill(r)}</div>`:""}${reconTag(r)}${r.tracker&&r.tracker.pr?`<div class="sub">${ext(prUrl(r.tracker.pr.number),`PR #${esc(r.tracker.pr.number)}`)} ${r.tracker.pr.state==="MERGED"?"merged":"open"}</div>`:""}${r.step?`<div class="sub">step ${esc(stepLabel(r.step,rowCtx(r)))}</div>`:""}${r.branch?`<div class="sub">branch <code>${esc(r.branch)}</code></div>`:""}</td><td>${rich(r.detail||"")}${r.landed?`<div class="sub">${[r.landed.pr?ext(prUrl(r.landed.pr),`PR #${esc(r.landed.pr)}`):"",r.landed.version?esc(r.landed.version):"",r.landed.date?when(r.landed.date):""].filter(Boolean).join(" · ")}</div>`:""}</td><td>${qa.length?`<div class="qas">${qa.map(p=>{ const d=QA[p.verdict]||QA.running; return `<span class="qa1">${pill(d,`${passName(p.pass)} · ${d.l}`)}${inPlaceMark(p)}</span>`; }).join("")}</div>`:""}${qa.length&&r.qaMax?`<div class="sub">of at most ${esc(r.qaMax)}</div>`:""}</td><td>${(r.waitsOn||[]).length?`<div class="deps">${r.waitsOn.map(x=>iss(x,depPill(x),1)).join("")}</div>`:""}</td><td>${(r.blocks||[]).length?`<div class="deps">${r.blocks.map(x=>iss(x,pill(HOLD[holdOf(x,r)]))).join("")}</div>`:""}</td></tr>${chainRow(r,e)}`; });
   return h+"</tbody>";
 }
 function runsLegend(){
@@ -3992,7 +4018,7 @@ function render(){
   let ck=document.getElementById("context-key"); if(!kh){ if(ck) ck.remove(); } else { if(!ck){ ck=document.createElement("div"); ck.className="legend"; ck.id="context-key"; $("#context").parentElement.appendChild(ck); } ck.innerHTML=kh; }
   /* the footer (GUIDANCE.md §3): what the board corresponds to and what is authoritative */
   $("#footer").innerHTML=`Corresponds to <code>docs/plans/${B.live?".live/":""}org-work-board/board.json</code>. Code and the Markdown beside this board are authoritative on any conflict.`;
-  $("#source-view").textContent=JSON.stringify(B,(k,v)=>k==="level"?undefined:v,2); /* a work level is never shown (GUIDANCE.md §4) */
+  $("#source-view").textContent=JSON.stringify(B,(k,v)=>k==="level"?undefined:v,2); /* the sizing an older row holds is never shown (GUIDANCE.md §4) */
   $("#source-key").innerHTML=B.live?`<span>this board's data as generated; each repository Panel follows its checkout's live data</span>`:`<span>the snapshot written at the last landing, at the time stamped in the header</span>`;
 }
 /* ---------- The theme switch (GUIDANCE.md §1, Themes; §12, "Switch") ---------- */
