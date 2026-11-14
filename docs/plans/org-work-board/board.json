@@ -2,19 +2,19 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-14T03:07:10Z",
+  "generated": "2026-11-14T03:27:41Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
       "name": "WebTools",
       "url": "https://github.com/SpartanLaboratories/WebTools",
       "defaultBranch": "master",
-      "head": "77dedde91d9aec4e549e20475cced7a51d1ef6a9",
+      "head": "b62e2afc1dbc11df1cb13854574f79595070fe20",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-09T03:07:04Z",
-        "asOf": "2026-11-09"
+        "generated": "2026-11-14T03:14:28Z",
+        "asOf": "2026-11-14"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -79,8 +79,8 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/WebTools",
-        "generated": "2026-11-09T03:07:04Z",
-        "asOf": "2026-11-09",
+        "generated": "2026-11-14T03:14:28Z",
+        "asOf": "2026-11-14",
         "links": {
           "repoBoard": "../../dashboards/index.html",
           "readme": "../README.md"
@@ -1329,8 +1329,8 @@
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": "view/99-dokka-api-docs/dashboard.html",
-            "folder": "../99-dokka-api-docs/",
+            "board": null,
+            "folder": null,
             "branch": null,
             "system": "gradle-build",
             "step": "landed",
@@ -1563,7 +1563,7 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "9f226462bbed2750d8cba4b4545d675135a54491",
+      "head": "8b06da72341be43e29e5cab3daaa494b3d89b19f",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3044,12 +3044,12 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "4a239acaad909cb7b73070186f8ee36a9b1cae8e",
+      "head": "a1ab5e4305cc75d9ae5813ece12e6b82c9bce73f",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-09T07:29:12Z",
-        "asOf": "2026-11-09"
+        "generated": "2026-11-14T03:10:22Z",
+        "asOf": "2026-11-14"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -3069,8 +3069,8 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/OrganizationPage",
-        "generated": "2026-11-09T07:29:12Z",
-        "asOf": "2026-11-09",
+        "generated": "2026-11-14T03:10:22Z",
+        "asOf": "2026-11-14",
         "links": {
           "repoBoard": "../../dashboards/index.html"
         },
@@ -3119,8 +3119,8 @@
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": "view/7-dokka-and-project-site/dashboard.html",
-            "folder": "../7-dokka-and-project-site/",
+            "board": null,
+            "folder": null,
             "branch": null,
             "system": "shared",
             "step": "landed",
@@ -3272,7 +3272,7 @@
             "title": "Link the published boards from the site footer",
             "labels": [],
             "created": "2026-11-09",
-            "system": null
+            "system": "web"
           },
           {
             "issue": 13,
