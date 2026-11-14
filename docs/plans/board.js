@@ -3,11 +3,11 @@ window.dashboardLive&&window.dashboardLive("board",
 {
   "schema": "work-board/1",
   "repo": "SpartanLaboratories/OrganizationPage",
-  "generated": "2026-11-09T05:54:41Z",
-  "asOf": "2026-11-09",
+  "generated": "2026-11-14T03:10:15Z",
+  "asOf": "2026-11-14",
   "tree": {
-    "ref": "feat/issue-7-dokka-and-project-site",
-    "sha": "38477af"
+    "ref": "docs/rule-rework-vocabulary",
+    "sha": "4a239ac"
   },
   "links": {
     "repoBoard": "../dashboards/index.html"
@@ -36,12 +36,6 @@ window.dashboardLive&&window.dashboardLive("board",
       "top": "web",
       "status": "built",
       "board": null
-    },
-    {
-      "slug": "documentation-build",
-      "name": "documentation-build",
-      "slot": 0,
-      "top": "documentation-build"
     }
   ],
   "groups": [
@@ -56,19 +50,20 @@ window.dashboardLive&&window.dashboardLive("board",
     {
       "issue": 7,
       "title": "Adopt the organization's Dokka and project site standard",
-      "state": "OPEN",
+      "state": "CLOSED",
+      "stateReason": "COMPLETED",
       "created": "2026-11-08",
       "parent": null,
       "waitsOn": [],
       "blocks": [],
       "board": "7-dokka-and-project-site/dashboard.html",
       "folder": "7-dokka-and-project-site/",
-      "branch": "feat/issue-7-dokka-and-project-site",
+      "branch": null,
       "system": "shared",
-      "step": "document",
-      "detail": "Document: 5 of 7 tasks done; State boards current.",
-      "since": "2026-11-09T05:29:20Z",
-      "updated": "2026-11-09T05:46:18Z",
+      "step": "landed",
+      "detail": "Landed in PR #15.",
+      "since": "2026-11-09T07:08:26Z",
+      "updated": "2026-11-09T07:08:26Z",
       "qa": [
         {
           "pass": 1,
@@ -103,15 +98,20 @@ window.dashboardLive&&window.dashboardLive("board",
         }
       ],
       "qaMax": 3,
-      "status": "building",
+      "status": "landed",
       "fixOf": null,
-      "landed": null,
+      "landed": {
+        "pr": 15,
+        "merge": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+        "version": null,
+        "date": "2026-11-09"
+      },
       "reconciliation": {
-        "state": "planned",
+        "state": "as-built",
         "landed": null,
         "total": null
       },
-      "active": true,
+      "active": false,
       "systemName": "shared",
       "group": "other",
       "order": 0
@@ -205,6 +205,20 @@ window.dashboardLive&&window.dashboardLive("board",
   "roadmap": [],
   "unscheduled": [
     {
+      "issue": 14,
+      "title": "Link the published boards from the site footer",
+      "labels": [],
+      "created": "2026-11-09",
+      "system": "web"
+    },
+    {
+      "issue": 13,
+      "title": "Link other projects' API documentation from the project cards",
+      "labels": [],
+      "created": "2026-11-09",
+      "system": null
+    },
+    {
       "issue": 12,
       "title": "Local JS builds leave an untracked kotlin-js-store/yarn.lock",
       "labels": [],
@@ -219,15 +233,6 @@ window.dashboardLive&&window.dashboardLive("board",
       ],
       "created": "2026-11-09",
       "system": "deployment"
-    },
-    {
-      "issue": 7,
-      "title": "Adopt the organization's Dokka and project site standard",
-      "labels": [
-        "type: feature"
-      ],
-      "created": "2026-11-08",
-      "system": "documentation-build"
     }
   ]
 }

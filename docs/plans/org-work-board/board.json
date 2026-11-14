@@ -2,7 +2,7 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-13T20:49:16Z",
+  "generated": "2026-11-14T03:07:10Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1567,7 +1567,7 @@
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-13T20:49:01Z",
+        "generated": "2026-11-13T21:49:56Z",
         "asOf": "2026-11-13"
       },
       "links": {
@@ -1608,11 +1608,18 @@
           "ref": "main"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 39,
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
+          "branch": null,
+          "why": "not on main, and on no branch recorded for it"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-13T20:49:01Z",
+        "generated": "2026-11-13T21:49:56Z",
         "asOf": "2026-11-13",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1693,13 +1700,13 @@
             "key": "2",
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
           },
           {
             "key": "27",
             "issue": 27,
             "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html"
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html"
           }
         ],
         "rows": [
@@ -1728,7 +1735,7 @@
                 "hold": "blocks"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
             "branch": null,
             "system": null,
@@ -1759,7 +1766,7 @@
                 {
                   "issue": 27,
                   "slug": "bottools-trumpbot-support-rewrite",
-                  "step": "sub-issues"
+                  "step": "implementation"
                 }
               ],
               "next": {
@@ -2383,17 +2390,17 @@
                 "hold": "blocks"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/",
             "branch": null,
             "system": null,
-            "step": "sub-issues",
-            "detail": "4 of 4 units filed as sub-issues; each unit's board appears when its run starts.",
-            "since": "2026-11-13T20:40:13Z",
-            "updated": "2026-11-13T20:42:32Z",
+            "step": "implementation",
+            "detail": "0 of 4 units landed; #39 in progress; #40 up next.",
+            "since": "2026-11-13T21:05:13Z",
+            "updated": "2026-11-13T21:05:13Z",
             "qa": [],
             "qaMax": 3,
-            "status": "planning",
+            "status": "building",
             "fixOf": null,
             "landed": null,
             "reconciliation": {
@@ -2408,20 +2415,30 @@
               "dropped": 0,
               "deferred": 0,
               "left": 0,
-              "planned": true,
+              "planned": false,
               "done": false,
-              "current": [],
+              "current": [
+                {
+                  "issue": 39,
+                  "slug": "workspace-tools",
+                  "step": "plan"
+                }
+              ],
               "next": {
-                "issue": 39,
-                "slug": "workspace-tools",
-                "blockedBy": []
+                "issue": 40,
+                "slug": "rewrites",
+                "blockedBy": [
+                  {
+                    "issue": 39
+                  }
+                ]
               },
               "units": [
                 {
                   "n": 1,
                   "issue": 39,
                   "name": "Extend the workspace tools",
-                  "state": "todo"
+                  "state": "current"
                 },
                 {
                   "n": 2,
@@ -2506,20 +2523,21 @@
                 "hold": "blocks"
               }
             ],
-            "board": null,
-            "folder": null,
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/",
             "branch": null,
             "system": "toolchain",
-            "step": null,
-            "detail": "Filed as #39; its run has not started. It starts first.",
+            "step": "plan",
+            "detail": "No question needs new evidence: the outside-world claims the tools rest on were verified for the parent design, and the earlier tool folder, the three repositories and the data were read again today and match it.",
+            "since": "2026-11-13T21:05:13Z",
+            "updated": "2026-11-13T21:29:09Z",
             "qa": [],
-            "qaMax": null,
-            "status": "next",
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
             "landed": null,
             "reconciliation": null,
-            "active": false,
-            "next": true,
-            "blockedBy": [],
+            "active": true,
             "systemName": "Toolchain",
             "group": "27",
             "order": 1
@@ -2558,10 +2576,16 @@
             "detail": "Filed as #40; its run has not started. It starts once #39, the workspace tools, has landed.",
             "qa": [],
             "qaMax": null,
-            "status": "not-started",
+            "status": "next",
             "landed": null,
             "reconciliation": null,
             "active": false,
+            "next": true,
+            "blockedBy": [
+              {
+                "issue": 39
+              }
+            ],
             "systemName": "Rewrite pipeline",
             "group": "27",
             "order": 2
@@ -2732,7 +2756,7 @@
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
             "state": "OPEN",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "items": [
               {
                 "issue": 21,
@@ -2786,7 +2810,7 @@
             "issue": 27,
             "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
             "state": "OPEN",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
             "items": [
               {
                 "issue": 39,
@@ -2836,7 +2860,7 @@
       "name": "SpartanGraphics",
       "url": "https://github.com/SpartanLaboratories/SpartanGraphics",
       "defaultBranch": "main",
-      "head": "6c71ecbe7461769f3f975a1f5bcb6e36a152c899",
+      "head": "d90f9e40ebd1fbe53074f11b686f31a2cbeafa7e",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3020,7 +3044,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "2935e33f672f838f58e3267ae0d3d4c15a418ab3",
+      "head": "4a239acaad909cb7b73070186f8ee36a9b1cae8e",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3288,7 +3312,7 @@
           "name": "MyGameTools",
           "url": "https://github.com/SpartanLabsGaming/MyGameTools",
           "defaultBranch": "master",
-          "head": "dc5214f8366f9535e602423b04f0fab22aebce89",
+          "head": "6131dcdf7e28fade6696fffe9df5d10adc9e5551",
           "source": null,
           "links": {},
           "boards": {},

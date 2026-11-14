@@ -8,7 +8,7 @@
   "title": "Dokka and project site",
   "issueTitle": "Adopt the organization's Dokka and project site standard",
   "function": "The repository's Kotlin modules have no generated API reference, and it keeps no logo or Dokka stylesheet where the organization's standard keeps them. This issue brings the repository in line with that API documentation and project site standard: the Spartan Laboratories logo and a Dokka stylesheet, kept under `docs/brand/` and `docs/dokka/`; an API reference generated with Dokka 2 and mounted at `/docs/api/`, because the server already uses `/api` for its JSON API; a CI job that runs the Dokka task; and, where the repository is a library, the Dokka output shipped as its javadoc jar.",
-  "status": "building",
+  "status": "built",
   "sized": "2026-11-09T02:35:42Z",
   "parent": null,
   "fixOf": null,
@@ -18,7 +18,30 @@
     "sha": "028231e",
     "date": "2026-11-08"
   },
-  "asBuilt": null,
+  "asBuilt": {
+    "sha": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+    "merge": "6e50e5ac9f9d137d0886d20b9927cd1abbf490b4",
+    "pr": 15,
+    "date": "2026-11-09",
+    "at": "2026-11-09T07:08:26Z",
+    "commits": [
+      {
+        "sha": "adfc32f",
+        "at": "2026-11-09T03:21:50Z",
+        "step": "research"
+      },
+      {
+        "sha": "3d7a56b",
+        "at": "2026-11-09T03:48:33Z",
+        "step": "research"
+      },
+      {
+        "sha": "70c8eab",
+        "at": "2026-11-09T03:53:17Z",
+        "step": "research"
+      }
+    ]
+  },
   "systems": [
     {
       "slug": "shared",
@@ -54,10 +77,10 @@
     }
   ],
   "wip": {
-    "step": "document",
-    "since": "2026-11-09T07:02:51Z",
-    "updated": "2026-11-09T07:02:51Z",
-    "detail": "The owner viewed staging at 16faca3 and found it good.",
+    "step": "landed",
+    "since": "2026-11-09T07:08:26Z",
+    "updated": "2026-11-09T07:08:26Z",
+    "detail": "Landed in PR #15.",
     "steps": [
       "sizing",
       "interview",
@@ -72,9 +95,7 @@
       "merge",
       "landed"
     ],
-    "current": [
-      "built"
-    ],
+    "current": [],
     "questions": [],
     "research": null,
     "interview": [],
@@ -111,8 +132,8 @@
       }
     ],
     "event": {
-      "name": "resumed",
-      "at": "2026-11-09T07:02:51Z"
+      "name": "landed",
+      "at": "2026-11-09T07:08:26Z"
     },
     "history": {
       "sizing": [
@@ -656,6 +677,83 @@
               "answered": "2026-11-09T07:02:51Z"
             }
           ]
+        },
+        {
+          "since": "2026-11-09T07:02:51Z",
+          "ended": "2026-11-09T07:05:13Z",
+          "endedBy": "landing",
+          "to": "landing",
+          "event": {
+            "name": "resumed",
+            "at": "2026-11-09T07:02:51Z"
+          },
+          "detail": "The owner viewed staging at 16faca3 and found it good.",
+          "document": {
+            "tasks": [
+              {
+                "id": "documentation-review",
+                "name": "Documentation review",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-documentation",
+                "name": "Reconcile documentation",
+                "state": "done"
+              },
+              {
+                "id": "dokka-check",
+                "name": "Dokka check",
+                "state": "done"
+              },
+              {
+                "id": "reconcile-plan",
+                "name": "Reconcile plan",
+                "state": "done"
+              },
+              {
+                "id": "readme-changelog",
+                "name": "README and CHANGELOG",
+                "state": "done"
+              },
+              {
+                "id": "state-boards",
+                "name": "State boards",
+                "state": "done"
+              },
+              {
+                "id": "document-landing",
+                "name": "Document commit",
+                "state": "done"
+              }
+            ]
+          }
+        }
+      ],
+      "landing": [
+        {
+          "since": "2026-11-09T07:05:13Z",
+          "ended": "2026-11-09T07:05:54Z",
+          "endedBy": "merge",
+          "to": "merge",
+          "event": {
+            "name": "landing",
+            "at": "2026-11-09T07:05:13Z",
+            "note": "land accepted"
+          },
+          "detail": "Landing: the land accepted; the branch carries the code, the version bump, the reconciled documents and the state boards."
+        }
+      ],
+      "merge": [
+        {
+          "since": "2026-11-09T07:05:54Z",
+          "ended": "2026-11-09T07:08:26Z",
+          "endedBy": "landed",
+          "to": "landed",
+          "event": {
+            "name": "landed",
+            "at": "2026-11-09T07:08:26Z"
+          },
+          "detail": "Landed in PR #15."
         }
       ]
     },
@@ -914,6 +1012,13 @@
       "date": "2026-11-09",
       "ref": "plan.md",
       "note": "one implementation stage, reference-and-branding; no version moves"
+    },
+    {
+      "column": "built",
+      "label": "Merged",
+      "date": "2026-11-09",
+      "ref": "PR #15",
+      "note": "the API reference, the branding and the deployment wiring, merged as `6e50e5a`; no version moved"
     }
   ],
   "trail": [
@@ -1074,6 +1179,23 @@
       "date": "2026-11-09",
       "column": "built",
       "label": "Halted at the Document step: waiting on you (The maintainer viewing the staged site in a browser)"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Landing: the land accepted"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Merge: merging it in PR #15",
+      "ref": "PR #15"
+    },
+    {
+      "date": "2026-11-09",
+      "column": "built",
+      "label": "Landed in PR #15, merge 6e50e5a",
+      "ref": "PR #15"
     }
   ],
   "rows": [
@@ -2149,7 +2271,20 @@
         "link": "https://github.com/SpartanLaboratories/.github/blob/main/documentation/dokka.md#the-javadoc-jar"
       },
       "asBuilt": {
-        "state": "pending"
+        "state": "as-planned",
+        "statements": [
+          {
+            "text": "No javadoc jar and no publishing plugin were added and no version moved: no module publishes, so the standard's javadoc jar does not apply here.",
+            "state": "as-planned",
+            "ref": "consequences.md#adoption",
+            "excerpt": {
+              "ref": "consequences.md#adoption",
+              "heading": "Adoption",
+              "paragraph": "The organization's Dokka and project site standard is met as far as it applies here: Dokka 2 in V2 mode, the three modules aggregated at the root, `failOnWarning` in every configuration, the theme at the root and in each module, the logo and the stylesheet under `docs/brand/` and `docs/dokka/styles/`, the reference at `/docs/api/` because the site already uses `/api`, and a Dokka job in CI. The site is hosted on Spaceship, so `pages.yml` and `website/` do not apply, and the Compose page at `/` is the landing page. No module is published, so the javadoc jar does not apply.",
+              "hash": "e129af39ce9d"
+            }
+          }
+        ]
       },
       "options": [
         {
@@ -2191,8 +2326,8 @@
     }
   ],
   "impact": {
-    "basis": "plan",
-    "summary": "The live site and staging gain the API reference at `/docs/api/`, and the server jar and the Docker image serve it too. No module publishes, so no artifact or version moves. The Gradle build now generates the reference, so a documentation warning fails it and can block a deployment, and a push that changes only `docs/brand/` or `docs/dokka/` now starts a site deployment.",
+    "basis": "as-built",
+    "summary": "Staging carries the API reference at `/docs/api/`, and production gains it when the deployment of the merge passes its approval gate; the server jar and the Docker image serve it too. No module publishes, so no artifact or version moves. The Gradle build now generates the reference, so a documentation warning fails it and can block a deployment, and a push that changes only `docs/brand/` or `docs/dokka/` now starts a site deployment.",
     "none": null,
     "release": {
       "bump": "none",
@@ -2204,7 +2339,7 @@
         "kind": "artifact",
         "system": "deployment",
         "effect": "additive",
-        "summary": "The live site gains `https://spartanlaboratories.org/docs/api/` and staging `https://spartanlaboratories.org/staging/docs/api/`. The `site` artifact grows from five files to about 205, about 5.4 MB.",
+        "summary": "Staging gains `https://spartanlaboratories.org/staging/docs/api/`. Production gains `https://spartanlaboratories.org/docs/api/` when the deployment of the merge passes its approval gate: at the merge it had passed its build and staging jobs and its production job was waiting. The `site` artifact grows from five files to about 205, about 5.4 MB.",
         "link": "consequences.md#published-artifacts"
       },
       {
@@ -2252,7 +2387,7 @@
         "kind": "operator",
         "system": "deployment",
         "effect": "behaviour",
-        "summary": "Production's sync record comes to own `/docs/` at the site root, so nothing else may be placed there by hand; it is a different folder from the documents folder at `/OrganizationPage/docs/`. The first upload to each site sends about 200 files, and later uploads only what changed.",
+        "summary": "Production's sync record comes to own `/docs/` at the site root, so nothing else may be placed there by hand; it is a different folder from the documents folder at `/OrganizationPage/docs/`. The first upload to each site sends about 200 files, and later uploads only what changed. `docs/brand/` and `docs/dokka/` also appear under `/OrganizationPage/docs/` through the documents publish, as any committed file under `docs/` does.",
         "link": "consequences.md#blast-radius"
       },
       {
@@ -2282,7 +2417,24 @@
     ],
     "api": [],
     "conversion": [],
-    "changes": [],
+    "changes": [
+      {
+        "what": "At the merge the reference has reached staging and not production.",
+        "why": "Deployment run 42577401391 of the merge passed its build and staging jobs and its production job waits at its approval gate, so this entry and the impact's summary say what staging has and what production is still to gain.",
+        "when": "Landing",
+        "ref": "consequences.md#known-gaps",
+        "entry": "downstream.0",
+        "system": "deployment"
+      },
+      {
+        "what": "The live host's entry also names the brand and stylesheet folders' copies under `/OrganizationPage/docs/`.",
+        "why": "The reconciled consequences say the documents publish carries them there, as any committed file under `docs/`; the planned entry did not name it.",
+        "when": "Landing",
+        "ref": "consequences.md#blast-radius",
+        "entry": "downstream.6",
+        "system": "deployment"
+      }
+    ],
     "source": "consequences.md",
     "link": "consequences.md#published-artifacts"
   },
@@ -2391,7 +2543,7 @@
     },
     {
       "name": "Observations on the live system",
-      "note": "Recorded in a comment on the issue when they happen. The staged branch and production observations are part of acceptance; the two filter observations close on their own triggers, because a manual run does not evaluate the filter."
+      "note": "Each is recorded in a comment on the issue when it happens. The staged branch's is closed: the owner viewed the reference and the site on staging at commit `16faca3` and found them good. Production's, the other part of acceptance, is still to make; the two filter observations close on their own triggers, because a manual run does not evaluate the filter."
     },
     {
       "issue": 8,
