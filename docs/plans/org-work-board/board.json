@@ -2,7 +2,7 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-15T12:11:32Z",
+  "generated": "2026-11-15T20:58:58Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1563,11 +1563,11 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "ffb272c37c6c0dc50f58f0fd295142d15473a643",
+      "head": "9170254e888696dc0683701383c02bd455ecfdc2",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-15T12:11:15Z",
+        "generated": "2026-11-15T20:56:01Z",
         "asOf": "2026-11-15"
       },
       "links": {
@@ -1610,12 +1610,16 @@
         "39": {
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
           "ref": "main"
+        },
+        "40": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/dashboard.html",
+          "ref": "main"
         }
       },
       "unlinked": [
         {
-          "issue": 40,
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/dashboard.html",
+          "issue": 41,
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
           "branch": null,
           "why": "not on main, and on no branch recorded for it"
         }
@@ -1623,7 +1627,7 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-15T12:11:15Z",
+        "generated": "2026-11-15T20:56:01Z",
         "asOf": "2026-11-15",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1668,15 +1672,6 @@
           {
             "slug": "toolchain",
             "name": "Toolchain",
-            "slot": 0,
-            "top": "Internal Tooling",
-            "status": "planned",
-            "board": null,
-            "plain": true
-          },
-          {
-            "slug": "residual-exposure",
-            "name": "Residual-exposure measurement",
             "slot": 0,
             "top": "Internal Tooling",
             "status": "planned",
@@ -2399,9 +2394,9 @@
             "branch": null,
             "system": null,
             "step": "implementation",
-            "detail": "1 of 4 units landed; #40 in progress; #41 up next.",
+            "detail": "2 of 4 units landed; #41 in progress; #42 up next.",
             "since": "2026-11-13T21:05:13Z",
-            "updated": "2026-11-15T12:10:29Z",
+            "updated": "2026-11-15T20:55:34Z",
             "qa": [],
             "qaMax": 3,
             "status": "building",
@@ -2409,13 +2404,13 @@
             "landed": null,
             "reconciliation": {
               "state": "partial",
-              "landed": 1,
+              "landed": 2,
               "total": 4
             },
             "active": false,
             "chain": {
               "total": 4,
-              "landed": 1,
+              "landed": 2,
               "dropped": 0,
               "deferred": 0,
               "left": 0,
@@ -2423,19 +2418,15 @@
               "done": false,
               "current": [
                 {
-                  "issue": 40,
-                  "slug": "rewrites",
+                  "issue": 41,
+                  "slug": "residual-measurement",
                   "step": "plan"
                 }
               ],
               "next": {
-                "issue": 41,
-                "slug": "residual-measurement",
-                "blockedBy": [
-                  {
-                    "issue": 40
-                  }
-                ]
+                "issue": 42,
+                "slug": "clone-replacement",
+                "blockedBy": []
               },
               "units": [
                 {
@@ -2448,13 +2439,13 @@
                   "n": 2,
                   "issue": 40,
                   "name": "Rewrite BotTools, … and …",
-                  "state": "current"
+                  "state": "done"
                 },
                 {
                   "n": 3,
                   "issue": 41,
                   "name": "Measure what GitHub still serves",
-                  "state": "todo"
+                  "state": "current"
                 },
                 {
                   "n": 4,
@@ -2524,7 +2515,9 @@
             "blocks": [
               {
                 "issue": 40,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-15T20:48:30Z",
                 "hold": "enables"
               }
             ],
@@ -2633,7 +2626,8 @@
           {
             "issue": 40,
             "title": "Phase 0 · 7.2 — Rewrite BotTools, … and …",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-13",
             "parent": 27,
             "waitsOn": [
@@ -2650,29 +2644,59 @@
               {
                 "issue": 42,
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               },
               {
                 "issue": 41,
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               }
             ],
             "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/",
             "branch": null,
             "system": "rewrite-pipeline",
-            "step": "plan",
-            "detail": "Unit 2 of #27: the rewrites of BotTools, … and …, each with one atomic lease push on request. Baseline ffb272c on main. The landing is documents only; no version moves.",
-            "since": "2026-11-15T12:10:29Z",
-            "updated": "2026-11-15T12:10:29Z",
-            "qa": [],
+            "step": "landed",
+            "detail": "Landed in PR #45.",
+            "since": "2026-11-15T20:48:29Z",
+            "updated": "2026-11-15T20:48:29Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-15",
+                "at": "2026-11-15T20:13:40Z",
+                "findings": {
+                  "documentation": 0,
+                  "test": 7,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 7,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/ca070e8d/tests/index.html",
+                "note": "The run was confirmed independently from its stage markers, its log, its checksum lists and GitHub: 794 recorded checks, 789 passed and none failed, the other 5 not yet due (the landing's four document checks and the owner's reading of the as-built record); three histories rewritten, each pushed once and proven clean, every count at its expectation. 7 findings (7 minor; 7 test), none about what was pushed. Three typed checks (the earlier records, the earlier tool folder at its pins, the output rule over the unit's outputs) and the state read after the request service refused BotTools' first call leave no line in the run log, so the as-built record states their results; the plan's test table listed the grant read under two test sets and the input and record checks under none; the pin list's own checksum is to be stated at the start and at the close; and restoring the deny rule lifted for the push, with the allow lines removed, needs a follow-up. The procedure showed no defect: a first call refused is a case the plan provides for. They touch the outcome, the verification and the records, and in readiness the earlier records' check, the grant read and the pin list. The fixes are made in the documents: the plan's test table, the as-built record and the consequences.",
+                "inPlace": "fixed"
+              }
+            ],
             "qaMax": 3,
-            "status": "planning",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
-            "reconciliation": null,
-            "active": true,
+            "landed": {
+              "pr": 45,
+              "merge": "9170254e888696dc0683701383c02bd455ecfdc2",
+              "version": null,
+              "date": "2026-11-15"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
             "systemName": "Rewrite pipeline",
             "group": "27",
             "order": 2
@@ -2686,31 +2710,30 @@
             "waitsOn": [
               {
                 "issue": 40,
-                "state": "OPEN",
-                "build": "blocking",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-15T20:48:30Z",
+                "build": "clear",
                 "locality": "local-repository"
               }
             ],
             "blocks": [],
-            "board": null,
-            "folder": null,
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/",
             "branch": null,
-            "system": "residual-exposure",
-            "step": null,
-            "detail": "Filed as #41; its run has not started. It starts once #40, the rewrites, has landed.",
+            "system": "rewrite-pipeline",
+            "step": "plan",
+            "detail": "Unit 3 of the three-repository work: the residual measurement over BotTools, … and …. The unit's slice of the parent design (section 9) is validated against the workspace as the rewrites left it, then planned in detail.",
+            "since": "2026-11-15T20:55:34Z",
+            "updated": "2026-11-15T20:55:34Z",
             "qa": [],
-            "qaMax": null,
-            "status": "next",
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
             "landed": null,
             "reconciliation": null,
-            "active": false,
-            "next": true,
-            "blockedBy": [
-              {
-                "issue": 40
-              }
-            ],
-            "systemName": "Residual-exposure measurement",
+            "active": true,
+            "systemName": "Rewrite pipeline",
             "group": "27",
             "order": 3
           },
@@ -2723,8 +2746,10 @@
             "waitsOn": [
               {
                 "issue": 40,
-                "state": "OPEN",
-                "build": "blocking",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-15T20:48:30Z",
+                "build": "clear",
                 "locality": "local-repository"
               }
             ],
@@ -2737,10 +2762,12 @@
             "detail": "Filed as #42; its run has not started. It starts once #40, the rewrites, has landed.",
             "qa": [],
             "qaMax": null,
-            "status": "not-started",
+            "status": "next",
             "landed": null,
             "reconciliation": null,
             "active": false,
+            "next": true,
+            "blockedBy": [],
             "systemName": "Clone realignment",
             "group": "27",
             "order": 4
@@ -2914,7 +2941,8 @@
               {
                 "issue": 40,
                 "title": "Phase 0 · 7.2 — Rewrite BotTools, … and …",
-                "state": "OPEN"
+                "state": "CLOSED",
+                "stateReason": "COMPLETED"
               },
               {
                 "issue": 41,
@@ -3138,7 +3166,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "2fc080aadd64b9fe3a3ec3d17dcda0f010534b62",
+      "head": "6bb7603cd6a070176ff808e63d304b64206025c0",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3464,6 +3492,11 @@
       "why": "the organization's .github repository"
     },
     {
+      "repository": "SpartanLaboratories/BotTools",
+      "url": "https://github.com/SpartanLaboratories/BotTools",
+      "why": "reference only"
+    },
+    {
       "repository": "SpartanLaboratories/GKB",
       "url": "https://github.com/SpartanLaboratories/GKB",
       "why": "reference only"
@@ -3471,11 +3504,6 @@
     {
       "repository": "SpartanLaboratories/GKB2",
       "url": "https://github.com/SpartanLaboratories/GKB2",
-      "why": "reference only"
-    },
-    {
-      "repository": "SpartanLaboratories/BotTools",
-      "url": "https://github.com/SpartanLaboratories/BotTools",
       "why": "reference only"
     }
   ]
