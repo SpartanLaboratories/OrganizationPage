@@ -2,19 +2,19 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-16T20:47:13Z",
+  "generated": "2026-11-16T23:01:50Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
       "name": "WebTools",
       "url": "https://github.com/SpartanLaboratories/WebTools",
       "defaultBranch": "master",
-      "head": "b62e2afc1dbc11df1cb13854574f79595070fe20",
+      "head": "d68ec81e82828911f373bc4940da34580786aaee",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-14T03:14:28Z",
-        "asOf": "2026-11-14"
+        "generated": "2026-11-16T22:22:19Z",
+        "asOf": "2026-11-16"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -79,8 +79,8 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/WebTools",
-        "generated": "2026-11-14T03:14:28Z",
-        "asOf": "2026-11-14",
+        "generated": "2026-11-16T22:22:19Z",
+        "asOf": "2026-11-16",
         "links": {
           "repoBoard": "../../dashboards/index.html",
           "readme": "../README.md"
@@ -1321,6 +1321,69 @@
             "order": 12
           },
           {
+            "issue": 80,
+            "title": "docs: generalise the machine-local JAVA_HOME path in #47's final-implementation.md",
+            "state": "OPEN",
+            "created": "2026-10-23",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": null,
+            "unassigned": true,
+            "step": null,
+            "detail": "",
+            "qa": [],
+            "status": "not-started",
+            "tracker": {
+              "branch": null,
+              "pr": null
+            },
+            "active": false,
+            "landed": null,
+            "reconciliation": null,
+            "systemName": "no system",
+            "group": "other",
+            "order": 13
+          },
+          {
+            "issue": 81,
+            "title": "webtools-localhook: local authenticated callback server",
+            "state": "OPEN",
+            "created": "2026-10-25",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 1,
+                "repo": "SpartanLaboratories/.github",
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": null,
+            "unassigned": true,
+            "step": null,
+            "detail": "",
+            "qa": [],
+            "status": "not-started",
+            "tracker": {
+              "branch": null,
+              "pr": null
+            },
+            "active": false,
+            "landed": null,
+            "reconciliation": null,
+            "systemName": "no system",
+            "group": "other",
+            "order": 14
+          },
+          {
             "issue": 99,
             "title": "Generate API docs with Dokka: javadoc jars, GitHub Pages site and 1.0.0 release preparation",
             "state": "CLOSED",
@@ -1329,8 +1392,8 @@
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": null,
-            "folder": null,
+            "board": "../99-dokka-api-docs/dashboard.html",
+            "folder": "../99-dokka-api-docs/",
             "branch": null,
             "system": "gradle-build",
             "step": "landed",
@@ -1402,7 +1465,7 @@
             "active": false,
             "systemName": "Gradle build",
             "group": "other",
-            "order": 13
+            "order": 15
           }
         ],
         "roadmap": [],
@@ -1567,7 +1630,7 @@
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-16T20:44:02Z",
+        "generated": "2026-11-16T22:58:25Z",
         "asOf": "2026-11-16"
       },
       "links": {
@@ -1624,11 +1687,18 @@
           "ref": "main"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 28,
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
+          "branch": "docs/issue-28-residual-exposure-report-workspace-cleanup",
+          "why": "on docs/issue-28-residual-exposure-report-workspace-cleanup, not on GitHub yet"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-16T20:44:02Z",
+        "generated": "2026-11-16T22:58:25Z",
         "asOf": "2026-11-16",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1671,8 +1741,8 @@
             "plain": true
           },
           {
-            "slug": "toolchain",
-            "name": "Toolchain",
+            "slug": "residual-exposure",
+            "name": "Residual-exposure measurement",
             "slot": 0,
             "top": "Internal Tooling",
             "status": "planned",
@@ -1680,8 +1750,8 @@
             "plain": true
           },
           {
-            "slug": "residual-exposure",
-            "name": "Residual-exposure measurement",
+            "slug": "toolchain",
+            "name": "Toolchain",
             "slot": 0,
             "top": "Internal Tooling",
             "status": "planned",
@@ -1749,9 +1819,9 @@
             "branch": null,
             "system": null,
             "step": "implementation",
-            "detail": "6 of 8 units landed; #27 in progress; #28 up next.",
+            "detail": "7 of 8 units landed; #28 in progress.",
             "since": "2026-11-08T21:15:43Z",
-            "updated": "2026-11-13T18:00:43Z",
+            "updated": "2026-11-16T20:48:25Z",
             "qa": [],
             "qaMax": 3,
             "status": "building",
@@ -1759,13 +1829,13 @@
             "landed": null,
             "reconciliation": {
               "state": "partial",
-              "landed": 6,
+              "landed": 7,
               "total": 8
             },
             "active": false,
             "chain": {
               "total": 8,
-              "landed": 6,
+              "landed": 7,
               "dropped": 0,
               "deferred": 0,
               "left": 0,
@@ -1773,16 +1843,12 @@
               "done": false,
               "current": [
                 {
-                  "issue": 27,
-                  "slug": "bottools-trumpbot-support-rewrite",
-                  "step": "landed"
+                  "issue": 28,
+                  "slug": "residual-report-and-cleanup",
+                  "step": "implementation"
                 }
               ],
-              "next": {
-                "issue": 28,
-                "slug": "residual-report-and-cleanup",
-                "blockedBy": []
-              },
+              "next": null,
               "units": [
                 {
                   "n": 1,
@@ -1824,13 +1890,13 @@
                   "n": 7,
                   "issue": 27,
                   "name": "Rewrite BotTools, … and …",
-                  "state": "current"
+                  "state": "done"
                 },
                 {
                   "n": 8,
                   "issue": 28,
                   "name": "Residual report and cleanup",
-                  "state": "todo"
+                  "state": "current"
                 }
               ]
             },
@@ -2398,7 +2464,7 @@
                 "hold": "enables"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/",
             "branch": null,
             "system": null,
@@ -2488,21 +2554,26 @@
               }
             ],
             "blocks": [],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #28; its run has not started. It starts after units 5 and 7, and its landing closes #2.",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/",
+            "branch": "docs/issue-28-residual-exposure-report-workspace-cleanup",
+            "system": "residual-exposure",
+            "step": "implementation",
+            "detail": "Work resumes: the plan's pinned scripts go back for a correction of the six readiness self-test cases that failed, before the readiness stage runs again.",
+            "since": "2026-11-16T22:57:50Z",
+            "updated": "2026-11-16T22:57:50Z",
             "qa": [],
-            "qaMax": null,
-            "status": "next",
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
             "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "next": true,
-            "blockedBy": [],
-            "systemName": "KotlinBottools",
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": true,
+            "systemName": "Residual-exposure measurement",
             "group": "2",
             "order": 8
           },
@@ -2791,7 +2862,7 @@
               }
             ],
             "blocks": [],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/",
             "branch": null,
             "system": "clone-realignment",
@@ -3213,7 +3284,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "6094890851ec091ef92958fa5c2c9afe9373725f",
+      "head": "fb4728c24c76069aa718b55ad5d9da07919ab77d",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3481,7 +3552,7 @@
           "name": "MyGameTools",
           "url": "https://github.com/SpartanLabsGaming/MyGameTools",
           "defaultBranch": "master",
-          "head": "6131dcdf7e28fade6696fffe9df5d10adc9e5551",
+          "head": "46697c15f4c2386b6cfd17eadefd1bfa1f6d54cd",
           "source": null,
           "links": {},
           "boards": {},
@@ -3493,7 +3564,7 @@
           "name": "MyGameServer",
           "url": "https://github.com/SpartanLabsGaming/MyGameServer",
           "defaultBranch": "master",
-          "head": "9eef06b825f706e4a47c15acca66cfc82bc400a8",
+          "head": "cb146a82013c9bace07ea6ee4a3dc1c9c47902d7",
           "source": null,
           "links": {},
           "boards": {},
@@ -3505,7 +3576,7 @@
           "name": "MyGameClient",
           "url": "https://github.com/SpartanLabsGaming/MyGameClient",
           "defaultBranch": "master",
-          "head": "d8914911e0d081b2c224dceefeba0941f24eafbb",
+          "head": "02974acd8fa01c772f496d0004a7c66ccb076d20",
           "source": null,
           "links": {},
           "boards": {},
