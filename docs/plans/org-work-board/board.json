@@ -2,7 +2,7 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-16T03:32:36Z",
+  "generated": "2026-11-16T20:47:13Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1563,11 +1563,11 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "f11f7abecdc68f1153e5904c325ff6bfb0709ea0",
+      "head": "053288047b6410bf22fca990cafc17d55051bf6d",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-16T03:29:54Z",
+        "generated": "2026-11-16T20:44:02Z",
         "asOf": "2026-11-16"
       },
       "links": {
@@ -1618,13 +1618,17 @@
         "41": {
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
           "ref": "main"
+        },
+        "42": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/dashboard.html",
+          "ref": "main"
         }
       },
       "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-16T03:29:54Z",
+        "generated": "2026-11-16T20:44:02Z",
         "asOf": "2026-11-16",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1708,10 +1712,10 @@
             "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
           },
           {
-            "key": "27",
-            "issue": 27,
-            "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html"
+            "key": "other",
+            "issue": null,
+            "title": "Other runs, oldest first",
+            "board": null
           }
         ],
         "rows": [
@@ -1771,17 +1775,13 @@
                 {
                   "issue": 27,
                   "slug": "bottools-trumpbot-support-rewrite",
-                  "step": "implementation"
+                  "step": "landed"
                 }
               ],
               "next": {
                 "issue": 28,
                 "slug": "residual-report-and-cleanup",
-                "blockedBy": [
-                  {
-                    "issue": 27
-                  }
-                ]
+                "blockedBy": []
               },
               "units": [
                 {
@@ -2302,7 +2302,9 @@
             "blocks": [
               {
                 "issue": 27,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-16T20:40:45Z",
                 "hold": "enables"
               }
             ],
@@ -2375,7 +2377,8 @@
           {
             "issue": 27,
             "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-08",
             "parent": 2,
             "waitsOn": [
@@ -2392,42 +2395,43 @@
               {
                 "issue": 28,
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               }
             ],
             "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/",
             "branch": null,
             "system": null,
-            "step": "implementation",
-            "detail": "3 of 4 units landed; #42 up next.",
-            "since": "2026-11-13T21:05:13Z",
-            "updated": "2026-11-16T03:24:15Z",
+            "step": "landed",
+            "detail": "Landed: 4 of 4 units, the last #42 in PR #48.",
+            "since": "2026-11-16T20:36:53Z",
+            "updated": "2026-11-16T20:36:53Z",
             "qa": [],
             "qaMax": 3,
-            "status": "building",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
+            "landed": {
+              "pr": 48,
+              "merge": "053288047b6410bf22fca990cafc17d55051bf6d",
+              "version": null,
+              "date": "2026-11-16"
+            },
             "reconciliation": {
-              "state": "partial",
-              "landed": 3,
+              "state": "as-built",
+              "landed": 4,
               "total": 4
             },
             "active": false,
             "chain": {
               "total": 4,
-              "landed": 3,
+              "landed": 4,
               "dropped": 0,
               "deferred": 0,
               "left": 0,
               "planned": false,
-              "done": false,
+              "done": true,
               "current": [],
-              "next": {
-                "issue": 42,
-                "slug": "clone-replacement",
-                "blockedBy": []
-              },
+              "next": null,
               "units": [
                 {
                   "n": 1,
@@ -2451,7 +2455,7 @@
                   "n": 4,
                   "issue": 42,
                   "name": "Replace the … clone",
-                  "state": "todo"
+                  "state": "done"
                 }
               ]
             },
@@ -2468,7 +2472,9 @@
             "waitsOn": [
               {
                 "issue": 27,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-16T20:40:45Z",
                 "build": "clear",
                 "locality": "local-repository"
               },
@@ -2495,11 +2501,7 @@
             "reconciliation": null,
             "active": false,
             "next": true,
-            "blockedBy": [
-              {
-                "issue": 27
-              }
-            ],
+            "blockedBy": [],
             "systemName": "KotlinBottools",
             "group": "2",
             "order": 8
@@ -2620,8 +2622,8 @@
             },
             "active": false,
             "systemName": "Toolchain",
-            "group": "27",
-            "order": 1
+            "group": "other",
+            "order": 0
           },
           {
             "issue": 40,
@@ -2643,7 +2645,9 @@
             "blocks": [
               {
                 "issue": 42,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-16T20:36:55Z",
                 "hold": "enables"
               },
               {
@@ -2700,8 +2704,8 @@
             },
             "active": false,
             "systemName": "Rewrite pipeline",
-            "group": "27",
-            "order": 2
+            "group": "other",
+            "order": 1
           },
           {
             "issue": 41,
@@ -2721,7 +2725,7 @@
               }
             ],
             "blocks": [],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/",
             "branch": null,
             "system": "residual-exposure",
@@ -2766,13 +2770,14 @@
             },
             "active": false,
             "systemName": "Residual-exposure measurement",
-            "group": "27",
-            "order": 3
+            "group": "other",
+            "order": 2
           },
           {
             "issue": 42,
             "title": "Phase 0 · 7.4 — Replace the … clone",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-13",
             "parent": 27,
             "waitsOn": [
@@ -2786,23 +2791,53 @@
               }
             ],
             "blocks": [],
-            "board": null,
-            "folder": null,
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/",
             "branch": null,
             "system": "clone-realignment",
-            "step": null,
-            "detail": "Filed as #42; its run has not started. It starts once #40, the rewrites, has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "next",
-            "landed": null,
-            "reconciliation": null,
+            "step": "landed",
+            "detail": "Landed in PR #48.",
+            "since": "2026-11-16T20:36:53Z",
+            "updated": "2026-11-16T20:36:53Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-16",
+                "at": "2026-11-16T20:03:47Z",
+                "findings": {
+                  "test": 0,
+                  "code": 2
+                },
+                "severity": {
+                  "minor": 2,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "note": "Every item the issue asks was verified on the clone; the two fixes are wordings in the as-built record: the replacement reply's stored line count, and the reason the run went on past the request builder's defect.",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/ca070e8d/tests/index.html",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "landed",
+            "fixOf": null,
+            "landed": {
+              "pr": 48,
+              "merge": "053288047b6410bf22fca990cafc17d55051bf6d",
+              "version": null,
+              "date": "2026-11-16"
+            },
+            "reconciliation": {
+              "state": "as-built",
+              "landed": null,
+              "total": null
+            },
             "active": false,
-            "next": true,
-            "blockedBy": [],
             "systemName": "Clone realignment",
-            "group": "27",
-            "order": 4
+            "group": "other",
+            "order": 3
           }
         ],
         "roadmap": [
@@ -2949,7 +2984,8 @@
               {
                 "issue": 27,
                 "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-                "state": "OPEN"
+                "state": "CLOSED",
+                "stateReason": "COMPLETED"
               },
               {
                 "issue": 28,
@@ -2957,40 +2993,18 @@
                 "state": "OPEN"
               }
             ]
-          },
-          {
-            "issue": 27,
-            "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-            "state": "OPEN",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
-            "items": [
-              {
-                "issue": 39,
-                "title": "Phase 0 · 7.1 — Extend the workspace tools for BotTools, … and …",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 40,
-                "title": "Phase 0 · 7.2 — Rewrite BotTools, … and …",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 41,
-                "title": "Phase 0 · 7.3 — Measure what GitHub still serves of BotTools, … and …",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 42,
-                "title": "Phase 0 · 7.4 — Replace the … clone",
-                "state": "OPEN"
-              }
-            ]
           }
         ],
         "unscheduled": [
+          {
+            "issue": 47,
+            "title": "Workspace clone tools: the deletion and move-back requests carry the replacement's check sentences",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-16",
+            "system": "toolchain"
+          },
           {
             "issue": 33,
             "title": "Library ships a logging backend: logback-classic is an implementation dependency",
@@ -3199,7 +3213,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "e861a5031e0abe80d2783e3701bb5ae504042d2c",
+      "head": "6094890851ec091ef92958fa5c2c9afe9373725f",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
