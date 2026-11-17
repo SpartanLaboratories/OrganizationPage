@@ -2,7 +2,7 @@
   "schema": "org-work-board/1",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-16T23:01:50Z",
+  "generated": "2026-11-17T01:24:45Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1626,12 +1626,12 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "053288047b6410bf22fca990cafc17d55051bf6d",
+      "head": "3625163c1a1177afca20488e421a5f44778724e0",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-16T22:58:25Z",
-        "asOf": "2026-11-16"
+        "generated": "2026-11-17T01:21:58Z",
+        "asOf": "2026-11-17"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -1670,6 +1670,10 @@
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
           "ref": "main"
         },
+        "28": {
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
+          "ref": "main"
+        },
         "39": {
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
           "ref": "main"
@@ -1687,19 +1691,12 @@
           "ref": "main"
         }
       },
-      "unlinked": [
-        {
-          "issue": 28,
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
-          "branch": "docs/issue-28-residual-exposure-report-workspace-cleanup",
-          "why": "on docs/issue-28-residual-exposure-report-workspace-cleanup, not on GitHub yet"
-        }
-      ],
+      "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-16T22:58:25Z",
-        "asOf": "2026-11-16",
+        "generated": "2026-11-17T01:21:58Z",
+        "asOf": "2026-11-17",
         "links": {
           "repoBoard": "../../dashboards/index.html"
         },
@@ -1779,7 +1776,7 @@
             "key": "2",
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
           },
           {
             "key": "other",
@@ -1801,53 +1798,52 @@
                 "issue": 2,
                 "repo": "SpartanLaboratories/MagicBot",
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               },
               {
                 "issue": 16,
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               },
               {
                 "issue": 3,
                 "state": "OPEN",
-                "hold": "blocks"
+                "hold": "enables"
               }
             ],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
             "branch": null,
             "system": null,
-            "step": "implementation",
-            "detail": "7 of 8 units landed; #28 in progress.",
-            "since": "2026-11-08T21:15:43Z",
-            "updated": "2026-11-16T20:48:25Z",
+            "step": "landed",
+            "detail": "Landed: 8 of 8 units, the last #28 in PR #49.",
+            "since": "2026-11-17T01:13:11Z",
+            "updated": "2026-11-17T01:13:11Z",
             "qa": [],
             "qaMax": 3,
-            "status": "building",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
+            "landed": {
+              "pr": 49,
+              "merge": "3625163c1a1177afca20488e421a5f44778724e0",
+              "version": null,
+              "date": "2026-11-17"
+            },
             "reconciliation": {
-              "state": "partial",
-              "landed": 7,
+              "state": "as-built",
+              "landed": 8,
               "total": 8
             },
             "active": false,
             "chain": {
               "total": 8,
-              "landed": 7,
+              "landed": 8,
               "dropped": 0,
               "deferred": 0,
               "left": 0,
               "planned": false,
-              "done": false,
-              "current": [
-                {
-                  "issue": 28,
-                  "slug": "residual-report-and-cleanup",
-                  "step": "implementation"
-                }
-              ],
+              "done": true,
+              "current": [],
               "next": null,
               "units": [
                 {
@@ -1896,7 +1892,7 @@
                   "n": 8,
                   "issue": 28,
                   "name": "Residual report and cleanup",
-                  "state": "current"
+                  "state": "done"
                 }
               ]
             },
@@ -2278,7 +2274,9 @@
             "blocks": [
               {
                 "issue": 28,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-17T01:13:13Z",
                 "hold": "enables"
               }
             ],
@@ -2460,7 +2458,9 @@
             "blocks": [
               {
                 "issue": 28,
-                "state": "OPEN",
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-17T01:13:13Z",
                 "hold": "enables"
               }
             ],
@@ -2532,7 +2532,8 @@
           {
             "issue": 28,
             "title": "Phase 0 · 8 — Residual-exposure report and workspace cleanup",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-08",
             "parent": 2,
             "waitsOn": [
@@ -2554,25 +2555,64 @@
               }
             ],
             "blocks": [],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/",
-            "branch": "docs/issue-28-residual-exposure-report-workspace-cleanup",
+            "branch": null,
             "system": "residual-exposure",
-            "step": "implementation",
-            "detail": "Work resumes: the plan's pinned scripts go back for a correction of the six readiness self-test cases that failed, before the readiness stage runs again.",
-            "since": "2026-11-16T22:57:50Z",
-            "updated": "2026-11-16T22:57:50Z",
-            "qa": [],
+            "step": "landed",
+            "detail": "Landed in PR #49.",
+            "since": "2026-11-17T01:13:11Z",
+            "updated": "2026-11-17T01:13:11Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-17",
+                "at": "2026-11-17T00:05:45Z",
+                "findings": {
+                  "test": 7,
+                  "code": 9
+                },
+                "severity": {
+                  "minor": 5,
+                  "other": 11
+                },
+                "route": "re-plan-then-remediation",
+                "note": "The sandbox tries passed again: the four sandbox scripts ran 79 cases, all passed (gating 41, component 22, integration 16), their output matching the recorded outputs line for line, and every stage's recorded results meet the plan. 16 findings (5 minor, 11 other; 7 test, 9 code). Open before the landing: the as-built record and the consequences are not yet reconciled with the run, the test plan claims more deletion-guard coverage than the sandbox tries hold, two reading scripts have no sandbox case, and the landing's document checks are still to run. They touch the workspace deletion, the report table, the data folder's re-verification and the follow-ups. The work itself is done; the fixes are to the unit's documents."
+              },
+              {
+                "pass": 2,
+                "verdict": "changes-requested",
+                "date": "2026-11-17",
+                "at": "2026-11-17T00:40:17Z",
+                "findings": {
+                  "test": 5,
+                  "code": 3
+                },
+                "severity": {
+                  "minor": 8,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "note": "The sandbox tries passed again: the four sandbox scripts ran 79 cases, all passed (component 63, integration 16), and every point of Quality Review 1 is settled. 8 findings (8 minor; 5 test, 3 code), all wording fixes to the unit's documents, made in place with no additional review: more untested stops and two more failed-read gaps named, the test-set rows aligned with the sets' definitions, one more output-label deviation recorded, two phase notes worded as following the landing, and the landing's document checks run again over the final pending set. They touch the workspace's deletion, the residual-exposure report, the data folder's re-verification and the follow-ups.",
+                "inPlace": "fixed"
+              }
+            ],
             "qaMax": 3,
-            "status": "planning",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
+            "landed": {
+              "pr": 49,
+              "merge": "3625163c1a1177afca20488e421a5f44778724e0",
+              "version": null,
+              "date": "2026-11-17"
+            },
             "reconciliation": {
-              "state": "planned",
+              "state": "as-built",
               "landed": null,
               "total": null
             },
-            "active": true,
+            "active": false,
             "systemName": "Residual-exposure measurement",
             "group": "2",
             "order": 8
@@ -3014,7 +3054,7 @@
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
             "state": "OPEN",
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "items": [
               {
                 "issue": 21,
@@ -3061,7 +3101,8 @@
               {
                 "issue": 28,
                 "title": "Phase 0 · 8 — Residual-exposure report and workspace cleanup",
-                "state": "OPEN"
+                "state": "CLOSED",
+                "stateReason": "COMPLETED"
               }
             ]
           }
@@ -3284,7 +3325,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "fb4728c24c76069aa718b55ad5d9da07919ab77d",
+      "head": "990bff510f497b6be2d6b359815525580c94a44e",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
