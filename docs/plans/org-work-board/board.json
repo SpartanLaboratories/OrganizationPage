@@ -1,8 +1,8 @@
 {
-  "schema": "org-work-board/1",
+  "schema": "org-work-board/2",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-17T01:24:45Z",
+  "generated": "2026-11-17T18:10:03Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1626,11 +1626,11 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "3625163c1a1177afca20488e421a5f44778724e0",
+      "head": "0c7c9ca593098d60519831d6936fc8fb2c7bc51a",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-17T01:21:58Z",
+        "generated": "2026-11-17T18:08:05Z",
         "asOf": "2026-11-17"
       },
       "links": {
@@ -1667,7 +1667,7 @@
           "ref": "main"
         },
         "27": {
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/dashboard.html",
           "ref": "main"
         },
         "28": {
@@ -1675,19 +1675,19 @@
           "ref": "main"
         },
         "39": {
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/dashboard.html",
           "ref": "main"
         },
         "40": {
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/dashboard.html",
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/dashboard.html",
           "ref": "main"
         },
         "41": {
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/dashboard.html",
           "ref": "main"
         },
         "42": {
-          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/dashboard.html",
+          "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/dashboard.html",
           "ref": "main"
         }
       },
@@ -1695,7 +1695,7 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-17T01:21:58Z",
+        "generated": "2026-11-17T18:08:05Z",
         "asOf": "2026-11-17",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -1773,12 +1773,6 @@
             "board": null
           },
           {
-            "key": "2",
-            "issue": 2,
-            "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html"
-          },
-          {
             "key": "other",
             "issue": null,
             "title": "Other runs, oldest first",
@@ -1789,7 +1783,8 @@
           {
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-10-20",
             "parent": 1,
             "waitsOn": [],
@@ -1885,7 +1880,7 @@
                 {
                   "n": 7,
                   "issue": 27,
-                  "name": "Rewrite BotTools, … and …",
+                  "name": "Rewrite BotTools and the private repositories",
                   "state": "done"
                 },
                 {
@@ -1980,8 +1975,8 @@
             },
             "active": false,
             "systemName": "KotlinBottools",
-            "group": "2",
-            "order": 1
+            "group": "other",
+            "order": 0
           },
           {
             "issue": 22,
@@ -2061,8 +2056,8 @@
             },
             "active": false,
             "systemName": "Repository swap",
-            "group": "2",
-            "order": 2
+            "group": "other",
+            "order": 1
           },
           {
             "issue": 23,
@@ -2141,8 +2136,8 @@
             },
             "active": false,
             "systemName": "KotlinBottools",
-            "group": "2",
-            "order": 3
+            "group": "other",
+            "order": 2
           },
           {
             "issue": 24,
@@ -2251,8 +2246,8 @@
             },
             "active": false,
             "systemName": "Repository hygiene",
-            "group": "2",
-            "order": 4
+            "group": "other",
+            "order": 3
           },
           {
             "issue": 25,
@@ -2343,8 +2338,8 @@
             },
             "active": false,
             "systemName": "KotlinBottools",
-            "group": "2",
-            "order": 5
+            "group": "other",
+            "order": 4
           },
           {
             "issue": 26,
@@ -2435,8 +2430,8 @@
             },
             "active": false,
             "systemName": "Rewrite pipeline",
-            "group": "2",
-            "order": 6
+            "group": "other",
+            "order": 5
           },
           {
             "issue": 27,
@@ -2464,8 +2459,8 @@
                 "hold": "enables"
               }
             ],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/dashboard.html",
-            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/",
             "branch": null,
             "system": null,
             "step": "landed",
@@ -2508,7 +2503,7 @@
                 {
                   "n": 2,
                   "issue": 40,
-                  "name": "Rewrite BotTools, … and …",
+                  "name": "Rewrite BotTools and the private repositories",
                   "state": "done"
                 },
                 {
@@ -2520,14 +2515,14 @@
                 {
                   "n": 4,
                   "issue": 42,
-                  "name": "Replace the … clone",
+                  "name": "Replace the private repository clone",
                   "state": "done"
                 }
               ]
             },
             "systemName": "Internal Tooling",
-            "group": "2",
-            "order": 7
+            "group": "other",
+            "order": 6
           },
           {
             "issue": 28,
@@ -2614,12 +2609,12 @@
             },
             "active": false,
             "systemName": "Residual-exposure measurement",
-            "group": "2",
-            "order": 8
+            "group": "other",
+            "order": 7
           },
           {
             "issue": 39,
-            "title": "Phase 0 · 7.1 — Extend the workspace tools for BotTools, … and …",
+            "title": "Phase 0 · 7.1 — Extend the workspace tools for BotTools and the private repositories",
             "state": "CLOSED",
             "stateReason": "COMPLETED",
             "created": "2026-11-13",
@@ -2634,8 +2629,8 @@
                 "hold": "enables"
               }
             ],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dashboard.html",
-            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/",
             "branch": null,
             "system": "toolchain",
             "step": "landed",
@@ -2658,7 +2653,7 @@
                 },
                 "route": "re-plan-then-remediation",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/ca070e8d/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/ca070e8d/tests/index.html",
                 "note": "The run was green: all 637 checks passed (gating 49, deterministic 63, component 80, integration 420, nonfunctional 23, and 2 of the coverage check), with the tool folder proved equal to its pins first; a green run does not clear what the review found. 32 findings (18 minor, 14 other; 22 test, 10 code). Tests: four cases of the clone set run uncounted in a subshell (424 case lines against a total of 420); six stops of the push procedure, the private-repository probe selection and two arms of the push check have no case; the output-rule cases and the coverage figure prove less than the test plan says (278 distinct texts for 308 sites; 8 stop sites of the Python tools outside it). Tools: a failed read of the webhook count and a failed read of the pull-request refs pass as zero or empty; the rename retry can move the old clone inside the target; a failed web fetch prints a local path; the resend decision reads a stale class; a missing record compares equal; the carried folder’s name is matched as a pattern. Plan text: the class table against the flowchart, and a stop the documents tool does not hold. They touch the self-test, the clone set, the rewrite set, the residual set, the parameter table, the tool folder, the recorded gaps and the readiness reads. The fixes change the tools’ source held in the plan, so the plan is revised first, then the folder is saved again and the steps run again."
               },
               {
@@ -2676,7 +2671,7 @@
                 },
                 "route": "re-plan-then-remediation",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/949b5d33/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/949b5d33/tests/index.html",
                 "note": "The run was green: all 744 checks passed (gating 68, deterministic 63, component 80, integration 504, nonfunctional 22, and 7 of the coverage check), every total as the plan records and no console line that is not a case, note or runner line; a green run does not clear what the review found. 18 findings (16 minor, 2 other; 15 test, 3 code). Of Quality Review 1's 32 findings, 28 are closed in the tools with their cases, and the landing's documents are left to the landing; three test findings stay open in one part each, all minor now. What stands: one site where the coverage check proves less than it says (a stop text shared by a helper and one arm of the clone tool is reached by one line); a wait line that prints the year 1970 as the reset time when the server sends no reset header; the Python tools' own tests writing to the system's temporary folder; two fault fixtures whose address the stand-in does not redirect; the console case missing output at its start and end; result lines and plain exits with no asserting case; labels that name a step and not a behaviour; and statements of the plan not carried through the moves of cases between test sets. They touch the self-test, the clone set, the rewrite set, the residual set, the tool folder and the recorded gaps. The tools change again, so the plan is revised first, then the folder is saved and every step run once more."
               },
               {
@@ -2694,7 +2689,7 @@
                 },
                 "route": "re-plan-then-remediation",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/dda89436/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/dda89436/tests/index.html",
                 "note": "The run was green: all 833 checks passed (gating 79, deterministic 63, component 91, integration 565, nonfunctional 28, and 7 of the coverage check), every total as the plan records, no stray console line and no label printed twice; a green run does not clear what the review found. 22 findings (20 minor, 2 other; 14 test, 8 code). Of Quality Review 2's 18 findings, 16 are closed. One defect of substance stands, found twice, in the self-test: the stamp a test set writes reads the run's id in a way that prints the shell's own missing-file line, with a local path, when the gating checks never ran in that scratch folder, and the set still ends with status 0; the later units run their quick check that way. The rest are small: in the self-test, a region comment that files two groups of cases under the wrong set, four lines and stops with no asserting case and five labels that name a step or state the opposite of their rule; in the tool folder, a file a staged rename moves into the documents folder not counted as outside it; in the rewrite set, the per-ref verification's baseline check run after the deliveries are written, and two error streams still open; in the clone set, one error stream and two statements of the plan; in the residual set, a convention that waits for a time a wait line may not print; in the readiness reads, three changed reads and one checksum write with no case. They touch the self-test, the tool folder, the rewrite set, the residual set, the clone set and the readiness reads. Next: every finding fixed, the folder saved and every step run again, then one more review limited to what changed."
               },
               {
@@ -2712,7 +2707,7 @@
                 },
                 "route": "on-the-spot",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/39-workspace-tools/f2745465/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/f2745465/tests/index.html",
                 "note": "This review was limited to the 15 tool files changed since Quality Review 3, and the five kinds were not run again: their totals (853 checks, none failed: gating 84, deterministic 63, component 92, integration 579, nonfunctional 28, and 7 of the coverage check), every last line as recorded, no stray console line and no label printed twice, were verified from the records the last run left, and only the coverage check was run, once (7 checks, 393 of 393 sites reached). 4 findings (4 minor; 3 test, 1 code). Every finding of Quality Review 3 is closed, the quick-check defect included: a kind run where no run was started now prints case lines only, and a case asserts it. The four left are all in the plan's wording, none in a tool: in the rewrite set, a sentence said the post-run step discards a message it does not, and now says the step checks its two records first; in the self-test, two limits were not stated (no case provokes the messages the post-run step discards behind checks that stop first; no fixture path holds a pattern character, so no case tells the residual close-out's literal strip from a pattern match), and two rounded run times were behind the recorded ones. They touch the self-test, the rewrite set and the residual set. All four were reworded in the plan, fixed in place with no additional review: no pin moved and nothing was run again.",
                 "inPlace": "fixed"
               }
@@ -2734,11 +2729,11 @@
             "active": false,
             "systemName": "Toolchain",
             "group": "other",
-            "order": 0
+            "order": 8
           },
           {
             "issue": 40,
-            "title": "Phase 0 · 7.2 — Rewrite BotTools, … and …",
+            "title": "Phase 0 · 7.2 — Rewrite BotTools and the private repositories",
             "state": "CLOSED",
             "stateReason": "COMPLETED",
             "created": "2026-11-13",
@@ -2769,8 +2764,8 @@
                 "hold": "enables"
               }
             ],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/dashboard.html",
-            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/",
             "branch": null,
             "system": "rewrite-pipeline",
             "step": "landed",
@@ -2794,7 +2789,7 @@
                 },
                 "route": "on-the-spot",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/40-rewrites/ca070e8d/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/ca070e8d/tests/index.html",
                 "note": "The run was confirmed independently from its stage markers, its log, its checksum lists and GitHub: 794 recorded checks, 789 passed and none failed, the other 5 not yet due (the landing's four document checks and the owner's reading of the as-built record); three histories rewritten, each pushed once and proven clean, every count at its expectation. 7 findings (7 minor; 7 test), none about what was pushed. Three typed checks (the earlier records, the earlier tool folder at its pins, the output rule over the unit's outputs) and the state read after the request service refused BotTools' first call leave no line in the run log, so the as-built record states their results; the plan's test table listed the grant read under two test sets and the input and record checks under none; the pin list's own checksum is to be stated at the start and at the close; and restoring the deny rule lifted for the push, with the allow lines removed, needs a follow-up. The procedure showed no defect: a first call refused is a case the plan provides for. They touch the outcome, the verification and the records, and in readiness the earlier records' check, the grant read and the pin list. The fixes are made in the documents: the plan's test table, the as-built record and the consequences.",
                 "inPlace": "fixed"
               }
@@ -2816,11 +2811,11 @@
             "active": false,
             "systemName": "Rewrite pipeline",
             "group": "other",
-            "order": 1
+            "order": 9
           },
           {
             "issue": 41,
-            "title": "Phase 0 · 7.3 — Measure what GitHub still serves of BotTools, … and …",
+            "title": "Phase 0 · 7.3 — Measure what GitHub still serves of BotTools and the private repositories",
             "state": "CLOSED",
             "stateReason": "COMPLETED",
             "created": "2026-11-13",
@@ -2836,8 +2831,8 @@
               }
             ],
             "blocks": [],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/dashboard.html",
-            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/",
             "branch": null,
             "system": "residual-exposure",
             "step": "landed",
@@ -2860,7 +2855,7 @@
                 },
                 "route": "on-the-spot",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/41-residual-measurement/ca070e8d/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/ca070e8d/tests/index.html",
                 "note": "The run was found correct and complete: every stage and step ran once with the planned lines and counts, the issue's four conditions are met, and nothing was written to GitHub. The eight findings are five wording points in the as-built record and the consequences: the count of runner steps (19, not 18), the anonymous budget's readings stated beside the calls made, the pace between probes, an acceptance section, and the outcome of the plan's assumptions. They touch the anonymous probes and the report rows.",
                 "inPlace": "fixed"
               }
@@ -2882,11 +2877,11 @@
             "active": false,
             "systemName": "Residual-exposure measurement",
             "group": "other",
-            "order": 2
+            "order": 10
           },
           {
             "issue": 42,
-            "title": "Phase 0 · 7.4 — Replace the … clone",
+            "title": "Phase 0 · 7.4 — Replace the private repository clone",
             "state": "CLOSED",
             "stateReason": "COMPLETED",
             "created": "2026-11-13",
@@ -2902,8 +2897,8 @@
               }
             ],
             "blocks": [],
-            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/dashboard.html",
-            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/",
             "branch": null,
             "system": "clone-realignment",
             "step": "landed",
@@ -2927,7 +2922,7 @@
                 "route": "on-the-spot",
                 "note": "Every item the issue asks was verified on the clone; the two fixes are wordings in the as-built record: the replacement reply's stored line count, and the reason the run went on past the request builder's defect.",
                 "report": "build/reports/tests/index.html",
-                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-bottools-trumpbot-support-rewrite/42-clone-replacement/ca070e8d/tests/index.html",
+                "reportCopy": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/ca070e8d/tests/index.html",
                 "inPlace": "fixed"
               }
             ],
@@ -2948,7 +2943,7 @@
             "active": false,
             "systemName": "Clone realignment",
             "group": "other",
-            "order": 3
+            "order": 11
           }
         ],
         "roadmap": [
@@ -2961,7 +2956,8 @@
               {
                 "issue": 2,
                 "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-                "state": "OPEN"
+                "state": "CLOSED",
+                "stateReason": "COMPLETED"
               },
               {
                 "issue": 3,
@@ -3047,62 +3043,6 @@
                 "issue": 19,
                 "title": "Phase 23 — Desktop manager on SpartanUI and SpartanGraphics (unscheduled)",
                 "state": "OPEN"
-              }
-            ]
-          },
-          {
-            "issue": 2,
-            "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
-            "state": "OPEN",
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
-            "items": [
-              {
-                "issue": 21,
-                "title": "Phase 0 · 1 — Preparation: pinned tools, workspace, backup mirrors, legacy data copy and manifests",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 22,
-                "title": "Phase 0 · 2 — Transfer rehearsal on two throwaway repositories",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 23,
-                "title": "Phase 0 · 3 — KotlinBottools: rewrite with path scrub, fresh repository, number-preserving swap and clone realignment",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 24,
-                "title": "Phase 0 · 4 — KotlinBottools repository hygiene: .gitignore, gitleaks configuration and CI, README and CHANGELOG",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 25,
-                "title": "Phase 0 · 5 — Make KotlinBottools public with secret scanning and push protection",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 26,
-                "title": "Phase 0 · 6 — Rewrite GKB2 and GKB",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 27,
-                "title": "Phase 0 · 7 — Rewrite BotTools and the private repositories, and replace the private repository clone",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
-              },
-              {
-                "issue": 28,
-                "title": "Phase 0 · 8 — Residual-exposure report and workspace cleanup",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED"
               }
             ]
           }
@@ -3325,7 +3265,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "990bff510f497b6be2d6b359815525580c94a44e",
+      "head": "8326fc713e25b7e26abe823932e9ceedac5b506a",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
@@ -3665,5 +3605,6 @@
       "url": "https://github.com/SpartanLaboratories/GKB2",
       "why": "reference only"
     }
-  ]
+  ],
+  "ideas": []
 }
