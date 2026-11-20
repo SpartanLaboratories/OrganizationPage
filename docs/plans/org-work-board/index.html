@@ -373,7 +373,7 @@ footer code{color:var(--ink-2)}
   "schema": "org-work-board/2",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-17T18:10:03Z",
+  "generated": "2026-11-20T03:28:01Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -1997,12 +1997,12 @@ footer code{color:var(--ink-2)}
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "0c7c9ca593098d60519831d6936fc8fb2c7bc51a",
+      "head": "2e9ce981fb47c610305035d9cb9421388840bb64",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-17T18:08:05Z",
-        "asOf": "2026-11-17"
+        "generated": "2026-11-20T02:57:53Z",
+        "asOf": "2026-11-20"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -2062,17 +2062,30 @@ footer code{color:var(--ink-2)}
           "ref": "main"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 3,
+          "path": "docs/plans/1-bottools-consolidation/3-phase-1-build-skeleton/dashboard.html",
+          "branch": "feat/issue-3-build-skeleton",
+          "why": "on feat/issue-3-build-skeleton, whose copy of the board is not on GitHub yet"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-17T18:08:05Z",
-        "asOf": "2026-11-17",
+        "generated": "2026-11-20T02:57:53Z",
+        "asOf": "2026-11-20",
         "links": {
           "repoBoard": "../../dashboards/index.html"
         },
         "base": "../",
         "systems": [
+          {
+            "slug": "build-and-ci-skeleton",
+            "name": "build-and-ci-skeleton",
+            "slot": 0,
+            "top": "build-and-ci-skeleton"
+          },
           {
             "slug": "kotlinbottools",
             "name": "KotlinBottools",
@@ -2177,7 +2190,7 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
             "branch": null,
             "system": null,
@@ -2265,6 +2278,57 @@ footer code{color:var(--ink-2)}
             "systemName": "",
             "group": "1",
             "order": 1
+          },
+          {
+            "issue": 3,
+            "title": "Phase 1 — Build skeleton: multi-module build, conventions, CI and repository scaffolding",
+            "state": "OPEN",
+            "created": "2026-10-20",
+            "parent": 1,
+            "waitsOn": [
+              {
+                "issue": 2,
+                "state": "CLOSED",
+                "stateReason": "COMPLETED",
+                "closedAt": "2026-11-17T02:36:57Z",
+                "build": "clear",
+                "locality": "local-repository"
+              }
+            ],
+            "blocks": [
+              {
+                "issue": 16,
+                "state": "OPEN",
+                "hold": "blocks"
+              },
+              {
+                "issue": 4,
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": "../1-bottools-consolidation/3-phase-1-build-skeleton/dashboard.html",
+            "folder": "../1-bottools-consolidation/3-phase-1-build-skeleton/",
+            "branch": "feat/issue-3-build-skeleton",
+            "system": "build-and-ci-skeleton",
+            "step": "halted",
+            "detail": "Waiting on you: the review of the build-logic build file and the answer on the gating tasks' inputs",
+            "since": "2026-11-20T02:57:27Z",
+            "updated": "2026-11-20T02:57:27Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "halted",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "build-and-ci-skeleton",
+            "group": "1",
+            "order": 2
           },
           {
             "issue": 21,
@@ -2921,7 +2985,7 @@ footer code{color:var(--ink-2)}
               }
             ],
             "blocks": [],
-            "board": "view/1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
             "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/",
             "branch": null,
             "system": "residual-exposure",
@@ -3600,7 +3664,7 @@ footer code{color:var(--ink-2)}
       "name": "SpartanUI",
       "url": "https://github.com/SpartanLaboratories/SpartanUI",
       "defaultBranch": "main",
-      "head": "78262ca14ab4ba446cc15818b16f109933584d0a",
+      "head": "d6cdadf3db7bc0df8994f82f07a5f9820d187039",
       "source": null,
       "links": {},
       "boards": {},
@@ -3636,7 +3700,7 @@ footer code{color:var(--ink-2)}
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "8326fc713e25b7e26abe823932e9ceedac5b506a",
+      "head": "67c8f2caa47462debc41d16ef803f77d2db3d077",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
