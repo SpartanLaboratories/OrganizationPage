@@ -2,7 +2,7 @@
   "schema": "org-work-board/2",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-20T21:06:03Z",
+  "generated": "2026-11-21T03:01:29Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -4429,7 +4429,7 @@
       "name": "SpartanUI",
       "url": "https://github.com/SpartanLaboratories/SpartanUI",
       "defaultBranch": "main",
-      "head": "d6cdadf3db7bc0df8994f82f07a5f9820d187039",
+      "head": "721762d9d63ef8e3af59831b3da5c09042fc002f",
       "source": null,
       "links": {},
       "boards": {},
@@ -4465,7 +4465,7 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "c8b33e4e015c6537e409266d3df231522dd9d8ad",
+      "head": "c8d3171745da93f2ac265f75d6794d7df20f9376",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
