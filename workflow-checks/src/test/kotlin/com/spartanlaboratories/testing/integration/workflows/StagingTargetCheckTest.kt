@@ -1,10 +1,22 @@
 package com.spartanlaboratories.testing.integration.workflows
 
+//region 1. Organization Internal
+// 1.1 Spartan Laboratories
 import com.spartanlaboratories.testing.support.workflows.Bash
 import com.spartanlaboratories.testing.support.workflows.DeployWorkflow
+//endregion
+
+//region 3. Utility / Catch-all
+// 3.1 Java Standard library
 import java.io.File
 import java.util.concurrent.TimeUnit
+// 3.2 Kotlin
+// 3.2.1 Standard library
 import kotlin.io.path.createTempDirectory
+//endregion
+
+//region 4. Programming Infrastructure and Support
+// 4.3 Testing
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -12,6 +24,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
 import org.junit.Assume.assumeTrue
+//endregion
 
 /**
  * Runs the `Check staging target` step of the deploy workflow, as committed, over pairs of folders.

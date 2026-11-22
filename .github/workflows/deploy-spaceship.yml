@@ -42,7 +42,7 @@ permissions:
   contents: read
 
 # Folders are paths as the FTP login sees them (it starts in the hosting account's home
-# folder). Repository variables of the same name override these defaults.
+# folder). Each default below is overridden by the repository variable its line reads.
 # publish-docs.yml repeats the production and staging defaults; keep them in step.
 env:
   PRODUCTION_REMOTE_DIR: ${{ vars.SPACESHIP_REMOTE_DIR || '/spartanlaboratories.org' }}
@@ -109,11 +109,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Folders are compared as resolved paths: the production folder is configured as
-          # /../../spartanlaboratories.org/, which is the same folder as /spartanlaboratories.org/.
-          # The text is resolved here and nothing on this runner is consulted: "." and ".."
-          # segments are applied, a ".." at the root stays at the root, and repeated slashes
-          # collapse. The result starts and ends with a slash.
+          # Folders are compared as resolved paths: the repository variable SPACESHIP_REMOTE_DIR
+          # sets the production folder as /../../spartanlaboratories.org/, which is the same folder
+          # as /spartanlaboratories.org/. The text is resolved here and nothing on this runner is
+          # consulted: "." and ".." segments are applied, a ".." at the root stays at the root, and
+          # repeated slashes collapse. The result starts and ends with a slash.
           resolve() {
             local rest="$1/" segment resolved=""
             while [[ -n "$rest" ]]; do
