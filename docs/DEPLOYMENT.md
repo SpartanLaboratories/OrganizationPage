@@ -183,9 +183,10 @@ root.
 
 The `workflow-checks` module runs this step, as committed, over a fixture of the packaged
 site (`StagingMarkingTest`), runs the staging target check, as committed, over pairs of
-folders (`StagingTargetCheckTest`), and asserts the push filter's patterns and their order
-(`DeployPushFilterTest`). `./gradlew build` and `check` run them, so the deploy build
-stops on any of them.
+folders, and asserts the push filter's patterns and their order (`DeployPushFilterTest`).
+Two classes named `StagingTargetCheckTest` cover the target check: the gating one runs it
+over three folder pairs before each commit, and the integration one runs it over the full
+list. `./gradlew build` and `check` run them, so the deploy build stops on any of them.
 
 ### Secrets and variables
 

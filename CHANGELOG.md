@@ -25,4 +25,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
-- The staging target check compares resolved folder paths, not strings. A staging folder that names the production folder another way, such as `/spartanlaboratories.org/` while production is `/../../spartanlaboratories.org/`, or that resolves to the FTP root, used to pass and let a manual `clean_staging` run delete the production site; it is now refused. The staging deploy uploads to the resolved folder. `workflow-checks` gains a regression test for the step.
+- The staging target check compares resolved folder paths, not strings. A staging folder that names the production folder another way, such as `/spartanlaboratories.org/` while production is `/../../spartanlaboratories.org/`, or that resolves to the FTP root, used to pass and let a manual `clean_staging` run delete the production site; it is now refused. The staging deploy uploads to the resolved folder. `workflow-checks` gains regression tests for the step, one of them in the gating tests that run before each commit.
