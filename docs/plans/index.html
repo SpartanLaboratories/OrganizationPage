@@ -43,10 +43,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 var(--sans);p
 a{color:inherit}
 code{font-family:var(--mono);font-size:.92em;overflow-wrap:anywhere;background:var(--surface-2);border:1px solid var(--hair);padding:1px 4px;border-radius:3px}
 /* the code label (GUIDANCE.md §12, "Code"; dashboards-skill/42): every inline code drawn as a label of its own,
-   in both themes, at normal weight inside bold text; inside a chip, a pill or a tile (a label or a figure already: each class carries
-   its type word) it stays plain mono text */
+   in both themes, at normal weight inside bold text; inside a chip, a pill, a tile, a badge or a tag (a label or a figure already: each
+   class carries its type word, a tag's a whole part of the class, so .stage, .outage and .tags are not taken) it stays plain mono text */
 :is(b,strong,.name,.nm,dt,th) code{font-weight:400}
-:is([class*="chip"],[class*="pill"],[class*="tile"]) code{background:none;border:0;padding:0;border-radius:0}
+:is([class*="chip"],[class*="pill"],[class*="tile"],[class*="badge"],[class*="tag-"],[class$="tag"],[class*="tag "]) code{background:none;border:0;padding:0;border-radius:0}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .crumbs{font-size:12px;color:var(--muted);padding-top:18px}
 .crumbs a{text-decoration:none}
@@ -352,11 +352,11 @@ footer code{color:var(--ink-2)}
 {
   "schema": "work-board/1",
   "repo": "SpartanLaboratories/OrganizationPage",
-  "generated": "2026-11-14T03:10:15Z",
-  "asOf": "2026-11-14",
+  "generated": "2026-11-22T03:52:30Z",
+  "asOf": "2026-11-22",
   "tree": {
-    "ref": "docs/rule-rework-vocabulary",
-    "sha": "4a239ac"
+    "ref": "fix/issue-9-staging-target-check",
+    "sha": "aa05623"
   },
   "links": {
     "repoBoard": "../dashboards/index.html"
@@ -375,6 +375,14 @@ footer code{color:var(--ink-2)}
       "name": "deployment",
       "slot": 4,
       "top": "deployment",
+      "status": "built",
+      "board": null
+    },
+    {
+      "slug": "server",
+      "name": "server",
+      "slot": 2,
+      "top": "server",
       "status": "built",
       "board": null
     },
@@ -549,10 +557,116 @@ footer code{color:var(--ink-2)}
       "systemName": "deployment",
       "group": "other",
       "order": 1
+    },
+    {
+      "issue": 9,
+      "title": "Staging target check compares folder strings, not resolved paths",
+      "state": "OPEN",
+      "created": "2026-11-09",
+      "parent": null,
+      "waitsOn": [],
+      "blocks": [],
+      "board": "9-staging-target-check/dashboard.html",
+      "folder": "9-staging-target-check/",
+      "branch": "fix/issue-9-staging-target-check",
+      "system": "deployment",
+      "step": "document",
+      "detail": "Document: 5 of 7 tasks done; State boards current.",
+      "since": "2026-11-22T03:16:41Z",
+      "updated": "2026-11-22T03:46:14Z",
+      "qa": [
+        {
+          "pass": 1,
+          "verdict": "changes-requested",
+          "date": "2026-11-22",
+          "at": "2026-11-22T03:11:42Z",
+          "findings": {
+            "test": 1,
+            "code": 0
+          },
+          "severity": {
+            "minor": 1,
+            "other": 0
+          },
+          "route": "on-the-spot",
+          "report": "build/reports/tests/index.html",
+          "reportCopy": "9-staging-target-check/ca070e8d/tests/index.html",
+          "note": "One minor test finding: the changed step had a test in the integration tests but none in the gating tests. It was fixed on the spot with a gating class of three tests for the step. The code check found nothing, and every test of `workflow-checks` passed.",
+          "inPlace": "fixed"
+        }
+      ],
+      "qaMax": 3,
+      "status": "building",
+      "fixOf": null,
+      "landed": null,
+      "reconciliation": {
+        "state": "partial",
+        "landed": null,
+        "total": null
+      },
+      "active": true,
+      "systemName": "deployment",
+      "group": "other",
+      "order": 2
     }
   ],
   "roadmap": [],
   "unscheduled": [
+    {
+      "issue": 38,
+      "title": "Documents publish resolves folders with realpath, unlike the deploy workflow's checks",
+      "labels": [
+        "type: bug"
+      ],
+      "created": "2026-11-22",
+      "system": "deployment"
+    },
+    {
+      "issue": 37,
+      "title": "JVM tests run on JUnit 4, not JUnit 5",
+      "labels": [],
+      "created": "2026-11-22",
+      "system": null
+    },
+    {
+      "issue": 36,
+      "title": "Staging target check accepts a staging folder that contains production or the documents folder",
+      "labels": [
+        "type: bug"
+      ],
+      "created": "2026-11-22",
+      "system": "deployment"
+    },
+    {
+      "issue": 35,
+      "title": "Production target check compares folder strings, not resolved paths",
+      "labels": [
+        "type: bug"
+      ],
+      "created": "2026-11-22",
+      "system": "deployment"
+    },
+    {
+      "issue": 34,
+      "title": "Group imports as the Commenting page sets out",
+      "labels": [],
+      "created": "2026-11-21",
+      "system": null
+    },
+    {
+      "issue": 33,
+      "title": "Set a Java floor apart from the toolchain",
+      "labels": [],
+      "created": "2026-11-21",
+      "system": null
+    },
+    {
+      "issue": 32,
+      "title": "Log the server's unhandled errors through kotlin-logging",
+      "labels": [],
+      "created": "2026-11-21",
+      "system": "server"
+    },
     {
       "issue": 14,
       "title": "Link the published boards from the site footer",

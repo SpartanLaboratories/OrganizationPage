@@ -5,7 +5,7 @@ import java.io.File
 /**
  * `.github/workflows/deploy-spaceship.yml` read as text, with LF line endings. Gradle runs a test from
  * its module folder, so the repository root is one level up. No YAML parser is on the test classpath;
- * the two checks that use this rely on the file's own layout.
+ * the checks that use this rely on the file's own layout.
  */
 object DeployWorkflow {
     /**

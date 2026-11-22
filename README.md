@@ -12,7 +12,7 @@ frontend, deployed to Spaceship hosting.
 | `shared`  | Kotlin Multiplatform (JVM + JS)     | Data models, API routes, JSON config and the site copy (`OrganizationContent`). The single contract between backend and frontend. |
 | `server`  | Kotlin/JVM, Ktor (Netty)            | JSON API under `/api` and serving of the compiled frontend. Packaged as one runnable jar. |
 | `web`     | Kotlin/JS, Compose HTML             | The browser UI. Builds to a static site (`index.html`, `web.js`, the logo) that also carries the generated API reference under `docs/api/`. |
-| `workflow-checks` | Kotlin/JVM, tests only      | Regression tests of the deployment workflows: the staging marking step and the push filter. Holds no site code. |
+| `workflow-checks` | Kotlin/JVM, tests only      | Regression tests of the deployment workflows: the staging marking step, the staging target check and the push filter. Holds no site code. |
 
 ```
 shared  <──  server

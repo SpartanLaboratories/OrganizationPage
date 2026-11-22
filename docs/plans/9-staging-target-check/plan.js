@@ -1,0 +1,937 @@
+/* plan.js: plan.json as a script, written by plan/scripts/embed.js beside the board for its live view (plan/RULES.md §1). Do not edit: edit plan.json and re-embed. */
+window.dashboardLive&&window.dashboardLive("plan",
+{
+  "schema": "plan-board/1",
+  "repo": "SpartanLaboratories/OrganizationPage",
+  "issue": 9,
+  "slug": "9-staging-target-check",
+  "folder": "docs/plans/9-staging-target-check",
+  "kind": "issue",
+  "title": "Staging target check",
+  "issueTitle": "Staging target check compares folder strings, not resolved paths",
+  "function": "The deploy workflow's `Check staging target` step, in `.github/workflows/deploy-spaceship.yml`, is meant to refuse a staging folder that is the production folder or the FTP root, but it compares the two folders as strings with only their leading and trailing slashes normalised. A staging folder that names the production folder another way therefore passes, and a manual run with `clean_staging` set would then delete the production site. This fix makes the step compare resolved paths: it resolves the `.` and `..` segments of both folders and refuses a staging folder that resolves to the production folder or to the FTP root.",
+  "status": "building",
+  "sized": "2026-11-22T02:23:10Z",
+  "parent": null,
+  "fixOf": null,
+  "branch": "fix/issue-9-staging-target-check",
+  "baseline": {
+    "ref": "main",
+    "sha": "a4a7b9e65ddd8358b8d13dddece199ac6140e124",
+    "date": "2026-11-20"
+  },
+  "asBuilt": null,
+  "systems": [
+    {
+      "slug": "deployment",
+      "name": "deployment",
+      "slot": 4,
+      "top": "deployment",
+      "status": "built",
+      "board": null
+    }
+  ],
+  "wip": {
+    "step": "document",
+    "since": "2026-11-22T03:16:41Z",
+    "updated": "2026-11-22T03:56:13Z",
+    "detail": "Document: 7 of 7 tasks done; every task done.",
+    "steps": [
+      "sizing",
+      "plan",
+      "branch",
+      "implementation",
+      "qa",
+      "remediation",
+      "document",
+      "landing",
+      "merge",
+      "landed"
+    ],
+    "current": [
+      "built"
+    ],
+    "questions": [],
+    "research": null,
+    "interview": [],
+    "plan": null,
+    "stages": [
+      {
+        "id": "regression-test",
+        "name": "Regression test written and seen failing",
+        "state": "done",
+        "rows": [
+          "staging-target-check"
+        ],
+        "started": "2026-11-22T02:57:24Z",
+        "finished": "2026-11-22T03:00:03Z",
+        "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+      },
+      {
+        "id": "fix",
+        "name": "Staging check resolves both folders",
+        "state": "done",
+        "rows": [
+          "staging-target-check"
+        ],
+        "finished": "2026-11-22T03:00:03Z",
+        "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+      },
+      {
+        "id": "workflow-tests",
+        "name": "Workflow tests pass",
+        "state": "done",
+        "rows": [
+          "staging-target-check"
+        ],
+        "finished": "2026-11-22T03:00:03Z",
+        "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+      },
+      {
+        "id": "documentation",
+        "name": "Deployment guide, README and CHANGELOG",
+        "state": "done",
+        "rows": [
+          "staging-target-check"
+        ],
+        "finished": "2026-11-22T03:00:03Z",
+        "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+      }
+    ],
+    "remediation": {
+      "pass": 1,
+      "route": "on-the-spot",
+      "steps": [
+        {
+          "name": "Gating test class for the staging target step",
+          "state": "done",
+          "finished": "2026-11-22T03:13:57Z",
+          "report": "A gating test class now runs the staging target step before each commit: the issue's case and a root spelling are refused and the live configuration is accepted. It fails on the step as it stood and passes after the fix; the gating tests run 6 and the module's tests run 21, all passing. The integration class keeps the full list of spellings."
+        }
+      ]
+    },
+    "open": [],
+    "event": {
+      "name": "document",
+      "at": "2026-11-22T03:56:13Z",
+      "note": "7 of 7 tasks done"
+    },
+    "history": {
+      "sizing": [
+        {
+          "since": null,
+          "ended": "2026-11-22T02:23:10Z",
+          "endedBy": "sized",
+          "to": "plan"
+        }
+      ],
+      "plan": [
+        {
+          "since": "2026-11-22T02:23:10Z",
+          "ended": "2026-11-22T02:54:27Z",
+          "endedBy": "plan-accepted",
+          "to": "branch",
+          "event": {
+            "name": "sized",
+            "at": "2026-11-22T02:23:10Z"
+          },
+          "detail": "A fix to the staging folder check in the deploy workflow: compare resolved paths so a staging folder that resolves to production or to the FTP root is refused.",
+          "plan": {
+            "state": "writing",
+            "since": "2026-11-22T02:23:10Z"
+          }
+        }
+      ],
+      "branch": [
+        {
+          "since": "2026-11-22T02:54:27Z",
+          "ended": "2026-11-22T02:57:24Z",
+          "endedBy": "branch-cut",
+          "to": "implementation",
+          "event": {
+            "name": "plan-accepted",
+            "at": "2026-11-22T02:54:27Z"
+          },
+          "detail": "The plan resolves both folders in bash before the staging check compares them, refuses production and the FTP root however they are written, and adds an integration test that fails on the current step for the issue's case.",
+          "branch": "fix/issue-9-staging-target-check"
+        }
+      ],
+      "implementation": [
+        {
+          "since": "2026-11-22T02:57:24Z",
+          "ended": "2026-11-22T03:00:15Z",
+          "endedBy": "qa-pass",
+          "to": "qa",
+          "event": {
+            "name": "implementation-stage",
+            "at": "2026-11-22T03:00:03Z",
+            "note": "documentation reported done; Quality Review next"
+          },
+          "detail": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan.",
+          "stages": [
+            {
+              "id": "regression-test",
+              "name": "Regression test written and seen failing",
+              "state": "done",
+              "rows": [
+                "staging-target-check"
+              ],
+              "started": "2026-11-22T02:57:24Z",
+              "finished": "2026-11-22T03:00:03Z",
+              "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+            },
+            {
+              "id": "fix",
+              "name": "Staging check resolves both folders",
+              "state": "done",
+              "rows": [
+                "staging-target-check"
+              ],
+              "finished": "2026-11-22T03:00:03Z",
+              "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+            },
+            {
+              "id": "workflow-tests",
+              "name": "Workflow tests pass",
+              "state": "done",
+              "rows": [
+                "staging-target-check"
+              ],
+              "finished": "2026-11-22T03:00:03Z",
+              "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+            },
+            {
+              "id": "documentation",
+              "name": "Deployment guide, README and CHANGELOG",
+              "state": "done",
+              "rows": [
+                "staging-target-check"
+              ],
+              "finished": "2026-11-22T03:00:03Z",
+              "report": "The new integration test class failed on the unchanged step in the five tests the plan marks, the issue's case among them; after the fix it passes, and every test of the workflow-checks module passes. The deployment guide, the README module table and the CHANGELOG are updated. No deviation from the plan."
+            }
+          ]
+        }
+      ],
+      "qa": [
+        {
+          "since": "2026-11-22T03:00:15Z",
+          "ended": "2026-11-22T03:11:42Z",
+          "endedBy": "qa-pass",
+          "to": "remediation",
+          "event": {
+            "name": "qa-pass",
+            "at": "2026-11-22T03:00:15Z",
+            "note": "Quality Review 1: running"
+          },
+          "detail": "Quality Review 1 running.",
+          "qa": [
+            {
+              "pass": 1,
+              "verdict": "changes-requested",
+              "date": "2026-11-22",
+              "at": "2026-11-22T03:11:42Z",
+              "findings": {
+                "test": 1,
+                "code": 0
+              },
+              "severity": {
+                "minor": 1,
+                "other": 0
+              },
+              "route": "on-the-spot",
+              "report": "build/reports/tests/index.html",
+              "reportCopy": "9-staging-target-check/ca070e8d/tests/index.html",
+              "note": "One minor test finding: the changed step had a test in the integration tests but none in the gating tests. It was fixed on the spot with a gating class of three tests for the step. The code check found nothing, and every test of `workflow-checks` passed."
+            }
+          ]
+        }
+      ],
+      "remediation": [
+        {
+          "since": "2026-11-22T03:11:42Z",
+          "ended": "2026-11-22T03:16:41Z",
+          "endedBy": "document",
+          "to": "document",
+          "event": {
+            "name": "implementation-stage",
+            "at": "2026-11-22T03:13:57Z",
+            "note": "1 of 1 sub-step done"
+          },
+          "detail": "A gating test class now runs the staging target step before each commit: the issue's case and a root spelling are refused and the live configuration is accepted. It fails on the step as it stood and passes after the fix; the gating tests run 6 and the module's tests run 21, all passing. The integration class keeps the full list of spellings.",
+          "remediation": {
+            "pass": 1,
+            "route": "on-the-spot",
+            "steps": [
+              {
+                "name": "Gating test class for the staging target step",
+                "state": "done",
+                "finished": "2026-11-22T03:13:57Z",
+                "report": "A gating test class now runs the staging target step before each commit: the issue's case and a root spelling are refused and the live configuration is accepted. It fails on the step as it stood and passes after the fix; the gating tests run 6 and the module's tests run 21, all passing. The integration class keeps the full list of spellings."
+              }
+            ]
+          },
+          "qa": [
+            {
+              "pass": 1,
+              "verdict": "changes-requested",
+              "date": "2026-11-22",
+              "at": "2026-11-22T03:11:42Z",
+              "findings": {
+                "test": 1,
+                "code": 0
+              },
+              "severity": {
+                "minor": 1,
+                "other": 0
+              },
+              "route": "on-the-spot",
+              "report": "build/reports/tests/index.html",
+              "reportCopy": "9-staging-target-check/ca070e8d/tests/index.html",
+              "note": "One minor test finding: the changed step had a test in the integration tests but none in the gating tests. It was fixed on the spot with a gating class of three tests for the step. The code check found nothing, and every test of `workflow-checks` passed."
+            }
+          ]
+        }
+      ]
+    },
+    "next": null,
+    "qa": [
+      {
+        "pass": 1,
+        "verdict": "changes-requested",
+        "date": "2026-11-22",
+        "at": "2026-11-22T03:11:42Z",
+        "findings": {
+          "test": 1,
+          "code": 0
+        },
+        "severity": {
+          "minor": 1,
+          "other": 0
+        },
+        "route": "on-the-spot",
+        "report": "build/reports/tests/index.html",
+        "reportCopy": "9-staging-target-check/ca070e8d/tests/index.html",
+        "note": "One minor test finding: the changed step had a test in the integration tests but none in the gating tests. It was fixed on the spot with a gating class of three tests for the step. The code check found nothing, and every test of `workflow-checks` passed."
+      }
+    ],
+    "qaMax": 3,
+    "waitingOn": null,
+    "resume": null,
+    "blockers": {
+      "waitsOn": [],
+      "blocks": []
+    },
+    "landing": null,
+    "document": {
+      "tasks": [
+        {
+          "id": "documentation-review",
+          "name": "Documentation review",
+          "state": "done",
+          "started": "2026-11-22T03:16:41Z",
+          "finished": "2026-11-22T03:20:55Z",
+          "report": "The documentation check found three items: the step's comment does not name the variable that sets the production folder, and the two new test classes do not group their imports."
+        },
+        {
+          "id": "reconcile-documentation",
+          "name": "Reconcile documentation",
+          "state": "done",
+          "started": "2026-11-22T03:20:55Z",
+          "finished": "2026-11-22T03:25:47Z",
+          "report": "The step's comment names the variable that sets the production folder, the two new test classes group their imports, the deployment guide names both test classes, and the comment on the workflow's folder defaults says which variable overrides each; a second documentation check found nothing left, and the API reference builds with no warning."
+        },
+        {
+          "id": "dokka-check",
+          "name": "Dokka check",
+          "state": "done",
+          "finished": "2026-11-22T03:25:47Z",
+          "report": "The step's comment names the variable that sets the production folder, the two new test classes group their imports, the deployment guide names both test classes, and the comment on the workflow's folder defaults says which variable overrides each; a second documentation check found nothing left, and the API reference builds with no warning."
+        },
+        {
+          "id": "reconcile-plan",
+          "name": "Reconcile plan",
+          "state": "done",
+          "started": "2026-11-22T03:25:47Z",
+          "finished": "2026-11-22T03:34:15Z",
+          "report": "The as-built record is written with its six deviations from the plan, and the consequences name the issues filed for the follow-ups and the one known gap: the step has not yet run on the live variables."
+        },
+        {
+          "id": "readme-changelog",
+          "name": "README and CHANGELOG",
+          "state": "done",
+          "started": "2026-11-22T03:34:15Z",
+          "finished": "2026-11-22T03:41:34Z",
+          "report": "The CHANGELOG's Fixed entry now names both test classes for the step; the README still describes the project as built. The consequences link the follow-up for one way of resolving the three folders to its issue."
+        },
+        {
+          "id": "state-boards",
+          "name": "State boards",
+          "state": "done",
+          "started": "2026-11-22T03:46:14Z",
+          "finished": "2026-11-22T03:53:50Z"
+        },
+        {
+          "id": "document-landing",
+          "name": "Document commit",
+          "state": "done",
+          "started": "2026-11-22T03:53:50Z",
+          "finished": "2026-11-22T03:56:13Z"
+        }
+      ]
+    }
+  },
+  "milestones": [
+    {
+      "column": "gap",
+      "label": "From the issue",
+      "date": "2026-11-22",
+      "ref": "#9",
+      "note": "the gap as the issue states it, checked against the workflow at the baseline"
+    },
+    {
+      "column": "considered",
+      "label": "Options weighed",
+      "date": "2026-11-22",
+      "ref": "plan.md",
+      "note": "five options for comparing the folders and what to upload to, weighed in the plan: one accepted, three declined, one deferred to a follow-up"
+    },
+    {
+      "column": "verdict",
+      "label": "Plan accepted",
+      "date": "2026-11-22",
+      "ref": "plan.md",
+      "note": "eight decisions on one Row: the resolving step, its regression test and the documents in one commit; the production job and the shared deploy action untouched"
+    }
+  ],
+  "trail": [
+    {
+      "date": "2026-11-22",
+      "column": "gap",
+      "label": "Sized; the plan starts"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "verdict",
+      "label": "Plan accepted",
+      "ref": "plan.md"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Branch `fix/issue-9-staging-target-check` cut; implementation starts at regression-test"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Implementation done (4 stages); Quality Review next"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Quality Review 1: running"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Quality Review 1: changes requested, 1 finding (1 minor; 1 test)"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Correction: 1 sub-step done; every sub-step done"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: Documentation review current"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: Reconcile documentation current"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: Reconcile plan current"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: README and CHANGELOG current"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: 5 of 7 tasks done"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: State boards current"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: Document commit current"
+    },
+    {
+      "date": "2026-11-22",
+      "column": "built",
+      "label": "Document: every task done"
+    }
+  ],
+  "rows": [
+    {
+      "id": "staging-target-check",
+      "group": "Code",
+      "name": "The staging target check",
+      "system": "deployment",
+      "where": "`.github/workflows/deploy-spaceship.yml`",
+      "gap": {
+        "kind": "bug",
+        "summary": "The staging target check compares folder strings, not resolved paths. Its `normalize` helper only adds a leading and a trailing slash, so `.` and `..` segments stay as written and a staging folder that names the production folder another way is not refused. The production folder is configured as `/../../spartanlaboratories.org/` (#9), so a staging folder set to `/spartanlaboratories.org/` passes, and a manual run with `clean_staging` set would delete everything in it: the production site. A staging folder that resolves to the FTP root but is not written `/`, such as `/../`, passes the root test the same way.",
+        "detail": "At the baseline the step stands at lines 106-126 of the workflow; the issue cites lines 99-111. The docs publish already compares resolved paths in its own target check.",
+        "evidence": [
+          "`.github/workflows/deploy-spaceship.yml:112-116` — `normalize` adds a leading and a trailing slash and resolves no `.` or `..` segment",
+          "`.github/workflows/deploy-spaceship.yml:121-124` — the step fails only when the staging string is `/` or equals the production string",
+          "`.github/workflows/deploy-spaceship.yml:181` — the staging deploy passes the manual run's `clean_staging` input on as `clean-remote`",
+          "`.github/actions/spaceship-deploy/action.yml:38-39`, `:139` — `clean-remote` deletes everything in the remote folder before uploading",
+          "`.github/workflows/publish-docs.yml:51-53` — the docs publish compares paths resolved with `realpath -m`, noting that the production folder is configured as `/../../spartanlaboratories.org/`"
+        ],
+        "source": "#9"
+      },
+      "asBuilt": {
+        "state": "amended",
+        "statements": [
+          {
+            "state": "as-planned",
+            "text": "The step resolves both folders with a `resolve` function that applies their `.` and `..` segments, keeps a `..` at the root at the root and collapses repeated slashes, and compares the results."
+          },
+          {
+            "state": "as-planned",
+            "text": "It refuses a staging folder that resolves to the FTP root and one that resolves to the production folder, each with its own `::error::` annotation naming `SPACESHIP_STAGING_REMOTE_DIR`, and exits before it writes `remote_dir`."
+          },
+          {
+            "state": "as-planned",
+            "text": "`resolve` reads the folders as text in bash; no `realpath` or other tool is called."
+          },
+          {
+            "state": "as-planned",
+            "text": "The step writes the resolved staging folder as `remote_dir`, the output `Deploy to staging` reads; a folder written plainly, as the default is, comes out as before."
+          },
+          {
+            "state": "amended",
+            "text": "`StagingTargetCheckTest` was added to the integration tests of `workflow-checks` with the plan's eight tests. Implementation recorded the five marked tests failing on the unchanged step, the issue's case among them, and all of them passing after the fix. A gating class of the same name was added beside it after Quality Review 1, with three tests: the issue's case and a root spelling refused, the live configuration accepted."
+          },
+          {
+            "state": "as-planned",
+            "text": "`docs/DEPLOYMENT.md`, the `workflow-checks` row of the module table in `README.md` and a Fixed entry in `CHANGELOG.md` were edited as the plan gives them, in the same commit as the fix."
+          },
+          {
+            "state": "as-planned",
+            "text": "Only the `Check staging target` step's `run` block changed in the workflow; the production job, the documents publish and the shared deploy action are untouched."
+          },
+          {
+            "state": "as-planned",
+            "text": "Neither follow-up was taken up: the production job's own root check is filed as #35, and a staging folder that contains production or the documents as #36."
+          }
+        ],
+        "files": [
+          ".github/workflows/deploy-spaceship.yml",
+          "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/integration/workflows/StagingTargetCheckTest.kt",
+          "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/gating/workflows/StagingTargetCheckTest.kt",
+          "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/support/workflows/DeployWorkflow.kt",
+          "docs/DEPLOYMENT.md",
+          "README.md",
+          "CHANGELOG.md"
+        ],
+        "commits": [
+          "aa05623292b5ef87cd64c08fda73a30ff2d090b3"
+        ],
+        "changes": [
+          {
+            "what": "The step is also covered by a test class in the gating tests, beside the planned integration class",
+            "why": "Quality Review 1 found the changed step tested only in the integration tests; three gating tests now run it before each commit, and the integration class keeps the full list of spellings.",
+            "when": "Quality Review 1 fixes",
+            "ref": "aa05623"
+          }
+        ]
+      },
+      "verdict": {
+        "kind": "build",
+        "statements": [
+          {
+            "text": "The staging target check resolves the `.` and `..` segments of both folders, and collapses repeated slashes, before it compares them; a `..` at the root stays at the root.",
+            "ref": "plan.md#31-the-workflow-step",
+            "excerpt": {
+              "ref": "plan.md#31-the-workflow-step",
+              "heading": "3.1 The workflow step",
+              "paragraph": "`.github/workflows/deploy-spaceship.yml`, step `Check staging target` (lines 106-126). The step keeps its name, id, shell and its one output, `remote_dir`. Its `run` block becomes the text below; nothing else in the file changes.",
+              "hash": "71cec6d4f72b"
+            }
+          },
+          {
+            "text": "The step refuses a staging folder that resolves to the production folder or to the FTP root, however each is written, with an annotation that names `SPACESHIP_STAGING_REMOTE_DIR`, and writes no `remote_dir`.",
+            "ref": "plan.md#1-requirements",
+            "excerpt": {
+              "ref": "plan.md#1-requirements",
+              "heading": "1. Requirements",
+              "paragraph": "The `Check staging target` step of the staging job in `.github/workflows/deploy-spaceship.yml` must:",
+              "hash": "a845c639dac1"
+            }
+          },
+          {
+            "text": "The folders are resolved in bash from their text alone, not with `realpath`, so nothing on the runner is consulted and the bash that runs the test gives the same answers as the runner.",
+            "ref": "plan.md#31-the-workflow-step",
+            "excerpt": {
+              "ref": "plan.md#31-the-workflow-step",
+              "heading": "3.1 The workflow step",
+              "paragraph": "`.github/workflows/deploy-spaceship.yml`, step `Check staging target` (lines 106-126). The step keeps its name, id, shell and its one output, `remote_dir`. Its `run` block becomes the text below; nothing else in the file changes.",
+              "hash": "71cec6d4f72b"
+            }
+          },
+          {
+            "text": "The step hands the resolved staging folder to the staging deploy, so what was checked is what is uploaded to; a folder already written plainly, such as the default, is handed on unchanged.",
+            "ref": "plan.md#31-the-workflow-step",
+            "excerpt": {
+              "ref": "plan.md#31-the-workflow-step",
+              "heading": "3.1 The workflow step",
+              "paragraph": "`.github/workflows/deploy-spaceship.yml`, step `Check staging target` (lines 106-126). The step keeps its name, id, shell and its one output, `remote_dir`. Its `run` block becomes the text below; nothing else in the file changes.",
+              "hash": "71cec6d4f72b"
+            }
+          },
+          {
+            "text": "A new test class in the integration tests runs the step as committed over pairs of folders; its test for the issue's case fails on the step as it stands and passes after the fix.",
+            "ref": "plan.md#4-regression-test",
+            "excerpt": {
+              "ref": "plan.md#4-regression-test",
+              "heading": "4. Regression test",
+              "paragraph": "Set and place. Integration tests: `com.spartanlaboratories.testing.integration.workflows.StagingTargetCheckTest`, at `workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/integration/workflows/StagingTargetCheckTest.kt`. It runs a real bash over the step body, as `StagingMarkingTest` does, and uses `kotlin.test` on the JUnit 4 that `kotlin(\"test\")` resolves in this module, as the module's other classes do. The module's `integrationTest` task picks it up by its package, and `test` runs it with the module's gating tests. A machine with no bash skips the class, through JUnit 4's …",
+              "hash": "b7d5c1fe4c80"
+            }
+          },
+          {
+            "text": "`docs/DEPLOYMENT.md`, the module table in `README.md` and `CHANGELOG.md` change in the same commit as the fix.",
+            "ref": "plan.md#34-documentation",
+            "excerpt": {
+              "ref": "plan.md#34-documentation",
+              "heading": "3.4 Documentation",
+              "paragraph": "Documentation levels touched: level 1 (the step's comments, the test class comment, the support-object comment) and level 3 (`docs/DEPLOYMENT.md`, `README.md`, `CHANGELOG.md`, and this plan with its `consequences.md`). Level 2 is untouched: `workflow-checks` is test-only and is not part of the API reference.",
+              "hash": "b974b0067b93"
+            }
+          },
+          {
+            "text": "The production job, the documents publish and the shared deploy action stay as they are.",
+            "ref": "plan.md#35-files-not-changed",
+            "excerpt": {
+              "ref": "plan.md#35-files-not-changed",
+              "heading": "3.5 Files not changed",
+              "paragraph": "`.github/workflows/publish-docs.yml` (its own resolver stays), `.github/workflows/ci.yml`, `.github/actions/spaceship-deploy/action.yml`, the production job (including `Check production target` and the approval check), `workflow-checks/build.gradle.kts` (the new class is picked up by its package, and the workflows are already inputs of the module's tests), `CLAUDE.md`, and the variable table in `README.md`. The deployment rules in `CLAUDE.md` and `docs/DEPLOYMENT.md` all hold: no production path, approval check or staging marking changes.",
+              "hash": "bf1e99ed3f3a"
+            }
+          },
+          {
+            "text": "A staging folder that contains production (other than the FTP root) or the documents folder, and the production job's own root check, are left to follow-ups.",
+            "ref": "plan.md#1-requirements",
+            "excerpt": {
+              "ref": "plan.md#1-requirements",
+              "heading": "1. Requirements",
+              "paragraph": "The `Check staging target` step of the staging job in `.github/workflows/deploy-spaceship.yml` must:",
+              "hash": "a845c639dac1"
+            }
+          }
+        ],
+        "defense": "A fix to one step of one workflow, with the test that runs that step as committed. Resolving the folders from their text gives the step the meaning of the documents publish's check without depending on the runner, so the test runs exactly the code the runner runs. Handing on the resolved folder makes what was checked what is uploaded to, and for the live default the two are the same. The production job, the documents publish and the shared deploy action are untouched.",
+        "steps": [
+          {
+            "id": "3.2",
+            "what": "Add the regression test class `StagingTargetCheckTest` to the integration tests of `workflow-checks`, running the step body as committed over pairs of folders, before the step changes.",
+            "files": [
+              "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/integration/workflows/StagingTargetCheckTest.kt"
+            ],
+            "check": "on the unchanged workflow its 8 tests run, the 5 the plan marks fail and 3 pass",
+            "link": "plan.md#32-the-regression-test-class"
+          },
+          {
+            "id": "3.1",
+            "what": "Replace the `run` block of the `Check staging target` step with one that resolves both folders, refuses production and the FTP root with their own annotations, and writes the resolved staging folder as `remote_dir`, in `.github/workflows/deploy-spaceship.yml`.",
+            "files": [
+              ".github/workflows/deploy-spaceship.yml"
+            ],
+            "check": "the same 8 tests pass, then `./gradlew :workflow-checks:test` runs 18 tests, all passing",
+            "link": "plan.md#31-the-workflow-step"
+          },
+          {
+            "id": "3.3",
+            "what": "Reword the class comment of the support object `DeployWorkflow` so it no longer counts two checks, as a third now reads the workflow through it.",
+            "files": [
+              "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/support/workflows/DeployWorkflow.kt"
+            ],
+            "check": "nothing else in the file changes",
+            "link": "plan.md#33-a-comment-in-the-support-object"
+          },
+          {
+            "id": "3.4",
+            "what": "Describe the resolved comparison and the new test in `docs/DEPLOYMENT.md`, name the staging target check in the `workflow-checks` row of the module table in `README.md`, and add a Fixed entry under Unreleased in `CHANGELOG.md`.",
+            "files": [
+              "docs/DEPLOYMENT.md",
+              "README.md",
+              "CHANGELOG.md"
+            ],
+            "link": "plan.md#34-documentation"
+          }
+        ],
+        "tests": [
+          "Integration — `StagingTargetCheckTest`, 8 tests over pairs of folders: the issue's case, seven spellings of production, the FTP root, the resolved upload folder, the live configuration, a folder beside production and literal names; 5 fail on the step as committed and all pass after the fix",
+          "Module run — `./gradlew :workflow-checks:test`, 18 tests with the push filter and staging marking classes, all passing; the workflows are inputs of the module's tests, so the edited workflow runs all three classes again",
+          "Not automated — how the FTP host reads a `..` at its root, and the step's first run on the live variables, in the staging job of a manual run on the branch and of the run the merge starts, where it must write `remote_dir=/spartanlaboratories.org/staging/`"
+        ],
+        "risks": [
+          "The step is the only guard in front of the manual clean option: a mistake in its resolving could refuse the live configuration, which stops the staging job before anything is uploaded, or accept a folder it should refuse; the tests cover the issue's case, its spellings, the root and the live configuration",
+          "A staging folder written with `.`, `..`, repeated slashes or no leading slash now uploads to the folder it resolves to; no staging variable is set and the default is written plainly, so the live upload folder does not change",
+          "The check assumes the FTP host reads a `..` at its root as the root, as `docs/DEPLOYMENT.md` records and production deploys through today; were it otherwise, production would be set to its plain spelling, which the check reads as before",
+          "Folder names are compared as written and case matters: a host that ignored case would let a spelling of production that differs only in case pass as a separate folder",
+          "A production folder that resolves to the root is not judged by the staging check; the production job's own check is a follow-up"
+        ],
+        "source": "plan.md §1, §3, §4, §5",
+        "link": "plan.md#3-fix"
+      },
+      "options": [
+        {
+          "id": "resolve-in-bash",
+          "name": "Resolve the folders in bash from their text",
+          "summary": "A short function in the step applies the `.` and `..` segments and collapses repeated slashes.",
+          "wins": "It consults nothing on the runner, needs no tool, and gives the same answers in the test's bash as on the runner.",
+          "verdict": "accepted",
+          "link": "plan.md#31-the-workflow-step",
+          "source": "plan.md §3.1"
+        },
+        {
+          "id": "realpath-m",
+          "name": "Match the documents publish with `realpath -m`",
+          "why": "It resolves symbolic links on the runner's file system, which means nothing for an FTP folder, and some builds keep a leading `//` as a root of its own, so the check and its test would disagree across machines.",
+          "verdict": "declined",
+          "link": "plan.md#31-the-workflow-step",
+          "summary": "Resolve both folders with `realpath -m`, as the documents publish does in its own target check.",
+          "source": "plan.md §3.1"
+        },
+        {
+          "id": "realpath-ms",
+          "name": "`realpath -ms` with the leading slashes stripped first",
+          "why": "It gives the same answers on every folder tried, but adds a tool and a flag to a guard that needs neither.",
+          "verdict": "declined",
+          "link": "plan.md#31-the-workflow-step",
+          "summary": "Strip the folders' leading slashes, then resolve them with `realpath -ms`.",
+          "source": "plan.md §3.1"
+        },
+        {
+          "id": "upload-as-written",
+          "name": "Compare resolved paths but upload to the folder as written",
+          "why": "What was checked would not be what is uploaded to: the host would read a spelling the check had already read differently.",
+          "verdict": "declined",
+          "link": "plan.md#31-the-workflow-step",
+          "summary": "Compare the resolved folders, but hand the staging folder to the deploy as it is written.",
+          "source": "plan.md §3.1"
+        },
+        {
+          "id": "refuse-ancestors",
+          "name": "Also refuse a staging folder that contains production or the documents folder",
+          "why": "The issue asks for equal or root only. For the live production folder the root is the only ancestor and is refused; the rest is a follow-up with its own test.",
+          "verdict": "deferred",
+          "link": "plan.md#1-requirements",
+          "summary": "Refuse a resolved staging folder that is a proper ancestor of the resolved production folder or of the documents folder, with a test for each.",
+          "source": "plan.md §1; consequences.md, follow-up 2"
+        }
+      ]
+    }
+  ],
+  "impact": {
+    "basis": "plan",
+    "summary": "No published artifact changes and no version moves. The staging job's first step refuses a staging folder that resolves to the production folder or to the FTP root, however it is written, and the staging deploy uploads to the resolved folder; the live staging folder stays `/spartanlaboratories.org/staging/`. `workflow-checks` gains a gating and an integration test class for the step, which `./gradlew build` and `check` run.",
+    "none": null,
+    "release": {
+      "bump": "none",
+      "version": null,
+      "nothingPublished": true,
+      "note": "the site artifact and the server jar are built from the same sources as before, so `version` stays `0.1.0`"
+    },
+    "downstream": [
+      {
+        "who": "Whoever runs the repository's deployments",
+        "kind": "operator",
+        "system": "deployment",
+        "effect": "behaviour",
+        "summary": "A staging folder that resolves to the production folder or to the FTP root, however it is written, now fails the staging job's first step before anything is uploaded, with an annotation naming `SPACESHIP_STAGING_REMOTE_DIR`. Either used to pass and let a manual `clean_staging` run delete the whole folder.",
+        "link": "consequences.md#blast-radius"
+      },
+      {
+        "who": "The staged site",
+        "kind": "artifact",
+        "system": "deployment",
+        "effect": "behaviour",
+        "summary": "A staging folder written with `.`, `..` or repeated slashes uploads to the folder it resolves to. No staging variable is set and the default is written plainly, so the live staging upload folder stays `/spartanlaboratories.org/staging/`.",
+        "link": "consequences.md#published-artifacts"
+      },
+      {
+        "who": "The deploy build",
+        "kind": "system",
+        "system": "deployment",
+        "effect": "additive",
+        "summary": "`./gradlew build` and `check` run the two new test classes with the rest of `workflow-checks`, the gating one before each commit, so a later edit that breaks the check stops the build. Both classes skip themselves on a machine with no bash, as `StagingMarkingTest` does.",
+        "link": "consequences.md#blast-radius"
+      },
+      {
+        "who": "The deployment reference on the live site",
+        "kind": "artifact",
+        "system": "deployment",
+        "effect": "additive",
+        "summary": "`docs/DEPLOYMENT.md` describes the resolved comparison and the new test. It goes live at the merge through the documents publish, and the workflow change takes effect at the same merge.",
+        "link": "consequences.md#blast-radius"
+      },
+      {
+        "who": "The documents publish and the production job",
+        "kind": "system",
+        "system": "deployment",
+        "effect": "none",
+        "summary": "Untouched. The documents publish keeps resolving with `realpath -m`, and the production job keeps its own target check and approval check; moving either onto the new resolving is a follow-up.",
+        "link": "consequences.md#adoption"
+      },
+      {
+        "who": "Other repositories",
+        "kind": "repository",
+        "system": null,
+        "effect": "none",
+        "summary": "None: no other repository uses these workflows.",
+        "link": "consequences.md#blast-radius"
+      }
+    ],
+    "adaptation": [],
+    "api": [],
+    "conversion": [],
+    "source": "consequences.md",
+    "link": "consequences.md#blast-radius",
+    "changes": [
+      {
+        "what": "The deploy build runs two new test classes for the step, not one",
+        "why": "A gating class was added beside the planned integration class after Quality Review 1, so the step is also tested before each commit.",
+        "when": "Quality Review 1 fixes",
+        "ref": "aa05623",
+        "entry": "downstream.2",
+        "system": "deployment"
+      }
+    ]
+  },
+  "tests": {
+    "base": "a4a7b9e65ddd8358b8d13dddece199ac6140e124",
+    "updated": "2026-11-22T03:13:57Z",
+    "added": [
+      {
+        "class": "com.spartanlaboratories.testing.integration.workflows.StagingTargetCheckTest",
+        "module": "workflow-checks",
+        "testSet": "integration",
+        "path": "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/integration/workflows/StagingTargetCheckTest.kt",
+        "tests": 8,
+        "rows": [
+          "staging-target-check"
+        ],
+        "result": {
+          "state": "passed",
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "pass": 1,
+          "at": "2026-11-22T03:11:42Z"
+        }
+      },
+      {
+        "class": "com.spartanlaboratories.testing.gating.workflows.StagingTargetCheckTest",
+        "module": "workflow-checks",
+        "testSet": "gating",
+        "path": "workflow-checks/src/test/kotlin/com/spartanlaboratories/testing/gating/workflows/StagingTargetCheckTest.kt",
+        "tests": 3,
+        "rows": [
+          "staging-target-check"
+        ],
+        "stage": "Quality Review 1 fixes"
+      }
+    ],
+    "amended": [],
+    "relevant": [
+      {
+        "class": "com.spartanlaboratories.testing.gating.workflows.DeployPushFilterTest",
+        "module": "workflow-checks",
+        "testSet": "gating",
+        "tests": 3,
+        "result": {
+          "state": "passed",
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "pass": 1,
+          "at": "2026-11-22T03:11:42Z"
+        }
+      },
+      {
+        "class": "com.spartanlaboratories.testing.integration.workflows.StagingMarkingTest",
+        "module": "workflow-checks",
+        "testSet": "integration",
+        "tests": 7,
+        "result": {
+          "state": "passed",
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "pass": 1,
+          "at": "2026-11-22T03:11:42Z"
+        }
+      }
+    ]
+  },
+  "roadmap": null,
+  "followUps": [
+    {
+      "issue": 35,
+      "note": "`Check production target` refuses a production folder only when its text is `/`, so `/..` or `/a/..` would pass and send the site into the FTP root. Resolving the folder with the same function and refusing the root closes it, with a test beside the staging one."
+    },
+    {
+      "issue": 36,
+      "note": "The staging check still accepts a proper ancestor of production and a folder that contains the documents folder. For the live production folder the only proper ancestor is the FTP root, which is refused; a production folder nested deeper would not be covered."
+    },
+    {
+      "name": "One resolver for the three folders",
+      "note": "The documents publish resolves with `realpath -m`, the staging check resolves the text itself; for the live folders the two agree. Moving the documents publish onto the same function would leave one way of resolving them. The earlier follow-up of #8 for a regression check of the documents publish's target check stays open."
+    },
+    {
+      "name": "A shared step runner for the workflow tests",
+      "note": "`StagingMarkingTest` and `StagingTargetCheckTest` each carry their own code that runs a step body in bash; a third step test is the moment to move it into `support/workflows`."
+    }
+  ],
+  "documents": [
+    {
+      "label": "Issue #9",
+      "path": "https://github.com/SpartanLaboratories/OrganizationPage/issues/9",
+      "note": "the report of the string comparison"
+    },
+    {
+      "label": "Plan",
+      "path": "plan.md",
+      "note": "requirements, root cause, the fix, the regression test, risks and version control"
+    },
+    {
+      "label": "Consequences",
+      "path": "consequences.md",
+      "note": "published artifacts, blast radius, adoption, neighbouring issues and four follow-ups"
+    }
+  ],
+  "notes": {},
+  "links": {
+    "workBoard": "../index.html",
+    "repoBoard": "../../dashboards/index.html"
+  },
+  "issueBoards": {
+    "8": "../8-docs-only-deploy-skip/dashboard.html"
+  }
+}
+);
