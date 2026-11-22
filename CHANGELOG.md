@@ -22,3 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `OrganizationPage Deploy` also starts for a push that changes `docs/brand/` or `docs/dokka/`, the two folders the site build reads; it still starts nothing for a push that changes only other files under `docs/`.
 - Staging marking covers every page of the site, including the API reference, and fails if the artifact has no reference.
 - `./gradlew build`, `check` and `:web:jsBrowserDistribution` generate the API reference, so a Dokka warning, such as a broken KDoc link, fails them.
+
+### Fixed
+
+- The staging target check compares resolved folder paths, not strings. A staging folder that names the production folder another way, such as `/spartanlaboratories.org/` while production is `/../../spartanlaboratories.org/`, or that resolves to the FTP root, used to pass and let a manual `clean_staging` run delete the production site; it is now refused. The staging deploy uploads to the resolved folder. `workflow-checks` gains a regression test for the step.

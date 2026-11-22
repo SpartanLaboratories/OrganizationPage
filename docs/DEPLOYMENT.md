@@ -152,7 +152,12 @@ Because staging and the published documents sit inside the production folder:
   this only when it runs: the staging job does not, so never point
   `SPACESHIP_STAGING_REMOTE_DIR` at a folder that holds the documents;
 - the staging folder must differ from the production folder, and neither can be the
-  FTP root;
+  FTP root. The staging job compares resolved paths: it applies the `.` and `..`
+  segments of both folders (a `..` at the root stays at the root) and collapses repeated
+  slashes, so a staging folder that resolves to the production folder is refused however
+  it is written (`/../../spartanlaboratories.org/` and `/spartanlaboratories.org/` are the
+  same folder), and so is one that resolves to the FTP root. It uploads to the resolved
+  staging folder;
 - the documents folder must be strictly inside the production folder and must not be,
   sit inside, or contain the staging folder;
 - each of the three folders keeps its own sync record (`.ftp-deploy-sync-state.json` in
@@ -177,9 +182,10 @@ exactly as built. `robots.txt` isn't used, because crawlers only read it at the 
 root.
 
 The `workflow-checks` module runs this step, as committed, over a fixture of the packaged
-site (`StagingMarkingTest`), and asserts the push filter's patterns and their order
+site (`StagingMarkingTest`), runs the staging target check, as committed, over pairs of
+folders (`StagingTargetCheckTest`), and asserts the push filter's patterns and their order
 (`DeployPushFilterTest`). `./gradlew build` and `check` run them, so the deploy build
-stops on either.
+stops on any of them.
 
 ### Secrets and variables
 

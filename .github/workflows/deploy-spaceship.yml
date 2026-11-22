@@ -109,17 +109,36 @@ jobs:
         run: |
           set -euo pipefail
 
-          normalize() {
-            local dir="/${1#/}"
-            [[ "$dir" == */ ]] || dir="$dir/"
-            printf '%s' "$dir"
+          # Folders are compared as resolved paths: the production folder is configured as
+          # /../../spartanlaboratories.org/, which is the same folder as /spartanlaboratories.org/.
+          # The text is resolved here and nothing on this runner is consulted: "." and ".."
+          # segments are applied, a ".." at the root stays at the root, and repeated slashes
+          # collapse. The result starts and ends with a slash.
+          resolve() {
+            local rest="$1/" segment resolved=""
+            while [[ -n "$rest" ]]; do
+              segment="${rest%%/*}"
+              rest="${rest#*/}"
+              case "$segment" in
+                '' | .) ;;
+                ..) resolved="${resolved%/*}" ;;
+                *) resolved="$resolved/$segment" ;;
+              esac
+            done
+            printf '%s/' "$resolved"
           }
 
-          staging="$(normalize "$STAGING_REMOTE_DIR")"
-          production="$(normalize "$PRODUCTION_REMOTE_DIR")"
+          staging="$(resolve "$STAGING_REMOTE_DIR")"
+          production="$(resolve "$PRODUCTION_REMOTE_DIR")"
 
-          if [[ "$staging" == "/" || "$staging" == "$production" ]]; then
-            echo "::error::SPACESHIP_STAGING_REMOTE_DIR ($staging) must be a separate folder from production ($production)." >&2
+          # The manual clean option deletes everything in the staging folder, so the staging folder
+          # must be neither the production folder nor the FTP root, however either is written.
+          if [[ "$staging" == "/" ]]; then
+            echo "::error::SPACESHIP_STAGING_REMOTE_DIR ($STAGING_REMOTE_DIR) resolves to the FTP root; set it to a folder of its own." >&2
+            exit 1
+          fi
+          if [[ "$staging" == "$production" ]]; then
+            echo "::error::SPACESHIP_STAGING_REMOTE_DIR ($STAGING_REMOTE_DIR) resolves to the production folder ($production); it must be a separate folder." >&2
             exit 1
           fi
 
