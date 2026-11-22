@@ -1,7 +1,7 @@
 {
   "slug": "organizationpage",
   "version": null,
-  "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
-  "lastAmended": {"issue": 7, "title": "Adopt the organization's Dokka and project site standard", "sha": "38477af"},
-  "written": {"sha": "38477af"}
+  "asIs": {"ref": "fix/issue-9-staging-target-check", "sha": "aa05623", "date": "2026-11-22T03:15:43Z"},
+  "lastAmended": {"issue": 9, "title": "Staging target check compares folder strings, not resolved paths", "sha": "aa05623"},
+  "written": {"sha": "aa05623"}
 }

@@ -373,7 +373,7 @@ footer code{color:var(--ink-2)}
   "schema": "org-work-board/2",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-21T03:01:29Z",
+  "generated": "2026-11-22T03:52:44Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
@@ -384,8 +384,8 @@ footer code{color:var(--ink-2)}
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-16T22:22:19Z",
-        "asOf": "2026-11-16"
+        "generated": "2026-11-22T03:46:20Z",
+        "asOf": "2026-11-22"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -446,12 +446,19 @@ footer code{color:var(--ink-2)}
           "ref": "master"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 39,
+          "path": "docs/plans/39-client-origin-screening/dashboard.html",
+          "branch": "fix/issue-39-client-datagram-origin-check",
+          "why": "on fix/issue-39-client-datagram-origin-check, whose copy of the board is not on GitHub yet"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/WebTools",
-        "generated": "2026-11-16T22:22:19Z",
-        "asOf": "2026-11-16",
+        "generated": "2026-11-22T03:46:20Z",
+        "asOf": "2026-11-22",
         "links": {
           "repoBoard": "../../dashboards/index.html",
           "readme": "../README.md"
@@ -613,6 +620,58 @@ footer code{color:var(--ink-2)}
             "order": 0
           },
           {
+            "issue": 39,
+            "title": "Client only checks datagram origin on the reliable-channel receive branch",
+            "state": "OPEN",
+            "created": "2026-09-24",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": "../39-client-origin-screening/dashboard.html",
+            "folder": "../39-client-origin-screening/",
+            "branch": "fix/issue-39-client-datagram-origin-check",
+            "system": "webtools-udp",
+            "step": "document",
+            "detail": "The API reference generates with no warning; the plan documents are being brought in line with the build.",
+            "since": "2026-11-22T03:26:12Z",
+            "updated": "2026-11-22T03:45:32Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-22",
+                "at": "2026-11-22T03:21:12Z",
+                "findings": {
+                  "documentation": 0,
+                  "test": 3,
+                  "code": 1
+                },
+                "severity": {
+                  "minor": 3,
+                  "other": 1
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "39-client-origin-screening/ca070e8d/tests/index.html",
+                "note": "The fix is correct, and its regression tests fail before it for the right reasons. Three minor items are fixed on the spot: component cases for an off-origin reserved tag, a malformed `0x81`, a malformed `0x90` and an empty datagram, and a wait on the drop line in place of a fixed sleep in the older off-origin `0xA0` test (Off-origin receive tests); and a §9 row in the protocol document for clients before this release (Client receive-loop origin screening). The fourth item, component tests on real loopback sockets, is the module's standing pattern: changing it needs a socket-free receive seam, so it is not changed here.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "building",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": true,
+            "systemName": "webtools-udp",
+            "group": "other",
+            "order": 1
+          },
+          {
             "issue": 47,
             "title": "webtools-udp 2.0.0 ships Java 23 bytecode but README claims JDK 11+",
             "state": "CLOSED",
@@ -678,7 +737,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "Gradle build",
             "group": "other",
-            "order": 1
+            "order": 2
           },
           {
             "issue": 55,
@@ -807,7 +866,7 @@ footer code{color:var(--ink-2)}
             },
             "systemName": "Gradle build, webtools-http, webtools-feeds, WebTools",
             "group": "other",
-            "order": 2
+            "order": 3
           },
           {
             "issue": 61,
@@ -882,7 +941,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "Gradle build",
             "group": "other",
-            "order": 3
+            "order": 4
           },
           {
             "issue": 62,
@@ -983,7 +1042,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "webtools-http common core",
             "group": "other",
-            "order": 4
+            "order": 5
           },
           {
             "issue": 63,
@@ -1094,7 +1153,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "published test fixtures",
             "group": "other",
-            "order": 5
+            "order": 6
           },
           {
             "issue": 64,
@@ -1184,7 +1243,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "outbound-URL policy",
             "group": "other",
-            "order": 6
+            "order": 7
           },
           {
             "issue": 65,
@@ -1284,7 +1343,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "OkHttp transport",
             "group": "other",
-            "order": 7
+            "order": 8
           },
           {
             "issue": 66,
@@ -1384,7 +1443,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "response cache",
             "group": "other",
-            "order": 8
+            "order": 9
           },
           {
             "issue": 67,
@@ -1484,7 +1543,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "call budget",
             "group": "other",
-            "order": 9
+            "order": 10
           },
           {
             "issue": 68,
@@ -1572,7 +1631,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "call facades",
             "group": "other",
-            "order": 10
+            "order": 11
           },
           {
             "issue": 69,
@@ -1655,7 +1714,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "webtools-feeds",
             "group": "other",
-            "order": 11
+            "order": 12
           },
           {
             "issue": 70,
@@ -1689,7 +1748,7 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "WebTools",
             "group": "other",
-            "order": 12
+            "order": 13
           },
           {
             "issue": 80,
@@ -1717,7 +1776,7 @@ footer code{color:var(--ink-2)}
             "reconciliation": null,
             "systemName": "no system",
             "group": "other",
-            "order": 13
+            "order": 14
           },
           {
             "issue": 81,
@@ -1752,7 +1811,7 @@ footer code{color:var(--ink-2)}
             "reconciliation": null,
             "systemName": "no system",
             "group": "other",
-            "order": 14
+            "order": 15
           },
           {
             "issue": 99,
@@ -1836,11 +1895,71 @@ footer code{color:var(--ink-2)}
             "active": false,
             "systemName": "Gradle build",
             "group": "other",
-            "order": 15
+            "order": 16
           }
         ],
         "roadmap": [],
         "unscheduled": [
+          {
+            "issue": 111,
+            "title": "webtools-udp tests: captureLogsOf exposes logback's unsynchronised event list while listener threads append to it",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-22",
+            "system": null
+          },
+          {
+            "issue": 110,
+            "title": "Client handshake() accepts the first datagram that arrives, whatever its source",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-22",
+            "system": null
+          },
+          {
+            "issue": 109,
+            "title": "Group imports as the Commenting page sets out",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 108,
+            "title": "Keep dependency and plugin versions in a version catalog",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 107,
+            "title": "Split each multiplatform library into a core module and device-family modules",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 106,
+            "title": "Log through kotlin-logging instead of slf4j directly",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 105,
+            "title": "Nothing checks that the inheritance-gated types keep their opt-in gate",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 104,
+            "title": "webtools-udp: add an ABI dump and explicit-API mode, as webtools-http and webtools-feeds have",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
           {
             "issue": 101,
             "title": "pages.yml grants pages: write and id-token: write to the build job that runs Gradle",
@@ -1999,9 +2118,9 @@ footer code{color:var(--ink-2)}
       "defaultBranch": "main",
       "head": "8565dce96f789b9425bf181a3e4b8b6f7954dc29",
       "source": {
-        "file": "docs/plans/board.json",
-        "view": "committed",
-        "generated": "2026-11-20T20:55:30Z",
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-20T20:53:20Z",
         "asOf": "2026-11-20"
       },
       "links": {
@@ -2066,23 +2185,29 @@ footer code{color:var(--ink-2)}
           "ref": "main"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 3,
+          "path": "docs/plans/1-bottools-consolidation/3-phase-1-build-skeleton/dashboard.html",
+          "branch": "feat/issue-3-build-skeleton",
+          "why": "on feat/issue-3-build-skeleton, whose copy of the board is not on GitHub yet"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-20T20:55:30Z",
+        "generated": "2026-11-20T20:53:20Z",
         "asOf": "2026-11-20",
         "links": {
-          "repoBoard": "../dashboards/index.html"
+          "repoBoard": "../../dashboards/index.html"
         },
+        "base": "../",
         "systems": [
           {
             "slug": "build-and-ci-skeleton",
-            "name": "Build and CI skeleton",
-            "slot": 7,
-            "top": "Build and CI skeleton",
-            "status": "planned",
-            "board": null
+            "name": "build-and-ci-skeleton",
+            "slot": 0,
+            "top": "build-and-ci-skeleton"
           },
           {
             "slug": "kotlinbottools",
@@ -2094,51 +2219,39 @@ footer code{color:var(--ink-2)}
           },
           {
             "slug": "command-model",
-            "name": "Command model",
-            "slot": 1,
-            "top": "Command model",
-            "status": "planned",
-            "board": null
+            "name": "command-model",
+            "slot": 0,
+            "top": "command-model"
           },
           {
             "slug": "storage",
-            "name": "Storage",
-            "slot": 3,
-            "top": "Storage",
-            "status": "planned",
-            "board": null
+            "name": "storage",
+            "slot": 0,
+            "top": "storage"
           },
           {
             "slug": "bot-runtime",
-            "name": "Bot runtime",
-            "slot": 2,
-            "top": "Bot runtime",
-            "status": "planned",
-            "board": null
+            "name": "bot-runtime",
+            "slot": 0,
+            "top": "bot-runtime"
           },
           {
             "slug": "outbound-http",
-            "name": "Outbound HTTP",
-            "slot": 4,
-            "top": "Outbound HTTP",
-            "status": "planned",
-            "board": null
+            "name": "outbound-http",
+            "slot": 0,
+            "top": "outbound-http"
           },
           {
             "slug": "stats-framework",
-            "name": "Stats framework",
-            "slot": 5,
-            "top": "Stats framework",
-            "status": "planned",
-            "board": null
+            "name": "stats-framework",
+            "slot": 0,
+            "top": "stats-framework"
           },
           {
             "slug": "plugins",
-            "name": "Plugins",
-            "slot": 6,
-            "top": "Plugins",
-            "status": "planned",
-            "board": null
+            "name": "plugins",
+            "slot": 0,
+            "top": "plugins"
           },
           {
             "slug": "repository-swap",
@@ -2200,7 +2313,7 @@ footer code{color:var(--ink-2)}
             "key": "1",
             "issue": 1,
             "title": "BotTools consolidation & MagicBot (tracking)",
-            "board": "1-bottools-consolidation/dashboard.html"
+            "board": null
           },
           {
             "key": "other",
@@ -2218,8 +2331,8 @@ footer code{color:var(--ink-2)}
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": "1-bottools-consolidation/dashboard.html",
-            "folder": "1-bottools-consolidation/",
+            "board": null,
+            "folder": null,
             "branch": null,
             "system": null,
             "step": "implementation",
@@ -2249,7 +2362,7 @@ footer code{color:var(--ink-2)}
                 {
                   "issue": 3,
                   "slug": "build-skeleton",
-                  "step": null
+                  "step": "halted"
                 }
               ],
               "next": {
@@ -2402,8 +2515,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/",
             "branch": null,
             "system": null,
             "step": "landed",
@@ -2519,19 +2632,26 @@ footer code{color:var(--ink-2)}
                 "hold": "blocks"
               }
             ],
-            "board": null,
-            "folder": null,
-            "branch": null,
+            "board": "../1-bottools-consolidation/3-phase-1-build-skeleton/dashboard.html",
+            "folder": "../1-bottools-consolidation/3-phase-1-build-skeleton/",
+            "branch": "feat/issue-3-build-skeleton",
             "system": "build-and-ci-skeleton",
-            "step": "implementation",
-            "detail": "1 of 18 units landed; #3 in progress; #4 up next.",
+            "step": "halted",
+            "detail": "Waiting on you: the review of the deterministic tests of BotToolsBuild and the word on the next file",
+            "since": "2026-11-20T20:52:04Z",
+            "updated": "2026-11-20T20:52:04Z",
             "qa": [],
-            "qaMax": null,
-            "status": "building",
+            "qaMax": 3,
+            "status": "halted",
+            "fixOf": null,
             "landed": null,
-            "reconciliation": null,
-            "active": true,
-            "systemName": "Build and CI skeleton",
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
+            "systemName": "build-and-ci-skeleton",
             "group": "1",
             "order": 2
           },
@@ -2641,7 +2761,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Command model",
+            "systemName": "command-model",
             "group": "1",
             "order": 4
           },
@@ -2696,7 +2816,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Storage",
+            "systemName": "storage",
             "group": "1",
             "order": 5
           },
@@ -2781,7 +2901,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Bot runtime",
+            "systemName": "bot-runtime",
             "group": "1",
             "order": 6
           },
@@ -2844,7 +2964,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Outbound HTTP",
+            "systemName": "outbound-http",
             "group": "1",
             "order": 7
           },
@@ -2990,7 +3110,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Stats framework",
+            "systemName": "stats-framework",
             "group": "1",
             "order": 9
           },
@@ -3033,7 +3153,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Plugins",
+            "systemName": "plugins",
             "group": "1",
             "order": 10
           },
@@ -3070,7 +3190,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Plugins",
+            "systemName": "plugins",
             "group": "1",
             "order": 11
           },
@@ -3107,7 +3227,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Plugins",
+            "systemName": "plugins",
             "group": "1",
             "order": 12
           },
@@ -3156,7 +3276,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Plugins",
+            "systemName": "plugins",
             "group": "1",
             "order": 13
           },
@@ -3205,7 +3325,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Plugins",
+            "systemName": "plugins",
             "group": "1",
             "order": 14
           },
@@ -3438,7 +3558,7 @@ footer code{color:var(--ink-2)}
             "landed": null,
             "reconciliation": null,
             "active": false,
-            "systemName": "Plugins",
+            "systemName": "plugins",
             "group": "1",
             "order": 17
           },
@@ -3483,8 +3603,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/21-preparation/",
             "branch": null,
             "system": "kotlinbottools",
             "step": "landed",
@@ -3575,8 +3695,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/22-transfer-rehearsal/",
             "branch": null,
             "system": "repository-swap",
             "step": "landed",
@@ -3663,8 +3783,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/23-kotlinbottools-rewrite-and-swap/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/23-kotlinbottools-rewrite-and-swap/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/23-kotlinbottools-rewrite-and-swap/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/23-kotlinbottools-rewrite-and-swap/",
             "branch": null,
             "system": "kotlinbottools",
             "step": "landed",
@@ -3736,8 +3856,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/24-repository-hygiene/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/24-repository-hygiene/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/24-repository-hygiene/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/24-repository-hygiene/",
             "branch": null,
             "system": "repository-hygiene",
             "step": "landed",
@@ -3846,8 +3966,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/25-kotlinbottools-publish/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/25-kotlinbottools-publish/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/25-kotlinbottools-publish/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/25-kotlinbottools-publish/",
             "branch": null,
             "system": "kotlinbottools",
             "step": "landed",
@@ -3938,8 +4058,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/26-gkb2-gkb-rewrite/",
             "branch": null,
             "system": "rewrite-pipeline",
             "step": "landed",
@@ -4030,8 +4150,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/",
             "branch": null,
             "system": null,
             "step": "landed",
@@ -4121,8 +4241,8 @@ footer code{color:var(--ink-2)}
               }
             ],
             "blocks": [],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/28-residual-report-and-cleanup/",
             "branch": null,
             "system": "residual-exposure",
             "step": "landed",
@@ -4200,8 +4320,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/39-workspace-tools/",
             "branch": null,
             "system": "toolchain",
             "step": "landed",
@@ -4335,8 +4455,8 @@ footer code{color:var(--ink-2)}
                 "hold": "enables"
               }
             ],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/40-rewrites/",
             "branch": null,
             "system": "rewrite-pipeline",
             "step": "landed",
@@ -4402,8 +4522,8 @@ footer code{color:var(--ink-2)}
               }
             ],
             "blocks": [],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/41-residual-measurement/",
             "branch": null,
             "system": "residual-exposure",
             "step": "landed",
@@ -4468,8 +4588,8 @@ footer code{color:var(--ink-2)}
               }
             ],
             "blocks": [],
-            "board": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/dashboard.html",
-            "folder": "1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/",
+            "board": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/dashboard.html",
+            "folder": "../1-bottools-consolidation/2-phase-0-history-rewrite/27-rewrite-bottools-and-the-private-repositories/42-clone-replacement/",
             "branch": null,
             "system": "clone-realignment",
             "step": "landed",
@@ -4522,7 +4642,7 @@ footer code{color:var(--ink-2)}
             "issue": 1,
             "title": "BotTools consolidation & MagicBot (tracking)",
             "state": "OPEN",
-            "board": "1-bottools-consolidation/dashboard.html",
+            "board": null,
             "items": [
               {
                 "issue": 2,
@@ -4656,8 +4776,8 @@ footer code{color:var(--ink-2)}
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-14T08:13:13Z",
-        "asOf": "2026-11-14"
+        "generated": "2026-11-22T03:46:05Z",
+        "asOf": "2026-11-22"
       },
       "links": {},
       "boards": {},
@@ -4672,8 +4792,8 @@ footer code{color:var(--ink-2)}
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/SpartanGraphics",
-        "generated": "2026-11-14T08:13:13Z",
-        "asOf": "2026-11-14",
+        "generated": "2026-11-22T03:46:05Z",
+        "asOf": "2026-11-22",
         "links": {},
         "base": "../",
         "systems": [
@@ -4717,9 +4837,9 @@ footer code{color:var(--ink-2)}
             "branch": "feature/3-g1-build-skeleton",
             "system": "build-definition",
             "step": "plan",
-            "detail": "Verification verdict accepted: every recommended edit is applied as recommended. Decisions: one code-landing commit of the whole skeleton (the units remain the stages and the order of building); the release flow aligns with the organization's automatic release at the landing that sets version 0.1.0, so release.yml is dropped; the repository settings and the protection of main are applied through the repository's administration service by procedure, settings before the merge and protection after it; each CI job skips its Gradle work for a documentation-only change while still reporting its check; the post-merge protection-proof pull request stays (Refs #3, closes nothing). The documents are also brought up to the current conventions: test sets named instead of numbered levels, impact.md becomes consequences.md and takes the architecture's known gaps, no commit or PR placeholders, version facts re-checked. Next: the edited plans, then the branch confirmed and implementation of U1.",
-            "since": "2026-11-14T07:47:38Z",
-            "updated": "2026-11-14T07:47:38Z",
+            "detail": "Answered: the repository keeps no copies of the coding rules; CONTRIBUTING points to the organisation's Policy and Design Manifesto and keeps only this repository's facts.",
+            "since": "2026-11-22T03:45:26Z",
+            "updated": "2026-11-22T03:45:26Z",
             "qa": [],
             "qaMax": 3,
             "status": "planning",
@@ -4801,11 +4921,78 @@ footer code{color:var(--ink-2)}
       "url": "https://github.com/SpartanLaboratories/SpartanUI",
       "defaultBranch": "main",
       "head": "721762d9d63ef8e3af59831b3da5c09042fc002f",
-      "source": null,
+      "source": {
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-22T03:32:08Z",
+        "asOf": "2026-11-22"
+      },
       "links": {},
       "boards": {},
-      "unlinked": [],
-      "board": null
+      "unlinked": [
+        {
+          "issue": 2,
+          "path": "docs/plans/2-dokka-project-site/dashboard.html",
+          "branch": null,
+          "why": "not on main, and on no branch recorded for it"
+        }
+      ],
+      "board": {
+        "schema": "work-board/1",
+        "repo": "SpartanLaboratories/SpartanUI",
+        "generated": "2026-11-22T03:32:08Z",
+        "asOf": "2026-11-22",
+        "links": {},
+        "base": "../",
+        "systems": [],
+        "groups": [
+          {
+            "key": "other",
+            "issue": null,
+            "title": "Other runs, oldest first",
+            "board": null
+          }
+        ],
+        "rows": [
+          {
+            "issue": 2,
+            "title": "Adopt the organization's Dokka and project site standard",
+            "state": "OPEN",
+            "created": "2026-11-08",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": null,
+            "folder": null,
+            "branch": null,
+            "system": null,
+            "step": "plan",
+            "detail": "The research settled the Pages workflow: a build job and a deploy job, the Pages and OIDC scopes on the deploy job alone, .nojekyll shipped through the artifact's hidden-files input, one deployment at a time, and the current major versions of GitHub's Pages actions.",
+            "since": "2026-11-22T03:25:52Z",
+            "updated": "2026-11-22T03:25:52Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": null,
+            "active": true,
+            "systemName": null,
+            "group": "other",
+            "order": 0
+          }
+        ],
+        "roadmap": [],
+        "unscheduled": [
+          {
+            "issue": 2,
+            "title": "Adopt the organization's Dokka and project site standard",
+            "labels": [],
+            "created": "2026-11-08",
+            "system": null
+          }
+        ]
+      }
     },
     {
       "owner": "SpartanLaboratories",
@@ -4813,11 +5000,219 @@ footer code{color:var(--ink-2)}
       "url": "https://github.com/SpartanLaboratories/GeneralTools",
       "defaultBranch": "master",
       "head": "c196d1a80d60fca16a95a6bc69526564b14918b6",
-      "source": null,
+      "source": {
+        "file": "docs/plans/.live/board.json",
+        "view": "live",
+        "generated": "2026-11-22T03:52:13Z",
+        "asOf": "2026-11-22"
+      },
       "links": {},
       "boards": {},
-      "unlinked": [],
-      "board": null
+      "unlinked": [
+        {
+          "issue": 7,
+          "path": "docs/plans/7-kotlin-multiplatform/dashboard.html",
+          "branch": null,
+          "why": "not on master, and on no branch recorded for it"
+        }
+      ],
+      "board": {
+        "schema": "work-board/1",
+        "repo": "SpartanLaboratories/GeneralTools",
+        "generated": "2026-11-22T03:52:13Z",
+        "asOf": "2026-11-22",
+        "links": {},
+        "base": "../",
+        "systems": [],
+        "groups": [
+          {
+            "key": "7",
+            "issue": 7,
+            "title": "Make GeneralTools Kotlin Multiplatform (Color and geometry usable from common code)",
+            "board": "../7-kotlin-multiplatform/dashboard.html"
+          }
+        ],
+        "rows": [
+          {
+            "issue": 7,
+            "title": "Make GeneralTools Kotlin Multiplatform (Color and geometry usable from common code)",
+            "state": "OPEN",
+            "created": "2026-10-07",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [
+              {
+                "issue": 4,
+                "repo": "SpartanLaboratories/SpartanGraphics",
+                "state": "OPEN",
+                "hold": "blocks"
+              }
+            ],
+            "board": "../7-kotlin-multiplatform/dashboard.html",
+            "folder": "../7-kotlin-multiplatform/",
+            "branch": null,
+            "system": null,
+            "step": "architecture",
+            "detail": "Three questions answered and their 58 outside claims re-checked, none failing: a Kotlin/JVM desktop module and a source-less umbrella over the multiplatform core, guarded against a stale 2.2.0 by dependency constraints; convention plugins in an included build reading one version catalog; and the Java floor 17 set by jvmTarget and -Xjdk-release, apart from any toolchain, guarded in check.",
+            "since": "2026-11-22T03:49:09Z",
+            "updated": "2026-11-22T03:49:09Z",
+            "qa": [],
+            "qaMax": 3,
+            "status": "planning",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": null,
+            "active": false,
+            "chain": {
+              "total": 0,
+              "landed": 0,
+              "dropped": 0,
+              "deferred": 0,
+              "left": 0,
+              "planned": true,
+              "done": false,
+              "current": [],
+              "next": null,
+              "units": []
+            },
+            "systemName": "",
+            "group": "7",
+            "order": 0
+          }
+        ],
+        "roadmap": [
+          {
+            "issue": 7,
+            "title": "Make GeneralTools Kotlin Multiplatform (Color and geometry usable from common code)",
+            "state": "OPEN",
+            "board": "../7-kotlin-multiplatform/dashboard.html",
+            "items": []
+          }
+        ],
+        "unscheduled": [
+          {
+            "issue": 26,
+            "title": "Depend on kotlin-logging 8.0.7",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 25,
+            "title": "Keep the shared build configuration in convention plugins",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 24,
+            "title": "Keep dependency and plugin versions in a version catalog",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 23,
+            "title": "Set a Java floor on master",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 22,
+            "title": "Group imports as the Commenting page sets out",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 21,
+            "title": "Split the multiplatform build into a core module and a module per device family before 3.0.0 ships",
+            "labels": [],
+            "created": "2026-11-11",
+            "system": null
+          },
+          {
+            "issue": 20,
+            "title": "Log through kotlin-logging in the JVM sources as well (MiscJvm.kt, UserActions.kt)",
+            "labels": [],
+            "created": "2026-11-11",
+            "system": null
+          },
+          {
+            "issue": 19,
+            "title": "Generate API docs with Dokka: javadoc jar and GitHub Pages site",
+            "labels": [],
+            "created": "2026-11-08",
+            "system": null
+          },
+          {
+            "issue": 18,
+            "title": "Cache Node and Yarn downloads in CI",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 17,
+            "title": "Make the root GeneralTools artifact usable from plain Maven",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 16,
+            "title": "Add a Color factory that returns a Result",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 15,
+            "title": "Add immutable counterparts for Point and Segment",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 14,
+            "title": "Add a screenshotArea overload that takes an AxisAlignedBox",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 13,
+            "title": "Add toImmutable() for every AxisAlignedBox",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 12,
+            "title": "Add a compile-fail test for TwoDoubles' subclassing opt-in",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 11,
+            "title": "Make EPSILON a parameter of the geometry functions that use it",
+            "labels": [],
+            "created": "2026-10-20",
+            "system": null
+          },
+          {
+            "issue": 8,
+            "title": "Read-only views for Point and Square so libraries can expose geometry without copying",
+            "labels": [
+              "enhancement"
+            ],
+            "created": "2026-10-08",
+            "system": null
+          }
+        ]
+      }
     },
     {
       "owner": "SpartanLaboratories",
@@ -4836,12 +5231,12 @@ footer code{color:var(--ink-2)}
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "c8d3171745da93f2ac265f75d6794d7df20f9376",
+      "head": "a4a7b9e65ddd8358b8d13dddece199ac6140e124",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-14T03:10:22Z",
-        "asOf": "2026-11-14"
+        "generated": "2026-11-22T03:52:40Z",
+        "asOf": "2026-11-22"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
@@ -4857,12 +5252,19 @@ footer code{color:var(--ink-2)}
           "ref": "main"
         }
       },
-      "unlinked": [],
+      "unlinked": [
+        {
+          "issue": 9,
+          "path": "docs/plans/9-staging-target-check/dashboard.html",
+          "branch": "fix/issue-9-staging-target-check",
+          "why": "on fix/issue-9-staging-target-check, whose copy of the board is not on GitHub yet"
+        }
+      ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/OrganizationPage",
-        "generated": "2026-11-14T03:10:22Z",
-        "asOf": "2026-11-14",
+        "generated": "2026-11-22T03:52:40Z",
+        "asOf": "2026-11-22",
         "links": {
           "repoBoard": "../../dashboards/index.html"
         },
@@ -4881,6 +5283,14 @@ footer code{color:var(--ink-2)}
             "name": "deployment",
             "slot": 4,
             "top": "deployment",
+            "status": "built",
+            "board": null
+          },
+          {
+            "slug": "server",
+            "name": "server",
+            "slot": 2,
+            "top": "server",
             "status": "built",
             "board": null
           },
@@ -4911,8 +5321,8 @@ footer code{color:var(--ink-2)}
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": null,
-            "folder": null,
+            "board": "../7-dokka-and-project-site/dashboard.html",
+            "folder": "../7-dokka-and-project-site/",
             "branch": null,
             "system": "shared",
             "step": "landed",
@@ -5055,10 +5465,116 @@ footer code{color:var(--ink-2)}
             "systemName": "deployment",
             "group": "other",
             "order": 1
+          },
+          {
+            "issue": 9,
+            "title": "Staging target check compares folder strings, not resolved paths",
+            "state": "OPEN",
+            "created": "2026-11-09",
+            "parent": null,
+            "waitsOn": [],
+            "blocks": [],
+            "board": "../9-staging-target-check/dashboard.html",
+            "folder": "../9-staging-target-check/",
+            "branch": "fix/issue-9-staging-target-check",
+            "system": "deployment",
+            "step": "document",
+            "detail": "Document: 5 of 7 tasks done; State boards current.",
+            "since": "2026-11-22T03:16:41Z",
+            "updated": "2026-11-22T03:46:14Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-22",
+                "at": "2026-11-22T03:11:42Z",
+                "findings": {
+                  "test": 1,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 1,
+                  "other": 0
+                },
+                "route": "on-the-spot",
+                "report": "build/reports/tests/index.html",
+                "reportCopy": "9-staging-target-check/ca070e8d/tests/index.html",
+                "note": "One minor test finding: the changed step had a test in the integration tests but none in the gating tests. It was fixed on the spot with a gating class of three tests for the step. The code check found nothing, and every test of `workflow-checks` passed.",
+                "inPlace": "fixed"
+              }
+            ],
+            "qaMax": 3,
+            "status": "building",
+            "fixOf": null,
+            "landed": null,
+            "reconciliation": {
+              "state": "partial",
+              "landed": null,
+              "total": null
+            },
+            "active": true,
+            "systemName": "deployment",
+            "group": "other",
+            "order": 2
           }
         ],
         "roadmap": [],
         "unscheduled": [
+          {
+            "issue": 38,
+            "title": "Documents publish resolves folders with realpath, unlike the deploy workflow's checks",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-22",
+            "system": "deployment"
+          },
+          {
+            "issue": 37,
+            "title": "JVM tests run on JUnit 4, not JUnit 5",
+            "labels": [],
+            "created": "2026-11-22",
+            "system": null
+          },
+          {
+            "issue": 36,
+            "title": "Staging target check accepts a staging folder that contains production or the documents folder",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-22",
+            "system": "deployment"
+          },
+          {
+            "issue": 35,
+            "title": "Production target check compares folder strings, not resolved paths",
+            "labels": [
+              "type: bug"
+            ],
+            "created": "2026-11-22",
+            "system": "deployment"
+          },
+          {
+            "issue": 34,
+            "title": "Group imports as the Commenting page sets out",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 33,
+            "title": "Set a Java floor apart from the toolchain",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 32,
+            "title": "Log the server's unhandled errors through kotlin-logging",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": "server"
+          },
           {
             "issue": 14,
             "title": "Link the published boards from the site footer",

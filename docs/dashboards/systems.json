@@ -1,12 +1,12 @@
 {
   "repo": "SpartanLaboratories/OrganizationPage",
-  "updated": "2026-11-09",
+  "updated": "2026-11-22",
   "systems": [
     {"slug": "organizationpage", "name": "OrganizationPage", "kind": "repo", "parent": null, "status": "built",
      "function": "The Spartan Laboratories website: a Kotlin multi-module build whose shared models and copy feed a Compose HTML frontend and a Ktor server, and the deployment system that moves it to the live host.",
      "paths": ["."], "version": null,
-     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
-     "lastAmended": {"issue": 7, "sha": "38477af"},
+     "asIs": {"ref": "fix/issue-9-staging-target-check", "sha": "aa05623", "date": "2026-11-22T03:15:43Z"},
+     "lastAmended": {"issue": 9, "sha": "aa05623"},
      "board": "index.html", "dsl": "workspace.dsl"},
 
     {"slug": "shared", "name": "shared", "kind": "system", "parent": null, "status": "built",
@@ -30,7 +30,7 @@
     {"slug": "deployment", "name": "deployment", "kind": "system", "parent": null, "status": "built",
      "function": "Moves repository content to the live host on two paths: the site through staging and a person's approval to production, and docs/ straight to the documents folder; the test-only workflow-checks module holds its workflows' regression tests.",
      "paths": [".github/", "Dockerfile", "workflow-checks/"], "version": null,
-     "asIs": {"ref": "feat/issue-7-dokka-and-project-site", "sha": "38477af", "date": "2026-11-09T05:28:21Z"},
-     "lastAmended": {"issue": 7, "sha": "38477af"}}
+     "asIs": {"ref": "fix/issue-9-staging-target-check", "sha": "aa05623", "date": "2026-11-22T03:15:43Z"},
+     "lastAmended": {"issue": 9, "sha": "aa05623"}}
   ]
 }

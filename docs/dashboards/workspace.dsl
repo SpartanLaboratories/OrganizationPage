@@ -1,5 +1,5 @@
 // OrganizationPage — C4 model as code (Structurizr DSL): the repository's systems and how they interact. Source of truth for docs/dashboards/index.html.
-// As-is at OrganizationPage feat/issue-7-dokka-and-project-site 38477af (2026-11-09), the three Gradle modules at 0.1.0. Code is authoritative on any conflict.
+// As-is at OrganizationPage fix/issue-9-staging-target-check aa05623 (2026-11-22), the three Gradle modules at 0.1.0. Code is authoritative on any conflict.
 workspace "OrganizationPage" "The Spartan Laboratories website and the deployment system that puts it live." {
 
     !identifiers hierarchical
@@ -31,15 +31,15 @@ workspace "OrganizationPage" "The Spartan Laboratories website and the deploymen
     }
 
     views {
-        systemContext repo "Context" "OrganizationPage and who touches it, as built at feat/issue-7-dokka-and-project-site 38477af." {
+        systemContext repo "Context" "OrganizationPage and who touches it, as built at fix/issue-9-staging-target-check aa05623." {
             include *
             autoLayout lr
         }
-        container repo "Containers" "The systems in the repository, as built at feat/issue-7-dokka-and-project-site 38477af." {
+        container repo "Containers" "The systems in the repository, as built at fix/issue-9-staging-target-check aa05623." {
             include *
             autoLayout lr
         }
-        dynamic repo "SitePush" "A push to main that changes the site, from build to production, as built at feat/issue-7-dokka-and-project-site 38477af." {
+        dynamic repo "SitePush" "A push to main that changes the site, from build to production, as built at fix/issue-9-staging-target-check aa05623." {
             maintainer -> repo.deploy "push to main, outside docs/ or under docs/brand/ or docs/dokka/"
             repo.deploy -> repo.web "jsBrowserDistribution with the API reference, then the site artifact"
             repo.deploy -> spaceship "mark every page, then upload to the staging folder"
