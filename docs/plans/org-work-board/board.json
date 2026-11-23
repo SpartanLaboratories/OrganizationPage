@@ -2,18 +2,18 @@
   "schema": "org-work-board/2",
   "organization": "SpartanLaboratories",
   "url": "https://github.com/SpartanLaboratories",
-  "generated": "2026-11-22T03:52:44Z",
+  "generated": "2026-11-23T00:02:03Z",
   "repositories": [
     {
       "owner": "SpartanLaboratories",
       "name": "WebTools",
       "url": "https://github.com/SpartanLaboratories/WebTools",
       "defaultBranch": "master",
-      "head": "d68ec81e82828911f373bc4940da34580786aaee",
+      "head": "98b7749669f99bded453f7293609317677e4cb05",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-22T03:46:20Z",
+        "generated": "2026-11-22T04:55:34Z",
         "asOf": "2026-11-22"
       },
       "links": {
@@ -24,6 +24,10 @@
       "boards": {
         "38": {
           "path": "docs/plans/38-handshake-empty-name/dashboard.html",
+          "ref": "master"
+        },
+        "39": {
+          "path": "docs/plans/39-client-origin-screening/dashboard.html",
           "ref": "master"
         },
         "47": {
@@ -75,18 +79,11 @@
           "ref": "master"
         }
       },
-      "unlinked": [
-        {
-          "issue": 39,
-          "path": "docs/plans/39-client-origin-screening/dashboard.html",
-          "branch": "fix/issue-39-client-datagram-origin-check",
-          "why": "on fix/issue-39-client-datagram-origin-check, whose copy of the board is not on GitHub yet"
-        }
-      ],
+      "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/WebTools",
-        "generated": "2026-11-22T03:46:20Z",
+        "generated": "2026-11-22T04:55:34Z",
         "asOf": "2026-11-22",
         "links": {
           "repoBoard": "../../dashboards/index.html",
@@ -251,19 +248,20 @@
           {
             "issue": 39,
             "title": "Client only checks datagram origin on the reliable-channel receive branch",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-09-24",
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": "../39-client-origin-screening/dashboard.html",
+            "board": "view/39-client-origin-screening/dashboard.html",
             "folder": "../39-client-origin-screening/",
-            "branch": "fix/issue-39-client-datagram-origin-check",
+            "branch": null,
             "system": "webtools-udp",
-            "step": "document",
-            "detail": "The API reference generates with no warning; the plan documents are being brought in line with the build.",
-            "since": "2026-11-22T03:26:12Z",
-            "updated": "2026-11-22T03:45:32Z",
+            "step": "landed",
+            "detail": "Landed in PR #112.",
+            "since": "2026-11-22T04:34:59Z",
+            "updated": "2026-11-22T04:34:59Z",
             "qa": [
               {
                 "pass": 1,
@@ -287,15 +285,20 @@
               }
             ],
             "qaMax": 3,
-            "status": "building",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
+            "landed": {
+              "pr": 112,
+              "merge": "98b7749669f99bded453f7293609317677e4cb05",
+              "version": null,
+              "date": "2026-11-22"
+            },
             "reconciliation": {
-              "state": "planned",
+              "state": "as-built",
               "landed": null,
               "total": null
             },
-            "active": true,
+            "active": false,
             "systemName": "webtools-udp",
             "group": "other",
             "order": 1
@@ -1536,7 +1539,7 @@
               "type: bug"
             ],
             "created": "2026-11-22",
-            "system": null
+            "system": "webtools-udp"
           },
           {
             "issue": 110,
@@ -1545,7 +1548,7 @@
               "type: bug"
             ],
             "created": "2026-11-22",
-            "system": null
+            "system": "webtools-udp"
           },
           {
             "issue": 109,
@@ -1559,7 +1562,7 @@
             "title": "Keep dependency and plugin versions in a version catalog",
             "labels": [],
             "created": "2026-11-21",
-            "system": null
+            "system": "gradle-build"
           },
           {
             "issue": 107,
@@ -1587,14 +1590,15 @@
             "title": "webtools-udp: add an ABI dump and explicit-API mode, as webtools-http and webtools-feeds have",
             "labels": [],
             "created": "2026-11-21",
-            "system": null
+            "system": "webtools-udp"
           },
           {
             "issue": 101,
             "title": "pages.yml grants pages: write and id-token: write to the build job that runs Gradle",
             "labels": [],
             "created": "2026-11-09",
-            "system": null
+            "system": null,
+            "unassigned": true
           },
           {
             "issue": 93,
@@ -1729,13 +1733,6 @@
             "labels": [],
             "created": "2026-09-26",
             "system": "webtools-udp"
-          },
-          {
-            "issue": 39,
-            "title": "Client only checks datagram origin on the reliable-channel receive branch",
-            "labels": [],
-            "created": "2026-09-24",
-            "system": "webtools-udp"
           }
         ]
       }
@@ -1745,22 +1742,18 @@
       "name": "KotlinBottools",
       "url": "https://github.com/SpartanLaboratories/KotlinBottools",
       "defaultBranch": "main",
-      "head": "8565dce96f789b9425bf181a3e4b8b6f7954dc29",
+      "head": "f7d43097be311453baffcd4d29c1d99ab004c7e6",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-20T20:53:20Z",
-        "asOf": "2026-11-20"
+        "generated": "2026-11-22T23:57:11Z",
+        "asOf": "2026-11-22"
       },
       "links": {
         "workBoard": "docs/plans/index.html",
         "repoBoard": "docs/dashboards/index.html"
       },
       "boards": {
-        "1": {
-          "path": "docs/plans/1-bottools-consolidation/dashboard.html",
-          "ref": "main"
-        },
         "2": {
           "path": "docs/plans/1-bottools-consolidation/2-phase-0-history-rewrite/dashboard.html",
           "ref": "main"
@@ -1825,8 +1818,8 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/KotlinBottools",
-        "generated": "2026-11-20T20:53:20Z",
-        "asOf": "2026-11-20",
+        "generated": "2026-11-22T23:57:11Z",
+        "asOf": "2026-11-22",
         "links": {
           "repoBoard": "../../dashboards/index.html"
         },
@@ -1845,42 +1838,6 @@
             "top": "KotlinBottools",
             "status": "built",
             "board": "docs/dashboards/index.html"
-          },
-          {
-            "slug": "command-model",
-            "name": "command-model",
-            "slot": 0,
-            "top": "command-model"
-          },
-          {
-            "slug": "storage",
-            "name": "storage",
-            "slot": 0,
-            "top": "storage"
-          },
-          {
-            "slug": "bot-runtime",
-            "name": "bot-runtime",
-            "slot": 0,
-            "top": "bot-runtime"
-          },
-          {
-            "slug": "outbound-http",
-            "name": "outbound-http",
-            "slot": 0,
-            "top": "outbound-http"
-          },
-          {
-            "slug": "stats-framework",
-            "name": "stats-framework",
-            "slot": 0,
-            "top": "stats-framework"
-          },
-          {
-            "slug": "plugins",
-            "name": "plugins",
-            "slot": 0,
-            "top": "plugins"
           },
           {
             "slug": "repository-swap",
@@ -1952,172 +1909,6 @@
           }
         ],
         "rows": [
-          {
-            "issue": 1,
-            "title": "BotTools consolidation & MagicBot (tracking)",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": null,
-            "waitsOn": [],
-            "blocks": [],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": null,
-            "step": "implementation",
-            "detail": "1 of 18 units landed; #3 in progress; #4 up next.",
-            "since": "2026-11-07T07:05:00Z",
-            "updated": "2026-11-20T20:50:51Z",
-            "qa": [],
-            "qaMax": 3,
-            "status": "building",
-            "fixOf": null,
-            "landed": null,
-            "reconciliation": {
-              "state": "partial",
-              "landed": 1,
-              "total": 18
-            },
-            "active": false,
-            "chain": {
-              "total": 18,
-              "landed": 1,
-              "dropped": 0,
-              "deferred": 0,
-              "left": 0,
-              "planned": false,
-              "done": false,
-              "current": [
-                {
-                  "issue": 3,
-                  "slug": "build-skeleton",
-                  "step": "halted"
-                }
-              ],
-              "next": {
-                "issue": 4,
-                "slug": "core-foundation",
-                "blockedBy": [
-                  {
-                    "issue": 3
-                  }
-                ]
-              },
-              "units": [
-                {
-                  "n": 1,
-                  "issue": 2,
-                  "name": "History rewrite",
-                  "state": "done"
-                },
-                {
-                  "n": 2,
-                  "issue": 3,
-                  "name": "Build skeleton",
-                  "state": "current"
-                },
-                {
-                  "n": 3,
-                  "issue": 4,
-                  "name": "Core foundation",
-                  "state": "todo"
-                },
-                {
-                  "n": 4,
-                  "issue": 5,
-                  "name": "Command model",
-                  "state": "todo"
-                },
-                {
-                  "n": 5,
-                  "issue": 6,
-                  "name": "SQLite storage",
-                  "state": "todo"
-                },
-                {
-                  "n": 6,
-                  "issue": 7,
-                  "name": "Bot runtime",
-                  "state": "todo"
-                },
-                {
-                  "n": 7,
-                  "issue": 8,
-                  "name": "HTTP call surface",
-                  "state": "todo"
-                },
-                {
-                  "n": 8,
-                  "issue": 9,
-                  "name": "WebTools adapter",
-                  "state": "todo"
-                },
-                {
-                  "n": 9,
-                  "issue": 10,
-                  "name": "Stats provider framework",
-                  "state": "todo"
-                },
-                {
-                  "n": 10,
-                  "issue": 11,
-                  "name": "Reaction-roles plugin",
-                  "state": "todo"
-                },
-                {
-                  "n": 11,
-                  "issue": 12,
-                  "name": "Math plugin",
-                  "state": "todo"
-                },
-                {
-                  "n": 12,
-                  "issue": 13,
-                  "name": "Admin plugin",
-                  "state": "todo"
-                },
-                {
-                  "n": 13,
-                  "issue": 14,
-                  "name": "Weather plugin",
-                  "state": "todo"
-                },
-                {
-                  "n": 14,
-                  "issue": 15,
-                  "name": "Feeds plugin",
-                  "state": "todo"
-                },
-                {
-                  "n": 15,
-                  "issue": 16,
-                  "name": "Release 1.0.0 and archive the predecessors",
-                  "state": "todo"
-                },
-                {
-                  "n": 16,
-                  "issue": 17,
-                  "name": "Published test fixtures",
-                  "state": "todo"
-                },
-                {
-                  "n": 17,
-                  "issue": 18,
-                  "name": "Poker plugin",
-                  "state": "todo"
-                },
-                {
-                  "n": 18,
-                  "issue": 19,
-                  "name": "Desktop manager",
-                  "state": "todo"
-                }
-              ]
-            },
-            "systemName": "",
-            "group": "1",
-            "order": 0
-          },
           {
             "issue": 2,
             "title": "Phase 0 — History rewrite: purge secrets and data from the six bot repositories",
@@ -2265,13 +2056,13 @@
             "folder": "../1-bottools-consolidation/3-phase-1-build-skeleton/",
             "branch": "feat/issue-3-build-skeleton",
             "system": "build-and-ci-skeleton",
-            "step": "halted",
-            "detail": "Waiting on you: the review of the deterministic tests of BotToolsBuild and the word on the next file",
-            "since": "2026-11-20T20:52:04Z",
-            "updated": "2026-11-20T20:52:04Z",
+            "step": "research",
+            "detail": "Research planning: 0 questions drafted.",
+            "since": "2026-11-22T23:55:53Z",
+            "updated": "2026-11-22T23:55:53Z",
             "qa": [],
             "qaMax": 3,
-            "status": "halted",
+            "status": "building",
             "fixOf": null,
             "landed": null,
             "reconciliation": {
@@ -2279,941 +2070,10 @@
               "landed": null,
               "total": null
             },
-            "active": false,
+            "active": true,
             "systemName": "build-and-ci-skeleton",
             "group": "1",
             "order": 2
-          },
-          {
-            "issue": 4,
-            "title": "Phase 2 — Core foundation: ids, failures, settings, storage ports and configuration",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 3,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 8,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 6,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 5,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #4; its run has not started. It starts once #3 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "next",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "next": true,
-            "blockedBy": [
-              {
-                "issue": 3
-              }
-            ],
-            "systemName": "KotlinBottools",
-            "group": "1",
-            "order": 3
-          },
-          {
-            "issue": 5,
-            "title": "Phase 3 — Command model: definitions, validation, typed invocation, dispatch and help",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 4,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 18,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "command-model",
-            "step": null,
-            "detail": "Filed as #5; its run has not started. It starts once #4 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "command-model",
-            "group": "1",
-            "order": 4
-          },
-          {
-            "issue": 6,
-            "title": "Phase 4 — SQLite storage: migrations, erasure and backups",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 4,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 5,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 4,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 2,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "storage",
-            "step": null,
-            "detail": "Filed as #6; its run has not started. It starts once #4 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "storage",
-            "group": "1",
-            "order": 5
-          },
-          {
-            "issue": 7,
-            "title": "Phase 5 — Bot runtime: plugins, events, gateway, jobs, registration and built-in commands",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 5,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 4,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 5,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 2,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 15,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 14,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 13,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 12,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 11,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 10,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "bot-runtime",
-            "step": null,
-            "detail": "Filed as #7; its run has not started. It starts once #4 and #5 have landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "bot-runtime",
-            "group": "1",
-            "order": 6
-          },
-          {
-            "issue": 8,
-            "title": "Phase 6a — HTTP call surface: the bottools-http API, endpoint vocabulary, failures and test fake",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 4,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 2,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 15,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 14,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 10,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 9,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "outbound-http",
-            "step": null,
-            "detail": "Filed as #8; its run has not started. It starts once #4 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "outbound-http",
-            "group": "1",
-            "order": 7
-          },
-          {
-            "issue": 9,
-            "title": "Phase 6b — WebTools adapter: the internal adapter, composite build, strict pin, alignment checks and CI lanes",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 55,
-                "repo": "SpartanLaboratories/WebTools",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED",
-                "closedAt": "2026-11-07T04:54:24Z",
-                "build": "clear",
-                "locality": "local-organization"
-              },
-              {
-                "issue": 8,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 3,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 15,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 14,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 10,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #9; its run has not started. It starts once #8 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "KotlinBottools",
-            "group": "1",
-            "order": 8
-          },
-          {
-            "issue": 10,
-            "title": "Phase 7 — Stats provider framework: provider SPI, account links, match tracker and game news",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 9,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 8,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 8,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 7,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 6,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 4,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 3,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "stats-framework",
-            "step": null,
-            "detail": "Filed as #10; its run has not started. It starts once #7 and #8 have landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "stats-framework",
-            "group": "1",
-            "order": 9
-          },
-          {
-            "issue": 11,
-            "title": "Phase 8 — Reaction-roles plugin, with the default role and welcome message on join",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 4,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "plugins",
-            "step": null,
-            "detail": "Filed as #11; its run has not started. It starts once #7 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "plugins",
-            "group": "1",
-            "order": 10
-          },
-          {
-            "issue": 12,
-            "title": "Phase 9 — Math plugin",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "plugins",
-            "step": null,
-            "detail": "Filed as #12; its run has not started. It starts once #7 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "plugins",
-            "group": "1",
-            "order": 11
-          },
-          {
-            "issue": 13,
-            "title": "Phase 10 — Admin plugin: typed get and set over guild settings",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "plugins",
-            "step": null,
-            "detail": "Filed as #13; its run has not started. It starts once #7 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "plugins",
-            "group": "1",
-            "order": 12
-          },
-          {
-            "issue": 14,
-            "title": "Phase 11 — Weather plugin: conditions and forecast from Open-Meteo",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 9,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 8,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "plugins",
-            "step": null,
-            "detail": "Filed as #14; its run has not started. It starts once #7 and #8 have landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "plugins",
-            "group": "1",
-            "order": 13
-          },
-          {
-            "issue": 15,
-            "title": "Phase 12 — Feeds plugin: RSS and Atom subscriptions with content safeguards",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 9,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 8,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "plugins",
-            "step": null,
-            "detail": "Filed as #15; its run has not started. It starts once #7 and #8 have landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "plugins",
-            "group": "1",
-            "order": 14
-          },
-          {
-            "issue": 16,
-            "title": "Phase 17 — Release 1.0.0 to Maven Central and archive the predecessor repositories",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 5,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-organization"
-              },
-              {
-                "issue": 4,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-organization"
-              },
-              {
-                "issue": 3,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-organization"
-              },
-              {
-                "issue": 2,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-organization"
-              },
-              {
-                "issue": 55,
-                "repo": "SpartanLaboratories/WebTools",
-                "state": "CLOSED",
-                "stateReason": "COMPLETED",
-                "closedAt": "2026-11-07T04:54:24Z",
-                "build": "clear",
-                "locality": "local-organization"
-              },
-              {
-                "issue": 15,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 14,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 13,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 12,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 11,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 10,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 9,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 8,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 7,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 6,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 5,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 4,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 3,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 2,
-                "state": "CLOSED",
-                "stateReason": "COMPLETED",
-                "closedAt": "2026-11-17T02:36:57Z",
-                "build": "clear",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [
-              {
-                "issue": 6,
-                "repo": "SpartanLaboratories/MagicBot",
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 18,
-                "state": "OPEN",
-                "hold": "blocks"
-              },
-              {
-                "issue": 17,
-                "state": "OPEN",
-                "hold": "blocks"
-              }
-            ],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #16; its run has not started. It starts once #2, #3, #4, #5, #6, #7, #8, #9, #10, #11, #12, #13, #14 and #15 have landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "KotlinBottools",
-            "group": "1",
-            "order": 15
-          },
-          {
-            "issue": 17,
-            "title": "Phase 18 — Published test fixtures for plugin and provider authors (Experimental)",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #17; its run has not started. It starts once #16 has landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "KotlinBottools",
-            "group": "1",
-            "order": 16
-          },
-          {
-            "issue": 18,
-            "title": "Phase 19 — Poker plugin: playable Texas hold 'em (Experimental)",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [
-              {
-                "issue": 16,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              },
-              {
-                "issue": 5,
-                "state": "OPEN",
-                "build": "blocking",
-                "locality": "local-repository"
-              }
-            ],
-            "blocks": [],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "plugins",
-            "step": null,
-            "detail": "Filed as #18; its run has not started. It starts once #5 and #16 have landed.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "plugins",
-            "group": "1",
-            "order": 17
-          },
-          {
-            "issue": 19,
-            "title": "Phase 23 — Desktop manager on SpartanUI and SpartanGraphics (unscheduled)",
-            "state": "OPEN",
-            "created": "2026-10-20",
-            "parent": 1,
-            "waitsOn": [],
-            "blocks": [],
-            "board": null,
-            "folder": null,
-            "branch": null,
-            "system": "kotlinbottools",
-            "step": null,
-            "detail": "Filed as #19; its run has not started. It is unscheduled: it waits on SpartanUI and SpartanGraphics holding something usable.",
-            "qa": [],
-            "qaMax": null,
-            "status": "not-started",
-            "landed": null,
-            "reconciliation": null,
-            "active": false,
-            "systemName": "KotlinBottools",
-            "group": "1",
-            "order": 18
           },
           {
             "issue": 21,
@@ -4369,6 +3229,27 @@
         ],
         "unscheduled": [
           {
+            "issue": 58,
+            "title": "Group imports as the Commenting page sets out",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 57,
+            "title": "Set a Java floor apart from the toolchain",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
+            "issue": 56,
+            "title": "Log through kotlin-logging instead of slf4j directly",
+            "labels": [],
+            "created": "2026-11-21",
+            "system": null
+          },
+          {
             "issue": 47,
             "title": "Workspace clone tools: the deletion and move-back requests carry the replacement's check sentences",
             "labels": [
@@ -4405,7 +3286,7 @@
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-22T03:46:05Z",
+        "generated": "2026-11-22T23:10:23Z",
         "asOf": "2026-11-22"
       },
       "links": {},
@@ -4421,7 +3302,7 @@
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/SpartanGraphics",
-        "generated": "2026-11-22T03:46:05Z",
+        "generated": "2026-11-22T23:10:23Z",
         "asOf": "2026-11-22",
         "links": {},
         "base": "../",
@@ -4465,17 +3346,21 @@
             "folder": "../1-phase-1-spartangraphics/3-g1-build-skeleton/",
             "branch": "feature/3-g1-build-skeleton",
             "system": "build-definition",
-            "step": "plan",
-            "detail": "Answered: the repository keeps no copies of the coding rules; CONTRIBUTING points to the organisation's Policy and Design Manifesto and keeps only this repository's facts.",
-            "since": "2026-11-22T03:45:26Z",
-            "updated": "2026-11-22T03:45:26Z",
+            "step": "halted",
+            "detail": "Waiting on you: Whether the second negative control stays, and when the manual IDE and browser checks are done",
+            "since": "2026-11-22T23:09:41Z",
+            "updated": "2026-11-22T23:09:41Z",
             "qa": [],
             "qaMax": 3,
-            "status": "planning",
+            "status": "halted",
             "fixOf": null,
             "landed": null,
-            "reconciliation": null,
-            "active": true,
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
             "systemName": "S1 Build definition",
             "group": "1",
             "order": 1
@@ -4553,7 +3438,7 @@
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-22T03:32:08Z",
+        "generated": "2026-11-22T04:27:40Z",
         "asOf": "2026-11-22"
       },
       "links": {},
@@ -4562,14 +3447,14 @@
         {
           "issue": 2,
           "path": "docs/plans/2-dokka-project-site/dashboard.html",
-          "branch": null,
-          "why": "not on main, and on no branch recorded for it"
+          "branch": "feat/issue-2-dokka-project-site",
+          "why": "on feat/issue-2-dokka-project-site, whose copy of the board is not on GitHub yet"
         }
       ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/SpartanUI",
-        "generated": "2026-11-22T03:32:08Z",
+        "generated": "2026-11-22T04:27:40Z",
         "asOf": "2026-11-22",
         "links": {},
         "base": "../",
@@ -4593,19 +3478,39 @@
             "blocks": [],
             "board": null,
             "folder": null,
-            "branch": null,
+            "branch": "feat/issue-2-dokka-project-site",
             "system": null,
-            "step": "plan",
-            "detail": "The research settled the Pages workflow: a build job and a deploy job, the Pages and OIDC scopes on the deploy job alone, .nojekyll shipped through the artifact's hidden-files input, one deployment at a time, and the current major versions of GitHub's Pages actions.",
-            "since": "2026-11-22T03:25:52Z",
-            "updated": "2026-11-22T03:25:52Z",
-            "qa": [],
+            "step": "halted",
+            "detail": "Waiting on you: a decision on how the theme script's two untested paths are covered",
+            "since": "2026-11-22T04:10:57Z",
+            "updated": "2026-11-22T04:10:57Z",
+            "qa": [
+              {
+                "pass": 1,
+                "verdict": "changes-requested",
+                "date": "2026-11-22",
+                "at": "2026-11-22T04:10:45Z",
+                "findings": {
+                  "test": 6,
+                  "code": 0
+                },
+                "severity": {
+                  "minor": 4,
+                  "other": 2
+                },
+                "route": "re-plan-then-remediation"
+              }
+            ],
             "qaMax": 3,
-            "status": "planning",
+            "status": "halted",
             "fixOf": null,
             "landed": null,
-            "reconciliation": null,
-            "active": true,
+            "reconciliation": {
+              "state": "planned",
+              "landed": null,
+              "total": null
+            },
+            "active": false,
             "systemName": null,
             "group": "other",
             "order": 0
@@ -4632,7 +3537,7 @@
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-22T03:52:13Z",
+        "generated": "2026-11-22T23:08:22Z",
         "asOf": "2026-11-22"
       },
       "links": {},
@@ -4641,14 +3546,14 @@
         {
           "issue": 7,
           "path": "docs/plans/7-kotlin-multiplatform/dashboard.html",
-          "branch": null,
-          "why": "not on master, and on no branch recorded for it"
+          "branch": "feat/issue-7-kotlin-multiplatform",
+          "why": "on feat/issue-7-kotlin-multiplatform, whose copy of the board is not on GitHub yet"
         }
       ],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/GeneralTools",
-        "generated": "2026-11-22T03:52:13Z",
+        "generated": "2026-11-22T23:08:22Z",
         "asOf": "2026-11-22",
         "links": {},
         "base": "../",
@@ -4679,21 +3584,25 @@
             ],
             "board": "../7-kotlin-multiplatform/dashboard.html",
             "folder": "../7-kotlin-multiplatform/",
-            "branch": null,
+            "branch": "feat/issue-7-kotlin-multiplatform",
             "system": null,
-            "step": "architecture",
-            "detail": "Three questions answered and their 58 outside claims re-checked, none failing: a Kotlin/JVM desktop module and a source-less umbrella over the multiplatform core, guarded against a stale 2.2.0 by dependency constraints; convention plugins in an included build reading one version catalog; and the Java floor 17 set by jvmTarget and -Xjdk-release, apart from any toolchain, guarded in check.",
-            "since": "2026-11-22T03:49:09Z",
-            "updated": "2026-11-22T03:49:09Z",
+            "step": "document",
+            "detail": "Document: 1 of 3 tasks done; State boards current.",
+            "since": "2026-11-22T23:02:14Z",
+            "updated": "2026-11-22T23:08:08Z",
             "qa": [],
             "qaMax": 3,
             "status": "planning",
             "fixOf": null,
             "landed": null,
-            "reconciliation": null,
+            "reconciliation": {
+              "state": "planned",
+              "landed": 0,
+              "total": 8
+            },
             "active": false,
             "chain": {
-              "total": 0,
+              "total": 8,
               "landed": 0,
               "dropped": 0,
               "deferred": 0,
@@ -4701,8 +3610,61 @@
               "planned": true,
               "done": false,
               "current": [],
-              "next": null,
-              "units": []
+              "next": {
+                "issue": null,
+                "slug": "kotlin-logging-version",
+                "blockedBy": []
+              },
+              "units": [
+                {
+                  "n": 1,
+                  "issue": null,
+                  "name": "kotlin-logging 8.0.7",
+                  "state": "todo"
+                },
+                {
+                  "n": 2,
+                  "issue": null,
+                  "name": "kotlin-logging in the JVM sources",
+                  "state": "todo"
+                },
+                {
+                  "n": 3,
+                  "issue": null,
+                  "name": "Version catalog",
+                  "state": "todo"
+                },
+                {
+                  "n": 4,
+                  "issue": null,
+                  "name": "Convention plugins and Dokka javadoc jars",
+                  "state": "todo"
+                },
+                {
+                  "n": 5,
+                  "issue": null,
+                  "name": "Java floor 17, guarded in check",
+                  "state": "todo"
+                },
+                {
+                  "n": 6,
+                  "issue": null,
+                  "name": "Module split: core, desktop and the umbrella",
+                  "state": "todo"
+                },
+                {
+                  "n": 7,
+                  "issue": null,
+                  "name": "Review of the seven built units",
+                  "state": "todo"
+                },
+                {
+                  "n": 8,
+                  "issue": null,
+                  "name": "Release 3.0.0",
+                  "state": "todo"
+                }
+              ]
             },
             "systemName": "",
             "group": "7",
@@ -4860,11 +3822,11 @@
       "name": "OrganizationPage",
       "url": "https://github.com/SpartanLaboratories/OrganizationPage",
       "defaultBranch": "main",
-      "head": "a4a7b9e65ddd8358b8d13dddece199ac6140e124",
+      "head": "fd55842a31d1cf9419896bc62c700866a08b3f3c",
       "source": {
         "file": "docs/plans/.live/board.json",
         "view": "live",
-        "generated": "2026-11-22T03:52:40Z",
+        "generated": "2026-11-22T23:55:42Z",
         "asOf": "2026-11-22"
       },
       "links": {
@@ -4879,20 +3841,17 @@
         "8": {
           "path": "docs/plans/8-docs-only-deploy-skip/dashboard.html",
           "ref": "main"
+        },
+        "9": {
+          "path": "docs/plans/9-staging-target-check/dashboard.html",
+          "ref": "main"
         }
       },
-      "unlinked": [
-        {
-          "issue": 9,
-          "path": "docs/plans/9-staging-target-check/dashboard.html",
-          "branch": "fix/issue-9-staging-target-check",
-          "why": "on fix/issue-9-staging-target-check, whose copy of the board is not on GitHub yet"
-        }
-      ],
+      "unlinked": [],
       "board": {
         "schema": "work-board/1",
         "repo": "SpartanLaboratories/OrganizationPage",
-        "generated": "2026-11-22T03:52:40Z",
+        "generated": "2026-11-22T23:55:42Z",
         "asOf": "2026-11-22",
         "links": {
           "repoBoard": "../../dashboards/index.html"
@@ -5098,19 +4057,20 @@
           {
             "issue": 9,
             "title": "Staging target check compares folder strings, not resolved paths",
-            "state": "OPEN",
+            "state": "CLOSED",
+            "stateReason": "COMPLETED",
             "created": "2026-11-09",
             "parent": null,
             "waitsOn": [],
             "blocks": [],
-            "board": "../9-staging-target-check/dashboard.html",
+            "board": "view/9-staging-target-check/dashboard.html",
             "folder": "../9-staging-target-check/",
-            "branch": "fix/issue-9-staging-target-check",
+            "branch": null,
             "system": "deployment",
-            "step": "document",
-            "detail": "Document: 5 of 7 tasks done; State boards current.",
-            "since": "2026-11-22T03:16:41Z",
-            "updated": "2026-11-22T03:46:14Z",
+            "step": "landed",
+            "detail": "Landed in PR #39.",
+            "since": "2026-11-22T23:47:53Z",
+            "updated": "2026-11-22T23:47:53Z",
             "qa": [
               {
                 "pass": 1,
@@ -5133,15 +4093,20 @@
               }
             ],
             "qaMax": 3,
-            "status": "building",
+            "status": "landed",
             "fixOf": null,
-            "landed": null,
+            "landed": {
+              "pr": 39,
+              "merge": "fd55842a31d1cf9419896bc62c700866a08b3f3c",
+              "version": null,
+              "date": "2026-11-22"
+            },
             "reconciliation": {
-              "state": "partial",
+              "state": "as-built",
               "landed": null,
               "total": null
             },
-            "active": true,
+            "active": false,
             "systemName": "deployment",
             "group": "other",
             "order": 2
@@ -5224,15 +4189,6 @@
             "labels": [],
             "created": "2026-11-09",
             "system": "web"
-          },
-          {
-            "issue": 9,
-            "title": "Staging target check compares folder strings, not resolved paths",
-            "labels": [
-              "type: bug"
-            ],
-            "created": "2026-11-09",
-            "system": "deployment"
           }
         ]
       }
